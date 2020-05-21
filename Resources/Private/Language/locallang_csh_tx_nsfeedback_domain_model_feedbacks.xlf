@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-19T07:42:39Z" product-name="ns_feedback">
+		<header/>
+		<body>
+			<trans-unit id="comment.description">
+				<source>comment</source>
+			</trans-unit>
+			<trans-unit id="user_ip.description">
+				<source>userIp</source>
+			</trans-unit>
+			<trans-unit id="feedback_type.description">
+				<source>feedbackType</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

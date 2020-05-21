@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-19T07:42:39Z" product-name="ns_feedback">
+		<header/>
+		<body>
+			<trans-unit id="tx_nsfeedback_domain_model_report">
+				<source>Report</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+				<source>ID</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.record_id">
+				<source>Record Id</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.record_type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.page_title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="feedback_yes_count">
+				<source>Feedback Yes Count</source>
+			</trans-unit>
+			<trans-unit id="feedback_no_count">
+				<source>Feedback No Count</source>
+			</trans-unit>
+			<trans-unit id="feedback_yes_but_count">
+				<source>Feedback Yes But Count</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
+				<source>Sys Lang Id</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
+				<source>Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks">
+				<source>Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
+				<source>User Ip</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
+				<source>Feedback Type</source>
+			</trans-unit>
+			<trans-unit id="yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="yesbut">
+				<source>Yes, But</source>
+			</trans-unit>
+			<trans-unit id="defaulttitle.helpfull">
+				<source>Was this post helpful?</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.sendfeedback">
+				<source>Send Feedback</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyou">
+				<source>Thank You For Your Feedback.</source>
+			</trans-unit>
+			<trans-unit id="alreadyfeedback">
+				<source>Your Feedback is sent.</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackreport">
+				<source>Feedback Report</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.FROM">
+				<source>FROM</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.to">
+				<source>TO</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.Date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.total">
+				<source>Total Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.backlist">
+				<source>Back to list</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackof">
+				<source>Feedbacks of</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.max">
+				<source>Max</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.charlong">
+				<source>Character Long</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.addcomment">
+				<source>Please add comment first</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.viewcomment">
+				<source>View Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.action">
+				<source>Action</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.nsreport">
+				<source>Reports</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.nsfeedback">
+				<source>NS Feedback</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.documentaiton">
+				<source>Documentaiton</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.helpsupport">
+				<source>Help &amp; Support</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.donate">
+				<source>Donate</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.resubmit">
+				<source>Something wrong, please resubmit your feedback.</source>
+			</trans-unit>
+			<trans-unit id="globalsettings">
+				<source>Global Setting</source>
+			</trans-unit>
+			<trans-unit id="Dashboard">
+				<source>Dashboard</source>
+			</trans-unit>
+			<trans-unit id="premiumExtension">
+				<source>Premium Extension</source>
+			</trans-unit>
+			<trans-unit id="basicSettings">
+				<source>Basic Settings</source>
+			</trans-unit>
+			<trans-unit id="noThemeConfiguration">
+				<source>Sorry, Configuration not available for this!</source>
+			</trans-unit>
+			<trans-unit id="sorry">
+				<source>Sorry!</source>
+			</trans-unit>
+			<trans-unit id="noconstantline1">
+				<source>No Extension Template available for this Page.</source>
+			</trans-unit>
+			<trans-unit id="noconstantline2">
+				<source>Please go the Template Module and create new extension Template for this page.</source>
+			</trans-unit>
+			<trans-unit id="noconstantline3">
+				<source>Please click here</source>
+			</trans-unit>
+			<trans-unit id="templatelinkText">
+				<source>Template</source>
+			</trans-unit>
+			<trans-unit id="save">
+				<source>Save Changes</source>
+			</trans-unit>
+			<trans-unit id="widget_group.ns_feedbackwidgetgroup">
+				<source>Feedback Widgets</source>
+			</trans-unit>
+			<trans-unit id="dashboard.nsFeedbackPreset">
+				<source>Feedback Presets</source>
+			</trans-unit>
+			<trans-unit id="dashboard.nsFeedbackPreset.description">
+				<source>Feedback Presets Description</source>
+			</trans-unit>
+			<trans-unit id="totalratings">
+				<source>Total Ratings</source>
+			</trans-unit>
+			<trans-unit id="totalratingscount">
+				<source>Total Ratings Count</source>
+			</trans-unit>
+			<trans-unit id="appearanceSettings">
+				<source>Feedback Forms Settings</source>
+			</trans-unit>
+
+			<!--Constants Sub Category-->
+			<trans-unit id="cat_appearance">
+				<source>Appearance</source>
+			</trans-unit>
+			<trans-unit id="cat_selection">
+				<source>Selection</source>
+			</trans-unit>
+			<trans-unit id="cat_quickfeedback">
+				<source>Quick Feedback Form Configuration</source>
+			</trans-unit>
+			<trans-unit id="cat_ratings">
+				<source>Ratings</source>
+			</trans-unit>
+			<trans-unit id="cat_fullfeedback">
+				<source>Full Feedback Form Configuration</source>
+			</trans-unit>
+			<trans-unit id="cat_name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="cat_email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="cat_longtext">
+				<source>Long Text(Textarea)</source>
+			</trans-unit>
+			<trans-unit id="cat_submit">
+				<source>Submit Button</source>
+			</trans-unit>
+			<trans-unit id="cat_basic">
+				<source>Basic Configuration</source>
+			</trans-unit>
+			<trans-unit id="cat_design">
+				<source>Form Stylings</source>
+			</trans-unit>
+			<trans-unit id="cat_emailconfig">
+				<source>Email Notification Settings</source>
+			</trans-unit>
+
+			<!--Constant Labels-->
+			<trans-unit id="allPage">
+				<source>All Pages?:Enable this to display Feedback form on all pages of the site.</source>
+			</trans-unit>
+			<trans-unit id="newsBlog">
+				<source>News/Blog</source>
+			</trans-unit>
+			<trans-unit id="popup">
+				<source>Popup Block</source>
+			</trans-unit>
+
+			<trans-unit id="feedbackType">
+				<source>Feedback Type:Select feedback form to display in entire site.</source>
+			</trans-unit>
+			<trans-unit id="fullfeedback">
+				<source>Full Feedback Form</source>
+			</trans-unit>
+			<trans-unit id="quickfeedback">
+				<source>Quick Feedback Form</source>
+			</trans-unit>
+			<trans-unit id="ratings">
+				<source>Ratings</source>
+			</trans-unit>
+
+			<trans-unit id="nobut">
+				<source>No, But</source>
+			</trans-unit>
+			<trans-unit id="quickbuttons">
+				<source>Select Buttons</source>
+			</trans-unit>
+
+			<trans-unit id="star">
+				<source>Star</source>
+			</trans-unit>
+			<trans-unit id="emoji">
+				<source>Emoji</source>
+			</trans-unit>
+			<trans-unit id="number">
+				<source>Numbers</source>
+			</trans-unit>
+			<trans-unit id="ratingsType">
+				<source>Rating Style</source>
+			</trans-unit>
+			<trans-unit id="titleText">
+				<source>Heading Text</source>
+			</trans-unit>
+			<trans-unit id="userChangedRating">
+				<source>Can user change their Ratings?</source>
+			</trans-unit>
+			<trans-unit id="include">
+				<source>Include this Field?</source>
+			</trans-unit>
+			<trans-unit id="label">
+				<source>Field Label</source>
+			</trans-unit>
+			<trans-unit id="required">
+				<source>Required?</source>
+			</trans-unit>
+			<trans-unit id="popupSettings">
+				<source>Popup Settings</source>
+			</trans-unit>
+			<trans-unit id="commonSettings">
+				<source>Global Settings</source>
+			</trans-unit>
+			<trans-unit id="restrictMultipleFeedback">
+				<source>Restrict Multiple Feedback:Restrict visitor from submitting multiple Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="enableFeedback">
+				<source>Display Feedback Results:Display Feedback results to visitors</source>
+			</trans-unit>
+			<trans-unit id="fontsize">
+				<source>Font Size:Select font size between 18 to 30</source>
+			</trans-unit>
+			<trans-unit id="fontstyle">
+				<source>Font Style</source>
+			</trans-unit>
+			<trans-unit id="bold">
+				<source>Bold</source>
+			</trans-unit>
+			<trans-unit id="normal">
+				<source>Normal</source>
+			</trans-unit>
+			<trans-unit id="fontcolor">
+				<source>Font Color</source>
+			</trans-unit>
+			<trans-unit id="buttonstyle">
+				<source>Button Style:Select how buttons should be displayed in Feedback forms.</source>
+			</trans-unit>
+			<trans-unit id="buttonstyle.rq">
+				<source>Rectangle</source>
+			</trans-unit>
+			<trans-unit id="buttonstyle.ov">
+				<source>Oval</source>
+			</trans-unit>
+			<trans-unit id="buttonstyle.rrq">
+				<source>Rounded-Rectangle</source>
+			</trans-unit>
+			<trans-unit id="buttonbg">
+				<source>Button Background Color</source>
+			</trans-unit>
+			<trans-unit id="notifyadmin">
+				<source>Notify to Admin:Send an E-mail to Administrator after visitor submits the feedback</source>
+			</trans-unit>
+			<trans-unit id="adminemail">
+				<source>Admin E-mail</source>
+			</trans-unit>
+			<trans-unit id="notifyuser">
+				<source>Notify to visitor:Send an E-mail to visitor after visitor submits the feedback</source>
+			</trans-unit>
+			<trans-unit id="adminemailsubject">
+				<source>Admin E-mail Subject</source>
+			</trans-unit>
+			<trans-unit id="adminname">
+				<source>Admin Name</source>
+			</trans-unit>
+			<trans-unit id="useremailsubject">
+				<source>Visitor E-mail Subject</source>
+			</trans-unit>
+			<trans-unit id="mailcontenttitle">
+				<source>Visitor E-mail heading</source>
+			</trans-unit>
+			<trans-unit id="mailcontent">
+				<source>Visitor E-mail text</source>
+			</trans-unit>
+            <trans-unit id="slide">
+				<source>SlideUpDown</source>
+			</trans-unit>
+            <trans-unit id="toggle">
+				<source>Toggle</source>
+			</trans-unit>
+            <trans-unit id="fade">
+				<source>FadeInOut</source>
+			</trans-unit>
+            <trans-unit id="quickboxappearance">
+				<source>Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</source>
+			</trans-unit>
+            <trans-unit id="placeholder">
+				<source>Placeholder</source>
+			</trans-unit>
+            <trans-unit id="email_required">
+                <source>Valid email is required!</source>
+            </trans-unit>
+            <trans-unit id="form.emailError">
+                <source>Enter valid email address</source>
+            </trans-unit>
+            <trans-unit id="btntextcolor">
+                <source>Button Text Color</source>
+            </trans-unit>
+            <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyourating">
+                <source>Thank You For Your Ratings.</source>
+            </trans-unit>
+            <trans-unit id="avgrating">
+                <source>Average of Ratings</source>
+            </trans-unit>
+            <trans-unit id="alreadyrating">
+                <source>You've already rated this.</source>
+            </trans-unit>
+            <trans-unit id="popuptitle">
+                <source>Popup Title</source>
+            </trans-unit>
+            <trans-unit id="titlebar">
+                <source>Popup Titlebar Text</source>
+            </trans-unit>
+            <trans-unit id="popup.thanks">
+                <source>Thanks for your Feedback!</source>
+            </trans-unit>
+            <trans-unit id="popup.ccmsg">
+                <source>If you feedback requires a response, we'll be in touch shortly</source>
+            </trans-unit>
+            <trans-unit id="mail.salutation">
+                <source>Hey</source>
+            </trans-unit>
+            <trans-unit id="admin.content1">
+                <source>You have new Feedback for this Page</source>
+            </trans-unit>
+            <trans-unit id="mail.quickfeedbackfor">
+                <source>User feedback with</source>
+            </trans-unit>
+            <trans-unit id="mail.usercomment">
+                <source>User comment</source>
+            </trans-unit>
+            <trans-unit id="mail.sent.footer">
+                <source>This email was sent by</source>
+            </trans-unit>
+            <trans-unit id="mail.fromurl">
+                <source>from URL:</source>
+            </trans-unit>
+            <trans-unit id="mail.rating">
+                <source>You have rating for this Page</source>
+            </trans-unit>
+            <trans-unit id="mail.rate">
+                <source>User rating</source>
+            </trans-unit>
+            <trans-unit id="mail.feed">
+                <source>User Feedback</source>
+            </trans-unit>
+            <trans-unit id="userinfo">
+                <source>User Information</source>
+            </trans-unit>
+            <trans-unit id="username">
+                <source>User's Name</source>
+            </trans-unit>
+            <trans-unit id="usermail">
+                <source>User's Email</source>
+            </trans-unit>
+            <trans-unit id="rating_feedback">
+                <source>Rating Feedbacks</source>
+            </trans-unit>
+            <trans-unit id="quick_feedback">
+                <source>Quick Feedbacks</source>
+            </trans-unit>
+            <trans-unit id="full_feedback">
+                <source>Full Feedbacks</source>
+            </trans-unit>
+            <trans-unit id="popup_feedback">
+                <source>Popup Blocks</source>
+            </trans-unit>
+            <trans-unit id="type.news">
+                <source>News</source>
+            </trans-unit>
+            <trans-unit id="type.page">
+                <source>Page</source>
+            </trans-unit>
+            <trans-unit id="type.blog">
+                <source>Blog</source>
+            </trans-unit>
+            <trans-unit id="ratingcount">
+                <source>Rating Counts</source>
+            </trans-unit>
+            <trans-unit id="ratingssummury">
+                <source>Ratings Summary</source>
+            </trans-unit>
+            <trans-unit id="leftbottom">
+                <source>Left Bottom</source>
+            </trans-unit>
+            <trans-unit id="rightbottom">
+                <source>Right Bottom</source>
+            </trans-unit>
+            <trans-unit id="leftside">
+                <source>Left Sidebar</source>
+            </trans-unit>
+            <trans-unit id="rightside">
+                <source>Right Sidebar</source>
+            </trans-unit>
+            <trans-unit id="popuplayout">
+                <source>Popup Layout</source>
+            </trans-unit>
+            <trans-unit id="cat_thankyou">
+                <source>Thank you Message Configuration</source>
+            </trans-unit>
+            <trans-unit id="thankyoutitle">
+                <source>Heading</source>
+            </trans-unit>
+            <trans-unit id="thankyoumsg">
+                <source>Message</source>
+            </trans-unit>
+            <trans-unit id="userquickfeedback">
+                <source>User's Quick Feedbacks</source>
+            </trans-unit>
+            <trans-unit id="fstar">
+                <source>5 Stars</source>
+            </trans-unit>
+            <trans-unit id="fostar">
+                <source>4 Stars</source>
+            </trans-unit>
+            <trans-unit id="thstar">
+                <source>3 Stars</source>
+            </trans-unit>
+            <trans-unit id="tstar">
+                <source>2 Stars</source>
+            </trans-unit>
+            <trans-unit id="ostar">
+                <source>1 Star</source>
+            </trans-unit>
+            <trans-unit id="userratings">
+                <source>User Ratings</source>
+            </trans-unit>
+
+            <trans-unit id="nameinclude">
+                <source>Name Field - Include?</source>
+            </trans-unit>
+            <trans-unit id="namelabel">
+                <source>Name Field - Label</source>
+            </trans-unit>
+            <trans-unit id="nameplaceholder">
+                <source>Name Field - Placeholder</source>
+            </trans-unit>
+            <trans-unit id="namerequired">
+                <source>Name Field - Required?</source>
+            </trans-unit>
+
+            <trans-unit id="emailinclude">
+                <source>Email Field - Include?</source>
+            </trans-unit>
+            <trans-unit id="emaillabel">
+                <source>Email Field - Label</source>
+            </trans-unit>
+            <trans-unit id="emailplaceholder">
+                <source>Email Field - Placeholder</source>
+            </trans-unit>
+            <trans-unit id="emailrequired">
+                <source>Email Field - Required?</source>
+            </trans-unit>
+
+            <trans-unit id="textareainclude">
+                <source>Feedback - Include?</source>
+            </trans-unit>
+            <trans-unit id="textarealabel">
+                <source>Feedback - Label</source>
+            </trans-unit>
+            <trans-unit id="textareaplaceholder">
+                <source>Feedback - Placeholder</source>
+            </trans-unit>
+            <trans-unit id="textarearequired">
+                <source>Feedback - Required?</source>
+            </trans-unit>
+
+
+            <trans-unit id="ratinginclude">
+                <source>Ratings - Include?</source>
+            </trans-unit>
+            <trans-unit id="ratinglabel">
+                <source>Ratings - Label</source>
+            </trans-unit>
+            <trans-unit id="submitlabel">
+                <source>Submit Button - Label</source>
+            </trans-unit>
+            <trans-unit id="cat_popup">
+                <source>Popup Configuration</source>
+            </trans-unit>
+            <trans-unit id="popupcolor">
+                <source>Popup Color</source>
+            </trans-unit>
+            <trans-unit id="report.desc">
+                <source>Reports tab displays all the Feedback reports of Feedback Forms added in currently selected page.</source>
+            </trans-unit>
+            <trans-unit id="global.desc">
+                <source>In this tab you can configure all the global settings for the Feedback Forms added in the site.</source>
+            </trans-unit>
+            <trans-unit id="feed.desc">
+                <source>You can configure all available Feedback Forms from here.</source>
+            </trans-unit>
+            <trans-unit id="opps">
+                <source>Oops!</source>
+            </trans-unit>
+            <trans-unit id="info1">
+                <source>Feedback is not available for this page.</source>
+            </trans-unit>
+            <trans-unit id="info2">
+                <source>Please select other page to view feedbacks.</source>
+            </trans-unit>
+        </body>
+	</file>
+</xliff>

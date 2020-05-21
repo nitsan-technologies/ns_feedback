@@ -1,0 +1,43 @@
+{
+    "name": "nitsan/ns-feedback",
+    "type": "typo3-cms-extension",
+    "description": "Get feedback from your customers",
+    "keywords": [
+        "TYPO3 CMS",
+        "feedback",        
+        "servey",
+        "extension",
+        "CMS"
+    ],    
+    "authors": [
+        {
+            "name": "NITSAN Technologies Pvt Ltd",
+            "email": "info@nitsan.in",
+            "role": "Developer",
+            "homepage": "http://www.nitsan.in/"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": ">8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NITSAN\\NsFeedback\\": "Classes"
+        }
+    },    
+    "replace": {
+        "nitsan/ns-feedback": "self.version",
+        "typo3-ter/ns-feedback": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor/",
+        "bin-dir": ".Build/bin/"
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/public",
+            "extension-key": "ns_feedback"
+        }
+    }
+}

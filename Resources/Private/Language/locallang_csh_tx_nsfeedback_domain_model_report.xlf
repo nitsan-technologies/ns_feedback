@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-19T07:42:39Z" product-name="ns_feedback">
+		<header/>
+		<body>
+			<trans-unit id="page_id.description">
+				<source>pageId</source>
+			</trans-unit>
+			<trans-unit id="record_id.description">
+				<source>recordId</source>
+			</trans-unit>
+			<trans-unit id="page_type.description">
+				<source>pageType</source>
+			</trans-unit>
+			<trans-unit id="page_title.description">
+				<source>pageTitle</source>
+			</trans-unit>
+			<trans-unit id="feedback_yes_count.description">
+				<source>feedbackYesCount</source>
+			</trans-unit>
+			<trans-unit id="feedback_no_count.description">
+				<source>feedbackNoCount</source>
+			</trans-unit>
+			<trans-unit id="feedback_yes_but_count.description">
+				<source>feedbackYesButCount</source>
+			</trans-unit>
+			<trans-unit id="sys_lang_id.description">
+				<source>sysLangId</source>
+			</trans-unit>
+			<trans-unit id="feedbacks.description">
+				<source>feedbacks</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

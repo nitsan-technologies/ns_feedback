@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-19T07:42:39Z" product-name="ns_feedback">
+		<header/>
+		<body>
+			<trans-unit id="tx_nsfeedback_domain_model_report">
+				<source>Report</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+				<source>Page Id</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.record_id">
+				<source>Record Id</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.page_type">
+				<source>Page Type</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.page_title">
+				<source>Page Title</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_count">
+				<source>Feedback Yes Count</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.feedback_no_count">
+				<source>Feedback No Count</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_but_count">
+				<source>Feedback Yes But Count</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
+				<source>Sys Lang Id</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
+				<source>Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks">
+				<source>Feedbacks</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
+				<source>User Ip</source>
+			</trans-unit>
+			<trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
+				<source>Feedback Type</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_feedback_feedback.name">
+				<source>Feedback</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_feedback_feedback.description">
+				<source>Put your feedback</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_feedback_feedback.nsfeedback">
+				<source>NS Feedback</source>
+			</trans-unit>
+			<trans-unit id="globalSettings">
+				<source>Global Settings</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

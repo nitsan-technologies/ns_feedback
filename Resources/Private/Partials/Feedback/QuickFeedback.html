@@ -1,0 +1,36 @@
+<div class="qckform">
+	<f:form.hidden class="animationEffect" value="{settings.quickboxappearance}" />
+	<span>{settings.quickFeedbackTitle}</span>
+	<div class="form-items">
+		<f:form.hidden value="3" class="feedbacktype" />
+		<f:for each="{quickbuttons}" as="btn">
+			<f:if condition="{btn}==1">
+				<f:link.action action="quickFeedback" additionalParams="{type:741852}" additionalAttributes="{buttonfor:1,qkbtn:'yes',cid:cData.uid,newsid:newsId}" class="quick-submit nsbtn btn-{settings.buttonstyle}" >
+					<f:translate key="yes" extensionName="ns_feedback" />
+				</f:link.action>
+			</f:if>
+			<f:if condition="{btn}==2">
+				<f:link.action action="quickFeedback" pageType="741852" additionalAttributes="{buttonfor:2,qkbtn:'no',cid:cData.uid,newsid:newsId}" class="quick-submit nsbtn btn-{settings.buttonstyle}" >
+					<f:translate key="no" extensionName="ns_feedback" />
+				</f:link.action>
+			</f:if>
+			<f:if condition="{btn}==3">
+				<a data-buttonfor="3" data-cid="{cData.uid}" data-newsid="{newsId}" data-qkbtn="yesbut" data-boxid="commentyesbox-{cData.uid}" href="javascript:;" class="nsbtn btn-{settings.buttonstyle} commentboxbtn">
+					<f:translate key="yesbut" extensionName="ns_feedback" />
+				</a>
+			</f:if>
+			<f:if condition="{btn}==4">
+				<a data-buttonfor="4" data-qkbtn="nobut" data-cid="{cData.uid}" data-newsid="{newsId}" data-boxid="commentnobox-{cData.uid}" href="javascript:;" class="nsbtn btn-{settings.buttonstyle} commentboxbtn">
+					<f:translate key="nobut" extensionName="ns_feedback" />
+				</a>
+			</f:if>
+		</f:for>
+		<div class="commenttxt" style="display: none;">
+			<f:form.textarea  placeholder="Message" class="commentbox"></f:form.textarea>
+			<div class='validation' style='color:red;margin-bottom: 20px;display: none;'><f:translate key="tx_nsfeedback_domain_model_feedbacks.addcomment" extensionName="ns_feedback" /></div>
+			<f:link.action action="quickFeedback" pageType="741852" class="quick-submit comment-submit-btn nsbtn btn-{settings.buttonstyle}">
+				<f:translate key="tx_nsfeedback_domain_model_feedbacks.sendfeedback" extensionName="ns_feedback" />
+			</f:link.action>
+		</div>
+	</div>
+</div>

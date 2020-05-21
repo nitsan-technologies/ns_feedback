@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Global" />
+<f:section name="content">
+	<div class="container">
+		<div class="ns-alert-wrap">
+			<div class="ns-alert-box">
+				<div class="ns-alert-close"><i class="fa fa-times"></i></div>
+				<div class="ns-alert-header">
+					<h3><f:translate key="popup.thanks" /></h3>
+				</div>
+				<div class="ns-alert-content">
+					<p><f:translate key="popup.ccmsg" /></p>
+				</div>
+			</div>
+		</div>
+		<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">
+			<f:then>
+				<div class="send-msg" id="ns-c{cData.uid}">
+					<f:render partial="Feedback/QuickFeedback" arguments="{_all}" />
+				</div>
+			</f:then>
+		</f:if>
+		<f:if condition="{settings.quickenable}">
+			<f:render partial="Report/YesNo" arguments="{_all}" />
+		</f:if>
+	</div>
+</f:section>
+</html>

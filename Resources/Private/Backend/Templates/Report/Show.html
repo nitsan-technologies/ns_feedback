@@ -1,0 +1,63 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <f:layout name="Default" />  
+  <f:section name="content">
+      <div class="ns-backup-table-block-wrap">
+	      <f:if condition="{report.feedbackYesCount} || {report.feedbackNoCount} || {report.feedbackYesButCount} || {report.feedbackNoButCount}">
+		      <div class="card">
+			      <div class="card-header">
+				      <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
+					      <h5><f:translate key="quick_feedback" extensionName="ns_feedback" /></h5>
+				      </div>
+			      </div>
+			      <div class="card-body">
+				      <div class="ns-backup-table-wrap">
+					      <table class="table ns-ext-datatable">
+						      <thead>
+							      <th scope="col"><f:translate key="tx_nsfeedback_domain_model_feedbacks.Date"/></th>
+							      <th scope="col"><f:translate key="tx_nsfeedback_domain_model_feedbacks.feedback_type" /></th>
+							      <th scope="col"><f:translate key="tx_nsfeedback_domain_model_feedbacks" /></th>
+							      <th scope="col"><f:translate key="tx_nsfeedback_domain_model_feedbacks.user_ip" /></th>
+						      </thead>
+						      <tbody>
+							      <f:for each="{report.feedbacks}" as="feedbacks">
+								      <f:if condition="{feedbacks.feedbackType} == 3">
+									      <tr>
+										      <td>{feedbacks.crdate -> f:format.date(format: 'm/d/Y')}</td>
+										      <td>
+											      <f:if condition="{feedbacks.quickfeedbacktype}">
+												      <f:then>
+													      <f:translate key="{feedbacks.quickfeedbacktype}" />
+												      </f:then>
+												      <f:else>
+													      -
+												      </f:else>
+											      </f:if>
+										      </td>
+										      <td>
+											      <f:if condition="{feedbacks.comment}">
+												      <f:then>
+													      {feedbacks.comment}
+												      </f:then>
+												      <f:else>
+													      -
+												      </f:else>
+											      </f:if>
+										      </td>
+										      <td>{feedbacks.userIp}</td>
+									      </tr>
+								      </f:if>
+							      </f:for>
+						      </tbody>
+					      </table>
+				      </div>
+			      </div>
+		      </div>
+	      </f:if>
+	      <f:link.action class="back-button" action="list">
+                <span>
+                  <f:translate key="tx_nsfeedback_domain_model_feedbacks.backlist" />
+                </span>
+	      </f:link.action>
+      </div>
+  </f:section>
+</html>

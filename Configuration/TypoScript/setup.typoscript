@@ -1,0 +1,102 @@
+
+plugin.tx_nsfeedback_feedback {
+    view {
+        templateRootPaths.0 = EXT:ns_feedback/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_nsfeedback_feedback.view.templateRootPath}
+        partialRootPaths.0 = EXT:ns_feedback/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_nsfeedback_feedback.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ns_feedback/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_nsfeedback_feedback.view.layoutRootPath}
+    }
+    mvc {
+        callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings {
+	    allPage = {$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage}
+	    quickFeedbackTitle = {$plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickFeedbackTitle}
+	    quickboxappearance = {$plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickboxappearance}
+	    quickbuttons = {$plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttons}
+	    quickenable = {$plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.enableFeedback}
+	    restrictMultipleFeedback = {$plugin.tx_nsfeedback_feedback.commonSettings.restrictMultipleFeedback}
+	    fontstyle = {$plugin.tx_nsfeedback_feedback.design.fontstyle}
+	    fontcolor = {$plugin.tx_nsfeedback_feedback.design.fontcolor}
+	    buttonstyle = {$plugin.tx_nsfeedback_feedback.design.buttonstyle}
+	    buttonbg = {$plugin.tx_nsfeedback_feedback.design.buttonbg}
+	    buttoncolor= {$plugin.tx_nsfeedback_feedback.design.btntextcolor}
+    }
+}
+
+page {
+	includeJSFooter {
+		nsfeedback = EXT:ns_feedback/Resources/Public/JavaScript/nsfeedback.js
+		nsfeedback.excludeFromConcatenation = 1
+		nsfeedback.disableCompression = 1
+	}
+	includeCSS {
+        fontawsome = EXT:ns_feedback/Resources/Public/Css/font-awesome.css
+		nsfeedbackCss = EXT:ns_feedback/Resources/Public/Css/nsfeedback.css
+	}
+	includeJSLibs {
+		nsfjquery = EXT:ns_feedback/Resources/Public/JavaScript/jquery.js
+		nsfjquery.if.isTrue = {$plugin.tx_nsfeedback_feedback.commonSettings.jQuery}
+	}
+}
+
+lib.newact = USER_INT
+lib.newact {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	extensionName = NsFeedback
+	pluginName = Feedback
+	vendorName = NITSAN
+	controller = Feedback
+	switchableControllerActions {
+		Feedback {
+			0 = default
+		}
+	}
+	settings < plugin.tx_nsfeedback_feedback.settings
+}
+
+[{$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage} == 1]
+	page.785456789985 < lib.newact
+[global]
+[globalVar = LIT:1 = {$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage}]
+	page.785456789985 < lib.newact
+[global]
+# set type for load month using ajax
+
+
+# set type for load month using ajax
+quickFeedbackAction = PAGE
+quickFeedbackAction {
+    typeNum = 741852
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type:application/json
+        xhtml_cleaning = 0
+        admPanel = 0
+    }
+
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = NsFeedback
+        pluginName = Feedback
+        vendorName = NITSAN
+        controller = Feedback
+        switchableControllerActions {
+            Feedback {
+                1 = quickFeedback
+            }
+        }
+    }
+}
+
+# Module configuration
+module.tx_nsfeedback_nitsan_nsfeedbackfeedback {
+    view {
+        templateRootPaths.1 = {$module.tx_nsfeedback_feedback.view.templateRootPath}
+        partialRootPaths.1 = {$module.tx_nsfeedback_feedback.view.partialRootPath}
+        layoutRootPaths.1 = {$module.tx_nsfeedback_feedback.view.layoutRootPath}
+    }
+}

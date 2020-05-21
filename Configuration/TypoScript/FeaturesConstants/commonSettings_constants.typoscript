@@ -1,0 +1,41 @@
+############################
+### CUSTOM SUBCATEGORIES ###
+###########################
+# customsubcategory=10_Appearance=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_appearance
+# customsubcategory=20_Selection=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_selection
+# customsubcategory=30=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_basic
+# customsubcategory=40=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_design
+# customsubcategory=50=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_emailconfig
+# customsubcategory=60_thanks=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_thankyou
+
+plugin.tx_nsfeedback_feedback {
+	appearanceSettings {
+		appearance {
+			# cat=Ns_Feedback_commonSettings/10_Appearance/01; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:allPage
+			allPage = 1
+		}
+	}
+    commonSettings {
+	    #cat=Ns_Feedback_commonSettings/30/01; type=boolean; label=Add jQuery
+	    jQuery = 0
+
+        #cat=Ns_Feedback_commonSettings/30/02; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:restrictMultipleFeedback
+        restrictMultipleFeedback = 1
+    }
+    design {
+        #cat=Ns_Feedback_commonSettings/40/02; type=options[LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:bold=bold,LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:normal=normal]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontstyle
+        fontstyle = normal
+
+        #cat=Ns_Feedback_commonSettings/40/03; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontcolor
+        fontcolor = #000000
+
+        #cat=Ns_Feedback_commonSettings/40/04; type=options[LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle.ov=oval,LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle.rq=rectangle,LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle.rrq=round-rect]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle
+        buttonstyle = rectangle
+
+        #cat=Ns_Feedback_commonSettings/40/05; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonbg
+        buttonbg = #ee8433
+
+	    #cat=Ns_Feedback_commonSettings/40/06; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:btntextcolor
+	    btntextcolor = #ffffff
+    }
+}
