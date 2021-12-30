@@ -28,6 +28,28 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     protected $sys_language_uid = null;
 
+    /*
+     * Inject reportRepository
+     *
+     * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
+     * @return void
+     */
+    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository)
+    {
+        $this->reportRepository = $reportRepository;
+    }
+
+    /*
+    * Inject feedbacksRepository
+    *
+    * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
+    * @return void
+    */
+    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository)
+    {
+        $this->feedbacksRepository = $feedbacksRepository;
+    }
+
     /**
      * Initialize Action
      *

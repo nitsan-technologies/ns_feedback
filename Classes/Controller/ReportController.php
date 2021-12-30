@@ -40,7 +40,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $feedbacksRepository = null;
 
     /**
-     * @var \GeorgRinger\News\Domain\Repository\NewsRepository
+     *
      */
     protected $newsRepository;
 
@@ -58,6 +58,28 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @var TypoScriptTemplateModuleController
      */
     protected $pObj;
+
+    /*
+     * Inject reportRepository
+     *
+     * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
+     * @return void
+     */
+    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository)
+    {
+        $this->reportRepository = $reportRepository;
+    }
+
+    /*
+    * Inject feedbacksRepository
+    *
+    * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
+    * @return void
+    */
+    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository)
+    {
+        $this->feedbacksRepository = $feedbacksRepository;
+    }
 
     /**
      * Initializes this object

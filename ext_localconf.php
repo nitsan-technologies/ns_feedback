@@ -1,15 +1,18 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
-
+$feedbackController = 'Feedback';
+if (version_compare(TYPO3_branch, '10.0', '>=')) {
+    $feedbackController = \NITSAN\NsFeedback\Controller\FeedbackController::class;
+}
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'NITSAN.NsFeedback',
     'Feedback',
     [
-        'Feedback' => 'new, quickFeedback, default',
+        $feedbackController => 'new, quickFeedback, default',
     ],
     // non-cacheable actions
     [
-        'Feedback' => 'new, quickFeedback, default',
+        $feedbackController => 'new, quickFeedback, default',
     ]
 );
 

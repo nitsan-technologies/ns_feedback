@@ -1,3 +1,6 @@
+if (typeof jQuery === 'undefined') {
+    alert('jQuery is not included, Please include first!');
+}
 $(document).ready(function () {
     $('.ns-alert-close').on('click', function(){
         $('.ns-alert-wrap').hide();

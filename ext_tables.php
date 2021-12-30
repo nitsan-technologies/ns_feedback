@@ -24,14 +24,17 @@ defined('TYPO3_MODE') || die('Access denied.');
                 }
             }
         }
-
+        $reportController = 'Report';
+        if (version_compare(TYPO3_branch, '10.0', '>=')) {
+            $reportController = \NITSAN\NsFeedback\Controller\ReportController::class;
+        }
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
             'NITSAN.NsFeedback',
             'nitsan', // Make module a submodule of 'nitsan'
             'feedback', // Submodule key
             '', // Position
             [
-                'Report' => 'dashboard, saveConstant, list, show, premiumExtension, appearanceSettings, commonSettings',
+                $reportController => 'dashboard, saveConstant, list, show, premiumExtension, appearanceSettings, commonSettings',
             ],
             [
                 'access' => 'user,group',

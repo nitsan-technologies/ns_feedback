@@ -668,3 +668,7 @@ label {
 .ns-ext-navigation .nav-item {
     z-index:999999999;
 }
+
+.tooltip {
+    z-index:99999999999;
+}

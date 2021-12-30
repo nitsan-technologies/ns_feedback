@@ -1281,6 +1281,9 @@ class ExtendedTemplateService extends TemplateService
                         case 'textarea':
                             $p_field = '<textarea name="' . $fN . '" id="' . $idName . '" cols="30" rows="8" class="form-control">' . $fV . '</textarea>';
                             break;
+                        case 'hr':
+                            $output .= '<hr />';
+                            break;
                         default:
                             $p_field = '<input class="form-control" id="' . $idName . '" type="text" name="' . $fN . '" value="' . $fV . '"'
                                 . '/>';
@@ -1406,7 +1409,11 @@ class ExtendedTemplateService extends TemplateService
             if (count($parts) === 2) {
                 $parts[1] = $theValue;
             }
-            $this->raw[$lineNum] = implode($parts, '=');
+            if (PHP_VERSION >= 7.4) {
+                $this->raw[$lineNum] = implode('=', $parts);
+            } else {
+                $this->raw[$lineNum] = implode($parts, '=');
+            }
         } else {
             $this->raw[] = $key . ' =' . $theValue;
         }
