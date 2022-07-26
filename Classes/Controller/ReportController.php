@@ -189,12 +189,18 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 
         $yesCount = 0;
         $noCount = 0;
+        $yesbutCount = isset($yesbutCount) ? $yesbutCount : 0;
+        $nobutCount = isset($nobutCount) ? $nobutCount : 0;
+
         foreach ($reports as  $report) {
             $yesCount += $report->getFeedbackYesCount();
             $noCount += $report->getFeedbackNoCount();
             $yesbutCount += $report->getFeedbackYesButCount();
             $nobutCount += $report->getFeedbackNoButCount();
         }
+
+        $totalratings = isset($totalratings) ? $totalratings : '';
+        $report = isset($report) ? $report : '';
 
         $assign = [
             'action' => 'dashboard',
@@ -248,6 +254,10 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
                 $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
             }
         }
+        $totalfeed = isset($totalfeed) ? $totalfeed : '';
+        $reports = isset($reports) ? $reports : '';
+        $newsData = isset($newsData) ? $newsData : '';
+
         $assign = [
             'totalfeedback' => $totalfeed,
             'reports' => $reports,
@@ -277,6 +287,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function saveConstantAction()
     {
         $this->constantObj->main();
+        $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action'] = isset($_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action']) ? $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action'] : '';
         $returnAction = $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action']; //get action name
         return false;
     }
