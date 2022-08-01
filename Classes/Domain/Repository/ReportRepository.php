@@ -35,6 +35,12 @@ class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query = $this->createQuery();
         $main= [];
 
+        $filterData['newsId'] = isset($filterData['newsId']) ? $filterData['newsId'] : '';
+        $filterData['pId'] = isset($filterData['pId']) ? $filterData['pId'] : '';
+        $filterData['cid'] = isset($filterData['cid']) ? $filterData['cid'] : '';
+        $filterData['userIp'] = isset($filterData['userIp']) ? $filterData['userIp'] : '';
+        $filterData['feedbackType'] = isset($filterData['feedbackType']) ? $filterData['feedbackType'] : '';
+        
         if ($filterData['newsId']) {
             $main[] =  $query->equals('record_id', $filterData['newsId']);
         }

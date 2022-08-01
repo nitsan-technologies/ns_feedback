@@ -99,6 +99,7 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $filterData['feedbackType'] = 3;
         $newsParams = GeneralUtility::_GP('tx_news_pi1');
 
+        $newsParams['news'] = isset($newsParams['news']) ? $newsParams['news'] : '';
         if ($newsParams['news'] > 0) {
             $newsId = $newsParams['news'];
             $filterData['newsId'] = $newsId;
@@ -150,6 +151,7 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $filterData['feedbackType'] = 3;
         $newsParams = GeneralUtility::_GP('tx_news_pi1');
 
+        $newsParams['news'] = isset($newsParams['news']) ? $newsParams['news'] : '';
         if ($newsParams['news'] > 0) {
             $newsId = $newsParams['news'];
             $filterData['newsId'] = $newsId;
