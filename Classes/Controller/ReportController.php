@@ -148,9 +148,14 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function appearanceSettingsAction()
     {
+        $bootstrapVariable = 'data';
+        if (version_compare(TYPO3_branch, '11.0', '>')) {
+            $bootstrapVariable = 'data-bs';
+        }
         $assign = [
             'action' => 'appearanceSettings',
-            'constant' => $this->constants
+            'constant' => $this->constants,
+            'bootstrapVariable' => $bootstrapVariable
         ];
         $this->view->assignMultiple($assign);
     }
@@ -162,9 +167,14 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function commonSettingsAction()
     {
+        $bootstrapVariable = 'data';
+        if (version_compare(TYPO3_branch, '11.0', '>')) {
+            $bootstrapVariable = 'data-bs';
+        }
         $assign = [
             'action' => 'commonSettings',
-            'constant' => $this->constants
+            'constant' => $this->constants,
+            'bootstrapVariable' => $bootstrapVariable
         ];
         $this->view->assignMultiple($assign);
     }
@@ -201,7 +211,10 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 
         $totalratings = isset($totalratings) ? $totalratings : '';
         $report = isset($report) ? $report : '';
-
+        $bootstrapVariable = 'data';
+        if (version_compare(TYPO3_branch, '11.0', '>')) {
+            $bootstrapVariable = 'data-bs';
+        }
         $assign = [
             'action' => 'dashboard',
             'pid' => $this->pid,
@@ -213,7 +226,8 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'totalnobutcount' => $nobutCount,
             'total' => $total,
             'totalrating' => $totalratings,
-            'report' => $report
+            'report' => $report,
+            'bootstrapVariable' => $bootstrapVariable
         ];
         $this->view->assignMultiple($assign);
     }
@@ -257,12 +271,16 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         $totalfeed = isset($totalfeed) ? $totalfeed : '';
         $reports = isset($reports) ? $reports : '';
         $newsData = isset($newsData) ? $newsData : '';
-
+        $bootstrapVariable = 'data';
+        if (version_compare(TYPO3_branch, '11.0', '>')) {
+            $bootstrapVariable = 'data-bs';
+        }
         $assign = [
             'totalfeedback' => $totalfeed,
             'reports' => $reports,
             'newsitems' => $newsData,
             'action' => 'list',
+            'bootstrapVariable' => $bootstrapVariable
         ];
         $this->view->assignMultiple($assign);
     }

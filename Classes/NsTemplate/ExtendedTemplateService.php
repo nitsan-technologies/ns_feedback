@@ -28,6 +28,7 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Frontend\Configuration\TypoScript\ConditionMatching\ConditionMatcher;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * TSParser extension class to TemplateService
@@ -1135,9 +1136,9 @@ class ExtendedTemplateService extends TemplateService
                         $subcat = $params['subcat_name'];
                         $subcat_name = $params['subcat_name'] ? $this->subCategories[$params['subcat_name']][0] : 'Others';
                         if ($i == 0) {
-                            $output .= '<div class="card"><div class="card-header"><h5>' . $subcat_name . '</h5></div><div class="card-body">';
+                            $output .= '<div class="card custom-card"><div class="card-header"><h5>' . $subcat_name . '</h5><button class="btn btn-primary" name="_savedok" form="TypoScriptTemplateModuleController">'.LocalizationUtility::translate('save','ns_feedback').'</button><input type="hidden" name="_savedok" value="1"></div><div class="card-body">';
                         } else {
-                            $output .= '</div></div><div class="card"><div class="card-header"><h5>' . $subcat_name . '</h5></div><div class="card-body">';
+                            $output .= '</div></div><div class="card custom-card"><div class="card-header"><h5>' . $subcat_name . '</h5><button class="btn btn-primary" name="_savedok" form="TypoScriptTemplateModuleController">'.LocalizationUtility::translate('save','ns_feedback').'</button><input type="hidden" name="_savedok" value="1"></div><div class="card-body">';
                         }
                     }
                     $params['label'] = isset($params['label']) ? $params['label'] : '';
@@ -1158,6 +1159,7 @@ class ExtendedTemplateService extends TemplateService
 
                     $idName = htmlspecialchars($idName);
                     $hint = '';
+                    $dV = $params['default_value'];
                     switch ($typeDat['type']) {
                         case 'int':
                         case 'int+':
@@ -1178,14 +1180,28 @@ class ExtendedTemplateService extends TemplateService
                             if (isset($typeDat['max'])) {
                                 $additionalAttributes .= ' max="' . (int)$typeDat['max'] . '" ';
                             }
-
-                            $p_field =
-                                '<input class="form-control" id="' . $idName . '" type="number"'
-                                . ' name="' . $fN . '" value="' . $fV . '"' . ' onChange="uFormUrl(' . $aname . ')"' . $additionalAttributes . ' />';
+                            $dV = isset($dV) ? $dV : ''; 
+                            $p_field ='<div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text custom-reset" data-id="' . $idName . '" id="basic-' . $idName . '">
+                                        <i aria-hidden="true" class="fa fa-repeat"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" id="' . $idName . '" type="number"'
+                                . ' name="' . $fN . '" value="' . $fV . '"' . ' data-value="' . $dV . '"  aria-describedby="basic-' . $idName . '" onChange="uFormUrl(' . $aname . ')"' . $additionalAttributes . ' />
+                            </div>';
                             break;
                         case 'color':
+                            $dV = isset($dV) ? $dV : '';
                             $p_field = '<div class="ns-ext-color-pick-wrap d-flex align-items-center">
-                                            <input class="" type="color" id="input-' . $idName . '" rel="' . $idName . '" name="' . $fN . '" value="' . $fV . '" />
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text custom-reset" data-id="' . $idName . '" id="basic-' . $idName . '">
+                                                        <i aria-hidden="true" class="fa fa-repeat"></i>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" type="color" id="' . $idName . '" rel="' . $idName . '" name="' . $fN . '" value="' . $fV . '" data-value="' . $dV . '"  aria-describedby="basic-' . $idName . '"/>
+                                            </div>
                                         </div>';
 
                             if (empty($this->inlineJavaScript[$typeDat['type']])) {
@@ -1292,8 +1308,15 @@ class ExtendedTemplateService extends TemplateService
                             $output .= '<hr />';
                             break;
                         default:
-                            $p_field = '<input class="form-control" id="' . $idName . '" type="text" name="' . $fN . '" value="' . $fV . '"'
-                                . '/>';
+                        $dV = isset($dV) ? $dV : '';
+                        $p_field = '<div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text custom-reset" data-id="' . $idName . '" id="basic-' . $idName . '">
+                                <i aria-hidden="true" class="fa fa-repeat"></i>
+                            </span>
+                        </div>
+                        <input class="form-control" id="' . $idName . '" type="text" name="' . $fN . '" value="' . $fV . '" data-value="' . $dV . '" aria-describedby="basic-' . $idName . '" />
+                    </div>';
                     }
                     // Define default names and IDs
                     $checkboxName = 'check[' . $params['name'] . ']';

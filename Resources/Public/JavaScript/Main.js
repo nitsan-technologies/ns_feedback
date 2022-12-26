@@ -32,5 +32,16 @@ define([
             }
         })
     });
-
+    $('.custom-reset').on('click', function(){
+        var that = $(this);
+        that.find('i').addClass('fa-spin');
+        var id = that.attr('data-id');
+        var defaultValue = $("#" + id).attr('data-value');
+        $("#" + id).val(defaultValue);
+        $("#" + id).addClass('form__field');
+        setTimeout(function(){
+            $("#" + id).removeClass('form__field');
+            that.find('i').removeClass('fa-spin');
+        }, 2000);
+    });
 });
