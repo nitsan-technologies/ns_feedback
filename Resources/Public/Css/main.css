@@ -107,7 +107,6 @@ hr{
 #plugin-tx_nsfaq_faq-styleSettings-toggleSymbol-categoryIcon option:not(:first-child) , #plugin-tx_nsfaq_faq-styleSettings-toggleSymbol-categoryIcon {
     font-family: 'FontAwesome';
 }
-@media(min-width:576px) {}
 
 @media(min-width:768px) {
     .ns-ext-form select.form-control{
@@ -115,9 +114,6 @@ hr{
         width: 100%;
     }
 }
-
-@media(min-width:992px) {}
-
 @media(min-width:1200px) {
     .ns-ext-navigation .navbar-nav .nav-link {
         padding: 13px 20px;

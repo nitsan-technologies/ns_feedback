@@ -722,12 +722,6 @@ label {
     }
 }
 
-@media(min-width:1200px) {
-    html, body {
-        font-size: 16px;
-    }
-}
-
 /* TYPO3 v10 Patch */
 .module-loading-indicator, .module-docheader.t3js-module-docheader {
     display: none !important;
@@ -1149,4 +1143,22 @@ select.form-control[size="1"]:not(.form-select-no-siblings) {
         padding-bottom: 15px;
         padding-top: 15px;
     }
+}
+
+.tooltip .tooltip-inner {
+    font-size: 12px;
+}
+
+.tooltip .tooltip-arrow {
+   font-size: 16px;
+}
+
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before,
+.bs-tooltip-top .tooltip-arrow::before {
+    border-width: 5px 5px 0;
+}
+
+.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before,
+.bs-tooltip-bottom .tooltip-arrow::before {
+    border-width: 0 5px 5px;
 }
