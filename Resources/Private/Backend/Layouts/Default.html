@@ -24,17 +24,17 @@
 										<em class="fa fa-dashboard" aria-hidden="true"></em><f:translate key="Dashboard" /></f:link.action>
 								</li>
 								<li class="nav-item {f:if(condition: '{action}==list', then: 'active')}">
-									<f:link.action action="list" class="nav-link" additionalAttributes="{data-toggle:'tooltip',data-placement:'bottom'}" title="{f:translate(key: 'report.desc')}">
+									<f:link.action action="list" class="nav-link" additionalAttributes="{data-toggle:'tooltip',data-placement:'top'}" title="{f:translate(key: 'report.desc')}">
 										<em class="fa fa-bars" aria-hidden="true"></em><f:translate key="tx_nsfeedback_domain_model_report.nsreport" extensionName="ns_feedback" />
 									</f:link.action>
 								</li>
 								<li class="nav-item {f:if(condition: '{action}==commonSettings', then: 'active')}">
-									<f:link.action action="commonSettings" additionalParams="{cat:'Ns_Feedback_commonSettings'}" class="nav-link" additionalAttributes="{data-toggle:'tooltip',data-placement:'bottom'}" title="{f:translate(key: 'global.desc')}">
+									<f:link.action action="commonSettings" additionalParams="{cat:'Ns_Feedback_commonSettings'}" class="nav-link" additionalAttributes="{data-toggle:'tooltip',data-placement:'top'}" title="{f:translate(key: 'global.desc')}">
 										<em class="fa fas fa-cogs" aria-hidden="true"></em><f:translate key="commonSettings" />
 									</f:link.action>
 								</li>
 								<li class="nav-item {f:if(condition: '{action}==appearanceSettings', then: 'active')}">
-									<f:link.action action="appearanceSettings" additionalParams="{cat:'Ns_Feedback_AppearanceSettings'}" class="nav-link" additionalAttributes="{data-toggle:'tooltip',data-placement:'bottom'}" title="{f:translate(key: 'feed.desc')}">
+									<f:link.action action="appearanceSettings" additionalParams="{cat:'Ns_Feedback_AppearanceSettings'}" class="nav-link" additionalAttributes="{data-toggle:'tooltip',data-placement:'top'}" title="{f:translate(key: 'feed.desc')}">
 										<em class="fa fas fa-cog" aria-hidden="true"></em><f:translate key="appearanceSettings" />
 									</f:link.action>
 								</li>
