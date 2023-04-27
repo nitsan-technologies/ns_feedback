@@ -85,8 +85,7 @@ class FeedbackViewHelper extends AbstractViewHelper
             if ($GLOBALS['TSFE']->page['tx_nsfeedback_enable'] > 0 || $pageRecord['tx_nsfeedback_enable'] > 0) {
 
                 // Create repository instance
-                $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-                $querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+                $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
 
                 $view = GeneralUtility::makeInstance(StandaloneView::class);
                 $view->setLayoutRootPaths([GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Layouts/')]);

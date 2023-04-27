@@ -21,20 +21,11 @@ class FeedbacksRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     public function getFromAll()
     {
-        $querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+        $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
     }
 
-    public function checkApiData()
-    {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsfeedback_domain_model_apidata');
-        $queryBuilder
-            ->select('*')
-            ->from('tx_nsfeedback_domain_model_apidata');
-        $query = $queryBuilder->execute();
-        return $query->fetch();
-    }
     public function insertNewData($data)
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsfeedback_domain_model_apidata');

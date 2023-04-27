@@ -4,6 +4,7 @@ if (typeof jQuery === 'undefined') {
 $(document).ready(function () {
     $('.ns-alert-close').on('click', function(){
         $('.ns-alert-wrap').hide();
+        location.reload();
     });
     if($('.quick-scoreboard').length > 0){
         var yescount = $('.bar-yes').data('count')
@@ -78,7 +79,8 @@ $(document).ready(function () {
                 "tx_nsfeedback_feedback[result][newsId]": newsId,
             },
             success: function (data) {
-                if (data == 'OK') {
+                console.log(data)
+                if (data['Status'] == 'Success') {
                     $('#ns-c'+cid+' .qckform').html('');
                     $('.ns-alert-wrap').show();
                 } else {

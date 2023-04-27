@@ -1,10 +1,10 @@
 define([
     'jquery',
     'TYPO3/CMS/Backend/Modal',
-    'TYPO3/CMS/NsFeedback/Main',
     'TYPO3/CMS/NsFeedback/Datatables',
-    'TYPO3/CMS/Backend/jquery.clearable'
-], function ($, Model) {
+    'TYPO3/CMS/NsFeedback/Main'
+], function ($, Model) {    
+    console.log("sabkefhsbk")
     $('.ns-ext-datatable').DataTable({
         "language": {
             "lengthMenu": "Display _MENU_ Records",

@@ -5,8 +5,13 @@ html, body {
 
 body {
     font-family: 'Roboto', sans-serif;
+    overflow: auto;
 }
 
+.table {
+    border: 1px solid #ccc !important; 
+}
+    
 .form-control::-webkit-input-placeholder {
     color: #bdbdbd;
     font-size: 12px;
