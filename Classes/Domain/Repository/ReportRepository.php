@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -19,12 +20,17 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * @var array
+     * @var array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
         'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     ];
 
+    /**
+     * getFromAll function
+     *
+     * @return void
+     */
     public function getFromAll()
     {
         $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
@@ -32,6 +38,12 @@ class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->setDefaultQuerySettings($querySettings);
     }
 
+    /**
+     * checkExistRecord function
+     *
+     * @param array $filterData
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
     public function checkExistRecord($filterData = null)
     {
         $query = $this->createQuery();
@@ -41,7 +53,7 @@ class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $filterData['cid'] = isset($filterData['cid']) ? $filterData['cid'] : '';
         $filterData['userIp'] = isset($filterData['userIp']) ? $filterData['userIp'] : '';
         $filterData['feedbackType'] = isset($filterData['feedbackType']) ? $filterData['feedbackType'] : '';
-        
+
         if ($filterData['newsId']) {
             $query->matching($query->logicalAnd(
                 $query->equals('record_id', $filterData['newsId'])

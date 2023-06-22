@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\Controller;
 
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
@@ -6,7 +7,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
-
+use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
+use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
 
 /***
  *
@@ -23,22 +25,17 @@ use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
  */
 class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-    public function __construct(
-        protected readonly ModuleTemplateFactory $moduleTemplateFactory
-    ) {
-    }
-
     /**
      * reportRepository
      *
-     * @var \NITSAN\NsFeedback\Domain\Repository\ReportRepository
+     * @var ReportRepository
      */
     protected $reportRepository = null;
 
     /**
      * feedbacksRepository
      *
-     * @var \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository
+     * @var FeedbacksRepository
      */
     protected $feedbacksRepository = null;
 
@@ -57,30 +54,12 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $contentObject = null;
     protected $pid = null;
 
-    /**
-     * @var TypoScriptTemplateModuleController
-     */
-    protected $pObj;
-
-    /*
-     * Inject reportRepository
-     *
-     * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
-     * @return void
-     */
-    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository)
-    {
+    public function __construct(
+        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        ReportRepository $reportRepository,
+        FeedbacksRepository $feedbacksRepository
+    ) {
         $this->reportRepository = $reportRepository;
-    }
-
-    /*
-    * Inject feedbacksRepository
-    *
-    * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
-    * @return void
-    */
-    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository)
-    {
         $this->feedbacksRepository = $feedbacksRepository;
     }
 
@@ -106,7 +85,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         // Request Data
         $getData = $this->request->getQueryParams();
         $postData = $this->request->getParsedBody();
-        $requestData = array_merge((array)$getData,(array)$postData);
+        $requestData = array_merge((array)$getData, (array)$postData);
 
         //GET and SET pid for the
         $this->pid = (isset($requestData['id']) ? $requestData['id'] : '0');
@@ -120,7 +99,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * action dashboard
      *
-     * @return void
      */
     public function dashboardAction()
     {
@@ -131,7 +109,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         // Request Data
         $getData = $this->request->getQueryParams();
         $postData = $this->request->getParsedBody();
-        $requestData = array_merge((array)$getData,(array)$postData);
+        $requestData = array_merge((array)$getData, (array)$postData);
 
         //set default query builder for mm table
         $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
@@ -143,8 +121,8 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 
         $yesCount = 0;
         $noCount = 0;
-        $yesbutCount = isset($yesbutCount) ? $yesbutCount : 0;
-        $nobutCount = isset($nobutCount) ? $nobutCount : 0;
+        $yesbutCount = 0;
+        $nobutCount = 0;
 
         foreach ($reports as  $report) {
             $yesCount += $report->getFeedbackYesCount();
@@ -153,8 +131,8 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $nobutCount += $report->getFeedbackNoButCount();
         }
 
-        $totalratings = isset($totalratings) ? $totalratings : '';
-        $report = isset($report) ? $report : '';
+        $totalratings = '';
+        $report = '';
 
         $assign = [
             'action' => 'dashboard',
@@ -170,7 +148,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'report' => $report
         ];
         $view->assignMultiple($assign);
-        
+
         return $view->renderResponse();
     }
 
@@ -178,7 +156,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * action show
      *
      * @param \NITSAN\NsFeedback\Domain\Model\Report $report
-     * @return void
      */
     public function showAction(\NITSAN\NsFeedback\Domain\Model\Report $report)
     {
@@ -191,7 +168,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * action list
      *
-     * @return void
      */
     public function listAction()
     {
@@ -215,7 +191,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             }
         }
         $totalfeed = isset($totalfeed) ? $totalfeed : '';
-        $reports = isset($reports) ? $reports : '';
         $newsData = isset($newsData) ? $newsData : '';
 
         $assign = [

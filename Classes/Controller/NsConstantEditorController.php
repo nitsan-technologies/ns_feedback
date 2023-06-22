@@ -25,8 +25,8 @@ use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Tstemplate\Controller\AbstractTemplateModuleController;
 use NITSAN\NsFeedback\Controller\ReportController;
 
-class NsConstantEditorController extends AbstractTemplateModuleController 
-{  
+class NsConstantEditorController extends AbstractTemplateModuleController
+{
     public function __construct(
         protected readonly ModuleTemplateFactory $moduleTemplateFactory,
         private readonly SysTemplateRepository $sysTemplateRepository,
@@ -40,7 +40,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
     }
 
     public function handleRequest(ServerRequestInterface $request): ResponseInterface
-    {  
+    {
         $queryParams = $request->getQueryParams();
         $parsedBody = $request->getParsedBody();
 
@@ -65,12 +65,12 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         if (empty($allTemplatesOnPage)) {
             return $this->noTemplateAction($request);
         }
-        
+
         return $this->showAction($request);
     }
 
     private function showAction(ServerRequestInterface $request): ResponseInterface
-    {   
+    {
         $queryParams = $request->getQueryParams();
         $parsedBody = $request->getParsedBody();
         $languageService = $this->getLanguageService();
@@ -114,8 +114,8 @@ class NsConstantEditorController extends AbstractTemplateModuleController
                 $currentTemplateConstants = $templateRow['constants'] ?? '';
             }
         }
-        
-        
+
+
         // Build the constant include tree
         $rootLine = GeneralUtility::makeInstance(RootlineUtility::class, $pageUid)->get();
         $sysTemplateRows = $this->sysTemplateRepository->getSysTemplateRowsByRootlineWithUidOverride($rootLine, $request, $selectedTemplateUid);
@@ -132,7 +132,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         $this->astTraverser->resetVisitors();
         $this->astTraverser->addVisitor($astConstantCommentVisitor);
         $this->astTraverser->traverse($constantAst);
-        
+
         $constants = $astConstantCommentVisitor->getConstants();
         $categories = $astConstantCommentVisitor->getCategories();
         $relevantCategories = [];
@@ -143,7 +143,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         }
         $selectedCategory = array_key_first($relevantCategories) ?? '';
         $selectedCategoryFromModuleData = (string)$moduleData->get('selectedCategory');
-        
+
         if (array_key_exists($selectedCategoryFromModuleData, $relevantCategories)) {
             $selectedCategory = $selectedCategoryFromModuleData;
         }
@@ -154,7 +154,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
             $moduleData->set('selectedCategory', $selectedCategory);
             $backendUser->pushModuleData($currentModuleIdentifier, $moduleData->toArray());
         }
-        
+
         $displayConstants = [];
         foreach ($constants as $constant) {
             if ($constant['cat'] === $selectedCategory) {
@@ -166,7 +166,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         foreach ($displayConstants as &$constant) {
             ksort($constant['items']);
         }
-        
+
         $view = $this->moduleTemplateFactory->create($request);
         $view->setTitle($languageService->sL($currentModule->getTitle()), $pageRecord['title']);
         $view->getDocHeaderComponent()->setMetaInformation($pageRecord);
@@ -234,6 +234,9 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         if ($updatedTemplateConstantsArray) {
             $templateUid = empty($templateRow['_ORIG_uid']) ? $templateRow['uid'] : $templateRow['_ORIG_uid'];
             $recordData = [];
+            if(!defined('LF')) {
+                define('LF', chr(10));
+            }
             $recordData['sys_template'][$templateUid]['constants'] = implode(LF, $updatedTemplateConstantsArray);
             $dataHandler = GeneralUtility::makeInstance(DataHandler::class);
             $dataHandler->start($recordData, []);
@@ -275,13 +278,16 @@ class NsConstantEditorController extends AbstractTemplateModuleController
 
     private function updateTemplateConstants(ServerRequestInterface $request, array $constantDefinitions, string $rawTemplateConstants): ?array
     {
+        if(!defined('LF')) {
+            define('LF', chr(10));
+        }
         $rawTemplateConstantsArray = explode(LF, $rawTemplateConstants);
         $constantPositions = $this->calculateConstantPositions($rawTemplateConstantsArray);
 
         $parsedBody = $request->getParsedBody();
         $data = $parsedBody['data'] ?? null;
         $check = $parsedBody['check'] ?? [];
-        
+
         $valuesHaveChanged = false;
         if (is_array($data)) {
             foreach ($data as $key => $value) {
@@ -471,5 +477,3 @@ class NsConstantEditorController extends AbstractTemplateModuleController
     }
 
 }
-
-?>

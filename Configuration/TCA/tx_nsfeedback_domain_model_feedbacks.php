@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_nsfeedback_domain_model_feedbacks',
@@ -23,7 +24,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'security' => [ 
+        'security' => [
             'ignorePageTypeRestriction' => true
         ],
         'searchFields' => 'comment,user_ip,feedback_type',
@@ -50,7 +51,7 @@ return [
                 'default' => 0,
                 'items' => [
                     [
-                        'label' => '', 
+                        'label' => '',
                         'value' => 0
                     ],
                 ],
@@ -149,19 +150,19 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'label' => 'Full feedback', 
+                        'label' => 'Full feedback',
                         'value' => 1
                     ],
                     [
-                        'label' => 'Ratings', 
+                        'label' => 'Ratings',
                         'value' => 2
                     ],
                     [
-                        'label' => 'Quick feedback', 
+                        'label' => 'Quick feedback',
                         'value' => 3
                     ],
                     [
-                        'label' => 'Popup', 
+                        'label' => 'Popup',
                         'value' => 4
                     ],
                 ],

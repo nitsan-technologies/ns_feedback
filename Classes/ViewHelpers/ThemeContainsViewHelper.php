@@ -1,9 +1,9 @@
 <?php
+
 namespace NITSAN\NsFeedback\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 
 class ThemeContainsViewHelper extends AbstractViewHelper
 {

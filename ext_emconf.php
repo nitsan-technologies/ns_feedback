@@ -10,29 +10,29 @@
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array (
+$EM_CONF[$_EXTKEY] = [
   'title' => '[NITSAN] All in One Feedback',
   'description' => 'One of the only feature-rich TYPO3 feedback extension-ever! Live-Demo: https://demo.t3planet.com/t3t-extensions/feedback/ You can download PRO version for more-features & free-support at https://t3planet.com/ns-feedback-typo3-extension',
   'category' => 'plugin',
-  'version' => '3.0.0',
+  'version' => '12.0.0',
   'state' => 'stable',
   'uploadfolder' => false,
-  'clearcacheonload' => false,
-  'author' => 'Team NITSAN',
+  'author' => 'T3D: Rohan Parmar, Divya Goklani, Nilesh Malankiya, QA: Gautam Kunjadiya',
   'author_email' => 'sanjay@nitsan.in',
   'author_company' => 'NITSAN Technologies Pvt Ltd',
-  'constraints' => 
-  array (
-    'depends' => 
-    array (
-      'typo3' => '12.4.0-12.4.99',
-    ),
-    'conflicts' => 
-    array (
-    ),
-    'suggests' => 
-    array (
-    ),
-  ),
-);
+  'constraints' =>
+  [
+    'depends' =>
+    [
+      'typo3' => '12.0.0-12.9.99',
+    ],
+    'conflicts' =>
+    [
 
+    ],
+    'suggests' =>
+    [
+
+    ],
+  ],
+];

@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_nsfeedback_domain_model_report',
@@ -22,7 +23,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'security' => [ 
+        'security' => [
             'ignorePageTypeRestriction' => true
         ],
         'searchFields' => 'page_title',
@@ -49,7 +50,7 @@ return [
                 'default' => 0,
                 'items' => [
                     [
-                        'label' => '', 
+                        'label' => '',
                         'value' => 0
                     ],
                 ],

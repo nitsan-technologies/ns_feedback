@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3') || die('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -24,3 +25,7 @@ $iconRegistry->registerIcon(
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['Feedback'] = [
     'NITSAN\NsFeedback\ViewHelpers',
 ];
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    '@import "EXT:ns_feedback/Configuration/TSconfig/ContentElementWizard.tsconfig"'
+);

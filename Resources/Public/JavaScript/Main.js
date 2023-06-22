@@ -1,9 +1,11 @@
 define([
     'jquery',
     'TYPO3/CMS/Backend/Modal',
+    'TYPO3/CMS/NsFeedback/Main',
     'TYPO3/CMS/NsFeedback/Datatables',
-    'TYPO3/CMS/NsFeedback/Main'
-], function ($, Model) {    
+    'TYPO3/CMS/Backend/Input/Clearable'
+], function ($, Model) {
+ 
     console.log("sabkefhsbk")
     $('.ns-ext-datatable').DataTable({
         "language": {

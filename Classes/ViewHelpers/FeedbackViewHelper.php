@@ -1,4 +1,5 @@
 <?php
+
 namespace Nitsan\NsFeedback\ViewHelpers;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -9,25 +10,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class FeedbackViewHelper extends AbstractViewHelper
 {
-
-    /**
-     *
-     * @var persistence Manager object
-     */
-    protected $persistenceManager;
-
-    /**
-     *
-     * @var report Repository object
-     */
-    protected $reportRepository;
-
-    /**
-     *
-     * @var feedbacks Repository object
-     */
-    protected $feedbacksRepository;
-
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
@@ -45,7 +27,7 @@ class FeedbackViewHelper extends AbstractViewHelper
             'pages',
             $startingPoint
         );
-
+        $rows = null;
         if ($_GET['tx_news_pi1']['news'] > 0) {
             $newsId = $_GET['tx_news_pi1']['news'];
             $rows2 = $queryBuilder
@@ -96,7 +78,7 @@ class FeedbackViewHelper extends AbstractViewHelper
                 if ($_GET['tx_news_pi1']['news'] > 0) {
                     $view->assign('newsId', $_GET['tx_news_pi1']['news']);
                 }
-                $view->getRequest()->setControllerExtensionName('ns_feedback');
+                // $view->getRequest()->setControllerExtensionName('ns_feedback');
                 return $view->render();
             }
         } else {

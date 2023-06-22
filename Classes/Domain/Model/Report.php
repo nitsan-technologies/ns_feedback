@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\Domain\Model;
 
 /***
@@ -16,7 +17,6 @@ namespace NITSAN\NsFeedback\Domain\Model;
  */
 class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
     /**
      * @var \DateTime
      */

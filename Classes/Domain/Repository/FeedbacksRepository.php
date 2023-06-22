@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\Domain\Repository;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -33,7 +34,7 @@ class FeedbacksRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ->insert('tx_nsfeedback_domain_model_apidata')
             ->values($data);
 
-        $query = $queryBuilder->execute();
+        $query = $queryBuilder->executeQuery();
         return $query;
     }
     public function curlInitCall($url)
@@ -55,6 +56,6 @@ class FeedbacksRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ->where(
                 $queryBuilder->expr()->comparison('last_update', '<', 'DATE_SUB(NOW() , INTERVAL 1 DAY)')
             )
-            ->execute();
+            ->executeQuery();
     }
 }

@@ -40,13 +40,11 @@ return [
         'controllerActions' => [
             \NITSAN\NsFeedback\Controller\ReportController::class => [
                 'dashboard',
-                'list', 
-                'show', 
+                'list',
+                'show',
                 'premiumExtension',
             ],
         ],
     ],
-    
-];
 
-?>
+];
