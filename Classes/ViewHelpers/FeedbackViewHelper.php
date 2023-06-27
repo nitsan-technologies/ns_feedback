@@ -1,4 +1,5 @@
 <?php
+
 namespace Nitsan\NsFeedback\ViewHelpers;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -9,25 +10,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class FeedbackViewHelper extends AbstractViewHelper
 {
-
-    /**
-     *
-     * @var persistence Manager object
-     */
-    protected $persistenceManager;
-
-    /**
-     *
-     * @var report Repository object
-     */
-    protected $reportRepository;
-
-    /**
-     *
-     * @var feedbacks Repository object
-     */
-    protected $feedbacksRepository;
-
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
@@ -45,7 +27,7 @@ class FeedbackViewHelper extends AbstractViewHelper
             'pages',
             $startingPoint
         );
-
+        $rows = null;
         if ($_GET['tx_news_pi1']['news'] > 0) {
             $newsId = $_GET['tx_news_pi1']['news'];
             $rows2 = $queryBuilder
@@ -85,8 +67,7 @@ class FeedbackViewHelper extends AbstractViewHelper
             if ($GLOBALS['TSFE']->page['tx_nsfeedback_enable'] > 0 || $pageRecord['tx_nsfeedback_enable'] > 0) {
 
                 // Create repository instance
-                $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-                $querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+                $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
 
                 $view = GeneralUtility::makeInstance(StandaloneView::class);
                 $view->setLayoutRootPaths([GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Layouts/')]);
@@ -97,7 +78,7 @@ class FeedbackViewHelper extends AbstractViewHelper
                 if ($_GET['tx_news_pi1']['news'] > 0) {
                     $view->assign('newsId', $_GET['tx_news_pi1']['news']);
                 }
-                $view->getRequest()->setControllerExtensionName('ns_feedback');
+                // $view->getRequest()->setControllerExtensionName('ns_feedback');
                 return $view->render();
             }
         } else {

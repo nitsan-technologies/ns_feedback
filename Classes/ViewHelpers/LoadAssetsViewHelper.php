@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;

@@ -1,41 +1,47 @@
 ############################
 ### CUSTOM SUBCATEGORIES ###
 ###########################
-# customsubcategory=10_Appearance=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_appearance
-# customsubcategory=20_Selection=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_selection
-# customsubcategory=30=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_basic
-# customsubcategory=40=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_design
-# customsubcategory=50=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_emailconfig
-# customsubcategory=60_thanks=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_thankyou
+
+# customsubcategory=1000=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_appearance
+# customsubcategory=2000=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_selection
+# customsubcategory=3000=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_basic
+# customsubcategory=4000=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_design
+# customsubcategory=5000=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_emailconfig
+# customsubcategory=6000=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:cat_thankyou
 
 plugin.tx_nsfeedback_feedback {
 	appearanceSettings {
 		appearance {
-			# cat=Ns_Feedback_commonSettings/10_Appearance/01; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:allPage
+			# cat=Ns_Feedback_commonSettings/1000/01; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:allPage
 			allPage = 1
 		}
 	}
     commonSettings {
-	    #cat=Ns_Feedback_commonSettings/30/01; type=boolean; label=Add jQuery
+	    #cat=Ns_Feedback_commonSettings/3000/01; type=boolean; label=Add jQuery
 	    jQuery = 0
 
-        #cat=Ns_Feedback_commonSettings/30/02; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:restrictMultipleFeedback
+        #cat=Ns_Feedback_commonSettings/3000/02; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:restrictMultipleFeedback
         restrictMultipleFeedback = 1
     }
     design {
-        #cat=Ns_Feedback_commonSettings/40/02; type=options[LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:bold=bold,LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:normal=normal]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontstyle
+        #cat=Ns_Feedback_commonSettings/4000/02; type=options[Bold=bold,Normal=normal]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontstyle
         fontstyle = normal
 
-        #cat=Ns_Feedback_commonSettings/40/03; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontcolor
+        #cat=Ns_Feedback_commonSettings/4000/03; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontcolor
         fontcolor = #000000
 
-        #cat=Ns_Feedback_commonSettings/40/04; type=options[LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle.ov=oval,LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle.rq=rectangle,LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle.rrq=round-rect]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle
+        #cat=Ns_Feedback_commonSettings/4000/04; type=options[Oval=oval,Rectangle=rectangle,Rounded-Rectangle=round-rect]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle
         buttonstyle = rectangle
 
-        #cat=Ns_Feedback_commonSettings/40/05; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonbg
+        #cat=Ns_Feedback_commonSettings/4000/05; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonbg
         buttonbg = #ee8433
 
-	    #cat=Ns_Feedback_commonSettings/40/06; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:btntextcolor
+	    #cat=Ns_Feedback_commonSettings/4000/06; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:btntextcolor
 	    btntextcolor = #ffffff
     }
+    # cat=Ns_Feedback_commonSettings/6000/1001; type=string; label=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:thankyoutitle
+    thankyoutitle = Thank you!
+
+    # cat=Ns_Feedback_commonSettings/6000/1002; type=textarea; label=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:thankyoumsg
+    thankyoumsg = If you feedback requires a response, we'll be in touch shortly
 }

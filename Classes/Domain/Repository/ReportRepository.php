@@ -1,5 +1,8 @@
 <?php
+
 namespace NITSAN\NsFeedback\Domain\Repository;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /***
  *
@@ -17,45 +20,63 @@ namespace NITSAN\NsFeedback\Domain\Repository;
 class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * @var array
+     * @var array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
         'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     ];
 
+    /**
+     * getFromAll function
+     *
+     * @return void
+     */
     public function getFromAll()
     {
-        $querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+        $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
     }
 
+    /**
+     * checkExistRecord function
+     *
+     * @param array $filterData
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
     public function checkExistRecord($filterData = null)
     {
         $query = $this->createQuery();
-        $main= [];
 
         $filterData['newsId'] = isset($filterData['newsId']) ? $filterData['newsId'] : '';
         $filterData['pId'] = isset($filterData['pId']) ? $filterData['pId'] : '';
         $filterData['cid'] = isset($filterData['cid']) ? $filterData['cid'] : '';
         $filterData['userIp'] = isset($filterData['userIp']) ? $filterData['userIp'] : '';
         $filterData['feedbackType'] = isset($filterData['feedbackType']) ? $filterData['feedbackType'] : '';
-        
+
         if ($filterData['newsId']) {
-            $main[] =  $query->equals('record_id', $filterData['newsId']);
+            $query->matching($query->logicalAnd(
+                $query->equals('record_id', $filterData['newsId'])
+            ));
         }
 
-        $main[] =  $query->equals('feedbacks.pid', $filterData['pId']);
+
+        $query->matching($query->logicalAnd(
+            $query->equals('feedbacks.pid', $filterData['pId'])
+        ));
         if ($filterData['cid']) {
-            $main[] = $query->equals('feedbacks.cid', (int)$filterData['cid']);
+            $query->matching($query->logicalAnd(
+                $query->equals('feedbacks.cid', (int)$filterData['cid'])
+            ));
         }
         if ($filterData['userIp']) {
-            $main[] =  $query->equals('feedbacks.user_ip', (string)$filterData['userIp']);
+            $query->matching($query->logicalAnd(
+                $query->equals('feedbacks.user_ip', (string)$filterData['userIp'])
+            ));
         }
-        $main[] =  $query->equals('feedbacks.feedback_type', (int)$filterData['feedbackType']);
-        $query->matching(
-            $query->logicalAnd($main)
-        );
+        $query->matching($query->logicalAnd(
+            $query->equals('feedbacks.feedback_type', (int)$filterData['feedbackType'])
+        ));
         $query->setOrderings(
             [
                 'feedbacks.uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING

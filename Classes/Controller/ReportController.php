@@ -1,11 +1,14 @@
 <?php
+
 namespace NITSAN\NsFeedback\Controller;
 
-use NITSAN\NsFeedback\NsTemplate\ExtendedTemplateService;
-use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateConstantEditorModuleFunctionController;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Annotation\Inject as inject;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
+use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
 
 /***
  *
@@ -22,20 +25,17 @@ use TYPO3\CMS\Extbase\Annotation\Inject as inject;
  */
 class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-
     /**
      * reportRepository
      *
-     * @var \NITSAN\NsFeedback\Domain\Repository\ReportRepository
-     * @inject
+     * @var ReportRepository
      */
     protected $reportRepository = null;
 
     /**
      * feedbacksRepository
      *
-     * @var \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository
-     * @inject
+     * @var FeedbacksRepository
      */
     protected $feedbacksRepository = null;
 
@@ -54,30 +54,12 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $contentObject = null;
     protected $pid = null;
 
-    /**
-     * @var TypoScriptTemplateModuleController
-     */
-    protected $pObj;
-
-    /*
-     * Inject reportRepository
-     *
-     * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
-     * @return void
-     */
-    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository)
-    {
+    public function __construct(
+        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        ReportRepository $reportRepository,
+        FeedbacksRepository $feedbacksRepository
+    ) {
         $this->reportRepository = $reportRepository;
-    }
-
-    /*
-    * Inject feedbacksRepository
-    *
-    * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
-    * @return void
-    */
-    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository)
-    {
         $this->feedbacksRepository = $feedbacksRepository;
     }
 
@@ -89,8 +71,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function initializeObject()
     {
         $this->contentObject = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
-        $this->templateService = GeneralUtility::makeInstance(ExtendedTemplateService::class);
-        $this->constantObj = GeneralUtility::makeInstance(TypoScriptTemplateConstantEditorModuleFunctionController::class);
     }
 
     /**
@@ -101,96 +81,48 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function initializeAction()
     {
         parent::initializeAction();
-        //Links for the All Dashboard VIEW from API...
-        $sidebarUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=DashboardRightSidebar';
-        $dashboardSupportUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=DashboardSupport';
-        $generalFooterUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=GeneralFooter';
-        $premiumExtensionUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=PremiumExtension';
 
-        $this->feedbacksRepository->deleteOldApiData();
-        $checkApiData = $this->feedbacksRepository->checkApiData();
-        if (!$checkApiData) {
-            $this->sidebarData = $this->feedbacksRepository->curlInitCall($sidebarUrl);
-            $this->dashboardSupportData = $this->feedbacksRepository->curlInitCall($dashboardSupportUrl);
-            $this->generalFooterData = $this->feedbacksRepository->curlInitCall($generalFooterUrl);
-            $this->premiumExtensionData = $this->feedbacksRepository->curlInitCall($premiumExtensionUrl);
-
-            $data = [
-                'right_sidebar_html' => $this->sidebarData,
-                'support_html'=> $this->dashboardSupportData,
-                'footer_html' => $this->generalFooterData,
-                'premuim_extension_html' => $this->premiumExtensionData,
-                'extension_key' => 'ns_feedback',
-                'last_update' => date('Y-m-d')
-            ];
-            $this->feedbacksRepository->insertNewData($data);
-        } else {
-            $this->sidebarData = $checkApiData['right_sidebar_html'];
-            $this->dashboardSupportData = $checkApiData['support_html'];
-            $this->premiumExtensionData = $checkApiData['premuim_extension_html'];
-        }
+        // Request Data
+        $getData = $this->request->getQueryParams();
+        $postData = $this->request->getParsedBody();
+        $requestData = array_merge((array)$getData, (array)$postData);
 
         //GET and SET pid for the
-        $this->pid = (GeneralUtility::_GP('id') ? GeneralUtility::_GP('id') : '0');
+        $this->pid = (isset($requestData['id']) ? $requestData['id'] : '0');
         $querySettings = $this->reportRepository->createQuery()->getQuerySettings();
         $querySettings->setStoragePageIds([$this->pid]);
         $this->reportRepository->setDefaultQuerySettings($querySettings);
 
-        //GET CONSTANTs
-        $this->constantObj->init($this->pObj);
-        $this->constants = $this->constantObj->main();
     }
 
-    /**
-     * action appearanceSettings
-     *
-     * @return void
-     */
-    public function appearanceSettingsAction()
-    {
-        $assign = [
-            'action' => 'appearanceSettings',
-            'constant' => $this->constants
-        ];
-        $this->view->assignMultiple($assign);
-    }
-
-    /**
-     * action commonSettings
-     *
-     * @return void
-     */
-    public function commonSettingsAction()
-    {
-        $assign = [
-            'action' => 'commonSettings',
-            'constant' => $this->constants
-        ];
-        $this->view->assignMultiple($assign);
-    }
 
     /**
      * action dashboard
      *
-     * @return void
      */
     public function dashboardAction()
     {
+        $view = $this->initializeModuleTemplate($this->request);
         $this->reportRepository->setDefaultOrderings(['feedbacks.uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
         $reports = $this->reportRepository->findAll();
 
+        // Request Data
+        $getData = $this->request->getQueryParams();
+        $postData = $this->request->getParsedBody();
+        $requestData = array_merge((array)$getData, (array)$postData);
+
         //set default query builder for mm table
-        $querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+        $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(true);
-        $pagid = GeneralUtility::_GP('id');
+        $pagid = $requestData['id'];
         $querySettings->setStoragePageIds([$pagid]);
         $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
         $total = $this->feedbacksRepository->countAll();
 
         $yesCount = 0;
         $noCount = 0;
-        $yesbutCount = isset($yesbutCount) ? $yesbutCount : 0;
-        $nobutCount = isset($nobutCount) ? $nobutCount : 0;
+        $yesbutCount = 0;
+        $nobutCount = 0;
 
         foreach ($reports as  $report) {
             $yesCount += $report->getFeedbackYesCount();
@@ -199,8 +131,8 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $nobutCount += $report->getFeedbackNoButCount();
         }
 
-        $totalratings = isset($totalratings) ? $totalratings : '';
-        $report = isset($report) ? $report : '';
+        $totalratings = '';
+        $report = '';
 
         $assign = [
             'action' => 'dashboard',
@@ -215,27 +147,31 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'totalrating' => $totalratings,
             'report' => $report
         ];
-        $this->view->assignMultiple($assign);
+        $view->assignMultiple($assign);
+
+        return $view->renderResponse();
     }
 
     /**
      * action show
      *
      * @param \NITSAN\NsFeedback\Domain\Model\Report $report
-     * @return void
      */
     public function showAction(\NITSAN\NsFeedback\Domain\Model\Report $report)
     {
-        $this->view->assign('report', $report);
+        $view = $this->initializeModuleTemplate($this->request);
+        $view->assign('report', $report);
+
+        return $view->renderResponse();
     }
 
     /**
      * action list
      *
-     * @return void
      */
     public function listAction()
     {
+        $view = $this->initializeModuleTemplate($this->request);
         $reports = $this->reportRepository->findAll();
 
         foreach ($reports as  $report) {
@@ -250,12 +186,11 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 
             //Fetching the news record if available
             if ($report->getRecordId()) {
-                $this->newsRepository = $this->objectManager->get('GeorgRinger\News\Domain\Repository\NewsRepository');
+                $this->newsRepository = GeneralUtility::makeInstance(\GeorgRinger\News\Domain\Repository\NewsRepository::class);
                 $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
             }
         }
         $totalfeed = isset($totalfeed) ? $totalfeed : '';
-        $reports = isset($reports) ? $reports : '';
         $newsData = isset($newsData) ? $newsData : '';
 
         $assign = [
@@ -264,31 +199,16 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'newsitems' => $newsData,
             'action' => 'list',
         ];
-        $this->view->assignMultiple($assign);
+        $view->assignMultiple($assign);
+        return $view->renderResponse();
     }
 
     /**
-     * action premiumExtension
-     *
-     * @return void
+     * Generates the action menu
      */
-    public function premiumExtensionAction()
-    {
-        $assign = [
-            'action' => 'premiumExtension',
-            'premiumExdata' => $this->premiumExtensionData
-        ];
-        $this->view->assignMultiple($assign);
-    }
-
-    /**
-     * action saveConstant
-     */
-    public function saveConstantAction()
-    {
-        $this->constantObj->main();
-        $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action'] = isset($_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action']) ? $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action'] : '';
-        $returnAction = $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action']; //get action name
-        return false;
+    protected function initializeModuleTemplate(
+        ServerRequestInterface $request
+    ): ModuleTemplate {
+        return $this->moduleTemplateFactory->create($request);
     }
 }
