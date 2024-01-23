@@ -12,7 +12,7 @@ return [
     'nitsan_nsfeedbackmodule_configuration' => [
         'parent' => 'nitsan_module',
         'position' => ['before' => 'top'],
-        'access' => 'admin,user,group',
+        'access' => 'user',
         'path' => '/module/nitsan/NsFeedbackConfiguration',
         'icon'   => 'EXT:ns_feedback/Resources/Public/Icons/plugin-feedback.svg',
         'labels' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_feedback_configuration.xlf',
@@ -31,7 +31,7 @@ return [
     'nitsan_nsfeedbackmodule_report' => [
         'parent' => 'nitsan_module',
         'position' => ['before' => 'top'],
-        'access' => 'admin,user,group',
+        'access' => 'user',
         'path' => '/module/nitsan/NsFeedbackReport',
         'icon'   => 'EXT:ns_feedback/Resources/Public/Icons/plugin-feedback.svg',
         'labels' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_feedback_report.xlf',
