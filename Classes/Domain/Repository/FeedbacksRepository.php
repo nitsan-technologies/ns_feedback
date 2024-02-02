@@ -2,8 +2,10 @@
 
 namespace NITSAN\NsFeedback\Domain\Repository;
 
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
 /***
  *
@@ -12,17 +14,17 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Sanjay Chauhan <sanjay@nitsan.in>, NITSAN Technologies Pvt Ltd
+ *  (c) 2024 Sanjay Chauhan <sanjay@nitsan.in>, NITSAN Technologies Pvt Ltd
  *
  ***/
 /**
  * The repository for Reports
  */
-class FeedbacksRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class FeedbacksRepository extends Repository
 {
     public function getFromAll()
     {
-        $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
     }

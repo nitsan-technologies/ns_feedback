@@ -2,11 +2,13 @@
 
 namespace Nitsan\NsFeedback\ViewHelpers;
 
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 class FeedbackViewHelper extends AbstractViewHelper
 {
@@ -23,7 +25,7 @@ class FeedbackViewHelper extends AbstractViewHelper
         $startingPoint = $GLOBALS['TSFE']->page['pid'];
         $currentPoint = $GLOBALS['TSFE']->page['tx_nsfeedback_enable'];
 
-        $pageRecord = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
+        $pageRecord = BackendUtility::getRecord(
             'pages',
             $startingPoint
         );
@@ -82,7 +84,7 @@ class FeedbackViewHelper extends AbstractViewHelper
                 return $view->render();
             }
         } else {
-            $alreadyfeedback = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_nsfeedback_domain_model_feedbacks.alreadyfeedback', 'ns_feedback');
+            $alreadyfeedback = LocalizationUtility::translate('tx_nsfeedback_domain_model_feedbacks.alreadyfeedback', 'ns_feedback');
             return ' <div class="form-wrapper" id="ns-feedback-form"><div class="container"><div class="send-msg">' . $alreadyfeedback . '</div></div></div>';
         }
     }
