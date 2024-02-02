@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 defined('TYPO3') or die();
 
 $_EXTKEY = 'ns_feedback';
@@ -7,7 +9,7 @@ $_EXTKEY = 'ns_feedback';
 /***************
  * Plugin
  */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+ExtensionUtility::registerPlugin(
     'NsFeedback',
     'Feedback',
     'feedback'

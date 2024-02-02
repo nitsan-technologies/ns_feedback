@@ -2,6 +2,11 @@
 
 namespace NITSAN\NsFeedback\Domain\Model;
 
+use NITSAN\NsFeedback\Domain\Model\Feedbacks;
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***
  *
  * This file is part of the "[NITSAN] feedback" Extension for TYPO3 CMS.
@@ -9,13 +14,13 @@ namespace NITSAN\NsFeedback\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Sanjay Chauhan <sanjay@nitsan.in>, NITSAN Technologies Pvt Ltd
+ *  (c) 2024 Sanjay Chauhan <sanjay@nitsan.in>, NITSAN Technologies Pvt Ltd
  *
  ***/
 /**
  * Report
  */
-class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Report extends AbstractEntity
 {
     /**
      * @var \DateTime
@@ -98,8 +103,8 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * feedbacks
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @var ObjectStorage<Feedbacks>
+     * @Cascade("remove")
      */
     protected $feedbacks = null;
 
@@ -123,7 +128,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->feedbacks = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->feedbacks = new ObjectStorage();
     }
 
     /**
@@ -301,7 +306,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getSysLangId()
     {
-        return $this->sysLangId;
+        return $this->_languageUid;
     }
 
     /**
@@ -312,16 +317,16 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setSysLangId($sysLangId)
     {
-        $this->sysLangId = $sysLangId;
+        $this->_languageUid = $sysLangId;
     }
 
     /**
      * Adds a Feedbacks
      *
-     * @param \NITSAN\NsFeedback\Domain\Model\Feedbacks $feedback
+     * @param Feedbacks $feedback
      * @return void
      */
-    public function addFeedback(\NITSAN\NsFeedback\Domain\Model\Feedbacks $feedback)
+    public function addFeedback(Feedbacks $feedback)
     {
         $this->feedbacks->attach($feedback);
     }
@@ -329,10 +334,10 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a Feedbacks
      *
-     * @param \NITSAN\NsFeedback\Domain\Model\Feedbacks $feedbackToRemove The Feedbacks to be removed
+     * @param Feedbacks $feedbackToRemove The Feedbacks to be removed
      * @return void
      */
-    public function removeFeedback(\NITSAN\NsFeedback\Domain\Model\Feedbacks $feedbackToRemove)
+    public function removeFeedback(Feedbacks $feedbackToRemove)
     {
         $this->feedbacks->detach($feedbackToRemove);
     }
@@ -340,7 +345,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the feedbacks
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks> $feedbacks
+     * @return ObjectStorage<Feedbacks> $feedbacks
      */
     public function getFeedbacks()
     {
@@ -350,10 +355,10 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the feedbacks
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks> $feedbacks
+     * @param ObjectStorage<Feedbacks> $feedbacks
      * @return void
      */
-    public function setFeedbacks(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $feedbacks)
+    public function setFeedbacks(ObjectStorage $feedbacks)
     {
         $this->feedbacks = $feedbacks;
     }

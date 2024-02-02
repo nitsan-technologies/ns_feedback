@@ -137,7 +137,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'readOnly' =>1,
+                'readOnly' => 1,
                 'eval' => 'trim',
             ],
         ],
@@ -175,7 +175,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'readOnly' =>1,
+                'readOnly' => 1,
                 'eval' => 'trim',
             ],
         ],
@@ -185,7 +185,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'readOnly' =>0,
+                'readOnly' => 0,
                 'eval' => 'trim,number',
             ],
         ],
