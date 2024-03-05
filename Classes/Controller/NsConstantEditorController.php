@@ -122,22 +122,18 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         $site = $request->getAttribute('site');
         $constantIncludeTree = $this->treeBuilder->getTreeBySysTemplateRowsAndSite('constants', $sysTemplateRows, $this->losslessTokenizer, $site);
         $constantAstBuilderVisitor = GeneralUtility::makeInstance(IncludeTreeCommentAwareAstBuilderVisitor::class);
-        $this->treeTraverser->resetVisitors();
-        $this->treeTraverser->addVisitor($constantAstBuilderVisitor);
-        $this->treeTraverser->traverse($constantIncludeTree);
+        $this->treeTraverser->traverse($constantIncludeTree, [$constantAstBuilderVisitor]);
         $constantAst = $constantAstBuilderVisitor->getAst();
         $astConstantCommentVisitor = GeneralUtility::makeInstance(AstConstantCommentVisitor::class);
         $currentTemplateFlatConstants = $this->astBuilder->build($this->losslessTokenizer->tokenize($currentTemplateConstants), new RootNode())->flatten();
         $astConstantCommentVisitor->setCurrentTemplateFlatConstants($currentTemplateFlatConstants);
-        $this->astTraverser->resetVisitors();
-        $this->astTraverser->addVisitor($astConstantCommentVisitor);
-        $this->astTraverser->traverse($constantAst);
+        $this->astTraverser->traverse($constantAst, [$astConstantCommentVisitor]);
 
         $constants = $astConstantCommentVisitor->getConstants();
         $categories = $astConstantCommentVisitor->getCategories();
         $relevantCategories = [];
         foreach ($categories as $categoryKey => $aCategory) {
-            if ($aCategory['usageCount'] > 0) {
+            if ($aCategory['usageCount'] > 0 && str_starts_with($categoryKey, 'ns_')) {
                 $relevantCategories[$categoryKey] = $aCategory;
             }
         }
@@ -220,14 +216,10 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         $sysTemplateRows = $this->sysTemplateRepository->getSysTemplateRowsByRootlineWithUidOverride($rootLine, $request, $selectedTemplateUid);
         $constantIncludeTree = $this->treeBuilder->getTreeBySysTemplateRowsAndSite('constants', $sysTemplateRows, $this->losslessTokenizer, $site);
         $constantAstBuilderVisitor = GeneralUtility::makeInstance(IncludeTreeCommentAwareAstBuilderVisitor::class);
-        $this->treeTraverser->resetVisitors();
-        $this->treeTraverser->addVisitor($constantAstBuilderVisitor);
-        $this->treeTraverser->traverse($constantIncludeTree);
+        $this->treeTraverser->traverse($constantIncludeTree, [$constantAstBuilderVisitor]);
         $constantAst = $constantAstBuilderVisitor->getAst();
         $astConstantCommentVisitor = GeneralUtility::makeInstance(AstConstantCommentVisitor::class);
-        $this->astTraverser->resetVisitors();
-        $this->astTraverser->addVisitor($astConstantCommentVisitor);
-        $this->astTraverser->traverse($constantAst);
+        $this->astTraverser->traverse($constantAst, [$astConstantCommentVisitor]);
 
         $constants = $astConstantCommentVisitor->getConstants();
         $updatedTemplateConstantsArray = $this->updateTemplateConstants($request, $constants, $templateRow['constants'] ?? '');
