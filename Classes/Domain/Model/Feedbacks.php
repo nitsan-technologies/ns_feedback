@@ -2,6 +2,8 @@
 
 namespace NITSAN\NsFeedback\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***
  *
  * This file is part of the "[NITSAN] feedback" Extension for TYPO3 CMS.
@@ -15,7 +17,7 @@ namespace NITSAN\NsFeedback\Domain\Model;
 /**
  * Feedbacks
  */
-class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Feedbacks extends AbstractEntity
 {
     /**
      * @var \DateTime
@@ -59,6 +61,13 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $quickfeedbacktype = '';
+
+    /**
+     * sysLangId
+     *
+     * @var int
+     */
+    protected $sysLangId = 0;
 
     /**
      * cid
@@ -170,5 +179,26 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCid($cid)
     {
         $this->cid = $cid;
+    }
+
+    /**
+     * Returns the sysLangId
+     *
+     * @return int $sysLangId
+     */
+    public function getSysLangId()
+    {
+        return $this->_languageUid;
+    }
+
+    /**
+     * Sets the sysLangId
+     *
+     * @param int $sysLangId
+     * @return void
+     */
+    public function setSysLangId($sysLangId)
+    {
+        $this->_languageUid = $sysLangId;
     }
 }

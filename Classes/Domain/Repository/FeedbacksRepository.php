@@ -58,4 +58,12 @@ class FeedbacksRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             )
             ->executeQuery();
     }
+
+    public function countAllByLanguage()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+        return $query->execute()->count();
+    }
+
 }

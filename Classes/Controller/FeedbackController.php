@@ -2,11 +2,15 @@
 
 namespace NITSAN\NsFeedback\Controller;
 
+use NITSAN\NsFeedback\Domain\Model\Report;
+use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
 use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class FeedbackController extends ActionController
 {
     /**
      * feedbacksRepository
@@ -37,10 +41,10 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action show
      *
-     * @param \NITSAN\NsFeedback\Domain\Model\Report $report
+     * @param Report $report
      * @return void
      */
-    public function showAction(\NITSAN\NsFeedback\Domain\Model\Report $report)
+    public function showAction(Report $report)
     {
         $this->view->assign('report', $report);
     }
@@ -59,7 +63,7 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $this->reportRepository->getFromAll();
 
-        $assign =[];
+        $assign = [];
         $data = $GLOBALS['TSFE']->page;
 
         //Fetch Content data
@@ -99,8 +103,8 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $assign['quickbuttons'] = $btns;
         /*check records exist or not*/
         $Existrecord = $this->reportRepository->checkExistRecord($filterData);
-        $pageRender = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-        $js ='';
+        $pageRender = GeneralUtility::makeInstance(PageRenderer::class);
+        $js = '';
 
         if ($this->settings['quickenable']) {
             unset($filterData['userIp']);
@@ -116,10 +120,10 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         return $this->htmlResponse();
     }
 
-     /**
-     * action new
-     *
-     */
+    /**
+    * action new
+    *
+    */
     public function defaultAction()
     {
 
@@ -130,7 +134,7 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $this->reportRepository->getFromAll();
 
-        $assign =[];
+        $assign = [];
         $data = $GLOBALS['TSFE']->page;
 
         //Fetch Content data
@@ -157,8 +161,8 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         }
         /*check records exist or not*/
         $Existrecord = $this->reportRepository->checkExistRecord($filterData);
-        $pageRender = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-        $js ='';
+        $pageRender = GeneralUtility::makeInstance(PageRenderer::class);
+        $js = '';
 
         if ($this->settings['quickenable']) {
             unset($filterData['userIp']);
@@ -182,17 +186,17 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function quickFeedbackAction($result = null)
     {
-        $languageid = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getPropertyFromAspect('language', 'id');
+        $languageid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
 
         $this->reportRepository->getFromAll();
-        $report = new \NITSAN\NsFeedback\Domain\Model\Report();
+        $report = new Report();
         $feedbacks = new \NITSAN\NsFeedback\Domain\Model\Feedbacks();
         $data = $GLOBALS['TSFE']->page;
         if ($result['newsId'] > 0) {
-            $checkExistRecord = $this->reportRepository->findBy(['record_id' =>$data['uid']]);
+            $checkExistRecord = $this->reportRepository->findBy(['record_id' => $data['uid']]);
             // $checkExistRecord = $this->reportRepository->findByRecordId($result['newsId']);
         } else {
-            $checkExistRecord = $this->reportRepository->findBy(['pid' =>$data['uid']]);
+            $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
             // $checkExistRecord = $this->reportRepository->findByPageId($data['uid']);
         }
 
@@ -205,6 +209,7 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
                 $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
                 $feedbacks->setFeedbackType($result['feedbackType']);
                 $feedbacks->setQuickfeedbacktype($result['qkbutton']);
+                $feedbacks->setSysLangId($languageid);
 
                 if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
                     $feedbacks->setComment($result['commentText']);
@@ -254,6 +259,7 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
             $feedbacks->setFeedbackType($result['feedbackType']);
             $feedbacks->setQuickfeedbacktype($result['qkbutton']);
+            $feedbacks->setSysLangId($languageid);
 
             if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
                 $feedbacks->setComment($result['commentText']);
@@ -294,6 +300,6 @@ class FeedbackController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $this->reportRepository->add($report);
         }
 
-        return $this->jsonResponse(json_encode(['Status'=>'Success']));
+        return $this->jsonResponse(json_encode(['Status' => 'Success']));
     }
 }

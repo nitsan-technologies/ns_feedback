@@ -10,7 +10,7 @@ class LoadAssetsViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
     protected $extPath;
-    protected $config =[];
+    protected $config = [];
     protected $constant;
 
     public function render()
@@ -32,7 +32,7 @@ class LoadAssetsViewHelper extends AbstractViewHelper
      */
     public function loadResource($pageRender, $settings, $data)
     {
-        $css ='';
+        $css = '';
 
         $css .= '
         .nsbtn.btn-' . $settings['buttonstyle'] . ' {

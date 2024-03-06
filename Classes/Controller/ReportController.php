@@ -2,6 +2,8 @@
 
 namespace NITSAN\NsFeedback\Controller;
 
+use GeorgRinger\News\Domain\Repository\NewsRepository;
+use NITSAN\NsFeedback\Domain\Model\Report;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -9,6 +11,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
 use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 /***
  *
@@ -23,7 +28,7 @@ use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
 /**
  * ReportController
  */
-class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ReportController extends ActionController
 {
     /**
      * reportRepository
@@ -88,7 +93,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         $requestData = array_merge((array)$getData, (array)$postData);
 
         //GET and SET pid for the
-        $this->pid = (isset($requestData['id']) ? $requestData['id'] : '0');
+        $this->pid = isset($requestData['id']) ? $requestData['id'] : '0' ;
         $querySettings = $this->reportRepository->createQuery()->getQuerySettings();
         $querySettings->setStoragePageIds([$this->pid]);
         $this->reportRepository->setDefaultQuerySettings($querySettings);
@@ -103,8 +108,8 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function dashboardAction()
     {
         $view = $this->initializeModuleTemplate($this->request);
-        $this->reportRepository->setDefaultOrderings(['feedbacks.uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
-        $reports = $this->reportRepository->findAll();
+        $this->reportRepository->setDefaultOrderings(['feedbacks.uid' => QueryInterface::ORDER_DESCENDING]);
+        $reports = $this->reportRepository->findAllByLanguage();
 
         // Request Data
         $getData = $this->request->getQueryParams();
@@ -112,12 +117,12 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         $requestData = array_merge((array)$getData, (array)$postData);
 
         //set default query builder for mm table
-        $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(true);
-        $pagid = $requestData['id'];
+        $pagid = isset($requestData['id']) ? $requestData['id'] : '0' ;
         $querySettings->setStoragePageIds([$pagid]);
         $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
-        $total = $this->feedbacksRepository->countAll();
+        $total = $this->feedbacksRepository->countAllByLanguage();
 
         $yesCount = 0;
         $noCount = 0;
@@ -155,9 +160,9 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * action show
      *
-     * @param \NITSAN\NsFeedback\Domain\Model\Report $report
+     * @param Report $report
      */
-    public function showAction(\NITSAN\NsFeedback\Domain\Model\Report $report)
+    public function showAction(Report $report)
     {
         $view = $this->initializeModuleTemplate($this->request);
         $view->assign('report', $report);
@@ -172,7 +177,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function listAction()
     {
         $view = $this->initializeModuleTemplate($this->request);
-        $reports = $this->reportRepository->findAll();
+        $reports = $this->reportRepository->findAllByLanguage();
 
         foreach ($reports as  $report) {
             //quick feedback count
@@ -180,13 +185,13 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $noCount = $report->getFeedbackNoCount();
             $yesButCount = $report->getFeedbackYesButCount();
             $noButCount = $report->getFeedbackNoButCount();
-            $total = $yesCount+$noCount+$yesButCount+$noButCount;
+            $total = $yesCount + $noCount + $yesButCount + $noButCount;
 
             $totalfeed[$report->getUid()]['quicktotal'] = $total;
 
             //Fetching the news record if available
             if ($report->getRecordId()) {
-                $this->newsRepository = GeneralUtility::makeInstance(\GeorgRinger\News\Domain\Repository\NewsRepository::class);
+                $this->newsRepository = GeneralUtility::makeInstance(NewsRepository::class);
                 $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
             }
         }

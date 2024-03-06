@@ -2,6 +2,11 @@
 
 namespace NITSAN\NsFeedback\Domain\Model;
 
+use NITSAN\NsFeedback\Domain\Model\Feedbacks;
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***
  *
  * This file is part of the "[NITSAN] feedback" Extension for TYPO3 CMS.
@@ -15,7 +20,7 @@ namespace NITSAN\NsFeedback\Domain\Model;
 /**
  * Report
  */
-class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Report extends AbstractEntity
 {
     /**
      * @var \DateTime
@@ -98,8 +103,8 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * feedbacks
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @var ObjectStorage<Feedbacks>
+     * @Cascade("remove")
      */
     protected $feedbacks = null;
 
@@ -301,7 +306,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getSysLangId()
     {
-        return $this->sysLangId;
+        return $this->_languageUid;
     }
 
     /**
@@ -312,7 +317,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setSysLangId($sysLangId)
     {
-        $this->sysLangId = $sysLangId;
+        $this->_languageUid = $sysLangId;
     }
 
     /**

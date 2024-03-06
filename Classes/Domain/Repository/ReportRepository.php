@@ -3,6 +3,10 @@
 namespace NITSAN\NsFeedback\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***
  *
@@ -17,13 +21,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * The repository for Reports
  */
-class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class ReportRepository extends Repository
 {
     /**
      * @var array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
-        'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
+        'uid' => QueryInterface::ORDER_DESCENDING
     ];
 
     /**
@@ -31,9 +35,9 @@ class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return void
      */
-    public function getFromAll()
+    public function getFromAll(): void
     {
-        $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
     }
@@ -41,10 +45,10 @@ class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * checkExistRecord function
      *
-     * @param array $filterData
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param array|null $filterData
+     * @return QueryResultInterface
      */
-    public function checkExistRecord($filterData = null)
+    public function checkExistRecord(array $filterData = null): QueryResultInterface
     {
         $query = $this->createQuery();
 
@@ -79,9 +83,16 @@ class ReportRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         ));
         $query->setOrderings(
             [
-                'feedbacks.uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
+                'feedbacks.uid' => QueryInterface::ORDER_DESCENDING
             ]
         );
         return $query->execute();
     }
+    public function findAllByLanguage(): array|QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+        return $query->execute();
+    }
+
 }

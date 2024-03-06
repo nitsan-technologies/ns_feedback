@@ -1,6 +1,9 @@
 <?php
 
 
+use NITSAN\NsFeedback\Controller\NsConstantEditorController;
+use NITSAN\NsFeedback\Controller\ReportController;
+
 return [
     'nitsan_module' => [
         'labels' => 'LLL:EXT:ns_feedback/Resources/Private/Language/BackendModule.xlf',
@@ -20,7 +23,7 @@ return [
         'extensionName' => 'NsFeedback',
         'routes' => [
             '_default' => [
-                'target' => \NITSAN\NsFeedback\Controller\NsConstantEditorController::class . '::handleRequest',
+                'target' => NsConstantEditorController::class . '::handleRequest',
             ],
         ],
         'moduleData' => [
@@ -38,7 +41,7 @@ return [
         'navigationComponent' => '@typo3/backend/page-tree/page-tree-element',
         'extensionName' => 'NsFeedback',
         'controllerActions' => [
-            \NITSAN\NsFeedback\Controller\ReportController::class => [
+            ReportController::class => [
                 'dashboard',
                 'list',
                 'show',
