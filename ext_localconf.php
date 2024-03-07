@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3_MODE') || die('Access denied.');
 $feedbackController = 'Feedback';
 if (version_compare(TYPO3_branch, '10.0', '>=')) {

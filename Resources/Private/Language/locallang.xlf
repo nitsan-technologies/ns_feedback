@@ -126,9 +126,6 @@
 			<trans-unit id="Dashboard">
 				<source>Dashboard</source>
 			</trans-unit>
-			<trans-unit id="premiumExtension">
-				<source>Premium Extension</source>
-			</trans-unit>
 			<trans-unit id="basicSettings">
 				<source>Basic Settings</source>
 			</trans-unit>

@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\Domain\Model;
 
 /***
@@ -16,7 +17,6 @@ namespace NITSAN\NsFeedback\Domain\Model;
  */
 class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
     /**
      * @var \DateTime
      */
@@ -63,7 +63,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * cid
      *
-     * @var int
+     * @var string
      */
     protected $cid = '';
 
@@ -154,7 +154,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the cid
      *
-     * @return int $cid
+     * @return string $cid
      */
     public function getCid()
     {
@@ -164,11 +164,39 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the cid
      *
-     * @param int $cid
+     * @param string $cid
      * @return void
      */
     public function setCid($cid)
     {
         $this->cid = $cid;
     }
+    /**
+     * sysLangId
+     *
+     * @var int
+     */
+    protected $sysLangId = 0;
+
+    /**
+     * Returns the sysLangId
+     *
+     * @return int $sysLangId
+     */
+    public function getSysLangId()
+    {
+        return $this->_languageUid;
+    }
+
+    /**
+     * Sets the sysLangId
+     *
+     * @param int $sysLangId
+     * @return void
+     */
+    public function setSysLangId($sysLangId)
+    {
+        $this->_languageUid = $sysLangId;
+    }
+
 }

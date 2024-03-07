@@ -4,6 +4,7 @@ if (typeof jQuery === 'undefined') {
 $(document).ready(function () {
     $('.ns-alert-close').on('click', function(){
         $('.ns-alert-wrap').hide();
+        location.reload();
     });
     if($('.quick-scoreboard').length > 0){
         var yescount = $('.bar-yes').data('count')
@@ -61,7 +62,7 @@ $(document).ready(function () {
         if ($('.'+boxid+":visible").length > 0) {
             console.log($('.'+boxid).length);
             if (commentText == '') {
-                $(".validation").show();                               
+                $(".validation").show();
                 return false;
             }
         }

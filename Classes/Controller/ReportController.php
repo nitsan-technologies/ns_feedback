@@ -1,11 +1,15 @@
 <?php
+
 namespace NITSAN\NsFeedback\Controller;
 
+use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
+use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
 use NITSAN\NsFeedback\NsTemplate\ExtendedTemplateService;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateConstantEditorModuleFunctionController;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation\Inject as inject;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /***
  *
@@ -20,13 +24,12 @@ use TYPO3\CMS\Extbase\Annotation\Inject as inject;
 /**
  * ReportController
  */
-class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ReportController extends ActionController
 {
-
     /**
      * reportRepository
      *
-     * @var \NITSAN\NsFeedback\Domain\Repository\ReportRepository
+     * @var ReportRepository
      * @inject
      */
     protected $reportRepository = null;
@@ -34,7 +37,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * feedbacksRepository
      *
-     * @var \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository
+     * @var FeedbacksRepository
      * @inject
      */
     protected $feedbacksRepository = null;
@@ -49,23 +52,18 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $sidebarData;
     protected $dashboardSupportData;
     protected $generalFooterData;
-    protected $premiumExtensionData;
     protected $constants;
     protected $contentObject = null;
     protected $pid = null;
 
-    /**
-     * @var TypoScriptTemplateModuleController
-     */
     protected $pObj;
-
     /*
      * Inject reportRepository
      *
      * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
      * @return void
      */
-    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository)
+    public function injectReportRepository(ReportRepository $reportRepository)
     {
         $this->reportRepository = $reportRepository;
     }
@@ -76,7 +74,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
     * @return void
     */
-    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository)
+    public function injectFeedbacksRepository(FeedbacksRepository $feedbacksRepository)
     {
         $this->feedbacksRepository = $feedbacksRepository;
     }
@@ -101,34 +99,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function initializeAction()
     {
         parent::initializeAction();
-        //Links for the All Dashboard VIEW from API...
-        $sidebarUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=DashboardRightSidebar';
-        $dashboardSupportUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=DashboardSupport';
-        $generalFooterUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=GeneralFooter';
-        $premiumExtensionUrl = 'https://composer.t3terminal.com/API/ExtBackendModuleAPI.php?extKey=ns_feedback&blockName=PremiumExtension';
-
-        $this->feedbacksRepository->deleteOldApiData();
-        $checkApiData = $this->feedbacksRepository->checkApiData();
-        if (!$checkApiData) {
-            $this->sidebarData = $this->feedbacksRepository->curlInitCall($sidebarUrl);
-            $this->dashboardSupportData = $this->feedbacksRepository->curlInitCall($dashboardSupportUrl);
-            $this->generalFooterData = $this->feedbacksRepository->curlInitCall($generalFooterUrl);
-            $this->premiumExtensionData = $this->feedbacksRepository->curlInitCall($premiumExtensionUrl);
-
-            $data = [
-                'right_sidebar_html' => $this->sidebarData,
-                'support_html'=> $this->dashboardSupportData,
-                'footer_html' => $this->generalFooterData,
-                'premuim_extension_html' => $this->premiumExtensionData,
-                'extension_key' => 'ns_feedback',
-                'last_update' => date('Y-m-d')
-            ];
-            $this->feedbacksRepository->insertNewData($data);
-        } else {
-            $this->sidebarData = $checkApiData['right_sidebar_html'];
-            $this->dashboardSupportData = $checkApiData['support_html'];
-            $this->premiumExtensionData = $checkApiData['premuim_extension_html'];
-        }
 
         //GET and SET pid for the
         $this->pid = (GeneralUtility::_GP('id') ? GeneralUtility::_GP('id') : '0');
@@ -177,7 +147,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function dashboardAction()
     {
         $this->reportRepository->setDefaultOrderings(['feedbacks.uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
-        $reports = $this->reportRepository->findAll();
+        $reports = $this->reportRepository->findAllByLanguage();
 
         //set default query builder for mm table
         $querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
@@ -185,12 +155,12 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         $pagid = GeneralUtility::_GP('id');
         $querySettings->setStoragePageIds([$pagid]);
         $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
-        $total = $this->feedbacksRepository->countAll();
+        $total = $this->feedbacksRepository->countAllByLanguage();
 
         $yesCount = 0;
         $noCount = 0;
-        $yesbutCount = isset($yesbutCount) ? $yesbutCount : 0;
-        $nobutCount = isset($nobutCount) ? $nobutCount : 0;
+        $yesbutCount = 0;
+        $nobutCount = 0;
 
         foreach ($reports as  $report) {
             $yesCount += $report->getFeedbackYesCount();
@@ -199,8 +169,8 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $nobutCount += $report->getFeedbackNoButCount();
         }
 
-        $totalratings = isset($totalratings) ? $totalratings : '';
-        $report = isset($report) ? $report : '';
+        $totalratings = '';
+        $report = '';
 
         $assign = [
             'action' => 'dashboard',
@@ -236,7 +206,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     public function listAction()
     {
-        $reports = $this->reportRepository->findAll();
+        $reports = $this->reportRepository->findAllByLanguage();
 
         foreach ($reports as  $report) {
             //quick feedback count
@@ -244,7 +214,7 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $noCount = $report->getFeedbackNoCount();
             $yesButCount = $report->getFeedbackYesButCount();
             $noButCount = $report->getFeedbackNoButCount();
-            $total = $yesCount+$noCount+$yesButCount+$noButCount;
+            $total = $yesCount + $noCount + $yesButCount + $noButCount;
 
             $totalfeed[$report->getUid()]['quicktotal'] = $total;
 
@@ -267,19 +237,6 @@ class ReportController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
         $this->view->assignMultiple($assign);
     }
 
-    /**
-     * action premiumExtension
-     *
-     * @return void
-     */
-    public function premiumExtensionAction()
-    {
-        $assign = [
-            'action' => 'premiumExtension',
-            'premiumExdata' => $this->premiumExtensionData
-        ];
-        $this->view->assignMultiple($assign);
-    }
 
     /**
      * action saveConstant

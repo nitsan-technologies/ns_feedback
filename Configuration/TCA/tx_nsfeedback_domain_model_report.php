@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_nsfeedback_domain_model_report',
@@ -8,7 +9,6 @@ return [
         'cruser_id' => 'cruser_id',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
@@ -20,10 +20,10 @@ return [
         'iconfile' => 'EXT:ns_feedback/Resources/Public/Icons/tx_nsfeedback_domain_model_report.gif',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, page_id, record_id, page_type, page_title, feedbacks',
+        'showRecordFieldList' => 'sys_language_uid, l10n_diffsource, hidden, page_id, record_id, page_type, page_title, feedbacks',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, page_id, record_id, page_type, page_title, feedbacks, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_diffsource, hidden, page_id, record_id, page_type, page_title, feedbacks, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -41,21 +41,6 @@ return [
                     ],
                 ],
                 'default' => 0,
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_nsfeedback_domain_model_report',
-                'foreign_table_where' => 'AND {#tx_nsfeedback_domain_model_report}.{#pid}=###CURRENT_PID### AND {#tx_nsfeedback_domain_model_report}.{#sys_language_uid} IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [

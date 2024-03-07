@@ -35,13 +35,12 @@ CREATE TABLE tx_nsfeedback_domain_model_report (
 	t3ver_move_id int(11) DEFAULT '0' NOT NULL,
 
 	sys_language_uid int(11) DEFAULT '0' NOT NULL,
-	l10n_parent int(11) DEFAULT '0' NOT NULL,
 	l10n_diffsource mediumblob,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
-	KEY language (l10n_parent,sys_language_uid)
+	KEY language (sys_language_uid)
 
 );
 
@@ -79,26 +78,11 @@ CREATE TABLE tx_nsfeedback_domain_model_feedbacks (
 	t3ver_move_id int(11) DEFAULT '0' NOT NULL,
 
 	sys_language_uid int(11) DEFAULT '0' NOT NULL,
-	l10n_parent int(11) DEFAULT '0' NOT NULL,
 	l10n_diffsource mediumblob,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
-	KEY language (l10n_parent,sys_language_uid)
+	KEY language (sys_language_uid)
 
-);
-
-#
-# Table structure for table 'tx_nsfaq_domain_model_apidata'
-#
-CREATE TABLE tx_nsfeedback_domain_model_apidata (
-   id int(11) NOT NULL auto_increment,
-   extension_key varchar(255) DEFAULT '',
-   right_sidebar_html text,
-   premuim_extension_html text,
-   support_html text,
-   footer_html text,
-   last_update date,
-   PRIMARY KEY (id)
 );

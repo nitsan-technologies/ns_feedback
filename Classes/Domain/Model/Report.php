@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsFeedback\Domain\Model;
 
 /***
@@ -16,7 +17,6 @@ namespace NITSAN\NsFeedback\Domain\Model;
  */
 class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-
     /**
      * @var \DateTime
      */
@@ -301,7 +301,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getSysLangId()
     {
-        return $this->sysLangId;
+        return $this->_languageUid;
     }
 
     /**
@@ -312,7 +312,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setSysLangId($sysLangId)
     {
-        $this->sysLangId = $sysLangId;
+        $this->_languageUid = $sysLangId;
     }
 
     /**

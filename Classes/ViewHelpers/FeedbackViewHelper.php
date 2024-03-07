@@ -1,33 +1,17 @@
 <?php
+
 namespace Nitsan\NsFeedback\ViewHelpers;
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class FeedbackViewHelper extends AbstractViewHelper
 {
-
-    /**
-     *
-     * @var persistence Manager object
-     */
-    protected $persistenceManager;
-
-    /**
-     *
-     * @var report Repository object
-     */
-    protected $reportRepository;
-
-    /**
-     *
-     * @var feedbacks Repository object
-     */
-    protected $feedbacksRepository;
-
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
@@ -41,11 +25,11 @@ class FeedbackViewHelper extends AbstractViewHelper
         $startingPoint = $GLOBALS['TSFE']->page['pid'];
         $currentPoint = $GLOBALS['TSFE']->page['tx_nsfeedback_enable'];
 
-        $pageRecord = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
+        $pageRecord = BackendUtility::getRecord(
             'pages',
             $startingPoint
         );
-
+        $rows = null;
         if ($_GET['tx_news_pi1']['news'] > 0) {
             $newsId = $_GET['tx_news_pi1']['news'];
             $rows2 = $queryBuilder
@@ -85,7 +69,7 @@ class FeedbackViewHelper extends AbstractViewHelper
             if ($GLOBALS['TSFE']->page['tx_nsfeedback_enable'] > 0 || $pageRecord['tx_nsfeedback_enable'] > 0) {
 
                 // Create repository instance
-                $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+                $objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
                 $querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
 
                 $view = GeneralUtility::makeInstance(StandaloneView::class);
@@ -101,7 +85,7 @@ class FeedbackViewHelper extends AbstractViewHelper
                 return $view->render();
             }
         } else {
-            $alreadyfeedback = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_nsfeedback_domain_model_feedbacks.alreadyfeedback', 'ns_feedback');
+            $alreadyfeedback = LocalizationUtility::translate('tx_nsfeedback_domain_model_feedbacks.alreadyfeedback', 'ns_feedback');
             return ' <div class="form-wrapper" id="ns-feedback-form"><div class="container"><div class="send-msg">' . $alreadyfeedback . '</div></div></div>';
         }
     }
