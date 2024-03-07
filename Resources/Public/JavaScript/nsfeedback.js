@@ -48,7 +48,28 @@ $(document).ready(function () {
             }
             if (effect == 'fade') {
                 $('.commenttxt').fadeToggle();
+            } 
+            if($(".quick-submit[qkbtn='yes']").length>0){
+                $(".quick-submit[qkbtn='yes']").toggleClass('disabled-quickBtn');
             }
+            if($(".quick-submit[qkbtn='no']").length>0){
+                $(".quick-submit[qkbtn='no']").toggleClass('disabled-quickBtn');
+            }
+
+            if($(".commentboxbtn[data-qkbtn='yesbut']").length>0){
+                if($(".commentboxbtn[data-qkbtn='yesbut']").data('boxid')!=boxid){
+
+                    $(".commentboxbtn[data-qkbtn='yesbut']").toggleClass('disabled-quickBtn');
+                }
+            }
+            if($(".commentboxbtn[data-qkbtn='nobut']").length>0){
+               
+                if($(".commentboxbtn[data-qkbtn='nobut']").data('boxid')!=boxid){
+
+                    $(".commentboxbtn[data-qkbtn='nobut']").toggleClass('disabled-quickBtn');
+                }            
+            }
+
         });
 
     $('.quick-submit').click(function (e) {
