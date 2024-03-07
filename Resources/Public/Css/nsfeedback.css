@@ -301,4 +301,10 @@ label {
     .feedback-list{
         padding-left: 0;
     }
+} 
+
+.disabled-quickBtn{
+    pointer-events: none!important;
+    cursor: not-allowed!important;
+    opacity: 0.6!important;
 }
