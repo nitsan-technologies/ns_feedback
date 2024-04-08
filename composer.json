@@ -1,10 +1,10 @@
 {
     "name": "nitsan/ns-feedback",
     "type": "typo3-cms-extension",
-    "description": "One of the only feature-rich TYPO3 feedback extension-ever. Live-Demo: https://demo.t3planet.com/t3t-extensions/feedback/ You can download PRO version for more-features & free-support at https://t3planet.com/ns-feedback-typo3-extension",
+    "description": "The TYPO3 Feedback Extension is a great tool for gathering feedback from visitors or customers on your website. With the All In One TYPO3 Feedback extension, website admin can easily add feedback forms in various styles to their website, allowing them to collect valuable insights from their visitors. *** Live Demo: https://demo.t3planet.com/t3-extensions/feedback *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-feedback-extension",
     "keywords": [
         "TYPO3 CMS",
-        "feedback",        
+        "feedback",
         "servey",
         "extension",
         "CMS"

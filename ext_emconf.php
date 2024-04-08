@@ -11,28 +11,22 @@
  ***************************************************************/
 
 $EM_CONF['ns_feedback'] = [
-  'title' => '[NITSAN] All in One Feedback',
-  'description' => 'One of the only feature-rich TYPO3 feedback extension-ever! Live-Demo: https://demo.t3planet.com/t3t-extensions/feedback/ You can download PRO version for more-features & free-support at https://t3planet.com/ns-feedback-typo3-extension',
+  'title' => 'All in One Feedback',
+  'description' => 'The TYPO3 Feedback Extension is a great tool for gathering feedback from visitors or customers on your website. With the All In One TYPO3 Feedback extension, website admin can easily add feedback forms in various styles to their website, allowing them to collect valuable insights from their visitors.
+
+  *** Live Demo: https://demo.t3planet.com/t3-extensions/feedback *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-feedback-extension',
   'category' => 'plugin',
   'version' => '12.0.4',
   'state' => 'stable',
   'uploadfolder' => false,
-  'author' => 'T3D: Rohan Parmar, Divya Goklani, Nilesh Malankiya, QA: Gautam Kunjadiya',
+  'author' => 'T3: Rohan Parmar, Divya Goklani, Nilesh Malankiya, QA: Gautam Kunjadiya',
   'author_email' => 'sanjay@nitsan.in',
-  'author_company' => 'NITSAN Technologies Pvt Ltd',
-  'constraints' =>
-  [
-    'depends' =>
-    [
+  'author_company' => 'T3Planet // NITSAN',
+  'constraints' => [
+    'depends' => [
       'typo3' => '12.0.0-12.4.99',
     ],
-    'conflicts' =>
-    [
-
-    ],
-    'suggests' =>
-    [
-
-    ],
+    'conflicts' => [],
+    'suggests' => [],
   ],
 ];
