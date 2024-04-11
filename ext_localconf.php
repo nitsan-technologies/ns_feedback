@@ -1,5 +1,4 @@
 <?php
-
 use NITSAN\NsFeedback\Controller\FeedbackController;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
@@ -13,11 +12,11 @@ ExtensionUtility::configurePlugin(
     'NsFeedback',
     'Feedback',
     [
-        FeedbackController::class => 'new, quickFeedback, default',
+        FeedbackController::class => 'new, quickFeedback',
     ],
     // non-cacheable actions
     [
-        FeedbackController::class => 'new, quickFeedback, default',
+        FeedbackController::class => 'new, quickFeedback',
     ]
 );
 

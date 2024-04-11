@@ -52,18 +52,17 @@ class ReportRepository extends Repository
     {
         $query = $this->createQuery();
 
-        $filterData['newsId'] = isset($filterData['newsId']) ? $filterData['newsId'] : '';
-        $filterData['pId'] = isset($filterData['pId']) ? $filterData['pId'] : '';
-        $filterData['cid'] = isset($filterData['cid']) ? $filterData['cid'] : '';
-        $filterData['userIp'] = isset($filterData['userIp']) ? $filterData['userIp'] : '';
-        $filterData['feedbackType'] = isset($filterData['feedbackType']) ? $filterData['feedbackType'] : '';
+        $filterData['newsId'] = $filterData['newsId'] ?? '';
+        $filterData['pId'] = $filterData['pId'] ?? '';
+        $filterData['cid'] = $filterData['cid'] ?? '';
+        $filterData['userIp'] = $filterData['userIp'] ?? '';
+        $filterData['feedbackType'] = $filterData['feedbackType'] ?? '';
 
         if ($filterData['newsId']) {
             $query->matching($query->logicalAnd(
                 $query->equals('record_id', $filterData['newsId'])
             ));
         }
-
 
         $query->matching($query->logicalAnd(
             $query->equals('feedbacks.pid', $filterData['pId'])

@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsFeedback\ViewHelpers;
 
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
@@ -13,28 +14,26 @@ class LoadAssetsViewHelper extends AbstractViewHelper
     protected $config = [];
     protected $constant;
 
-    public function render()
+    /**
+     * @return void
+     */
+    public function render(): void
     {
-
-        // Collect the settings.
         $settings = $this->templateVariableContainer->get('settings');
-        $cData = $this->templateVariableContainer->get('cData');
+        $this->templateVariableContainer->get('cData');
         // Create pageRender instance.
-        $pageRender = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-        $this->loadResource($pageRender, $settings, $cData);
+        $pageRender = GeneralUtility::makeInstance(PageRenderer::class);
+        $this->loadResource($pageRender, $settings);
     }
 
     /**
      * Load static CSS for the Forms
      * @param $pageRender
      * @param $settings
-     * @param $data
      */
-    public function loadResource($pageRender, $settings, $data)
+    public function loadResource($pageRender, $settings): void
     {
-        $css = '';
-
-        $css .= '
+        $css = '
         .nsbtn.btn-' . $settings['buttonstyle'] . ' {
             background-color:' . $settings['buttonbg'] . ';
             color: ' . $settings['buttoncolor'] . ';

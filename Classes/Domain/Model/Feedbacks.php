@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsFeedback\Domain\Model;
 
+use DateTime;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /***
@@ -20,16 +21,16 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Feedbacks extends AbstractEntity
 {
     /**
-     * @var \DateTime
+     * @var DateTime
      */
-    protected $crdate = null;
+    protected ?DateTime $crdate = null;
 
     /**
      * Returns the creation date
      *
-     * @return \DateTime $crdate
+     * @return DateTime|null $crdate
      */
-    public function getCrdate()
+    public function getCrdate(): ?DateTime
     {
         return $this->crdate;
     }
@@ -39,49 +40,49 @@ class Feedbacks extends AbstractEntity
      *
      * @var string
      */
-    protected $comment = '';
+    protected string $comment = '';
 
     /**
      * userIp
      *
      * @var string
      */
-    protected $userIp = '';
+    protected string $userIp = '';
 
     /**
      * feedbackType
      *
      * @var string
      */
-    protected $feedbackType = '';
+    protected string $feedbackType = '';
 
     /**
      * quickfeedbacktype
      *
      * @var string
      */
-    protected $quickfeedbacktype = '';
+    protected string $quickfeedbacktype = '';
 
     /**
      * sysLangId
      *
      * @var int
      */
-    protected $sysLangId = 0;
+    protected int $sysLangId = 0;
 
     /**
      * cid
      *
      * @var string
      */
-    protected $cid = '';
+    protected string $cid = '';
 
     /**
      * Returns the comment
      *
      * @return string $comment
      */
-    public function getComment()
+    public function getComment(): string
     {
         return $this->comment;
     }
@@ -92,7 +93,7 @@ class Feedbacks extends AbstractEntity
      * @param string $comment
      * @return void
      */
-    public function setComment($comment)
+    public function setComment(string $comment): void
     {
         $this->comment = $comment;
     }
@@ -102,7 +103,7 @@ class Feedbacks extends AbstractEntity
      *
      * @return string $userIp
      */
-    public function getUserIp()
+    public function getUserIp(): string
     {
         return $this->userIp;
     }
@@ -113,7 +114,7 @@ class Feedbacks extends AbstractEntity
      * @param string $userIp
      * @return void
      */
-    public function setUserIp($userIp)
+    public function setUserIp(string $userIp): void
     {
         $this->userIp = $userIp;
     }
@@ -123,7 +124,7 @@ class Feedbacks extends AbstractEntity
      *
      * @return string $feedbackType
      */
-    public function getFeedbackType()
+    public function getFeedbackType(): string
     {
         return $this->feedbackType;
     }
@@ -134,7 +135,7 @@ class Feedbacks extends AbstractEntity
      * @param string $feedbackType
      * @return void
      */
-    public function setFeedbackType($feedbackType)
+    public function setFeedbackType(string $feedbackType): void
     {
         $this->feedbackType = $feedbackType;
     }
@@ -144,7 +145,7 @@ class Feedbacks extends AbstractEntity
      *
      * @return string $quickfeedbacktype
      */
-    public function getQuickfeedbacktype()
+    public function getQuickfeedbacktype(): string
     {
         return $this->quickfeedbacktype;
     }
@@ -155,7 +156,7 @@ class Feedbacks extends AbstractEntity
      * @param string $quickfeedbacktype
      * @return void
      */
-    public function setQuickfeedbacktype($quickfeedbacktype)
+    public function setQuickfeedbacktype(string $quickfeedbacktype): void
     {
         $this->quickfeedbacktype = $quickfeedbacktype;
     }
@@ -165,7 +166,7 @@ class Feedbacks extends AbstractEntity
      *
      * @return string $cid
      */
-    public function getCid()
+    public function getCid(): string
     {
         return $this->cid;
     }
@@ -176,7 +177,7 @@ class Feedbacks extends AbstractEntity
      * @param string $cid
      * @return void
      */
-    public function setCid($cid)
+    public function setCid(string $cid): void
     {
         $this->cid = $cid;
     }
@@ -186,7 +187,7 @@ class Feedbacks extends AbstractEntity
      *
      * @return int $sysLangId
      */
-    public function getSysLangId()
+    public function getSysLangId(): int
     {
         return $this->_languageUid;
     }
@@ -197,7 +198,7 @@ class Feedbacks extends AbstractEntity
      * @param int $sysLangId
      * @return void
      */
-    public function setSysLangId($sysLangId)
+    public function setSysLangId(int $sysLangId): void
     {
         $this->_languageUid = $sysLangId;
     }

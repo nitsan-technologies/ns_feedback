@@ -5,6 +5,7 @@ namespace NITSAN\NsFeedback\Controller;
 use GeorgRinger\News\Domain\Repository\NewsRepository;
 use NITSAN\NsFeedback\Domain\Model\Report;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,6 +15,7 @@ use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /***
  *
@@ -35,35 +37,31 @@ class ReportController extends ActionController
      *
      * @var ReportRepository
      */
-    protected $reportRepository = null;
+    protected ReportRepository $reportRepository;
 
     /**
      * feedbacksRepository
      *
      * @var FeedbacksRepository
      */
-    protected $feedbacksRepository = null;
+    protected FeedbacksRepository $feedbacksRepository;
 
-    /**
-     *
-     */
+
     protected $newsRepository;
-
-    protected $templateService;
-    protected $constantObj;
     protected $sidebarData;
     protected $dashboardSupportData;
-    protected $generalFooterData;
-    protected $premiumExtensionData;
     protected $constants;
     protected $contentObject = null;
     protected $pid = null;
 
+    protected ModuleTemplateFactory $moduleTemplateFactory;
+
     public function __construct(
-        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        ModuleTemplateFactory $moduleTemplateFactory,
         ReportRepository $reportRepository,
         FeedbacksRepository $feedbacksRepository
     ) {
+        $this->moduleTemplateFactory = $moduleTemplateFactory;
         $this->reportRepository = $reportRepository;
         $this->feedbacksRepository = $feedbacksRepository;
     }
@@ -73,9 +71,9 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function initializeObject()
+    public function initializeObject(): void
     {
-        $this->contentObject = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
+        $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
     }
 
     /**
@@ -83,7 +81,7 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         parent::initializeAction();
 
@@ -93,7 +91,7 @@ class ReportController extends ActionController
         $requestData = array_merge((array)$getData, (array)$postData);
 
         //GET and SET pid for the
-        $this->pid = isset($requestData['id']) ? $requestData['id'] : '0' ;
+        $this->pid = $requestData['id'] ?? '0';
         $querySettings = $this->reportRepository->createQuery()->getQuerySettings();
         $querySettings->setStoragePageIds([$this->pid]);
         $this->reportRepository->setDefaultQuerySettings($querySettings);
@@ -103,9 +101,9 @@ class ReportController extends ActionController
 
     /**
      * action dashboard
-     *
+     * @return ResponseInterface
      */
-    public function dashboardAction()
+    public function dashboardAction(): ResponseInterface
     {
         $view = $this->initializeModuleTemplate($this->request);
         $this->reportRepository->setDefaultOrderings(['feedbacks.uid' => QueryInterface::ORDER_DESCENDING]);
@@ -119,15 +117,12 @@ class ReportController extends ActionController
         //set default query builder for mm table
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(true);
-        $pagid = isset($requestData['id']) ? $requestData['id'] : '0' ;
+        $pagid = $requestData['id'] ?? '0';
         $querySettings->setStoragePageIds([$pagid]);
         $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
         $total = $this->feedbacksRepository->countAllByLanguage();
 
-        $yesCount = 0;
-        $noCount = 0;
-        $yesbutCount = 0;
-        $nobutCount = 0;
+        $yesCount = $noCount = $yesbutCount = $nobutCount = 0;
 
         foreach ($reports as  $report) {
             $yesCount += $report->getFeedbackYesCount();
@@ -135,9 +130,6 @@ class ReportController extends ActionController
             $yesbutCount += $report->getFeedbackYesButCount();
             $nobutCount += $report->getFeedbackNoButCount();
         }
-
-        $totalratings = '';
-        $report = '';
 
         $assign = [
             'action' => 'dashboard',
@@ -149,8 +141,8 @@ class ReportController extends ActionController
             'totalyesbutcount' => $yesbutCount,
             'totalnobutcount' => $nobutCount,
             'total' => $total,
-            'totalrating' => $totalratings,
-            'report' => $report
+            'totalrating' => '',
+            'report' => ''
         ];
         $view->assignMultiple($assign);
 
@@ -161,8 +153,9 @@ class ReportController extends ActionController
      * action show
      *
      * @param Report $report
+     * @return ResponseInterface
      */
-    public function showAction(Report $report)
+    public function showAction(Report $report): ResponseInterface
     {
         $view = $this->initializeModuleTemplate($this->request);
         $view->assign('report', $report);
@@ -172,13 +165,12 @@ class ReportController extends ActionController
 
     /**
      * action list
-     *
+     * @return ResponseInterface
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $view = $this->initializeModuleTemplate($this->request);
         $reports = $this->reportRepository->findAllByLanguage();
-
         foreach ($reports as  $report) {
             //quick feedback count
             $yesCount = $report->getFeedbackYesCount();
@@ -186,22 +178,12 @@ class ReportController extends ActionController
             $yesButCount = $report->getFeedbackYesButCount();
             $noButCount = $report->getFeedbackNoButCount();
             $total = $yesCount + $noCount + $yesButCount + $noButCount;
-
             $totalfeed[$report->getUid()]['quicktotal'] = $total;
-
-            //Fetching the news record if available
-            if ($report->getRecordId()) {
-                $this->newsRepository = GeneralUtility::makeInstance(NewsRepository::class);
-                $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
-            }
         }
-        $totalfeed = isset($totalfeed) ? $totalfeed : '';
-        $newsData = isset($newsData) ? $newsData : '';
-
+        $totalfeed = $totalfeed ?? '';
         $assign = [
             'totalfeedback' => $totalfeed,
             'reports' => $reports,
-            'newsitems' => $newsData,
             'action' => 'list',
         ];
         $view->assignMultiple($assign);

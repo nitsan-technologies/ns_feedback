@@ -54,9 +54,10 @@ lib.newact {
 	pluginName = Feedback
 	vendorName = NITSAN
 	controller = Feedback
+    actionName = new
 	switchableControllerActions {
 		Feedback {
-			0 = default
+			0 = new
 		}
 	}
 	settings < plugin.tx_nsfeedback_feedback.settings
@@ -65,11 +66,6 @@ lib.newact {
 [{$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage} == 1]
 	page.785456789985 < lib.newact
 [global]
-//[globalVar = LIT:1 = {$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage}]
-//	page.785456789985 < lib.newact
-//[global]
-# set type for load month using ajax
-
 
 # set type for load month using ajax
 quickFeedbackAction = PAGE

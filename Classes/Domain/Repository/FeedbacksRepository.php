@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsFeedback\Domain\Repository;
 
+use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -20,46 +21,17 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FeedbacksRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    public function getFromAll()
+    /**
+     * @return void
+     */
+    public function getFromAll(): void
     {
         $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
     }
 
-    public function insertNewData($data)
-    {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsfeedback_domain_model_apidata');
-        $row = $queryBuilder
-            ->insert('tx_nsfeedback_domain_model_apidata')
-            ->values($data);
-
-        $query = $queryBuilder->executeQuery();
-        return $query;
-    }
-    public function curlInitCall($url)
-    {
-        $curlSession = curl_init();
-        curl_setopt($curlSession, CURLOPT_URL, $url);
-        curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-        $data = curl_exec($curlSession);
-        curl_close($curlSession);
-
-        return $data;
-    }
-    public function deleteOldApiData()
-    {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsfeedback_domain_model_apidata');
-        $queryBuilder
-            ->delete('tx_nsfeedback_domain_model_apidata')
-            ->where(
-                $queryBuilder->expr()->comparison('last_update', '<', 'DATE_SUB(NOW() , INTERVAL 1 DAY)')
-            )
-            ->executeQuery();
-    }
-
-    public function countAllByLanguage()
+    public function countAllByLanguage(): int
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectSysLanguage(false);
