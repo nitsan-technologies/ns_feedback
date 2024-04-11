@@ -54,7 +54,7 @@ class FeedbackController extends ActionController
      * action new
      *
      */
-    public function newAction(): \Psr\Http\Message\ResponseInterface
+    public function newAction(): ResponseInterface
     {
         // Request Data
         $getData = $this->request->getQueryParams();
@@ -112,51 +112,6 @@ class FeedbackController extends ActionController
     }
 
     /**
-    * action new
-    *
-    */
-    public function defaultAction(): ResponseInterface
-    {
-        $getData = $this->request->getQueryParams();
-        $postData = $this->request->getParsedBody();
-        $requestData = array_merge((array)$getData, (array)$postData);
-        $this->reportRepository->getFromAll();
-        $assign= [];
-        $data = $GLOBALS['TSFE']->page;
-        //Fetch Content data
-        $contentData = $this->configurationManager->getContentObject();
-        $cdata = $contentData->data;
-        $filterData['pId'] = $data['uid'];
-        $filterData['cid'] = $cdata['uid'];
-        $filterData['userIp'] = $_SERVER['REMOTE_ADDR'];
-        $filterData['feedbackType'] = 3;
-        $newsParams = $requestData['tx_news_pi1'];
-        $newsParams['news'] = isset($newsParams['news']) ? $newsParams['news'] : '';
-        if ($newsParams['news'] > 0) {
-            $newsId = $newsParams['news'];
-            $filterData['newsId'] = $newsId;
-            $assign['newsId'] = $newsId;
-        }
-        //Array for the buttons for the quick feedback form
-        if ($this->settings['quickbuttons']) {
-            $btns = explode(',', $this->settings['quickbuttons']);
-            $assign['quickbuttons'] = $btns;
-        }
-        /*check records exist or not*/
-        $existrecord = $this->reportRepository->checkExistRecord($filterData);
-        if ($this->settings['quickenable']) {
-            unset($filterData['userIp']);
-            unset($filterData['cid']);
-            $getFeedbacks = $this->reportRepository->checkExistRecord($filterData);
-            $assign['feedbacks'] = $getFeedbacks;
-        }
-        $assign['exist'] = $existrecord;
-        $assign['cData'] = $cdata;
-        $this->view->assignMultiple($assign);
-        return $this->htmlResponse();
-    }
-
-    /**
      * action quickFeedback
      *
      * @param array|null $result
@@ -165,7 +120,7 @@ class FeedbackController extends ActionController
      * @throws IllegalObjectTypeException
      * @throws UnknownObjectException
      */
-    public function quickFeedbackAction(array $result = null): \Psr\Http\Message\ResponseInterface
+    public function quickFeedbackAction(array $result = null): ResponseInterface
     {
         $languageid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
         $this->reportRepository->getFromAll();

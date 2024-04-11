@@ -167,7 +167,7 @@ class ReportController extends ActionController
      * action list
      * @return ResponseInterface
      */
-    public function listAction(): ResponseInterface
+    public function listAction()
     {
         $view = $this->initializeModuleTemplate($this->request);
         $reports = $this->reportRepository->findAllByLanguage();
@@ -179,11 +179,20 @@ class ReportController extends ActionController
             $noButCount = $report->getFeedbackNoButCount();
             $total = $yesCount + $noCount + $yesButCount + $noButCount;
             $totalfeed[$report->getUid()]['quicktotal'] = $total;
+
+            //Fetching the news record if available
+            if ($report->getRecordId()) {
+                $this->newsRepository = GeneralUtility::makeInstance(NewsRepository::class);
+                $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
+            }
         }
         $totalfeed = $totalfeed ?? '';
+        $newsData = $newsData ?? '';
+
         $assign = [
             'totalfeedback' => $totalfeed,
             'reports' => $reports,
+            'newsitems' => $newsData,
             'action' => 'list',
         ];
         $view->assignMultiple($assign);
