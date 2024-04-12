@@ -49,12 +49,6 @@ class Feedbacks extends AbstractEntity
      */
     protected string $userIp = '';
 
-    /**
-     * feedbackType
-     *
-     * @var string
-     */
-    protected string $feedbackType = '';
 
     /**
      * quickfeedbacktype
@@ -119,26 +113,6 @@ class Feedbacks extends AbstractEntity
         $this->userIp = $userIp;
     }
 
-    /**
-     * Returns the feedbackType
-     *
-     * @return string $feedbackType
-     */
-    public function getFeedbackType(): string
-    {
-        return $this->feedbackType;
-    }
-
-    /**
-     * Sets the feedbackType
-     *
-     * @param string $feedbackType
-     * @return void
-     */
-    public function setFeedbackType(string $feedbackType): void
-    {
-        $this->feedbackType = $feedbackType;
-    }
 
     /**
      * Returns the quickfeedbacktype

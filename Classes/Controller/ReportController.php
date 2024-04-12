@@ -2,7 +2,6 @@
 
 namespace NITSAN\NsFeedback\Controller;
 
-use GeorgRinger\News\Domain\Repository\NewsRepository;
 use NITSAN\NsFeedback\Domain\Model\Report;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
 use Psr\Http\Message\ResponseInterface;
@@ -47,7 +46,6 @@ class ReportController extends ActionController
     protected FeedbacksRepository $feedbacksRepository;
 
 
-    protected $newsRepository;
     protected $sidebarData;
     protected $dashboardSupportData;
     protected $constants;
@@ -180,19 +178,14 @@ class ReportController extends ActionController
             $total = $yesCount + $noCount + $yesButCount + $noButCount;
             $totalfeed[$report->getUid()]['quicktotal'] = $total;
 
-            //Fetching the news record if available
-            if ($report->getRecordId()) {
-                $this->newsRepository = GeneralUtility::makeInstance(NewsRepository::class);
-                $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
-            }
+
+
         }
         $totalfeed = $totalfeed ?? '';
-        $newsData = $newsData ?? '';
 
         $assign = [
             'totalfeedback' => $totalfeed,
             'reports' => $reports,
-            'newsitems' => $newsData,
             'action' => 'list',
         ];
         $view->assignMultiple($assign);

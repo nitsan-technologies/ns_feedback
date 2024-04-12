@@ -39,16 +39,6 @@ class FeedbackController extends ActionController
         $this->feedbacksRepository = $feedbacksRepository;
     }
 
-    /**
-     * action show
-     *
-     * @param Report $report
-     * @return void
-     */
-    public function showAction(Report $report): void
-    {
-        $this->view->assign('report', $report);
-    }
 
     /**
      * action new
@@ -57,11 +47,9 @@ class FeedbackController extends ActionController
     public function newAction(): ResponseInterface
     {
         // Request Data
-        $getData = $this->request->getQueryParams();
-        $postData = $this->request->getParsedBody();
-        $requestData = array_merge((array)$getData, (array)$postData);
         $this->reportRepository->getFromAll();
         $assign = [];
+
         //Fetch Content data
         // @extensionScannerIgnoreLine
         $contentData = $this->configurationManager->getContentObject();
@@ -70,16 +58,8 @@ class FeedbackController extends ActionController
             'pId' => $GLOBALS['TSFE']->page['uid'],
             'cid' => $cdata['uid'],
             'userIp' => $_SERVER['REMOTE_ADDR'],
-            'feedbackType' => 3
         ];
-        if(isset($requestData['tx_news_pi1'])) {
-            $newsParams = $requestData['tx_news_pi1'];
-            $newsParams['news'] = $newsParams['news'] ?? '';
-            if ($newsParams['news'] > 0) {
-                $filterData['newsId'] = $newsParams['news'];
-                $assign['newsId'] = $newsParams['news'];
-            }
-        }
+
         //Array for the buttons for the quick feedback form
         $btns = [];
         if($this->settings['quickbuttonsYes'] == 1) {
@@ -128,7 +108,6 @@ class FeedbackController extends ActionController
         $feedbacks = new Feedbacks();
         $data = $GLOBALS['TSFE']->page;
         $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
-        $feedbacks->setFeedbackType($result['feedbackType']);
         $feedbacks->setQuickfeedbacktype($result['qkbutton']);
         $feedbacks->setSysLangId($languageid);
         if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
@@ -136,14 +115,7 @@ class FeedbackController extends ActionController
         }
         $feedbacks->setPId($data['uid']);
         $feedbacks->setCId($result['cid']);
-        if ($result['newsId'] > 0) {
-            $report->setRecordId($result['newsId']);
-        }
-        if ($result['newsId'] > 0) {
-            $checkExistRecord = $this->reportRepository->findBy(['record_id' => $data['uid']]);
-        } else {
-            $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
-        }
+        $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
         $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR']]);
         if ($checkExistRecord[0] && empty($checkExistFeedbackRecord[0])) {
             $report = $checkExistRecord[0];
@@ -169,7 +141,6 @@ class FeedbackController extends ActionController
             }
 
         } else {
-
             switch ($result['buttonfor']) {
                 case '1':
                     $report->setFeedbackYesCount(1);

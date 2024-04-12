@@ -3,6 +3,7 @@
 namespace Nitsan\NsFeedback\ViewHelpers;
 
 use Doctrine\DBAL\Exception;
+use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -21,23 +22,13 @@ class FeedbackViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) {
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable('tx_nsfeedback_domain_model_report');
-        $queryBuilder = $connection->createQueryBuilder();
+        $reportRepository = GeneralUtility::makeInstance(ReportRepository::class);
+        $rows = $reportRepository->getFeedbacksReport();
         $startingPoint = $GLOBALS['TSFE']->page['pid'];
         $pageRecord = BackendUtility::getRecord(
             'pages',
             $startingPoint
         );
-        $rows = $queryBuilder
-            ->select('*')
-            ->from('tx_nsfeedback_domain_model_feedbacks')
-            ->where($queryBuilder->expr()->eq('pid', $GLOBALS['TSFE']->page['uid']))
-            ->andWhere(
-                $queryBuilder->expr()->eq('user_ip', "'" . $_SERVER['REMOTE_ADDR'] . "'")
-            )
-            ->executeQuery()
-            ->fetchAllAssociative();
         if (!$rows && ($GLOBALS['TSFE']->page['tx_nsfeedback_enable'] > 0 || $pageRecord['tx_nsfeedback_enable'] > 0)) {
             // Create repository instance
             $view = GeneralUtility::makeInstance(StandaloneView::class);

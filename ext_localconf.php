@@ -32,6 +32,3 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['Feedback'] = [
     'NITSAN\NsFeedback\ViewHelpers',
 ];
 
-ExtensionManagementUtility::addPageTSConfig(
-    '@import "EXT:ns_feedback/Configuration/TSconfig/ContentElementWizard.tsconfig"'
-);

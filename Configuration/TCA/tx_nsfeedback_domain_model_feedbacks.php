@@ -27,11 +27,11 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true
         ],
-        'searchFields' => 'comment,user_ip,feedback_type',
+        'searchFields' => 'comment,user_ip',
         'iconfile' => 'EXT:ns_feedback/Resources/Public/Icons/tx_nsfeedback_domain_model_feedbacks.gif',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, comment, user_ip, feedback_type, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, comment, user_ip, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -139,34 +139,6 @@ return [
                 'size' => 30,
                 'readOnly' => 1,
                 'eval' => 'trim',
-            ],
-        ],
-        'feedback_type' => [
-            'exclude' => true,
-            'label' => 'Feedback Variation',
-            'onChange' => 'reload',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        'label' => 'Full feedback',
-                        'value' => 1
-                    ],
-                    [
-                        'label' => 'Ratings',
-                        'value' => 2
-                    ],
-                    [
-                        'label' => 'Quick feedback',
-                        'value' => 3
-                    ],
-                    [
-                        'label' => 'Popup',
-                        'value' => 4
-                    ],
-                ],
-                'readOnly' => 1,
             ],
         ],
         'quickfeedbacktype' => [
