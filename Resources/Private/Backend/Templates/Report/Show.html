@@ -20,32 +20,30 @@
 						      </thead>
 						      <tbody>
 							      <f:for each="{report.feedbacks}" as="feedbacks">
-								      <f:if condition="{feedbacks.feedbackType} == 3">
-									      <tr>
-										      <td>{feedbacks.crdate -> f:format.date(format: 'm/d/Y')}</td>
-										      <td>
-											      <f:if condition="{feedbacks.quickfeedbacktype}">
-												      <f:then>
-													      <f:translate key="{feedbacks.quickfeedbacktype}" />
-												      </f:then>
-												      <f:else>
-													      -
-												      </f:else>
-											      </f:if>
-										      </td>
-										      <td>
-											      <f:if condition="{feedbacks.comment}">
-												      <f:then>
-													      {feedbacks.comment}
-												      </f:then>
-												      <f:else>
-													      -
-												      </f:else>
-											      </f:if>
-										      </td>
-										      <td>{feedbacks.userIp}</td>
-									      </tr>
-								      </f:if>
+									  <tr>
+										  <td>{feedbacks.crdate -> f:format.date(format: 'm/d/Y')}</td>
+										  <td>
+											  <f:if condition="{feedbacks.quickfeedbacktype}">
+												  <f:then>
+													  <f:translate key="{feedbacks.quickfeedbacktype}" />
+												  </f:then>
+												  <f:else>
+													  -
+												  </f:else>
+											  </f:if>
+										  </td>
+										  <td>
+											  <f:if condition="{feedbacks.comment}">
+												  <f:then>
+													  {feedbacks.comment}
+												  </f:then>
+												  <f:else>
+													  -
+												  </f:else>
+											  </f:if>
+										  </td>
+										  <td>{feedbacks.userIp}</td>
+									  </tr>
 							      </f:for>
 						      </tbody>
 					      </table>

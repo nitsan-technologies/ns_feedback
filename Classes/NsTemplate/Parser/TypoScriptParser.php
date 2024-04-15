@@ -13,6 +13,7 @@ namespace NITSAN\NsFeedback\NsTemplate\Parser;
  * LICENSE.txt file that was distributed with this source code.
  *
  * The TYPO3 project - inspiring people to share!
+ *
  */
 
 use Psr\Log\LoggerInterface;
@@ -29,6 +30,7 @@ use TYPO3\CMS\Frontend\Configuration\TypoScript\ConditionMatching\ConditionMatch
 
 /**
  * The TypoScript parser
+ * @extensionScannerIgnoreFile
  */
 class TypoScriptParser
 {

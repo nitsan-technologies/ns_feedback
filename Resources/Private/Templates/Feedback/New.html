@@ -14,7 +14,7 @@
 			</div>
 			</div>
 		</div>
-		<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">
+	<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">
 			<f:then>
 				<div class="send-msg" id="ns-c{cData.uid}">
 					<f:render partial="Feedback/QuickFeedback" arguments="{_all}" />

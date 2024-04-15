@@ -55,7 +55,6 @@ CREATE TABLE tx_nsfeedback_domain_model_feedbacks (
 
 	comment text,
 	user_ip varchar(255) DEFAULT '' NOT NULL,
-    feedback_type varchar(255) DEFAULT '' NOT NULL,
     quickfeedbacktype varchar(255) DEFAULT '' NOT NULL,
     cid int(11) DEFAULT '0' NOT NULL,
 

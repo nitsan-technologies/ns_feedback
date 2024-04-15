@@ -22,13 +22,9 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class FeedbacksRepository extends Repository
 {
-    public function getFromAll(): void
-    {
-        $querySettings = $this->objectManager->get(Typo3QuerySettings::class);
-        $querySettings->setRespectStoragePage(false);
-        $this->setDefaultQuerySettings($querySettings);
-    }
-
+    /**
+     * @return int
+     */
     public function countAllByLanguage(): int
     {
         $query = $this->createQuery();
