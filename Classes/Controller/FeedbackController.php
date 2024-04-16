@@ -9,20 +9,15 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class FeedbackController extends ActionController
 {
-    /**
-     * feedbacksRepository
-     *
-     * @var \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository
-     */
-    protected \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository;
 
     /**
-     * reportRepository
-     *
-     * @var \NITSAN\NsFeedback\Domain\Repository\ReportRepository
+     * @var $feedbacksRepository
      */
-    protected \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository;
-
+    protected $feedbacksRepository;
+    /**
+     * @var $reportRepository
+     */
+    protected $reportRepository;
     /*
      * sys_language_uid
      * @int

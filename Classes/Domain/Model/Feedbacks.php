@@ -27,7 +27,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \DateTime $crdate
      */
-    public function getCrdate(): ?\DateTime
+    public function getCrdate()
     {
         return $this->crdate;
     }
@@ -37,36 +37,35 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    protected string $comment = '';
+    protected $comment = '';
 
     /**
      * userIp
      *
      * @var string
      */
-    protected string $userIp = '';
-
+    protected $userIp = '';
 
     /**
      * quickfeedbacktype
      *
      * @var string
      */
-    protected string $quickfeedbacktype = '';
+    protected $quickfeedbacktype = '';
 
     /**
      * cid
      *
      * @var string
      */
-    protected string $cid = '';
+    protected $cid = '';
 
     /**
      * Returns the comment
      *
      * @return string $comment
      */
-    public function getComment(): string
+    public function getComment()
     {
         return $this->comment;
     }
@@ -77,7 +76,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $comment
      * @return void
      */
-    public function setComment(string $comment)
+    public function setComment($comment)
     {
         $this->comment = $comment;
     }
@@ -87,7 +86,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $userIp
      */
-    public function getUserIp(): string
+    public function getUserIp()
     {
         return $this->userIp;
     }
@@ -98,7 +97,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $userIp
      * @return void
      */
-    public function setUserIp(string $userIp)
+    public function setUserIp($userIp)
     {
         $this->userIp = $userIp;
     }
@@ -108,7 +107,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $quickfeedbacktype
      */
-    public function getQuickfeedbacktype(): string
+    public function getQuickfeedbacktype()
     {
         return $this->quickfeedbacktype;
     }
@@ -119,7 +118,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $quickfeedbacktype
      * @return void
      */
-    public function setQuickfeedbacktype(string $quickfeedbacktype)
+    public function setQuickfeedbacktype($quickfeedbacktype)
     {
         $this->quickfeedbacktype = $quickfeedbacktype;
     }
@@ -129,7 +128,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $cid
      */
-    public function getCid(): string
+    public function getCid()
     {
         return $this->cid;
     }
@@ -140,7 +139,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $cid
      * @return void
      */
-    public function setCid(string $cid)
+    public function setCid($cid)
     {
         $this->cid = $cid;
     }
@@ -149,14 +148,14 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected int $sysLangId = 0;
+    protected $sysLangId = 0;
 
     /**
      * Returns the sysLangId
      *
      * @return int $sysLangId
      */
-    public function getSysLangId(): int
+    public function getSysLangId()
     {
         return $this->_languageUid;
     }
@@ -167,7 +166,7 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $sysLangId
      * @return void
      */
-    public function setSysLangId(int $sysLangId)
+    public function setSysLangId($sysLangId)
     {
         $this->_languageUid = $sysLangId;
     }

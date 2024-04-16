@@ -25,19 +25,15 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class ReportController extends ActionController
 {
-    /**
-     * reportRepository
-     *
-     * @var \NITSAN\NsFeedback\Domain\Repository\ReportRepository
-     */
-    protected \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository;
 
     /**
-     * FeedbacksRepository
-     *
-     * @var \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository
+     * @var $reportRepository
      */
-    protected \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository;
+    protected $reportRepository;
+    /**
+     * @var $feedbacksRepository
+     */
+    protected $feedbacksRepository;
 
     protected $templateService;
     protected $constantObj;

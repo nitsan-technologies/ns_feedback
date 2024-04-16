@@ -27,7 +27,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \DateTime $crdate
      */
-    public function getCrdate(): ?\DateTime
+    public function getCrdate()
     {
         return $this->crdate;
     }
@@ -37,63 +37,63 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var int
      */
-    protected int $pageId = 0;
+    protected $pageId = 0;
 
     /**
      * recordId
      *
      * @var int
      */
-    protected int $recordId = 0;
+    protected $recordId = 0;
 
     /**
      * pageType
      *
      * @var int
      */
-    protected int $pageType = 0;
+    protected $pageType = 0;
 
     /**
      * pageTitle
      *
      * @var string
      */
-    protected string $pageTitle = '';
+    protected $pageTitle = '';
 
     /**
      * feedbackYesCount
      *
      * @var int
      */
-    protected int $feedbackYesCount = 0;
+    protected $feedbackYesCount = 0;
 
     /**
      * feedbackNoCount
      *
      * @var int
      */
-    protected int $feedbackNoCount = 0;
+    protected $feedbackNoCount = 0;
 
     /**
      * feedbackYesButCount
      *
      * @var int
      */
-    protected int $feedbackYesButCount = 0;
+    protected $feedbackYesButCount = 0;
 
     /**
      * feedbackNoButCount
      *
      * @var int
      */
-    protected int $feedbackNoButCount = 0;
+    protected $feedbackNoButCount = 0;
 
     /**
      * sysLangId
      *
      * @var int
      */
-    protected int $sysLangId = 0;
+    protected $sysLangId = 0;
 
     /**
      * feedbacks
@@ -101,7 +101,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected ?\TYPO3\CMS\Extbase\Persistence\ObjectStorage $feedbacks = null;
+    protected $feedbacks = null;
 
     /**
      * __construct
@@ -131,7 +131,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $pageId
      */
-    public function getPageId(): int
+    public function getPageId()
     {
         return $this->pageId;
     }
@@ -142,7 +142,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $pageId
      * @return void
      */
-    public function setPageId(int $pageId)
+    public function setPageId($pageId)
     {
         $this->pageId = $pageId;
     }
@@ -152,7 +152,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $recordId
      */
-    public function getRecordId(): int
+    public function getRecordId()
     {
         return $this->recordId;
     }
@@ -163,7 +163,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $recordId
      * @return void
      */
-    public function setRecordId(int $recordId)
+    public function setRecordId($recordId)
     {
         $this->recordId = $recordId;
     }
@@ -173,7 +173,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $pageType
      */
-    public function getPageType(): int
+    public function getPageType()
     {
         return $this->pageType;
     }
@@ -184,7 +184,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $pageType
      * @return void
      */
-    public function setPageType(int $pageType)
+    public function setPageType($pageType)
     {
         $this->pageType = $pageType;
     }
@@ -194,7 +194,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $pageTitle
      */
-    public function getPageTitle(): string
+    public function getPageTitle()
     {
         return $this->pageTitle;
     }
@@ -205,7 +205,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $pageTitle
      * @return void
      */
-    public function setPageTitle(string $pageTitle)
+    public function setPageTitle($pageTitle)
     {
         $this->pageTitle = $pageTitle;
     }
@@ -215,7 +215,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $feedbackYesCount
      */
-    public function getFeedbackYesCount(): int
+    public function getFeedbackYesCount()
     {
         return $this->feedbackYesCount;
     }
@@ -226,7 +226,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $feedbackYesCount
      * @return void
      */
-    public function setFeedbackYesCount(int $feedbackYesCount)
+    public function setFeedbackYesCount($feedbackYesCount)
     {
         $this->feedbackYesCount = $feedbackYesCount;
     }
@@ -236,7 +236,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $feedbackNoCount
      */
-    public function getFeedbackNoCount(): int
+    public function getFeedbackNoCount()
     {
         return $this->feedbackNoCount;
     }
@@ -247,7 +247,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $feedbackNoCount
      * @return void
      */
-    public function setFeedbackNoCount(int $feedbackNoCount)
+    public function setFeedbackNoCount($feedbackNoCount)
     {
         $this->feedbackNoCount = $feedbackNoCount;
     }
@@ -257,7 +257,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $feedbackYesButCount
      */
-    public function getFeedbackYesButCount(): int
+    public function getFeedbackYesButCount()
     {
         return $this->feedbackYesButCount;
     }
@@ -268,7 +268,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $feedbackYesButCount
      * @return void
      */
-    public function setFeedbackYesButCount(int $feedbackYesButCount)
+    public function setFeedbackYesButCount($feedbackYesButCount)
     {
         $this->feedbackYesButCount = $feedbackYesButCount;
     }
@@ -278,7 +278,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $feedbackNoButCount
      */
-    public function getFeedbackNoButCount(): int
+    public function getFeedbackNoButCount()
     {
         return $this->feedbackNoButCount;
     }
@@ -289,7 +289,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $feedbackNoButCount
      * @return void
      */
-    public function setFeedbackNoButCount(int $feedbackNoButCount)
+    public function setFeedbackNoButCount($feedbackNoButCount)
     {
         $this->feedbackNoButCount = $feedbackNoButCount;
     }
@@ -299,7 +299,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $sysLangId
      */
-    public function getSysLangId(): int
+    public function getSysLangId()
     {
         return $this->_languageUid;
     }
@@ -310,7 +310,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $sysLangId
      * @return void
      */
-    public function setSysLangId(int $sysLangId)
+    public function setSysLangId($sysLangId)
     {
         $this->_languageUid = $sysLangId;
     }
@@ -342,7 +342,7 @@ class Report extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks> $feedbacks
      */
-    public function getFeedbacks(): ?\TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getFeedbacks()
     {
         return $this->feedbacks;
     }

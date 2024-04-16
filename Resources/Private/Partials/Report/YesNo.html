@@ -14,7 +14,14 @@
 						</div>
 					</div>
 					<div class="side right">
-						<div>{feedbacks.0.feedbackYesCount}</div>
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackYesCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
 			</div>
@@ -31,7 +38,14 @@
 						</div>
 					</div>
 					<div class="side right">
-						<div>{feedbacks.0.feedbackNoCount}</div>
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackNoCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
 			</div>
@@ -48,7 +62,14 @@
 						</div>
 					</div>
 					<div class="side right">
-						<div>{feedbacks.0.feedbackYesButCount}</div>
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackYesButCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
 			</div>
@@ -65,7 +86,14 @@
 						</div>
 					</div>
 					<div class="side right">
-						<div>{feedbacks.0.feedbackNoButCount}</div>
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackNoButCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
 			</div>
