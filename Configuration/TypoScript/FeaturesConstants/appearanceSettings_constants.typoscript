@@ -10,7 +10,7 @@ plugin.tx_nsfeedback_feedback {
             # cat=ns_feedback_appearancesettings/2000/01; type=string; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:titleText
             quickFeedbackTitle = Was this post helpful?
 
-	        # cat=ns_feedback_appearancesettings/2000/02; type=options[SlideUpDown=slide,Toggle=toggle,FadeInOut=fade]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:quickboxappearance
+	        # cat=ns_feedback_appearancesettings/2000/02; type=options[Slide Up Down=slide,Toggle=toggle,Fade In Out=fade]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:quickboxappearance
 	        quickboxappearance = slide
 
             # cat=ns_feedback_appearancesettings/2000/03; type=boolean; label = Yes Button
