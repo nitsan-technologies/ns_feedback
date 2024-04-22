@@ -323,8 +323,31 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         $data = $parsedBody['data'] ?? null;
         $check = $parsedBody['check'] ?? [];
         $valuesHaveChanged = false;
+        $constantKey = [
+            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsYes',
+            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsNo',
+            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsYesBut',
+            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsNoBut'
+        ];
         if (is_array($data)) {
+
             foreach ($data as $key => $value) {
+                if(in_array($key,$constantKey) &&
+                !$data[$constantKey[0]] &&
+                !$data[$constantKey[1]] &&
+                !$data[$constantKey[2]] &&
+                !$data[$constantKey[3]]){
+
+                    if($key != $constantKey[3]){
+                        $constantKey[$key] = 1;
+                    }
+
+                    $rawTemplateConstantsArray = $this->removeValueFromConstantsArray($rawTemplateConstantsArray, $constantPositions, $key);
+                    $valuesHaveChanged = true;
+                    continue;
+
+                }
+
                 if (!isset($constantDefinitions[$key])) {
                     // Ignore if there is no constant definition for this constant key
                     continue;
@@ -340,6 +363,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
                     continue;
                 }
                 $constantDefinition = $constantDefinitions[$key];
+
                 switch ($constantDefinition['type']) {
                     case 'int':
                     case 'int+':
@@ -362,6 +386,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
                         $value = trim(rtrim(implode(',', $value), ','), ',');
                         break;
                     case 'boolean':
+
                         $value = $value ? ($constantDefinition['trueValue'] ?? '1') : '0';
                         break;
                     default:

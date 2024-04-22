@@ -11,7 +11,7 @@ plugin.tx_nsfeedback_feedback {
             quickFeedbackTitle = Was this post helpful?
 
 	        # cat=ns_feedback_appearancesettings/2000/02; type=options[Slide Up Down=slide,Toggle=toggle,Fade In Out=fade]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:quickboxappearance
-	        quickboxappearance = slide
+	        quickboxappearance = Slide Up Down
 
             # cat=ns_feedback_appearancesettings/2000/03; type=boolean; label = Yes Button
             quickbuttonsYes = 1
