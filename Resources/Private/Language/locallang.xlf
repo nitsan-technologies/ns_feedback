@@ -555,6 +555,9 @@
             <trans-unit id="info2">
                 <source>Please select other page to view feedbacks.</source>
             </trans-unit>
+			<trans-unit id="feedback.configurationMessage">
+                <source>Please do proper quick feedback form configuration.</source>
+            </trans-unit>
         </body>
 	</file>
 </xliff>
