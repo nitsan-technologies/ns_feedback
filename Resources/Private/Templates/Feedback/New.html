@@ -1,32 +1,40 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 <f:section name="content">
-	<div class="container">
-		<div class="ns-alert-wrap">
-			<div class="ns-alert-box">
-				<div class="ns-alert-close"><i class="fa fa-times"></i></div>
-				<f:if condition="{settings.thankyoutitle}">
-					<div class="ns-alert-header">
-						<h3>{settings.thankyoutitle}</h3>
+	<f:if condition="{quickbuttons}">
+		<f:then>
+			<div class="container">
+				<div class="ns-alert-wrap">
+					<div class="ns-alert-box">
+						<div class="ns-alert-close"><i class="fa fa-times"></i></div>
+						<f:if condition="{settings.thankyoutitle}">
+							<div class="ns-alert-header">
+								<h3>{settings.thankyoutitle}</h3>
+							</div>
+						</f:if>
+						<f:if condition="{settings.thankyoumsg}">
+							<div class="ns-alert-content">
+								<p>{settings.thankyoumsg -> f:format.raw()}</p>
+							</div>
+						</f:if>
 					</div>
+				</div>
+				<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">
+					<f:then>
+						<div class="send-msg" id="ns-c{cData.uid}">
+							<f:render partial="Feedback/QuickFeedback" arguments="{_all}" />
+						</div>
+					</f:then>
 				</f:if>
-				<f:if condition="{settings.thankyoumsg}">
-					<div class="ns-alert-content">
-						<p>{settings.thankyoumsg -> f:format.raw()}</p>
-					</div>
+				<f:if condition="{settings.quickenable}">
+					<f:render partial="Report/YesNo" arguments="{_all}" />
 				</f:if>
 			</div>
-		</div>
-		<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">
-			<f:then>
-				<div class="send-msg" id="ns-c{cData.uid}">
-					<f:render partial="Feedback/QuickFeedback" arguments="{_all}" />
-				</div>
-			</f:then>
-		</f:if>
-		<f:if condition="{settings.quickenable}">
-			<f:render partial="Report/YesNo" arguments="{_all}" />
-		</f:if>
-	</div>
+		</f:then>
+		<f:else>
+			<h5 class="text-center"><f:translate key="feedback.configurationMessage" /></h5>
+		</f:else>		
+	</f:if>
+	
 </f:section>
 </html>

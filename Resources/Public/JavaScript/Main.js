@@ -6,7 +6,6 @@ define([
     'TYPO3/CMS/Backend/Input/Clearable'
 ], function ($, Model) {
  
-    console.log("sabkefhsbk")
     $('.ns-ext-datatable').DataTable({
         "language": {
             "lengthMenu": "Display _MENU_ Records",
@@ -24,7 +23,7 @@ define([
 
     $('#TypoScriptTemplateModuleController').on('submit',function(e){
         e.preventDefault();
-        url = $(this).attr('action');
+        let url = $(this).attr('action');
         $.ajax({
             url:url,
             method:'post',

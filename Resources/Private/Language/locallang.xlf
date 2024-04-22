@@ -214,9 +214,6 @@
 			<trans-unit id="allPage">
 				<source>All Pages?:Enable this to display Feedback form on all pages of the site.</source>
 			</trans-unit>
-			<trans-unit id="newsBlog">
-				<source>News/Blog</source>
-			</trans-unit>
 			<trans-unit id="popup">
 				<source>Popup Block</source>
 			</trans-unit>
@@ -335,13 +332,13 @@
 				<source>Visitor E-mail text</source>
 			</trans-unit>
             <trans-unit id="slide">
-				<source>SlideUpDown</source>
+				<source>Slide Up Down</source>
 			</trans-unit>
             <trans-unit id="toggle">
 				<source>Toggle</source>
 			</trans-unit>
             <trans-unit id="fade">
-				<source>FadeInOut</source>
+				<source>Fade In Out</source>
 			</trans-unit>
             <trans-unit id="quickboxappearance">
 				<source>Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</source>
@@ -426,9 +423,6 @@
             </trans-unit>
             <trans-unit id="popup_feedback">
                 <source>Popup Blocks</source>
-            </trans-unit>
-            <trans-unit id="type.news">
-                <source>News</source>
             </trans-unit>
             <trans-unit id="type.page">
                 <source>Page</source>
@@ -560,6 +554,9 @@
             </trans-unit>
             <trans-unit id="info2">
                 <source>Please select other page to view feedbacks.</source>
+            </trans-unit>
+			<trans-unit id="feedback.configurationMessage">
+                <source>Please do proper quick feedback form configuration.</source>
             </trans-unit>
         </body>
 	</file>

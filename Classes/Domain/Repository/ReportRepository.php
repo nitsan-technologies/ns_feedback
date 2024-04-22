@@ -2,6 +2,9 @@
 
 namespace NITSAN\NsFeedback\Domain\Repository;
 
+use Doctrine\DBAL\Exception;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -52,18 +55,9 @@ class ReportRepository extends Repository
     {
         $query = $this->createQuery();
 
-        $filterData['newsId'] = isset($filterData['newsId']) ? $filterData['newsId'] : '';
-        $filterData['pId'] = isset($filterData['pId']) ? $filterData['pId'] : '';
-        $filterData['cid'] = isset($filterData['cid']) ? $filterData['cid'] : '';
-        $filterData['userIp'] = isset($filterData['userIp']) ? $filterData['userIp'] : '';
-        $filterData['feedbackType'] = isset($filterData['feedbackType']) ? $filterData['feedbackType'] : '';
-
-        if ($filterData['newsId']) {
-            $query->matching($query->logicalAnd(
-                $query->equals('record_id', $filterData['newsId'])
-            ));
-        }
-
+        $filterData['pId'] = $filterData['pId'] ?? '';
+        $filterData['cid'] = $filterData['cid'] ?? '';
+        $filterData['userIp'] = $filterData['userIp'] ?? '';
 
         $query->matching($query->logicalAnd(
             $query->equals('feedbacks.pid', $filterData['pId'])
@@ -78,9 +72,6 @@ class ReportRepository extends Repository
                 $query->equals('feedbacks.user_ip', (string)$filterData['userIp'])
             ));
         }
-        $query->matching($query->logicalAnd(
-            $query->equals('feedbacks.feedback_type', (int)$filterData['feedbackType'])
-        ));
         $query->setOrderings(
             [
                 'feedbacks.uid' => QueryInterface::ORDER_DESCENDING
@@ -88,6 +79,10 @@ class ReportRepository extends Repository
         );
         return $query->execute();
     }
+
+    /**
+     * @return array|QueryResultInterface
+     */
     public function findAllByLanguage(): array|QueryResultInterface
     {
         $query = $this->createQuery();
@@ -95,4 +90,23 @@ class ReportRepository extends Repository
         return $query->execute();
     }
 
+    /**
+     * @throws Exception
+     */
+    public function getFeedbacksReport() : mixed
+    {
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('tx_nsfeedback_domain_model_report');
+        $queryBuilder = $connection->createQueryBuilder();
+
+        return $queryBuilder
+            ->select('*')
+            ->from('tx_nsfeedback_domain_model_feedbacks')
+            ->where($queryBuilder->expr()->eq('pid', $GLOBALS['TSFE']->page['uid']))
+            ->andWhere(
+                $queryBuilder->expr()->eq('user_ip', "'" . $_SERVER['REMOTE_ADDR'] . "'")
+            )
+            ->executeQuery()
+            ->fetchAllAssociative();
+    }
 }
