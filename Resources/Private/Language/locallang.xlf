@@ -332,13 +332,13 @@
 				<source>Visitor E-mail text</source>
 			</trans-unit>
             <trans-unit id="slide">
-				<source>SlideUpDown</source>
+				<source>Slide Up Down</source>
 			</trans-unit>
             <trans-unit id="toggle">
 				<source>Toggle</source>
 			</trans-unit>
             <trans-unit id="fade">
-				<source>FadeInOut</source>
+				<source>Fade In Out</source>
 			</trans-unit>
             <trans-unit id="quickboxappearance">
 				<source>Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</source>
