@@ -16,7 +16,7 @@ $EM_CONF['ns_feedback'] = [
 
   *** Live Demo: https://demo.t3planet.com/t3-extensions/feedback *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-feedback-extension',
   'category' => 'plugin',
-  'version' => '12.0.5',
+  'version' => '12.1.0',
   'state' => 'stable',
   'uploadfolder' => false,
   'author' => 'T3: Rohan Parmar, T3: Divya Goklani, T3: Nilesh Malankiya, QA: Gautam Kunjadiya',
