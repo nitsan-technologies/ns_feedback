@@ -38,4 +38,10 @@ plugin.tx_nsfeedback_feedback {
 	    #cat=Ns_Feedback_commonSettings/40/06; type=color; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:btntextcolor
 	    btntextcolor = #ffffff
     }
+    # cat=Ns_Feedback_commonSettings/60_thanks/1001; type=string; label=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:thankyoutitle
+    thankyoutitle = Thank you!
+
+    # cat=Ns_Feedback_commonSettings/60_thanks/1002; type=string; label=LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:thankyoumsg
+    thankyoumsg = If you feedback requires a response, we'll be in touch shortly
+    
 }

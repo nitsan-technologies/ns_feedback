@@ -47,13 +47,6 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $userIp = '';
 
     /**
-     * feedbackType
-     *
-     * @var string
-     */
-    protected $feedbackType = '';
-
-    /**
      * quickfeedbacktype
      *
      * @var string
@@ -107,27 +100,6 @@ class Feedbacks extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setUserIp($userIp)
     {
         $this->userIp = $userIp;
-    }
-
-    /**
-     * Returns the feedbackType
-     *
-     * @return string $feedbackType
-     */
-    public function getFeedbackType()
-    {
-        return $this->feedbackType;
-    }
-
-    /**
-     * Sets the feedbackType
-     *
-     * @param string $feedbackType
-     * @return void
-     */
-    public function setFeedbackType($feedbackType)
-    {
-        $this->feedbackType = $feedbackType;
     }
 
     /**

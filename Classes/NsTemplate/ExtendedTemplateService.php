@@ -13,6 +13,7 @@ namespace NITSAN\NsFeedback\NsTemplate;
  * LICENSE.txt file that was distributed with this source code.
  *
  * The TYPO3 project - inspiring people to share!
+ *
  */
 
 use TYPO3\CMS\Backend\Template\DocumentTemplate;
@@ -35,6 +36,7 @@ use TYPO3\CMS\Frontend\Configuration\TypoScript\ConditionMatching\ConditionMatch
  * Contains functions for the TS module in TYPO3 backend
  *
  * @internal this is only used for the TYPO3 TypoScript Template module, which should not be used in Extensions
+ * @extensionScannerIgnoreFile
  */
 class ExtendedTemplateService extends TemplateService
 {

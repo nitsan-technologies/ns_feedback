@@ -2,65 +2,101 @@
 	<span class="heading"><f:translate key="userquickfeedback" /></span>
 	<hr style="border:3px solid #f1f1f1">
 	<div class="row">
-		<div class="col-sm-12">
-			<div class="ns-feedback-progress-block">
-				<div class="side">
-					<div><f:translate key="yes" /></div>
-				</div>
-				<div class="middle">
-					<div class="bar-container">
-						<div class="bar-yes" data-count="{feedbacks.0.feedbackYesCount}"></div>
+		<f:if condition="{quickbuttonsYes}==1">
+			<div class="col-sm-12">
+				<div class="ns-feedback-progress-block">
+					<div class="side">
+						<div><f:translate key="yes" /></div>
+					</div>
+					<div class="middle">
+						<div class="bar-container">
+							<div class="bar-yes" data-count="{feedbacks.0.feedbackYesCount}"></div>
+						</div>
+					</div>
+					<div class="side right">
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackYesCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
-				<div class="side right">
-					<div>{feedbacks.0.feedbackYesCount}</div>
-				</div>
 			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="ns-feedback-progress-block">
-				<div class="side">
-					<div><f:translate key="no" /></div>
-				</div>
-				<div class="middle">
-					<div class="bar-container">
-						<div class="bar-no" data-count="{feedbacks.0.feedbackNoCount}"></div>
+		</f:if>
+		<f:if condition="{quickbuttonsNo}==1">
+			<div class="col-sm-12">
+				<div class="ns-feedback-progress-block">
+					<div class="side">
+						<div><f:translate key="no" /></div>
+					</div>
+					<div class="middle">
+						<div class="bar-container">
+							<div class="bar-no" data-count="{feedbacks.0.feedbackNoCount}"></div>
+						</div>
+					</div>
+					<div class="side right">
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackNoCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
-				<div class="side right">
-					<div>{feedbacks.0.feedbackNoCount}</div>
-				</div>
 			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="ns-feedback-progress-block">
-				<div class="side">
-					<div><f:translate key="yesbut" /></div>
-				</div>
-				<div class="middle">
-					<div class="bar-container">
-						<div class="bar-yesbut" data-count="{feedbacks.0.feedbackYesButCount}"></div>
+		</f:if>
+		<f:if condition="{quickbuttonsYesBut}==1">
+			<div class="col-sm-12">
+				<div class="ns-feedback-progress-block">
+					<div class="side">
+						<div><f:translate key="yesbut" /></div>
+					</div>
+					<div class="middle">
+						<div class="bar-container">
+							<div class="bar-yesbut" data-count="{feedbacks.0.feedbackYesButCount}"></div>
+						</div>
+					</div>
+					<div class="side right">
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackYesButCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
-				<div class="side right">
-					<div>{feedbacks.0.feedbackYesButCount}</div>
-				</div>
 			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="ns-feedback-progress-block">
-				<div class="side">
-					<div><f:translate key="nobut" /></div>
-				</div>
-				<div class="middle">
-					<div class="bar-container">
-						<div class="bar-nobut" data-count="{feedbacks.0.feedbackNoButCount}"></div>
+		</f:if>
+		<f:if condition="{quickbuttonsNoBut}==1">
+			<div class="col-sm-12">
+				<div class="ns-feedback-progress-block">
+					<div class="side">
+						<div><f:translate key="nobut" /></div>
+					</div>
+					<div class="middle">
+						<div class="bar-container">
+							<div class="bar-nobut" data-count="{feedbacks.0.feedbackNoButCount}"></div>
+						</div>
+					</div>
+					<div class="side right">
+						<f:if condition="{feedbacks}">
+							<f:then>
+								<div>{feedbacks.0.feedbackNoButCount}</div>
+							</f:then>
+							<f:else>
+								<div>0</div>
+							</f:else>
+						</f:if>
 					</div>
 				</div>
-				<div class="side right">
-					<div>{feedbacks.0.feedbackNoButCount}</div>
-				</div>
 			</div>
-		</div>
+		</f:if>
 	</div>
 </div>

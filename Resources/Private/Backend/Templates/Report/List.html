@@ -24,25 +24,13 @@
 							<f:for each="{reports}" as="report">
 									<tr>
 										<td>
-											<f:if condition="{report.recordId}">
-												<f:then><f:translate key="type.news" /></f:then>
-												<f:else>
-													<f:switch expression="{report.pageType}">
-														<f:case value="137"><f:translate key="type.blog" /></f:case>
-														<f:defaultCase><f:translate key="type.page" /></f:defaultCase>
-													</f:switch>
-												</f:else>
-											</f:if>
+											<f:switch expression="{report.pageType}">
+												<f:case value="137"><f:translate key="type.blog" /></f:case>
+												<f:defaultCase><f:translate key="type.page" /></f:defaultCase>
+											</f:switch>
 										</td>
 										<td>
-											<f:if condition="{report.recordId}">
-												<f:then>
-													{newsitems.{report.uid}.title}
-												</f:then>
-												<f:else>
-													{report.pageTitle}
-												</f:else>
-											</f:if>
+											{report.pageTitle}
 										</td>
 										<td>{totalfeedback.{report.uid}.quicktotal}</td>
 										<td>

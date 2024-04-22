@@ -2,15 +2,20 @@
 <f:layout name="Global" />
 <f:section name="content">
 	<div class="container">
+		
 		<div class="ns-alert-wrap">
 			<div class="ns-alert-box">
 				<div class="ns-alert-close"><i class="fa fa-times"></i></div>
-				<div class="ns-alert-header">
-					<h3><f:translate key="popup.thanks" /></h3>
-				</div>
-				<div class="ns-alert-content">
-					<p><f:translate key="popup.ccmsg" /></p>
-				</div>
+				<f:if condition="{settings.thankyoutitle}">
+					<div class="ns-alert-header">
+						<h3>{settings.thankyoutitle}</h3>
+					</div>
+				</f:if>
+				<f:if condition="{settings.thankyoumsg}">
+					<div class="ns-alert-content">
+						<p>{settings.thankyoumsg -> f:format.raw()}</p>
+					</div>
+				</f:if>
 			</div>
 		</div>
 		<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">

@@ -23,6 +23,8 @@ plugin.tx_nsfeedback_feedback {
 	    buttonstyle = {$plugin.tx_nsfeedback_feedback.design.buttonstyle}
 	    buttonbg = {$plugin.tx_nsfeedback_feedback.design.buttonbg}
 	    buttoncolor= {$plugin.tx_nsfeedback_feedback.design.btntextcolor}
+        thankyoutitle={$plugin.tx_nsfeedback_feedback.thankyoutitle}
+        thankyoumsg={$plugin.tx_nsfeedback_feedback.thankyoumsg}
     }
 }
 
@@ -60,11 +62,6 @@ lib.newact {
 [{$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage} == 1]
 	page.785456789985 < lib.newact
 [global]
-//[globalVar = LIT:1 = {$plugin.tx_nsfeedback_feedback.appearanceSettings.appearance.allPage}]
-//	page.785456789985 < lib.newact
-//[global]
-# set type for load month using ajax
-
 
 # set type for load month using ajax
 quickFeedbackAction = PAGE

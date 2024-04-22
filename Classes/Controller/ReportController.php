@@ -2,14 +2,13 @@
 
 namespace NITSAN\NsFeedback\Controller;
 
-use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
-use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
+use NITSAN\NsFeedback\Domain\Model\Report;
 use NITSAN\NsFeedback\NsTemplate\ExtendedTemplateService;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateConstantEditorModuleFunctionController;
 use NITSAN\NsFeedback\NsTemplate\TypoScriptTemplateModuleController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Annotation\Inject as inject;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /***
  *
@@ -26,44 +25,32 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  */
 class ReportController extends ActionController
 {
-    /**
-     * reportRepository
-     *
-     * @var ReportRepository
-     * @inject
-     */
-    protected $reportRepository = null;
 
     /**
-     * feedbacksRepository
-     *
-     * @var FeedbacksRepository
-     * @inject
+     * @var $reportRepository
      */
-    protected $feedbacksRepository = null;
-
+    protected $reportRepository;
     /**
-     *
+     * @var $feedbacksRepository
      */
-    protected $newsRepository;
+    protected $feedbacksRepository;
 
     protected $templateService;
     protected $constantObj;
     protected $sidebarData;
     protected $dashboardSupportData;
-    protected $generalFooterData;
     protected $constants;
     protected $contentObject = null;
     protected $pid = null;
-
     protected $pObj;
+
     /*
      * Inject reportRepository
      *
      * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
      * @return void
      */
-    public function injectReportRepository(ReportRepository $reportRepository)
+    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository): void
     {
         $this->reportRepository = $reportRepository;
     }
@@ -74,7 +61,7 @@ class ReportController extends ActionController
     * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
     * @return void
     */
-    public function injectFeedbacksRepository(FeedbacksRepository $feedbacksRepository)
+    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository): void
     {
         $this->feedbacksRepository = $feedbacksRepository;
     }
@@ -84,9 +71,9 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function initializeObject()
+    public function initializeObject(): void
     {
-        $this->contentObject = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
+        $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
         $this->templateService = GeneralUtility::makeInstance(ExtendedTemplateService::class);
         $this->constantObj = GeneralUtility::makeInstance(TypoScriptTemplateConstantEditorModuleFunctionController::class);
     }
@@ -96,18 +83,17 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         parent::initializeAction();
-
         //GET and SET pid for the
         $this->pid = (GeneralUtility::_GP('id') ? GeneralUtility::_GP('id') : '0');
         $querySettings = $this->reportRepository->createQuery()->getQuerySettings();
         $querySettings->setStoragePageIds([$this->pid]);
         $this->reportRepository->setDefaultQuerySettings($querySettings);
-
         //GET CONSTANTs
         $this->constantObj->init($this->pObj);
+        //@extensionScannerIgnoreLine
         $this->constants = $this->constantObj->main();
     }
 
@@ -116,7 +102,7 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function appearanceSettingsAction()
+    public function appearanceSettingsAction(): void
     {
         $assign = [
             'action' => 'appearanceSettings',
@@ -130,7 +116,7 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function commonSettingsAction()
+    public function commonSettingsAction(): void
     {
         $assign = [
             'action' => 'commonSettings',
@@ -144,11 +130,10 @@ class ReportController extends ActionController
      *
      * @return void
      */
-    public function dashboardAction()
+    public function dashboardAction(): void
     {
         $this->reportRepository->setDefaultOrderings(['feedbacks.uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
         $reports = $this->reportRepository->findAllByLanguage();
-
         //set default query builder for mm table
         $querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
         $querySettings->setRespectStoragePage(true);
@@ -156,22 +141,16 @@ class ReportController extends ActionController
         $querySettings->setStoragePageIds([$pagid]);
         $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
         $total = $this->feedbacksRepository->countAllByLanguage();
-
         $yesCount = 0;
         $noCount = 0;
         $yesbutCount = 0;
         $nobutCount = 0;
-
         foreach ($reports as  $report) {
             $yesCount += $report->getFeedbackYesCount();
             $noCount += $report->getFeedbackNoCount();
             $yesbutCount += $report->getFeedbackYesButCount();
             $nobutCount += $report->getFeedbackNoButCount();
         }
-
-        $totalratings = '';
-        $report = '';
-
         $assign = [
             'action' => 'dashboard',
             'pid' => $this->pid,
@@ -182,8 +161,8 @@ class ReportController extends ActionController
             'totalyesbutcount' => $yesbutCount,
             'totalnobutcount' => $nobutCount,
             'total' => $total,
-            'totalrating' => $totalratings,
-            'report' => $report
+            'totalrating' => '',
+            'report' => ''
         ];
         $this->view->assignMultiple($assign);
     }
@@ -191,10 +170,10 @@ class ReportController extends ActionController
     /**
      * action show
      *
-     * @param \NITSAN\NsFeedback\Domain\Model\Report $report
+     * @param Report $report
      * @return void
      */
-    public function showAction(\NITSAN\NsFeedback\Domain\Model\Report $report)
+    public function showAction(Report $report): void
     {
         $this->view->assign('report', $report);
     }
@@ -207,7 +186,6 @@ class ReportController extends ActionController
     public function listAction()
     {
         $reports = $this->reportRepository->findAllByLanguage();
-
         foreach ($reports as  $report) {
             //quick feedback count
             $yesCount = $report->getFeedbackYesCount();
@@ -215,23 +193,13 @@ class ReportController extends ActionController
             $yesButCount = $report->getFeedbackYesButCount();
             $noButCount = $report->getFeedbackNoButCount();
             $total = $yesCount + $noCount + $yesButCount + $noButCount;
-
             $totalfeed[$report->getUid()]['quicktotal'] = $total;
-
-            //Fetching the news record if available
-            if ($report->getRecordId()) {
-                $this->newsRepository = $this->objectManager->get('GeorgRinger\News\Domain\Repository\NewsRepository');
-                $newsData[$report->getUid()] = $this->newsRepository->findByUid($report->getRecordId());
-            }
         }
-        $totalfeed = isset($totalfeed) ? $totalfeed : '';
-        $reports = isset($reports) ? $reports : '';
-        $newsData = isset($newsData) ? $newsData : '';
-
+        $totalfeed = $totalfeed ?? '';
+        $reports = $reports ?? '';
         $assign = [
             'totalfeedback' => $totalfeed,
             'reports' => $reports,
-            'newsitems' => $newsData,
             'action' => 'list',
         ];
         $this->view->assignMultiple($assign);
@@ -241,11 +209,11 @@ class ReportController extends ActionController
     /**
      * action saveConstant
      */
-    public function saveConstantAction()
+    public function saveConstantAction(): bool
     {
+        //@extensionScannerIgnoreLine
         $this->constantObj->main();
         $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action'] = isset($_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action']) ? $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action'] : '';
-        $returnAction = $_REQUEST['tx_nsfaq_nitsan_nsfaqfaqbackend']['__referrer']['@action']; //get action name
         return false;
     }
 }

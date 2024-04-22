@@ -4,44 +4,34 @@ namespace NITSAN\NsFeedback\Controller;
 
 use NITSAN\NsFeedback\Domain\Model\Feedbacks;
 use NITSAN\NsFeedback\Domain\Model\Report;
-use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
-use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
-use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Annotation\Inject as inject;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class FeedbackController extends ActionController
 {
-    /**
-     * feedbacksRepository
-     *
-     * @var FeedbacksRepository
-     * @inject
-     */
-    protected $feedbacksRepository = null;
 
     /**
-     * reportRepository
-     *
-     * @var ReportRepository
-     * @inject
+     * @var $feedbacksRepository
      */
-    protected $reportRepository = null;
-
+    protected $feedbacksRepository;
+    /**
+     * @var $reportRepository
+     */
+    protected $reportRepository;
     /*
      * sys_language_uid
      * @int
+     * @extensionScannerIgnoreLine
      */
     protected $sys_language_uid = null;
 
     /**
      * Inject reportRepository
      *
-     * @param ReportRepository $reportRepository
+     * @param \NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository
      * @return void
      */
-    public function injectReportRepository(ReportRepository $reportRepository)
+    public function injectReportRepository(\NITSAN\NsFeedback\Domain\Repository\ReportRepository $reportRepository)
     {
         $this->reportRepository = $reportRepository;
     }
@@ -49,10 +39,10 @@ class FeedbackController extends ActionController
     /**
     * Inject feedbacksRepository
     *
-    * @param FeedbacksRepository $feedbacksRepository
+    * @param \NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository
     * @return void
     */
-    public function injectFeedbacksRepository(FeedbacksRepository $feedbacksRepository)
+    public function injectFeedbacksRepository(\NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository $feedbacksRepository)
     {
         $this->feedbacksRepository = $feedbacksRepository;
     }
@@ -83,109 +73,73 @@ class FeedbackController extends ActionController
     {
         $this->view->assign('report', $report);
     }
+    /**
+     * action new
+     *
+     * @return void
+     */
+    public function newAction(): void
+    {
+        $assign = $this->getFeedbackPageData();
+        $this->view->assignMultiple($assign);
+    }
 
     /**
      * action new
      *
      * @return void
      */
-    public function newAction()
+    public function defaultAction(): void
     {
-        $this->reportRepository->getFromAll();
-
-        $assign = [];
-        $data = $GLOBALS['TSFE']->page;
-
-        //Fetch Content data
-        $contentData = $this->configurationManager->getContentObject();
-        $cdata = $contentData->data;
-
-        $filterData['pId'] = $data['uid'];
-        $filterData['cid'] = $cdata['uid'];
-        $filterData['userIp'] = $_SERVER['REMOTE_ADDR'];
-        $filterData['feedbackType'] = 3;
-        $newsParams = GeneralUtility::_GP('tx_news_pi1');
-
-        $newsParams['news'] = isset($newsParams['news']) ? $newsParams['news'] : '';
-        if ($newsParams['news'] > 0) {
-            $newsId = $newsParams['news'];
-            $filterData['newsId'] = $newsId;
-            $assign['newsId'] = $newsId;
-        }
-
-        //Array for the buttons for the quick feedback form
-        if ($this->settings['quickbuttons']) {
-            $btns = explode(',', $this->settings['quickbuttons']);
-            $assign['quickbuttons'] = $btns;
-        }
-        /*check records exist or not*/
-        $Existrecord = $this->reportRepository->checkExistRecord($filterData);
-        $pageRender = GeneralUtility::makeInstance(PageRenderer::class);
-        $js = '';
-
-        if ($this->settings['quickenable']) {
-            unset($filterData['userIp']);
-            unset($filterData['cid']);
-            $getFeedbacks = $this->reportRepository->checkExistRecord($filterData);
-            $assign['feedbacks'] = $getFeedbacks;
-        }
-        if ($Existrecord) {
-            $assign['exist'] = $Existrecord;
-        }
-        $assign['cData'] = $cdata;
+        $assign = $this->getFeedbackPageData();
         $this->view->assignMultiple($assign);
     }
 
     /**
-    * action new
-    *
-    * @return void
-    */
-    public function defaultAction()
+     * @return array
+     */
+    public function getFeedbackPageData(): array
     {
         $this->reportRepository->getFromAll();
-
         $assign = [];
         $data = $GLOBALS['TSFE']->page;
-
         //Fetch Content data
+        // @extensionScannerIgnoreLine
         $contentData = $this->configurationManager->getContentObject();
         $cdata = $contentData->data;
-
         $filterData['pId'] = $data['uid'];
         $filterData['cid'] = $cdata['uid'];
         $filterData['userIp'] = $_SERVER['REMOTE_ADDR'];
-        $filterData['feedbackType'] = 3;
-        $newsParams = GeneralUtility::_GP('tx_news_pi1');
-
-        $newsParams['news'] = isset($newsParams['news']) ? $newsParams['news'] : '';
-        if ($newsParams['news'] > 0) {
-            $newsId = $newsParams['news'];
-            $filterData['newsId'] = $newsId;
-            $assign['newsId'] = $newsId;
-        }
-
         //Array for the buttons for the quick feedback form
         if ($this->settings['quickbuttons']) {
             $btns = explode(',', $this->settings['quickbuttons']);
             $assign['quickbuttons'] = $btns;
+            if(in_array(1, $btns)) {
+                $assign['quickbuttonsYes'] = 1;
+            }
+            if(in_array(2, $btns)) {
+                $assign['quickbuttonsNo'] = 1;
+            }
+            if(in_array(3, $btns)) {
+                $assign['quickbuttonsYesBut'] = 1;
+            }
+            if(in_array(4, $btns)) {
+                $assign['quickbuttonsNoBut'] = 1;
+            }
         }
         /*check records exist or not*/
-        $Existrecord = $this->reportRepository->checkExistRecord($filterData);
-        $pageRender = GeneralUtility::makeInstance(PageRenderer::class);
-        $js = '';
-
+        $existrecord = $this->reportRepository->checkExistRecord($filterData);
         if ($this->settings['quickenable']) {
             unset($filterData['userIp']);
             unset($filterData['cid']);
             $getFeedbacks = $this->reportRepository->checkExistRecord($filterData);
             $assign['feedbacks'] = $getFeedbacks;
         }
-        if ($Existrecord) {
-            $assign['exist'] = $Existrecord;
+        if ($existrecord) {
+            $assign['exist'] = $existrecord;
         }
         $assign['cData'] = $cdata;
-        $this->view->assignMultiple($assign);
+        return $assign;
     }
 
     /**
@@ -194,85 +148,48 @@ class FeedbackController extends ActionController
      * @param array $result
      * @return string
      */
-    public function quickFeedbackAction($result = null)
+    public function quickFeedbackAction(array $result = []): string
     {
         $this->reportRepository->getFromAll();
         $report = new Report();
-        $feedbacks = new Feedbacks();
         $data = $GLOBALS['TSFE']->page;
-        if ($result['newsId'] > 0) {
-            $checkExistRecord = $this->reportRepository->findByRecordId($result['newsId']);
-        } else {
-            $checkExistRecord = $this->reportRepository->findByPageId($data['uid']);
+        $feedbacks = new Feedbacks();
+        $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
+        $feedbacks->setQuickfeedbacktype($result['qkbutton']);
+        $feedbacks->setSysLangId($this->sys_language_uid);
+        if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
+            $feedbacks->setComment($result['commentText']);
         }
-
-        if ($checkExistRecord[0]) {
+        $feedbacks->setPId($data['uid']);
+        $feedbacks->setCId($result['cid']);
+        $checkExistRecord = $this->reportRepository->findByPageId($data['uid']);
+        $checkExistFeedbackRecord = $this->feedbacksRepository->findByUserIp($_SERVER['REMOTE_ADDR']);
+        if ($checkExistRecord[0] && empty($checkExistFeedbackRecord[0])) {
             $report = $checkExistRecord[0];
-            $checkExistFeedbackRecord = $this->feedbacksRepository->findByUserIp($_SERVER['REMOTE_ADDR']);
+            switch ($result['buttonfor']) {
+                case '1':
+                    $getexistCount = ($checkExistRecord[0]->getFeedbackYesCount()) + 1;
+                    $report->setFeedbackYesCount($getexistCount);
+                    break;
 
-            if (empty($checkExistFeedbackRecord[0])) {
-                $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
-                $feedbacks->setFeedbackType($result['feedbackType']);
-                $feedbacks->setQuickfeedbacktype($result['qkbutton']);
-                $feedbacks->setSysLangId($this->sys_language_uid);
+                case '2':
+                    $getexistCount = ($checkExistRecord[0]->getFeedbackNoCount()) + 1;
+                    $report->setFeedbackNoCount($getexistCount);
+                    break;
 
-                if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
-                    $feedbacks->setComment($result['commentText']);
-                }
+                case '3':
+                    $getexistCount = ($checkExistRecord[0]->getFeedbackYesButCount()) + 1;
+                    $report->setFeedbackYesButCount($getexistCount);
+                    break;
 
-                $feedbacks->setPId($data['uid']);
-                $feedbacks->setCId($result['cid']);
-                $report->addFeedback($feedbacks);
-                if ($result['newsId'] > 0) {
-                    $report->setRecordId($result['newsId']);
-                }
-
-                switch ($result['buttonfor']) {
-                    case '1':
-                        $getexistCount = $checkExistRecord[0]->getFeedbackYesCount();
-                        $getexistCount = $getexistCount + 1;
-                        $report->setFeedbackYesCount($getexistCount);
-                        break;
-
-                    case '2':
-                        $getexistCount = $checkExistRecord[0]->getFeedbackNoCount();
-                        $getexistCount = $getexistCount + 1;
-                        $report->setFeedbackNoCount($getexistCount);
-                        break;
-
-                    case '3':
-                        $getexistCount = $checkExistRecord[0]->getFeedbackYesButCount();
-                        $getexistCount = $getexistCount + 1;
-                        $report->setFeedbackYesButCount($getexistCount);
-                        break;
-
-                    case '4':
-                        $getexistCount = $checkExistRecord[0]->getFeedbackNoButCount();
-                        $getexistCount = $getexistCount + 1;
-                        $report->setFeedbackNoButCount($getexistCount);
-                        break;
-                }
-
-                $report->setPageId($data['uid']);
-                $report->setPId($data['uid']);
-                $report->setPageType($data['doktype']);
-                $report->setPageTitle($data['title']);
-                $report->setSysLangId($this->sys_language_uid);
-                $this->reportRepository->update($report);
+                case '4':
+                    $getexistCount = ($checkExistRecord[0]->getFeedbackNoButCount()) + 1;
+                    $report->setFeedbackNoButCount($getexistCount);
+                    break;
+                default:
+                    break;
             }
         } else {
-            $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
-            $feedbacks->setFeedbackType($result['feedbackType']);
-            $feedbacks->setQuickfeedbacktype($result['qkbutton']);
-            $feedbacks->setSysLangId($this->sys_language_uid);
-
-            if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
-                $feedbacks->setComment($result['commentText']);
-            }
-            $feedbacks->setPId($data['uid']);
-            $feedbacks->setCId($result['cid']);
-            $report->addFeedback($feedbacks);
-
             switch ($result['buttonfor']) {
                 case '1':
                     $report->setFeedbackYesCount(1);
@@ -289,17 +206,20 @@ class FeedbackController extends ActionController
                 case '4':
                     $report->setFeedbackNoButCount(1);
                     break;
+                default:
+                    break;
             }
+        }
+        $report->addFeedback($feedbacks);
+        $report->setPageType($data['doktype']);
+        $report->setPageId($data['uid']);
+        $report->setPId($data['uid']);
+        $report->setPageTitle($data['title']);
+        $report->setSysLangId($this->sys_language_uid);
+        if ($checkExistRecord[0] && empty($checkExistFeedbackRecord[0])) {
+            $this->reportRepository->update($report);
 
-            if ($result['newsId'] > 0) {
-                $report->setRecordId($result['newsId']);
-            }
-            $report->setPageType($data['doktype']);
-            $report->setPageId($data['uid']);
-            $report->setPId($data['uid']);
-
-            $report->setPageTitle($data['title']);
-            $report->setSysLangId($this->sys_language_uid);
+        } else {
             $this->reportRepository->add($report);
         }
         return 'OK';
