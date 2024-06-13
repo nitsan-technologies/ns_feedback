@@ -50,7 +50,7 @@ $(document).ready(function () {
             if (effect == 'toggle') {
                 $('.commenttxt').toggle();
             }
-            if (effect == 'slide') {
+            if (effect == 'slide' || effect=="Slide Up Down") {
                 $('.commenttxt').slideToggle();
             }
             if (effect == 'fade') {
