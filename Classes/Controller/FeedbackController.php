@@ -13,7 +13,7 @@ use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
-use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
 class FeedbackController extends ActionController
 {
@@ -116,9 +116,16 @@ class FeedbackController extends ActionController
         $feedbacks->setPId($data['uid']);
         $feedbacks->setCId($result['cid']);
         $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
-        $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR']]);
 
-        $report = $checkExistRecord[0];
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        $querySettings->setRespectStoragePage(false);
+        $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
+
+        $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR'],'pid' => $data['uid']]);
+        if ($checkExistRecord[0]) {
+            $report = $checkExistRecord[0];
+        }
+
         $report->setFeedbackYesCount(0);
         $report->setFeedbackNoCount(0);
         $report->setFeedbackYesButCount(0);
@@ -140,18 +147,26 @@ class FeedbackController extends ActionController
             default:
                 break;
         }
-
-        $report->addFeedback($feedbacks);
         $report->setPageId($data['uid']);
         $report->setPId($data['uid']);
         $report->setPageType($data['doktype']);
         $report->setPageTitle($data['title']);
         $report->setSysLangId($languageid);
-        if ($checkExistRecord[0] && empty($checkExistFeedbackRecord[0])) {
+        if($checkExistFeedbackRecord[0]){
+            $checkExistFeedbackRecord[0]->setQuickfeedbacktype($result['qkbutton']);
+            $checkExistFeedbackRecord[0]->setComment("");
+            if ($result['buttonfor'] == 3 || $result['buttonfor'] == 4) {
+                $checkExistFeedbackRecord[0]->setComment($result['commentText']);
+            }
+            $this->feedbacksRepository->update($checkExistFeedbackRecord[0]);
+        }
+        if ($checkExistRecord[0]) {
             $this->reportRepository->update($report);
         } else {
+            $report->addFeedback($feedbacks);
             $this->reportRepository->add($report);
         }
+
         return $this->jsonResponse(json_encode(['Status' => 'Success']));
     }
 }
