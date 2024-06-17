@@ -117,47 +117,30 @@ class FeedbackController extends ActionController
         $feedbacks->setCId($result['cid']);
         $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
         $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR']]);
-        if ($checkExistRecord[0] && empty($checkExistFeedbackRecord[0])) {
-            $report = $checkExistRecord[0];
-            switch ($result['buttonfor']) {
-                case '1':
-                    $getexistCount = ($checkExistRecord[0]->getFeedbackYesCount()) + 1;
-                    $report->setFeedbackYesCount($getexistCount);
-                    break;
-                case '2':
-                    $getexistCount = ($checkExistRecord[0]->getFeedbackNoCount()) + 1;
-                    $report->setFeedbackNoCount($getexistCount);
-                    break;
-                case '3':
-                    $getexistCount = ($checkExistRecord[0]->getFeedbackYesButCount()) + 1;
-                    $report->setFeedbackYesButCount($getexistCount);
-                    break;
-                case '4':
-                    $getexistCount = ($checkExistRecord[0]->getFeedbackNoButCount()) + 1;
-                    $report->setFeedbackNoButCount($getexistCount);
-                    break;
-                default:
-                    break;
-            }
 
-        } else {
-            switch ($result['buttonfor']) {
-                case '1':
-                    $report->setFeedbackYesCount(1);
-                    break;
-                case '2':
-                    $report->setFeedbackNoCount(1);
-                    break;
-                case '3':
-                    $report->setFeedbackYesButCount(1);
-                    break;
-                case '4':
-                    $report->setFeedbackNoButCount(1);
-                    break;
-                default:
-                    break;
-            }
+        $report = $checkExistRecord[0];
+        $report->setFeedbackYesCount(0);
+        $report->setFeedbackNoCount(0);
+        $report->setFeedbackYesButCount(0);
+        $report->setFeedbackNoButCount(0);
+
+        switch ($result['buttonfor']) {
+            case '1':
+                $report->setFeedbackYesCount(1);
+                break;
+            case '2':
+                $report->setFeedbackNoCount(1);
+                break;
+            case '3':
+                $report->setFeedbackYesButCount(1);
+                break;
+            case '4':
+                $report->setFeedbackNoButCount(1);
+                break;
+            default:
+                break;
         }
+
         $report->addFeedback($feedbacks);
         $report->setPageId($data['uid']);
         $report->setPId($data['uid']);
