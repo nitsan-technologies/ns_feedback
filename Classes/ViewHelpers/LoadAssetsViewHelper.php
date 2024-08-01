@@ -33,26 +33,37 @@ class LoadAssetsViewHelper extends AbstractViewHelper
      */
     public function loadResource($pageRender, $settings): void
     {
+        // Define default values if keys are not set
+        $buttonStyle = $settings['buttonstyle'] ?? 'default-style';
+        $buttonBg = $settings['buttonbg'] ?? '#ffffff';
+        $buttonColor = $settings['buttoncolor'] ?? '#000000';
+        $fontStyle = $settings['fontstyle'] ?? 'normal';
+        $fontColor = $settings['fontcolor'] ?? '#000000';
+    
+        // Create CSS string
         $css = '
-        .nsbtn.btn-' . $settings['buttonstyle'] . ' {
-            background-color:' . $settings['buttonbg'] . ';
-            color: ' . $settings['buttoncolor'] . ';
+        .nsbtn.btn-' . htmlspecialchars($buttonStyle) . ' {
+            background-color:' . htmlspecialchars($buttonBg) . ';
+            color: ' . htmlspecialchars($buttonColor) . ';
             box-shadow: none;
             cursor: pointer;
-            font-weight: ' . $settings['fontstyle'] . ';
+            font-weight: ' . htmlspecialchars($fontStyle) . ';
             min-width: 105px;
             padding-top: 8px;
             width: auto !important;
             outline: medium none;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            border:1px solid ' . $settings['buttonbg'] . '
+            border:1px solid ' . htmlspecialchars($buttonBg) . '
         }
         .send-msg span {
-            color: ' . $settings['fontcolor'] . ';
-            font-weight: ' . $settings['fontstyle'] . ';
+            color: ' . htmlspecialchars($fontColor) . ';
+            font-weight: ' . htmlspecialchars($fontStyle) . ';
         }
         ';
+    
+        // Add CSS inline block
         $pageRender->addCssInlineBlock('globalSettingsCSS', $css);
     }
+    
 }

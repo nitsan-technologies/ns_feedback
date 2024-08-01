@@ -14,6 +14,8 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Frontend\ContentObject\AbstractContentObject;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+
 
 class FeedbackController extends ActionController
 {
@@ -49,35 +51,38 @@ class FeedbackController extends ActionController
         // Request Data
         $this->reportRepository->getFromAll();
         $assign = [];
-
-        //Fetch Content data
-        // @extensionScannerIgnoreLine
-        $contentData = $this->configurationManager->getContentObject();
+    
+        // Fetch Content data
+        $contentData = $this->request->getAttribute('currentContentObject');
         $cdata = $contentData->data;
         $filterData = [
             'pId' => $GLOBALS['TSFE']->page['uid'],
             'cid' => $cdata['uid'],
             'userIp' => $_SERVER['REMOTE_ADDR'],
         ];
-
-        //Array for the buttons for the quick feedback form
+    
+        // Array for the buttons for the quick feedback form
         $btns = [];
-        if($this->settings['quickbuttonsYes'] == 1) {
+
+       
+        // Check settings and add buttons if the setting is enabled
+        if (($this->settings['quickbuttonsYes'] ?? 0) == 1) {
             $btns[] = 1;
         }
-        if($this->settings['quickbuttonsNo'] == 1) {
+        if (($this->settings['quickbuttonsNo'] ?? 0) == 1) {
             $btns[] = 2;
         }
-        if($this->settings['quickbuttonsYesBut'] == 1) {
+        if (($this->settings['quickbuttonsYesBut'] ?? 0) == 1) {
             $btns[] = 3;
         }
-        if($this->settings['quickbuttonsNoBut'] == 1) {
+        if (($this->settings['quickbuttonsNoBut'] ?? 0) == 1) {
             $btns[] = 4;
         }
         $assign['quickbuttons'] = $btns;
-        /*check records exist or not*/
+       
+        /* Check records exist or not */
         $existrecord = $this->reportRepository->checkExistRecord($filterData);
-        if ($this->settings['quickenable']) {
+        if ($this->settings['quickenable'] ?? 0) {
             unset($filterData['userIp']);
             unset($filterData['cid']);
             $getFeedbacks = $this->reportRepository->checkExistRecord($filterData);
@@ -87,7 +92,7 @@ class FeedbackController extends ActionController
             $assign['exist'] = $existrecord;
         }
         $assign['cData'] = $cdata;
-        $this->view->assignMultiple($assign);
+         $this->view->assignMultiple($assign);
         return $this->htmlResponse();
     }
 
@@ -102,6 +107,7 @@ class FeedbackController extends ActionController
      */
     public function quickFeedbackAction(array $result = null): ResponseInterface
     {
+    
         $languageid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
         $this->reportRepository->getFromAll();
         $report = new Report();

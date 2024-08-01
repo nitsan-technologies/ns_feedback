@@ -21,7 +21,7 @@ plugin.tx_nsfeedback_feedback {
 	    jQuery = 0
 
         #cat=Ns_Feedback_commonSettings/3000/02; type=boolean; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:restrictMultipleFeedback
-        restrictMultipleFeedback = 1
+        restrictMultipleFeedback = 0
     }
     design {
         #cat=Ns_Feedback_commonSettings/4000/02; type=options[Bold=bold,Normal=normal]; label = LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontstyle

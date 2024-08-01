@@ -1,7 +1,9 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 <f:section name="content">
+
 	<f:if condition="{quickbuttons}">
+
 		<f:then>
 			<div class="container">
 				<div class="ns-alert-wrap">
@@ -19,6 +21,7 @@
 						</f:if>
 					</div>
 				</div>
+		
 				<f:if condition="{exist} == '' || {settings.restrictMultipleFeedback} == '0' ">
 					<f:then>
 						<div class="send-msg" id="ns-c{cData.uid}">
