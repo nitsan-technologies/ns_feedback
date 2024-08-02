@@ -42,23 +42,23 @@ class LoadAssetsViewHelper extends AbstractViewHelper
     
         // Create CSS string
         $css = '
-        .nsbtn.btn-' . htmlspecialchars($buttonStyle) . ' {
-            background-color:' . htmlspecialchars($buttonBg) . ';
-            color: ' . htmlspecialchars($buttonColor) . ';
+        .nsbtn.btn-' . ($buttonStyle) . ' {
+            background-color:' . ($buttonBg) . ';
+            color: ' . ($buttonColor) . ';
             box-shadow: none;
             cursor: pointer;
-            font-weight: ' . htmlspecialchars($fontStyle) . ';
+            font-weight: ' . ($fontStyle) . ';
             min-width: 105px;
             padding-top: 8px;
             width: auto !important;
             outline: medium none;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            border:1px solid ' . htmlspecialchars($buttonBg) . '
+            border:1px solid ' . ($buttonBg) . '
         }
         .send-msg span {
-            color: ' . htmlspecialchars($fontColor) . ';
-            font-weight: ' . htmlspecialchars($fontStyle) . ';
+            color: ' . ($fontColor) . ';
+            font-weight: ' . ($fontStyle) . ';
         }
         ';
     

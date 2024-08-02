@@ -19,8 +19,3 @@ services:
       $astTraverser: '@TYPO3\CMS\Core\TypoScript\AST\Traverser\AstTraverser'
       $astBuilder: '@TYPO3\CMS\Core\TypoScript\AST\AstBuilderInterface'
       $losslessTokenizer: '@TYPO3\CMS\Core\TypoScript\Tokenizer\LosslessTokenizer'
-
-  NITSAN\NsFeedback\Controller\FeedbackController:
-    arguments:
-      $reportRepository: '@NITSAN\NsFeedback\Domain\Repository\ReportRepository'
-      $feedbacksRepository: '@NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository'
