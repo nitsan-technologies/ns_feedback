@@ -10,5 +10,5 @@ $extKey = 'ns_feedback';
 ExtensionManagementUtility::addStaticFile(
     $extKey,
     'Configuration/TypoScript',
-    '[NITSAN] Feedback'
+    'Feedback'
 );
