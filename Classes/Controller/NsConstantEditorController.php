@@ -4,13 +4,11 @@ namespace NITSAN\NsFeedback\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Http\RedirectResponse;
-use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\TypoScript\AST\AstBuilderInterface;
 use TYPO3\CMS\Core\TypoScript\AST\Node\RootNode;
 use TYPO3\CMS\Core\TypoScript\AST\Traverser\AstTraverser;
@@ -24,70 +22,22 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Tstemplate\Controller\AbstractTemplateModuleController;
+use NITSAN\NsFeedback\Controller\ReportController;
 
 class NsConstantEditorController extends AbstractTemplateModuleController
 {
-    /**
-     * @var ModuleTemplateFactory
-     */
-    protected ModuleTemplateFactory $moduleTemplateFactory;
-    /**
-     * @var SysTemplateRepository
-     */
-    private SysTemplateRepository $sysTemplateRepository;
-    /**
-     * @var SysTemplateTreeBuilder
-     */
-    private SysTemplateTreeBuilder $treeBuilder;
-    /**
-     * @var IncludeTreeTraverser
-     */
-    private IncludeTreeTraverser $treeTraverser;
-    /**
-     * @var AstTraverser
-     */
-    private AstTraverser $astTraverser;
-    /**
-     * @var AstBuilderInterface
-     */
-    private AstBuilderInterface $astBuilder;
-    /**
-     * @var LosslessTokenizer
-     */
-    private LosslessTokenizer $losslessTokenizer;
-
-    /**
-     * @param ModuleTemplateFactory $moduleTemplateFactory
-     * @param SysTemplateRepository $sysTemplateRepository
-     * @param SysTemplateTreeBuilder $treeBuilder
-     * @param IncludeTreeTraverser $treeTraverser
-     * @param AstTraverser $astTraverser
-     * @param AstBuilderInterface $astBuilder
-     * @param LosslessTokenizer $losslessTokenizer
-     */
     public function __construct(
-        ModuleTemplateFactory $moduleTemplateFactory,
-        SysTemplateRepository $sysTemplateRepository,
-        SysTemplateTreeBuilder $treeBuilder,
-        IncludeTreeTraverser $treeTraverser,
-        AstTraverser $astTraverser,
-        AstBuilderInterface $astBuilder,
-        LosslessTokenizer $losslessTokenizer,
+        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        private readonly SysTemplateRepository $sysTemplateRepository,
+        private readonly SysTemplateTreeBuilder $treeBuilder,
+        private readonly IncludeTreeTraverser $treeTraverser,
+        private readonly AstTraverser $astTraverser,
+        private readonly AstBuilderInterface $astBuilder,
+        private readonly LosslessTokenizer $losslessTokenizer,
+        private readonly ReportController $reportController
     ) {
-        $this->losslessTokenizer = $losslessTokenizer;
-        $this->astBuilder = $astBuilder;
-        $this->astTraverser = $astTraverser;
-        $this->treeTraverser = $treeTraverser;
-        $this->treeBuilder = $treeBuilder;
-        $this->sysTemplateRepository = $sysTemplateRepository;
-        $this->moduleTemplateFactory = $moduleTemplateFactory;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface
-     * @throws RouteNotFoundException
-     */
     public function handleRequest(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
@@ -108,32 +58,33 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         if (($parsedBody['_savedok'] ?? false) === '1') {
             return $this->saveAction($request);
         }
+
         $pageUid = (int)($queryParams['id'] ?? 0);
         $allTemplatesOnPage = $this->getAllTemplateRecordsOnPage($pageUid);
         if (empty($allTemplatesOnPage)) {
             return $this->noTemplateAction($request);
         }
+
         return $this->showAction($request);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface
-     * @throws RouteNotFoundException
-     */
     private function showAction(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
         $parsedBody = $request->getParsedBody();
         $languageService = $this->getLanguageService();
         $backendUser = $this->getBackendUser();
+
         $pageUid = (int)($queryParams['id'] ?? 0);
+
         $currentModule = $request->getAttribute('module');
         $currentModuleIdentifier = $currentModule->getIdentifier();
         $moduleData = $request->getAttribute('moduleData');
+
         if ($moduleData->cleanUp([])) {
             $backendUser->pushModuleData($currentModuleIdentifier, $moduleData->toArray());
         }
+
         $pageRecord = BackendUtility::readPageAccess($pageUid, '1=1') ?: [];
         if (empty($pageRecord)) {
             // Redirect to records overview if page could not be determined.
@@ -141,6 +92,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
             BackendUtility::setUpdateSignal('updatePageTree');
             return new RedirectResponse($this->uriBuilder->buildUriFromRoute('web_typoscript_recordsoverview'));
         }
+
         // Template selection handling for this page
         $allTemplatesOnPage = $this->getAllTemplateRecordsOnPage($pageUid);
         $selectedTemplateFromModuleData = (array)$moduleData->get('selectedTemplatePerPage');
@@ -161,6 +113,8 @@ class NsConstantEditorController extends AbstractTemplateModuleController
                 $currentTemplateConstants = $templateRow['constants'] ?? '';
             }
         }
+
+
         // Build the constant include tree
         $rootLine = GeneralUtility::makeInstance(RootlineUtility::class, $pageUid)->get();
         $sysTemplateRows = $this->sysTemplateRepository->getSysTemplateRowsByRootlineWithUidOverride($rootLine, $request, $selectedTemplateUid);
@@ -319,35 +273,14 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         }
         $rawTemplateConstantsArray = explode(LF, $rawTemplateConstants);
         $constantPositions = $this->calculateConstantPositions($rawTemplateConstantsArray);
+
         $parsedBody = $request->getParsedBody();
         $data = $parsedBody['data'] ?? null;
         $check = $parsedBody['check'] ?? [];
+
         $valuesHaveChanged = false;
-        $constantKey = [
-            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsYes',
-            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsNo',
-            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsYesBut',
-            'plugin.tx_nsfeedback_feedback.appearanceSettings.quickFeedbackSettings.quickbuttonsNoBut'
-        ];
         if (is_array($data)) {
-
             foreach ($data as $key => $value) {
-                if(in_array($key,$constantKey) &&
-                !$data[$constantKey[0]] &&
-                !$data[$constantKey[1]] &&
-                !$data[$constantKey[2]] &&
-                !$data[$constantKey[3]]){
-
-                    if($key != $constantKey[3]){
-                        $constantKey[$key] = 1;
-                    }
-
-                    $rawTemplateConstantsArray = $this->removeValueFromConstantsArray($rawTemplateConstantsArray, $constantPositions, $key);
-                    $valuesHaveChanged = true;
-                    continue;
-
-                }
-
                 if (!isset($constantDefinitions[$key])) {
                     // Ignore if there is no constant definition for this constant key
                     continue;
@@ -363,33 +296,61 @@ class NsConstantEditorController extends AbstractTemplateModuleController
                     continue;
                 }
                 $constantDefinition = $constantDefinitions[$key];
-
                 switch ($constantDefinition['type']) {
                     case 'int':
+                        $min = $constantDefinition['typeIntMin'] ?? PHP_INT_MIN;
+                        $max = $constantDefinition['typeIntMax'] ?? PHP_INT_MAX;
+                        $value = (string)MathUtility::forceIntegerInRange((int)$value, (int)$min, (int)$max);
+                        break;
                     case 'int+':
-                        $min = $constantDefinition['typeIntMin'] ?? ($constantDefinition['type'] === 'int+' ? 0 : PHP_INT_MIN);
+                        $min = $constantDefinition['typeIntMin'] ?? 0;
                         $max = $constantDefinition['typeIntMax'] ?? PHP_INT_MAX;
                         $value = (string)MathUtility::forceIntegerInRange((int)$value, (int)$min, (int)$max);
                         break;
                     case 'color':
+                        $col = [];
                         if ($value) {
-                            $value = '#' . strtoupper(substr(preg_replace('/[^A-Fa-f0-9]*/', '', $value) ?? '', 0, 6));
+                            $value = preg_replace('/[^A-Fa-f0-9]*/', '', $value) ?? '';
+                            $useFulHex = strlen($value) > 3;
+                            $col[] = (int)hexdec($value[0]);
+                            $col[] = (int)hexdec($value[1]);
+                            $col[] = (int)hexdec($value[2]);
+                            if ($useFulHex) {
+                                $col[] = (int)hexdec($value[3]);
+                                $col[] = (int)hexdec($value[4]);
+                                $col[] = (int)hexdec($value[5]);
+                            }
+                            $value = substr('0' . dechex($col[0]), -1) . substr('0' . dechex($col[1]), -1) . substr('0' . dechex($col[2]), -1);
+                            if ($useFulHex) {
+                                $value .= substr('0' . dechex($col[3]), -1) . substr('0' . dechex($col[4]), -1) . substr('0' . dechex($col[5]), -1);
+                            }
+                            $value = '#' . strtoupper($value);
                         }
                         break;
                     case 'comment':
-                        $value = $value ? '' : '#';
+                        if ($value) {
+                            $value = '';
+                        } else {
+                            $value = '#';
+                        }
                         break;
                     case 'wrap':
-                        $value = (($data[$key]['left'] ?? false) || $data[$key]['right']) ? ($data[$key]['left'] . '|' . $data[$key]['right']) : '';
+                        if (($data[$key]['left'] ?? false) || $data[$key]['right']) {
+                            $value = $data[$key]['left'] . '|' . $data[$key]['right'];
+                        } else {
+                            $value = '';
+                        }
                         break;
                     case 'offset':
-                        $value = trim(rtrim(implode(',', $value), ','), ',');
+                        $value = rtrim(implode(',', $value), ',');
+                        if (trim($value, ',') === '') {
+                            $value = '';
+                        }
                         break;
                     case 'boolean':
-
-                        $value = $value ? ($constantDefinition['trueValue'] ?? '1') : '0';
-                        break;
-                    default:
+                        if ($value) {
+                            $value = ($constantDefinition['trueValue'] ?? false) ?: '1';
+                        }
                         break;
                 }
                 if ((string)($constantDefinition['value'] ?? '') !== (string)$value) {
@@ -483,7 +444,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
             ->setValue('1')
             ->setForm('TypoScriptConstantEditorController')
             ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:rm.saveDoc'))
-            ->setIcon($this->iconFactory->getIcon('actions-document-save', Icon::SIZE_SMALL))
+            ->setIcon($this->iconFactory->getIcon('actions-document-save','small'))
             ->setShowLabelText(true);
         $buttonBar->addButton($saveButton);
     }

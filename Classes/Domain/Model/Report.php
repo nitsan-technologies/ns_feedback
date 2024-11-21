@@ -2,7 +2,6 @@
 
 namespace NITSAN\NsFeedback\Domain\Model;
 
-use DateTime;
 use NITSAN\NsFeedback\Domain\Model\Feedbacks;
 use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -10,7 +9,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /***
  *
- * This file is part of the "[NITSAN] feedback" Extension for TYPO3 CMS.
+ * This file is part of the "feedback" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
@@ -24,16 +23,16 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Report extends AbstractEntity
 {
     /**
-     * @var DateTime|null
+     * @var \DateTime
      */
-    protected ?DateTime $crdate = null;
+    protected $crdate = null;
 
     /**
      * Returns the creation date
      *
-     * @return DateTime|null $crdate
+     * @return \DateTime $crdate
      */
-    public function getCrdate(): ?DateTime
+    public function getCrdate()
     {
         return $this->crdate;
     }
@@ -43,71 +42,71 @@ class Report extends AbstractEntity
      *
      * @var int
      */
-    protected int $pageId = 0;
+    protected $pageId = 0;
 
     /**
      * recordId
      *
      * @var int
      */
-    protected int $recordId = 0;
+    protected $recordId = 0;
 
     /**
      * pageType
      *
      * @var int
      */
-    protected int $pageType = 0;
+    protected $pageType = 0;
 
     /**
      * pageTitle
      *
      * @var string
      */
-    protected string $pageTitle = '';
+    protected $pageTitle = '';
 
     /**
      * feedbackYesCount
      *
      * @var int
      */
-    protected int $feedbackYesCount = 0;
+    protected $feedbackYesCount = 0;
 
     /**
      * feedbackNoCount
      *
      * @var int
      */
-    protected int $feedbackNoCount = 0;
+    protected $feedbackNoCount = 0;
 
     /**
      * feedbackYesButCount
      *
      * @var int
      */
-    protected int $feedbackYesButCount = 0;
+    protected $feedbackYesButCount = 0;
 
     /**
      * feedbackNoButCount
      *
      * @var int
      */
-    protected int $feedbackNoButCount = 0;
+    protected $feedbackNoButCount = 0;
 
     /**
      * sysLangId
      *
      * @var int
      */
-    protected int $sysLangId = 0;
+    protected $sysLangId = 0;
 
     /**
      * feedbacks
      *
-     * @var ObjectStorage<Feedbacks>|null
+     * @var ObjectStorage<Feedbacks>
      * @Cascade("remove")
      */
-    protected ?ObjectStorage $feedbacks = null;
+    protected $feedbacks = null;
 
     /**
      * __construct
@@ -127,7 +126,7 @@ class Report extends AbstractEntity
      *
      * @return void
      */
-    protected function initStorageObjects(): void
+    protected function initStorageObjects()
     {
         $this->feedbacks = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
@@ -137,7 +136,7 @@ class Report extends AbstractEntity
      *
      * @return int $pageId
      */
-    public function getPageId(): int
+    public function getPageId()
     {
         return $this->pageId;
     }
@@ -148,7 +147,7 @@ class Report extends AbstractEntity
      * @param int $pageId
      * @return void
      */
-    public function setPageId(int $pageId): void
+    public function setPageId($pageId)
     {
         $this->pageId = $pageId;
     }
@@ -158,7 +157,7 @@ class Report extends AbstractEntity
      *
      * @return int $recordId
      */
-    public function getRecordId(): int
+    public function getRecordId()
     {
         return $this->recordId;
     }
@@ -169,7 +168,7 @@ class Report extends AbstractEntity
      * @param int $recordId
      * @return void
      */
-    public function setRecordId(int $recordId): void
+    public function setRecordId($recordId)
     {
         $this->recordId = $recordId;
     }
@@ -179,7 +178,7 @@ class Report extends AbstractEntity
      *
      * @return int $pageType
      */
-    public function getPageType(): int
+    public function getPageType()
     {
         return $this->pageType;
     }
@@ -190,7 +189,7 @@ class Report extends AbstractEntity
      * @param int $pageType
      * @return void
      */
-    public function setPageType(int $pageType): void
+    public function setPageType($pageType)
     {
         $this->pageType = $pageType;
     }
@@ -200,7 +199,7 @@ class Report extends AbstractEntity
      *
      * @return string $pageTitle
      */
-    public function getPageTitle(): string
+    public function getPageTitle()
     {
         return $this->pageTitle;
     }
@@ -211,7 +210,7 @@ class Report extends AbstractEntity
      * @param string $pageTitle
      * @return void
      */
-    public function setPageTitle(string $pageTitle): void
+    public function setPageTitle($pageTitle)
     {
         $this->pageTitle = $pageTitle;
     }
@@ -221,7 +220,7 @@ class Report extends AbstractEntity
      *
      * @return int $feedbackYesCount
      */
-    public function getFeedbackYesCount(): int
+    public function getFeedbackYesCount()
     {
         return $this->feedbackYesCount;
     }
@@ -232,7 +231,7 @@ class Report extends AbstractEntity
      * @param int $feedbackYesCount
      * @return void
      */
-    public function setFeedbackYesCount(int $feedbackYesCount): void
+    public function setFeedbackYesCount($feedbackYesCount)
     {
         $this->feedbackYesCount = $feedbackYesCount;
     }
@@ -242,7 +241,7 @@ class Report extends AbstractEntity
      *
      * @return int $feedbackNoCount
      */
-    public function getFeedbackNoCount(): int
+    public function getFeedbackNoCount()
     {
         return $this->feedbackNoCount;
     }
@@ -253,7 +252,7 @@ class Report extends AbstractEntity
      * @param int $feedbackNoCount
      * @return void
      */
-    public function setFeedbackNoCount(int $feedbackNoCount): void
+    public function setFeedbackNoCount($feedbackNoCount)
     {
         $this->feedbackNoCount = $feedbackNoCount;
     }
@@ -263,7 +262,7 @@ class Report extends AbstractEntity
      *
      * @return int $feedbackYesButCount
      */
-    public function getFeedbackYesButCount(): int
+    public function getFeedbackYesButCount()
     {
         return $this->feedbackYesButCount;
     }
@@ -274,7 +273,7 @@ class Report extends AbstractEntity
      * @param int $feedbackYesButCount
      * @return void
      */
-    public function setFeedbackYesButCount(int $feedbackYesButCount): void
+    public function setFeedbackYesButCount($feedbackYesButCount)
     {
         $this->feedbackYesButCount = $feedbackYesButCount;
     }
@@ -284,7 +283,7 @@ class Report extends AbstractEntity
      *
      * @return int $feedbackNoButCount
      */
-    public function getFeedbackNoButCount(): int
+    public function getFeedbackNoButCount()
     {
         return $this->feedbackNoButCount;
     }
@@ -295,7 +294,7 @@ class Report extends AbstractEntity
      * @param int $feedbackNoButCount
      * @return void
      */
-    public function setFeedbackNoButCount(int $feedbackNoButCount): void
+    public function setFeedbackNoButCount($feedbackNoButCount)
     {
         $this->feedbackNoButCount = $feedbackNoButCount;
     }
@@ -305,7 +304,7 @@ class Report extends AbstractEntity
      *
      * @return int $sysLangId
      */
-    public function getSysLangId(): int
+    public function getSysLangId()
     {
         return $this->_languageUid;
     }
@@ -316,7 +315,7 @@ class Report extends AbstractEntity
      * @param int $sysLangId
      * @return void
      */
-    public function setSysLangId($sysLangId): void
+    public function setSysLangId($sysLangId)
     {
         $this->_languageUid = $sysLangId;
     }
@@ -324,10 +323,10 @@ class Report extends AbstractEntity
     /**
      * Adds a Feedbacks
      *
-     * @param Feedbacks $feedback
+     * @param \NITSAN\NsFeedback\Domain\Model\Feedbacks $feedback
      * @return void
      */
-    public function addFeedback(Feedbacks $feedback): void
+    public function addFeedback(\NITSAN\NsFeedback\Domain\Model\Feedbacks $feedback)
     {
         $this->feedbacks->attach($feedback);
     }
@@ -335,10 +334,10 @@ class Report extends AbstractEntity
     /**
      * Removes a Feedbacks
      *
-     * @param Feedbacks $feedbackToRemove The Feedbacks to be removed
+     * @param \NITSAN\NsFeedback\Domain\Model\Feedbacks $feedbackToRemove The Feedbacks to be removed
      * @return void
      */
-    public function removeFeedback(Feedbacks $feedbackToRemove): void
+    public function removeFeedback(\NITSAN\NsFeedback\Domain\Model\Feedbacks $feedbackToRemove)
     {
         $this->feedbacks->detach($feedbackToRemove);
     }
@@ -346,9 +345,9 @@ class Report extends AbstractEntity
     /**
      * Returns the feedbacks
      *
-     * @return ObjectStorage<Feedbacks> $feedbacks
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks> $feedbacks
      */
-    public function getFeedbacks(): ObjectStorage
+    public function getFeedbacks()
     {
         return $this->feedbacks;
     }
@@ -356,10 +355,10 @@ class Report extends AbstractEntity
     /**
      * Sets the feedbacks
      *
-     * @param ObjectStorage<Feedbacks> $feedbacks
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\NITSAN\NsFeedback\Domain\Model\Feedbacks> $feedbacks
      * @return void
      */
-    public function setFeedbacks(ObjectStorage $feedbacks): void
+    public function setFeedbacks(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $feedbacks)
     {
         $this->feedbacks = $feedbacks;
     }

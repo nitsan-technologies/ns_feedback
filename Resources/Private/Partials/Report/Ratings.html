@@ -1,0 +1,91 @@
+<div class="quick-scoreboard rating-score" id="rating-score-{cData.uid}" style="padding-bottom: 20px;">
+	<span class="heading"><f:translate key="userratings"/></span>
+	<hr style="border:3px solid #f1f1f1">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ns-feedback-progress-block">
+				<div class="side">
+					<div>
+						<f:translate key="fstar"/>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-5" data-count="{feedbacks.0.fivestar}"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>{feedbacks.0.fivestar}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<div class="ns-feedback-progress-block">
+				<div class="side">
+					<div>
+						<f:translate key="fostar"/>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-4" data-count="{feedbacks.0.fourstar}"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>{feedbacks.0.fourstar}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<div class="ns-feedback-progress-block">
+				<div class="side">
+					<div>
+						<f:translate key="thstar"/>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-3" data-count="{feedbacks.0.threestar}"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>{feedbacks.0.threestar}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<div class="ns-feedback-progress-block">
+				<div class="side">
+					<div>
+						<f:translate key="tstar"/>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-2" data-count="{feedbacks.0.twostar}"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>{feedbacks.0.twostar}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<div class="ns-feedback-progress-block">
+				<div class="side">
+					<div>
+						<f:translate key="ostar"/>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-1" data-count="{feedbacks.0.onestar}"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>{feedbacks.0.onestar}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

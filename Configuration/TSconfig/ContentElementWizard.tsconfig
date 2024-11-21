@@ -1,6 +1,6 @@
 mod.wizards.newContentElement.wizardItems.plugins {
 	elements {
-	    feedback {
+	    nsfeedback_feedback {
 	        iconIdentifier = ns_feedback-plugin-feedback
 	        title = LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_ns_feedback_feedback.name
 	        description = LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_ns_feedback_feedback.description
