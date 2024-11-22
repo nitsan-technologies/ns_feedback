@@ -677,3 +677,12 @@ label {
 .tooltip {
     z-index:99999999999;
 }
+
+.input-group .form-select {
+    background-color: light-dark(#fff, #333);
+    color: light-dark(#000, #b8b8b8);
+}
+
+.tx-ns-event .custom-container .custome-carousel .carousel-cell {
+    position: inherit;
+}
