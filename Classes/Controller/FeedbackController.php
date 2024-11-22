@@ -194,16 +194,16 @@ class FeedbackController extends ActionController
         $data = $GLOBALS['TSFE']->page;
         if ($result['newsId'] > 0) {
             $checkExistRecord = $this->reportRepository->findBy(['record_id' => $data['uid']]);
-            // $checkExistRecord = $this->reportRepository->findByRecordId($result['newsId']);
+            $checkExistRecord = $this->reportRepository->findByRecordId($result['newsId']);
         } else {
             $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
-            // $checkExistRecord = $this->reportRepository->findByPageId($data['uid']);
+            $checkExistRecord = $this->reportRepository->findByPageId($data['uid']);
         }
 
         if ($checkExistRecord[0]) {
             $report = $checkExistRecord[0];
             $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR']]);
-            // $checkExistFeedbackRecord = $this->feedbacksRepository->findByUserIp($_SERVER['REMOTE_ADDR']);
+            $checkExistFeedbackRecord = $this->feedbacksRepository->findByUserIp($_SERVER['REMOTE_ADDR']);
 
             if (empty($checkExistFeedbackRecord[0])) {
                 $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
