@@ -151,7 +151,7 @@ label {
 }
 
 .ns-ext-datatable .thead-light tr th, .ns-ext-datatable tbody tr td {
-    color: #000;
+    color: light-dark(#000, #fff);
 }
 
 .ns-ext-datatable .thead-light tr th, .ns-ext-datatable tbody tr td {
@@ -685,4 +685,15 @@ label {
 
 .tx-ns-event .custom-container .custome-carousel .carousel-cell {
     position: inherit;
+}
+
+/* Dark Mode */
+
+.ns-ext-form-wrap form label,
+.ns-ext-form-wrap .card-header,
+.ns-ext-form-wrap .ns-ext-submit-wrap,
+.ns-ext-dashboard-wrap .report-block-content,
+.ns-ext-dashboard-wrap .report-block-icon,
+.ns-backup-table-block-wrap .card-header { 
+  color: light-dark(#000, #000);
 }
