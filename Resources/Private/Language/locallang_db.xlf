@@ -52,7 +52,7 @@
 				<source>Put your feedback</source>
 			</trans-unit>
 			<trans-unit id="tx_ns_feedback_feedback.nsfeedback">
-				<source>NS Feedback</source>
+				<source>Feedback</source>
 			</trans-unit>
 			<trans-unit id="globalSettings">
 				<source>Global Settings</source>

@@ -106,7 +106,7 @@
 				<source>Reports</source>
 			</trans-unit>
 			<trans-unit id="tx_nsfeedback_domain_model_report.nsfeedback">
-				<source>NS Feedback</source>
+				<source>Feedback</source>
 			</trans-unit>
 			<trans-unit id="tx_nsfeedback_domain_model_report.documentaiton">
 				<source>Documentaiton</source>
