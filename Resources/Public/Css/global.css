@@ -155,11 +155,6 @@ label {
 
 .ns-ext-datatable .thead-light tr th,
 .ns-ext-datatable tbody tr td {
-    color: #000;
-}
-
-.ns-ext-datatable .thead-light tr th,
-.ns-ext-datatable tbody tr td {
     padding-left: 15px;
 }
 
@@ -167,7 +162,6 @@ label {
     font-weight: 700;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #495057;
 }
 
 .ns-ext-actions-wrap .btn {
@@ -788,10 +782,6 @@ label {
     font-size: 14px;
 }
 
-.btn:hover {
-    color: light-dark(#000, #000);
-}
-
 a,
 a.c-btn {
     text-decoration: none;
@@ -920,7 +910,7 @@ div.dt-container .dt-paging .dt-paging-button.disabled:active {
 }
 
 .form-control:hover {
-    border-left: 1px solid light-dark(#ced4da, #ced4da) !important;
+    border-left: 1px solid light-dark(#ced4da, #383838) !important;
 }
 
 .form-control,
@@ -941,8 +931,9 @@ div.dt-container .dt-paging .dt-paging-button.disabled:active {
 }
 
 .input-group .form-select {
-    background-color: light-dark(#fff, #333);
+    background-color: light-dark(#fff, transparent);
     color: light-dark(#000, #b8b8b8);
+    border-color: light-dark(#c2c2c2, #383838) !important;
 }
 
 .tx-ns-event .custom-container .custome-carousel .carousel-cell {
