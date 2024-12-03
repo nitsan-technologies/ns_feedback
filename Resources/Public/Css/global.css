@@ -687,6 +687,11 @@ label {
     position: inherit;
 }
 
+.input-group .form-select {
+    background-color: light-dark(#fff, #333);
+    color: light-dark(#000, #b8b8b8);
+}
+
 /* Dark Mode */
 
 .ns-ext-form-wrap form label,
