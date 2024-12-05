@@ -1,11 +1,5 @@
-define([
-    'jquery',
-    'TYPO3/CMS/Backend/Modal',
-    'TYPO3/CMS/NsFeedback/Main',
-    'TYPO3/CMS/NsFeedback/Datatables',
-    'TYPO3/CMS/Backend/Input/Clearable'
-], function ($, Model) {
- 
+import "@nitsan/ns-feedback/Datatables.js";
+
     $('.ns-ext-datatable').DataTable({
         "language": {
             "lengthMenu": "Display _MENU_ Records",
@@ -14,16 +8,13 @@ define([
         },
     });
 
-    $('.field-info-trigger').on('click', function(){
-        $(this).parents('.form-group').find('.field-info-text').slideToggle();
-    });
-    $('[data-toggle="tooltip"]').tooltip();
+   
 
     $('.dataTables_length select,\ .dataTables_filter input').addClass('form-control');
 
     $('#TypoScriptTemplateModuleController').on('submit',function(e){
         e.preventDefault();
-        let url = $(this).attr('action');
+        url = $(this).attr('action');
         $.ajax({
             url:url,
             method:'post',
@@ -34,4 +25,4 @@ define([
         })
     });
 
-});
+

@@ -1,16 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
   <f:layout name="Report" />  
   <f:section name="content">
-	<f:be.pageRenderer
-		includeRequireJsModules="{
-			0:'TYPO3/CMS/NsFeedback/Main',
-			1:'TYPO3/CMS/NsFeedback/Datatables',
-			2:'@typo3/backend/context-menu.js',
-			3:'@typo3/backend/element/immediate-action-element.js',
-			4: '@typo3/backend/utility/collape-state-persister.js',
-			5: '@typo3/tstemplate/constant-editor.js'
-		}"
-	/>
+	
       <div class="ns-backup-table-block-wrap">
 	      <f:if condition="{report.feedbackYesCount} || {report.feedbackNoCount} || {report.feedbackYesButCount} || {report.feedbackNoButCount}">
 		      <div class="card">
@@ -19,10 +10,9 @@
 					      <h5><f:translate key="quick_feedback" extensionName="ns_feedback" /></h5>
 				      </div>
 			      </div>
-
-				  <div class="card-body">
+			      <div class="card-body">
 				      <div class="ns-backup-table-wrap">
-						  <table class="table ns-ext-datatable">
+					      <table class="table ns-ext-datatable">
 						      <thead>
 							      <th scope="col"><f:translate key="tx_nsfeedback_domain_model_feedbacks.Date"/></th>
 							      <th scope="col"><f:translate key="tx_nsfeedback_domain_model_feedbacks.feedback_type" /></th>
@@ -31,30 +21,32 @@
 						      </thead>
 						      <tbody>
 							      <f:for each="{report.feedbacks}" as="feedbacks">
-									  <tr>
-										  <td>{feedbacks.crdate -> f:format.date(format: 'm/d/Y')}</td>
-										  <td>
-											  <f:if condition="{feedbacks.quickfeedbacktype}">
-												  <f:then>
-													  <f:translate key="{feedbacks.quickfeedbacktype}" />
-												  </f:then>
-												  <f:else>
-													  -
-												  </f:else>
-											  </f:if>
-										  </td>
-										  <td>
-											  <f:if condition="{feedbacks.comment}">
-												  <f:then>
-													  {feedbacks.comment}
-												  </f:then>
-												  <f:else>
-													  -
-												  </f:else>
-											  </f:if>
-										  </td>
-										  <td>{feedbacks.userIp}</td>
-									  </tr>
+								      <f:if condition="{feedbacks.feedbackType} == 3">
+									      <tr>
+										      <td>{feedbacks.crdate -> f:format.date(format: 'm/d/Y')}</td>
+										      <td>
+											      <f:if condition="{feedbacks.quickfeedbacktype}">
+												      <f:then>
+													      <f:translate key="{feedbacks.quickfeedbacktype}" />
+												      </f:then>
+												      <f:else>
+													      -
+												      </f:else>
+											      </f:if>
+										      </td>
+										      <td>
+											      <f:if condition="{feedbacks.comment}">
+												      <f:then>
+													      {feedbacks.comment}
+												      </f:then>
+												      <f:else>
+													      -
+												      </f:else>
+											      </f:if>
+										      </td>
+										      <td>{feedbacks.userIp}</td>
+									      </tr>
+								      </f:if>
 							      </f:for>
 						      </tbody>
 					      </table>

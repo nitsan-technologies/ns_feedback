@@ -7,10 +7,10 @@ $(document).ready(function () {
         location.reload();
     });
     if($('.quick-scoreboard').length > 0){
-        var yescount = $('.bar-yes').data('count') ?? 0
-        var nocount = $('.bar-no').data('count') ?? 0
-        var yesbutcount = $('.bar-yesbut').data('count') ?? 0
-        var nobutcount = $('.bar-nobut').data('count') ?? 0
+        var yescount = $('.bar-yes').data('count')
+        var nocount = $('.bar-no').data('count')
+        var yesbutcount = $('.bar-yesbut').data('count')
+        var nobutcount = $('.bar-nobut').data('count')
         var total = yescount + nocount + yesbutcount + nobutcount;
         var yesper = noper = yesbutper = nobutper = 0;
         if(total > 0){
@@ -19,18 +19,10 @@ $(document).ready(function () {
             yesbutper = yesbutcount * 100 / total;
             nobutper = nobutcount * 100 / total;
         }
-        if ($('.bar-yes').length>0){
-            $('.bar-yes').css({"width": yesper+"%","background-color": bgColor(yesper)});
-        }
-        if ($('.bar-no').length>0) {
-            $('.bar-no').css({"width": noper+"%","background-color": bgColor(noper)});
-        }
-        if ($('.bar-yesbut').length>0){
-            $('.bar-yesbut').css({"width": yesbutper+"%","background-color": bgColor(yesbutper)});
-        }
-        if ($('.bar-nobut').length>0){
-            $('.bar-nobut').css({"width": nobutper+"%","background-color": bgColor(nobutper)});
-        }
+        $('.bar-yes').css({"width": yesper+"%","background-color": bgColor(yesper)});
+        $('.bar-no').css({"width": noper+"%","background-color": bgColor(noper)});
+        $('.bar-yesbut').css({"width": yesbutper+"%","background-color": bgColor(yesbutper)});
+        $('.bar-nobut').css({"width": nobutper+"%","background-color": bgColor(nobutper)});
     }
 
     if($('footer').length > 0 ){
@@ -45,6 +37,7 @@ $(document).ready(function () {
                 buttonfor: $(this).data('buttonfor'),
                 qkbtn: $(this).data('qkbtn'),
                 cid: $(this).data('cid'),
+                newsid: $(this).data('newsid')
             });
             $('.commentbox').addClass(boxid);
             if (effect == 'toggle') {
@@ -80,10 +73,13 @@ $(document).ready(function () {
         });
 
     $('.quick-submit').click(function (e) {
+        var newsId = 0;
+        var feedbackType = $('.feedbacktype').val();
         var cid = $(this).attr('cid');
         var buttonfor = $(this).attr('buttonfor');
         var qkbutton = $(this).attr('qkbtn');
         var commentText = $('.'+boxid).val();
+        newsId = $(this).attr('newsid');
         if ($('.'+boxid+":visible").length > 0) {
             console.log($('.'+boxid).length);
             if (commentText == '') {
@@ -96,10 +92,12 @@ $(document).ready(function () {
             type: "POST",
             url: href,
             data: {
+                "tx_nsfeedback_feedback[result][feedbackType]": feedbackType,
                 "tx_nsfeedback_feedback[result][buttonfor]": buttonfor,
                 "tx_nsfeedback_feedback[result][qkbutton]": qkbutton,
                 "tx_nsfeedback_feedback[result][cid]": cid,
                 "tx_nsfeedback_feedback[result][commentText]": commentText,
+                "tx_nsfeedback_feedback[result][newsId]": newsId,
             },
             success: function (data) {
                 console.log(data)
@@ -115,6 +113,12 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
+    
+    $('.field-info-trigger').on('click', function(){
+        $(this).parents('.form-group').find('.field-info-text').slideToggle();
+    });
+    
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 function bgColor(per){

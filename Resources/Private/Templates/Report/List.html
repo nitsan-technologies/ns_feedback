@@ -2,16 +2,7 @@
 	<f:layout name="Report" />
 
 	<f:section name="content">
-		<f:be.pageRenderer
-			includeRequireJsModules="{
-				0:'TYPO3/CMS/NsFeedback/Main',
-				1:'TYPO3/CMS/NsFeedback/Datatables',
-				2:'@typo3/backend/context-menu.js',
-				3:'@typo3/backend/element/immediate-action-element.js',
-				4: '@typo3/backend/utility/collape-state-persister.js',
-				5: '@typo3/tstemplate/constant-editor.js'
-			}"
-		/>
+
 		<div class="ns-backup-table-block-wrap">
 			<div class="card">
 				<div class="card-header">
@@ -34,13 +25,25 @@
 							<f:for each="{reports}" as="report">
 									<tr>
 										<td>
-											<f:switch expression="{report.pageType}">
-												<f:case value="137"><f:translate key="type.blog" /></f:case>
-												<f:defaultCase><f:translate key="type.page" /></f:defaultCase>
-											</f:switch>
+											<f:if condition="{report.recordId}">
+												<f:then><f:translate key="type.news" /></f:then>
+												<f:else>
+													<f:switch expression="{report.pageType}">
+														<f:case value="137"><f:translate key="type.blog" /></f:case>
+														<f:defaultCase><f:translate key="type.page" /></f:defaultCase>
+													</f:switch>
+												</f:else>
+											</f:if>
 										</td>
 										<td>
-											{report.pageTitle}
+											<f:if condition="{report.recordId}">
+												<f:then>
+													{newsitems.{report.uid}.title}
+												</f:then>
+												<f:else>
+													{report.pageTitle}
+												</f:else>
+											</f:if>
 										</td>
 										<td>{totalfeedback.{report.uid}.quicktotal}</td>
 										<td>

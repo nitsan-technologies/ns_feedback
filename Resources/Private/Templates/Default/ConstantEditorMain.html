@@ -8,20 +8,21 @@
 <f:section name="Content">
     <f:be.pageRenderer
             includeCssFiles="{
-                0: 'EXT:ns_feedback/Resources/Public/Css/global.css',
+                0: 'EXT:ns_feedback/Resources/Public/Vendor/bootstrap5.3.min.css',
                 1: 'EXT:ns_feedback/Resources/Public/Css/main.css',
-                2: 'EXT:ns_feedback/Resources/Public/Vendor/bootstrap4.3.1.min.css',
+                2: 'EXT:ns_feedback/Resources/Public/Css/global.css',
                 3: 'EXT:ns_feedback/Resources/Public/Css/font-awesome.css'
             }"
             includeJavaScriptModules="{
                 0: '@typo3/backend/context-menu.js',
                 1: '@typo3/backend/element/immediate-action-element.js',
-                3: '@typo3/backend/utility/collape-state-persister.js',
-                4: '@typo3/tstemplate/constant-editor.js'
+                4: '@typo3/tstemplate/constant-editor.js',
+                6: '@nitsan/ns-feedback/fieldToggle.js',
+                
             }"
-            includeRequireJsModules="{
-                0:'TYPO3/CMS/NsFeedback/Main'
-            }"
+           
+
+           
     />
 
     <f:variable name="args" value="{0: 'nitsan', 1: pageUid}" />

@@ -7,7 +7,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class ThemeContainsViewHelper extends AbstractViewHelper
 {
-    public function initializeArguments(): void
+    public function initializeArguments()
     {
         $this->registerArgument('value', 'string', '', true);
     }
