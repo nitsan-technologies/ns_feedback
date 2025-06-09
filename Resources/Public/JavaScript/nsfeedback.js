@@ -26,7 +26,7 @@ $(document).ready(function () {
     }
 
     if($('footer').length > 0 ){
-        $(".tx-ns-feedback").insertBefore( "footer" );
+        $(".global-ns-feedback").insertBefore( "footer" );
     }
     var effect = $('.animationEffect').val();
         var boxid;

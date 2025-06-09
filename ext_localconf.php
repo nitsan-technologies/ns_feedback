@@ -3,7 +3,6 @@
 use NITSAN\NsFeedback\Controller\FeedbackController;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -33,6 +32,3 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['Feedback'] = [
     'NITSAN\NsFeedback\ViewHelpers',
 ];
 
-ExtensionManagementUtility::addPageTSConfig(
-    '@import "EXT:ns_feedback/Configuration/TSconfig/ContentElementWizard.tsconfig"'
-);

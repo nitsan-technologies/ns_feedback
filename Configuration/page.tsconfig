@@ -10,7 +10,7 @@ mod.wizards.newContentElement.wizardItems.plugins {
 	        }
 	    }
 	}
-	show = *
+	show = *w
 }
 
 options.dashboard.dashboardPresetsForNewUsers = default, dashboardPreset-nsFeedbackPreset

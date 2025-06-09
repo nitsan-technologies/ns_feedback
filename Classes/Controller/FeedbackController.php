@@ -116,6 +116,7 @@ class FeedbackController extends ActionController
             $assign['exist'] = $Existrecord;
         }
         $assign['cData'] = $cdata;
+        $assign['layout'] = (isset($cdata['list_type']) && $cdata['list_type'] == 'nsfeedback_feedback') ? 'Default' : 'Global';
         $this->view->assignMultiple($assign);
         return $this->htmlResponse();
     }
