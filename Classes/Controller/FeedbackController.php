@@ -88,16 +88,16 @@ class FeedbackController extends ActionController
         //Array for the buttons for the quick feedback form
         $btns = [];
 
-        if($this->settings['quickbuttonsYes'] == 1) {
+        if(isset($this->settings['quickbuttonsYes']) && $this->settings['quickbuttonsYes'] == 1) {
             array_push($btns, 1);
         }
-        if($this->settings['quickbuttonsNo'] == 1) {
+        if(isset($this->settings['quickbuttonsNo']) && $this->settings['quickbuttonsNo'] == 1) {
             array_push($btns, 2);
         }
-        if($this->settings['quickbuttonsYesBut'] == 1) {
+        if(isset($this->settings['quickbuttonsYesBut']) && $this->settings['quickbuttonsYesBut'] == 1) {
             array_push($btns, 3);
         }
-        if($this->settings['quickbuttonsNoBut'] == 1) {
+        if(isset($this->settings['quickbuttonsNoBut']) && $this->settings['quickbuttonsNoBut'] == 1) {
             array_push($btns, 4);
         }
         $assign['quickbuttons'] = $btns;
@@ -106,7 +106,7 @@ class FeedbackController extends ActionController
         $pageRender = GeneralUtility::makeInstance(PageRenderer::class);
         $js = '';
 
-        if ($this->settings['quickenable']) {
+        if (isset($this->settings['quickenable']) && $this->settings['quickenable']) {
             unset($filterData['userIp']);
             unset($filterData['cid']);
             $getFeedbacks = $this->reportRepository->checkExistRecord($filterData);

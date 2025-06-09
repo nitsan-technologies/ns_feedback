@@ -35,23 +35,23 @@ class LoadAssetsViewHelper extends AbstractViewHelper
         $css = '';
 
         $css .= '
-        .nsbtn.btn-' . $settings['buttonstyle'] . ' {
-            background-color:' . $settings['buttonbg'] . ';
-            color: ' . $settings['buttoncolor'] . ';
+        .nsbtn.btn-' . ($settings['buttonstyle'] ?? 'default') . ' {
+            background-color:' . ($settings['buttonbg'] ?? '#000000') . ';
+            color: ' . ($settings['buttoncolor'] ?? '#ffffff') . ';
             box-shadow: none;
             cursor: pointer;
-            font-weight: ' . $settings['fontstyle'] . ';
+            font-weight: ' . ($settings['fontstyle'] ?? 'normal') . ';
             min-width: 105px;
             padding-top: 8px;
             width: auto !important;
             outline: medium none;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            border:1px solid ' . $settings['buttonbg'] . '
+            border:1px solid ' . ($settings['buttonbg'] ?? '#000000') . '
         }
         .send-msg span {
-            color: ' . $settings['fontcolor'] . ';
-            font-weight: ' . $settings['fontstyle'] . ';
+            color: ' . ($settings['fontcolor'] ?? '#000000') . ';
+            font-weight: ' . ($settings['fontstyle'] ?? 'normal') . ';
         }
         ';
         $pageRender->addCssInlineBlock('globalSettingsCSS', $css);
