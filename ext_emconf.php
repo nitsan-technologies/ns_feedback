@@ -11,17 +11,16 @@
  ***************************************************************/
 
 $EM_CONF['ns_feedback'] = [
-  'title' => 'All in One Feedback',
-  'description' => 'The TYPO3 Feedback Extension is a great tool for gathering feedback from visitors or customers on your website. With the All In One TYPO3 Feedback extension, website admin can easily add feedback forms in various styles to their website, allowing them to collect valuable insights from their visitors.
+  'title' => 'TYPO3 Feedback Extension',
+  'description' => 'A powerful TYPO3 extension to collect user feedback through customizable forms. Easily embed feedback forms in various styles to gather insights and improve your website’s performance. Fully compatible with TYPO3 v12 and v13.',
 
-  *** Live Demo: https://demo.t3planet.com/t3-extensions/feedback *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-feedback-extension',
   'category' => 'plugin',
   'version' => '13.0.1',
   'state' => 'stable',
   'uploadfolder' => false,
-  'author' => 'T3: Rohan Parmar, Divya Goklani, Nilesh Malankiya, QA: Gautam Kunjadiya',
-  'author_email' => 'sanjay@nitsan.in',
-  'author_company' => 'T3Planet // NITSAN',
+  'author' => 'Team T3Planet',
+  'author_email' => 'info@t3planet.de',
+  'author_company' => 'T3Planet',
   'constraints' => [
     'depends' => [
       'typo3' => '12.0.0-13.9.99',
