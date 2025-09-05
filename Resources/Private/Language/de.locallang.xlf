@@ -5,7 +5,7 @@
     <body>
       <trans-unit id="tx_nsfeedback_domain_model_report">
         <source>Report</source>
-        <target state="needs-translation">Report</target>
+        <target state="translated">Bericht</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.page_id">
         <source>ID</source>
