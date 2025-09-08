@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_csh_tx_nsfeedback_domain_model_report.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="nl">
+    <header/>
+    <body>
+      <trans-unit id="page_id.description">
+        <source>pageId</source>
+        <target state="needs-translation">pageId</target>
+      </trans-unit>
+      <trans-unit id="record_id.description">
+        <source>recordId</source>
+        <target state="needs-translation">recordId</target>
+      </trans-unit>
+      <trans-unit id="page_type.description">
+        <source>pageType</source>
+        <target state="needs-translation">pageType</target>
+      </trans-unit>
+      <trans-unit id="page_title.description">
+        <source>pageTitle</source>
+        <target state="needs-translation">pageTitle</target>
+      </trans-unit>
+      <trans-unit id="feedback_yes_count.description">
+        <source>feedbackYesCount</source>
+        <target state="needs-translation">feedbackYesCount</target>
+      </trans-unit>
+      <trans-unit id="feedback_no_count.description">
+        <source>feedbackNoCount</source>
+        <target state="needs-translation">feedbackNoCount</target>
+      </trans-unit>
+      <trans-unit id="feedback_yes_but_count.description">
+        <source>feedbackYesButCount</source>
+        <target state="needs-translation">feedbackYesButCount</target>
+      </trans-unit>
+      <trans-unit id="sys_lang_id.description">
+        <source>sysLangId</source>
+        <target state="needs-translation">sysLangId</target>
+      </trans-unit>
+      <trans-unit id="feedbacks.description">
+        <source>feedbacks</source>
+        <target state="needs-translation">feedbacks</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
