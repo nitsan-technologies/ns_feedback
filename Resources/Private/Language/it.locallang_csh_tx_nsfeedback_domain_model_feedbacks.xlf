@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_csh_tx_nsfeedback_domain_model_feedbacks.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="it">
+    <header/>
+    <body>
+      <trans-unit id="comment.description">
+        <source>comment</source>
+        <target state="needs-translation">comment</target>
+      </trans-unit>
+      <trans-unit id="user_ip.description">
+        <source>userIp</source>
+        <target state="needs-translation">userIp</target>
+      </trans-unit>
+      <trans-unit id="feedback_type.description">
+        <source>feedbackType</source>
+        <target state="needs-translation">feedbackType</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
