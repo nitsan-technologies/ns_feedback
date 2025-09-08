@@ -13,31 +13,31 @@
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.record_id">
         <source>Record Id</source>
-        <target state="needs-translation">Record Id</target>
+        <target state="translated">Datensatz-ID</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.record_type">
         <source>Type</source>
-        <target state="needs-translation">Type</target>
+        <target state="translated">Typ</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.page_title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Titel</target>
       </trans-unit>
       <trans-unit id="feedback_yes_count">
         <source>Feedback Yes Count</source>
-        <target state="needs-translation">Feedback Yes Count</target>
+        <target state="translated">Feedback Ja Anzahl</target>
       </trans-unit>
       <trans-unit id="feedback_no_count">
         <source>Feedback No Count</source>
-        <target state="needs-translation">Feedback No Count</target>
+        <target state="translated">Feedback Nein Anzahl</target>
       </trans-unit>
       <trans-unit id="feedback_yes_but_count">
         <source>Feedback Yes But Count</source>
-        <target state="needs-translation">Feedback Yes But Count</target>
+        <target state="translated">Feedback Ja, aber Anzahl</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
         <source>Sys Lang Id</source>
-        <target state="needs-translation">Sys Lang Id</target>
+        <target state="translated">Sys Lang-ID</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
         <source>Feedbacks</source>
@@ -45,159 +45,159 @@
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks">
         <source>Feedbacks</source>
-        <target state="needs-translation">Feedbacks</target>
+        <target state="translated">Kommentar</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
         <source>Comment</source>
-        <target state="needs-translation">Comment</target>
+        <target state="translated">Benutzer-IP</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
         <source>User Ip</source>
-        <target state="needs-translation">User Ip</target>
+        <target state="translated">Feedback-Typ</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
         <source>Feedback Type</source>
-        <target state="needs-translation">Feedback Type</target>
+        <target state="translated">Ja</target>
       </trans-unit>
       <trans-unit id="yes">
         <source>Yes</source>
-        <target state="needs-translation">Yes</target>
+        <target state="translated">Nein</target>
       </trans-unit>
       <trans-unit id="no">
         <source>No</source>
-        <target state="needs-translation">No</target>
+        <target state="translated">Ja, aber</target>
       </trans-unit>
       <trans-unit id="yesbut">
         <source>Yes, But</source>
-        <target state="needs-translation">Yes, But</target>
+        <target state="translated">War dieser Beitrag hilfreich?</target>
       </trans-unit>
       <trans-unit id="defaulttitle.helpfull">
         <source>Was this post helpful?</source>
-        <target state="needs-translation">Was this post helpful?</target>
+        <target state="translated">Feedback senden</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.sendfeedback">
         <source>Send Feedback</source>
-        <target state="needs-translation">Send Feedback</target>
+        <target state="translated">Vielen Dank für Ihr Feedback.</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyou">
         <source>Thank You For Your Feedback.</source>
-        <target state="needs-translation">Thank You For Your Feedback.</target>
+        <target state="translated">Ihr Feedback wurde gesendet.</target>
       </trans-unit>
       <trans-unit id="alreadyfeedback">
         <source>Your Feedback is sent.</source>
-        <target state="needs-translation">Your Feedback is sent.</target>
+        <target state="translated">Feedback-Bericht</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackreport">
         <source>Feedback Report</source>
-        <target state="needs-translation">Feedback Report</target>
+        <target state="translated">VON</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.FROM">
         <source>FROM</source>
-        <target state="needs-translation">FROM</target>
+        <target state="translated">BIS</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.to">
         <source>TO</source>
-        <target state="needs-translation">TO</target>
+        <target state="translated">Datum</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.Date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Gesamt-Feedbacks</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.total">
         <source>Total Feedbacks</source>
-        <target state="needs-translation">Total Feedbacks</target>
+        <target state="translated">Zurück zur Liste</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.backlist">
         <source>Back to list</source>
-        <target state="needs-translation">Back to list</target>
+        <target state="translated">Feedbacks von</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackof">
         <source>Feedbacks of</source>
-        <target state="needs-translation">Feedbacks of</target>
+        <target state="translated">Max</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.max">
         <source>Max</source>
-        <target state="needs-translation">Max</target>
+        <target state="translated">Zeichen lang</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.charlong">
         <source>Character Long</source>
-        <target state="needs-translation">Character Long</target>
+        <target state="translated">Bitte zuerst einen Kommentar hinzufügen</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.addcomment">
         <source>Please add comment first</source>
-        <target state="needs-translation">Please add comment first</target>
+        <target state="translated">Feedbacks anzeigen</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.viewcomment">
         <source>View Feedbacks</source>
-        <target state="needs-translation">View Feedbacks</target>
+        <target state="translated">Aktionen</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.action">
         <source>Action</source>
-        <target state="needs-translation">Action</target>
+        <target state="translated">Berichte</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.nsreport">
         <source>Reports</source>
-        <target state="needs-translation">Reports</target>
+        <target state="translated">Feedback</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.nsfeedback">
         <source>Feedback</source>
-        <target state="needs-translation">Feedback</target>
+        <target state="translated">Dokumentation</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.documentaiton">
         <source>Documentaiton</source>
-        <target state="needs-translation">Documentaiton</target>
+        <target state="translated">Hilfe &amp; Support</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.helpsupport">
         <source>Help &amp; Support</source>
-        <target state="needs-translation">Help &amp; Support</target>
+        <target state="translated">Spenden</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.donate">
         <source>Donate</source>
-        <target state="needs-translation">Donate</target>
+        <target state="translated">Etwas ist schiefgelaufen, bitte senden Sie Ihr Feedback erneut.</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.resubmit">
         <source>Something wrong, please resubmit your feedback.</source>
-        <target state="needs-translation">Something wrong, please resubmit your feedback.</target>
+        <target state="translated">Globale Einstellung</target>
       </trans-unit>
       <trans-unit id="globalsettings">
         <source>Global Setting</source>
-        <target state="needs-translation">Global Setting</target>
+        <target state="translated">Übersicht</target>
       </trans-unit>
       <trans-unit id="Dashboard">
         <source>Dashboard</source>
-        <target state="needs-translation">Dashboard</target>
+        <target state="translated">Premium-Erweiterung</target>
       </trans-unit>
       <trans-unit id="premiumExtension">
         <source>Premium Extension</source>
-        <target state="needs-translation">Premium Extension</target>
+        <target state="translated">Grundlegende Einstellungen</target>
       </trans-unit>
       <trans-unit id="basicSettings">
         <source>Basic Settings</source>
-        <target state="needs-translation">Basic Settings</target>
+        <target state="translated">Entschuldigung, Konfiguration nicht verfügbar für dieses!</target>
       </trans-unit>
       <trans-unit id="noThemeConfiguration">
         <source>Sorry, Configuration not available for this!</source>
-        <target state="needs-translation">Sorry, Configuration not available for this!</target>
+        <target state="translated">Entschuldigung!</target>
       </trans-unit>
       <trans-unit id="sorry">
         <source>Sorry!</source>
-        <target state="needs-translation">Sorry!</target>
+        <target state="translated">Keine Erweiterungsvorlage für diese Seite verfügbar.</target>
       </trans-unit>
       <trans-unit id="noconstantline1">
         <source>No Extension Template available for this Page.</source>
-        <target state="needs-translation">No Extension Template available for this Page.</target>
+        <target state="translated">Bitte gehen Sie zum Template-Modul und erstellen Sie eine neue Erweiterungsvorlage für diese Seite.</target>
       </trans-unit>
       <trans-unit id="noconstantline2">
         <source>Please go the Template Module and create new extension Template for this page.</source>
-        <target state="needs-translation">Please go the Template Module and create new extension Template for this page.</target>
+        <target state="translated">Bitte hier klicken</target>
       </trans-unit>
       <trans-unit id="noconstantline3">
         <source>Please click here</source>
-        <target state="needs-translation">Please click here</target>
+        <target state="translated">Vorlage</target>
       </trans-unit>
       <trans-unit id="templatelinkText">
         <source>Template</source>
-        <target state="needs-translation">Template</target>
+        <target state="translated">Änderungen speichern</target>
       </trans-unit>
       <trans-unit id="save">
         <source>Save Changes</source>
@@ -209,44 +209,44 @@
       </trans-unit>
       <trans-unit id="dashboard.nsFeedbackPreset">
         <source>Feedback Presets</source>
-        <target state="needs-translation">Feedback Presets</target>
+        <target state="translated">Feedback Voreinstellungen</target>
       </trans-unit>
       <trans-unit id="dashboard.nsFeedbackPreset.description">
         <source>Feedback Presets Description</source>
-        <target state="needs-translation">Feedback Presets Description</target>
+        <target state="translated">Beschreibung der Feedback Voreinstellungen</target>
       </trans-unit>
       <trans-unit id="totalratings">
         <source>Total Ratings</source>
-        <target state="needs-translation">Total Ratings</target>
+        <target state="translated">Gesamtbewertungen</target>
       </trans-unit>
       <trans-unit id="totalratingscount">
         <source>Total Ratings Count</source>
-        <target state="needs-translation">Total Ratings Count</target>
+        <target state="translated">Anzahl der Gesamtbewertungen</target>
       </trans-unit>
       <trans-unit id="appearanceSettings">
         <source>Feedback Forms Settings</source>
-        <target state="needs-translation">Feedback Forms Settings</target>
+        <target state="translated">Feedbackformular Einstellungen</target>
       </trans-unit>
       <!--Constants Sub Category-->
       <trans-unit id="cat_appearance">
         <source>Appearance</source>
-        <target state="needs-translation">Appearance</target>
+        <target state="translated">Erscheinungsbild</target>
       </trans-unit>
       <trans-unit id="cat_selection">
         <source>Selection</source>
-        <target state="needs-translation">Selection</target>
+        <target state="translated">Auswahl</target>
       </trans-unit>
       <trans-unit id="cat_quickfeedback">
         <source>Quick Feedback Form Configuration</source>
-        <target state="needs-translation">Quick Feedback Form Configuration</target>
+        <target state="translated">Schnelle Feedbackformularkonfiguration</target>
       </trans-unit>
       <trans-unit id="cat_ratings">
         <source>Ratings</source>
-        <target state="needs-translation">Ratings</target>
+        <target state="translated">Bewertungen</target>
       </trans-unit>
       <trans-unit id="cat_fullfeedback">
         <source>Full Feedback Form Configuration</source>
-        <target state="needs-translation">Full Feedback Form Configuration</target>
+        <target state="translated">Komplette Feedbackformularkonfiguration</target>
       </trans-unit>
       <trans-unit id="cat_name">
         <source>Name</source>
@@ -254,32 +254,32 @@
       </trans-unit>
       <trans-unit id="cat_email">
         <source>Email</source>
-        <target state="needs-translation">Email</target>
+        <target state="translated">E-Mail</target>
       </trans-unit>
       <trans-unit id="cat_longtext">
         <source>Long Text(Textarea)</source>
-        <target state="needs-translation">Long Text(Textarea)</target>
+        <target state="translated">Langer Text(Textbereich)</target>
       </trans-unit>
       <trans-unit id="cat_submit">
         <source>Submit Button</source>
-        <target state="needs-translation">Submit Button</target>
+        <target state="translated">Absendebutton</target>
       </trans-unit>
       <trans-unit id="cat_basic">
         <source>Basic Configuration</source>
-        <target state="needs-translation">Basic Configuration</target>
+        <target state="translated">Grundkonfiguration</target>
       </trans-unit>
       <trans-unit id="cat_design">
         <source>Form Stylings</source>
-        <target state="needs-translation">Form Stylings</target>
+        <target state="translated">Formular-Stylings</target>
       </trans-unit>
       <trans-unit id="cat_emailconfig">
         <source>Email Notification Settings</source>
-        <target state="needs-translation">Email Notification Settings</target>
+        <target state="translated">E-Mail Benachrichtigungseinstellungen</target>
       </trans-unit>
       <!--Constant Labels-->
       <trans-unit id="allPage">
         <source>All Pages?:Enable this to display Feedback form on all pages of the site.</source>
-        <target state="needs-translation">All Pages?:Enable this to display Feedback form on all pages of the site.</target>
+        <target state="translated">Alle Seiten?: Aktivieren Sie dies, um das Feedback-Formular auf allen Seiten der Website anzuzeigen.</target>
       </trans-unit>
       <trans-unit id="newsBlog">
         <source>News/Blog</source>
@@ -291,31 +291,31 @@
       </trans-unit>
       <trans-unit id="feedbackType">
         <source>Feedback Type:Select feedback form to display in entire site.</source>
-        <target state="needs-translation">Feedback Type:Select feedback form to display in entire site.</target>
+        <target state="translated">Feedback-Typ: Wählen Sie das Feedback-Formular aus, das auf der gesamten Website angezeigt werden soll.</target>
       </trans-unit>
       <trans-unit id="fullfeedback">
         <source>Full Feedback Form</source>
-        <target state="needs-translation">Full Feedback Form</target>
+        <target state="translated">Vollständiges Feedback-Formular</target>
       </trans-unit>
       <trans-unit id="quickfeedback">
         <source>Quick Feedback Form</source>
-        <target state="needs-translation">Quick Feedback Form</target>
+        <target state="translated">Schnelles Feedback-Formular</target>
       </trans-unit>
       <trans-unit id="ratings">
         <source>Ratings</source>
-        <target state="needs-translation">Ratings</target>
+        <target state="translated">Bewertungen</target>
       </trans-unit>
       <trans-unit id="nobut">
         <source>No, But</source>
-        <target state="needs-translation">No, But</target>
+        <target state="translated">Nein, aber</target>
       </trans-unit>
       <trans-unit id="quickbuttons">
         <source>Select Buttons</source>
-        <target state="needs-translation">Select Buttons</target>
+        <target state="translated">Schaltflächen auswählen</target>
       </trans-unit>
       <trans-unit id="star">
         <source>Star</source>
-        <target state="needs-translation">Star</target>
+        <target state="translated">Stern</target>
       </trans-unit>
       <trans-unit id="emoji">
         <source>Emoji</source>
@@ -323,59 +323,59 @@
       </trans-unit>
       <trans-unit id="number">
         <source>Numbers</source>
-        <target state="needs-translation">Numbers</target>
+        <target state="translated">Zahlen</target>
       </trans-unit>
       <trans-unit id="ratingsType">
         <source>Rating Style</source>
-        <target state="needs-translation">Rating Style</target>
+        <target state="translated">Bewertungsstil</target>
       </trans-unit>
       <trans-unit id="titleText">
         <source>Heading Text</source>
-        <target state="needs-translation">Heading Text</target>
+        <target state="translated">Überschriftstext</target>
       </trans-unit>
       <trans-unit id="userChangedRating">
         <source>Can user change their Ratings?</source>
-        <target state="needs-translation">Can user change their Ratings?</target>
+        <target state="translated">Kann der Benutzer seine Bewertungen ändern?</target>
       </trans-unit>
       <trans-unit id="include">
         <source>Include this Field?</source>
-        <target state="needs-translation">Include this Field?</target>
+        <target state="translated">Dieses Feld einschließen?</target>
       </trans-unit>
       <trans-unit id="label">
         <source>Field Label</source>
-        <target state="needs-translation">Field Label</target>
+        <target state="translated">Feldbeschriftung</target>
       </trans-unit>
       <trans-unit id="required">
         <source>Required?</source>
-        <target state="needs-translation">Required?</target>
+        <target state="translated">Erforderlich?</target>
       </trans-unit>
       <trans-unit id="popupSettings">
         <source>Popup Settings</source>
-        <target state="needs-translation">Popup Settings</target>
+        <target state="translated">Popup-Einstellungen</target>
       </trans-unit>
       <trans-unit id="commonSettings">
         <source>Global Settings</source>
-        <target state="needs-translation">Global Settings</target>
+        <target state="translated">Globale Einstellungen</target>
       </trans-unit>
       <trans-unit id="restrictMultipleFeedback">
         <source>Restrict Multiple Feedback:Restrict visitor from submitting multiple Feedbacks</source>
-        <target state="needs-translation">Restrict Multiple Feedback:Restrict visitor from submitting multiple Feedbacks</target>
+        <target state="translated">Mehrfaches Feedback einschränken: Besucher davon abhalten, mehrere Feedbacks abzusenden</target>
       </trans-unit>
       <trans-unit id="enableFeedback">
         <source>Display Feedback Results:Display Feedback results to visitors</source>
-        <target state="needs-translation">Display Feedback Results:Display Feedback results to visitors</target>
+        <target state="translated">Feedback-Ergebnisse anzeigen: Feedback-Ergebnisse für Besucher anzeigen</target>
       </trans-unit>
       <trans-unit id="fontsize">
         <source>Font Size:Select font size between 18 to 30</source>
-        <target state="needs-translation">Font Size:Select font size between 18 to 30</target>
+        <target state="translated">Schriftgröße: Schriftgröße zwischen 18 und 30 auswählen</target>
       </trans-unit>
       <trans-unit id="fontstyle">
         <source>Font Style</source>
-        <target state="needs-translation">Font Style</target>
+        <target state="translated">Schriftstil</target>
       </trans-unit>
       <trans-unit id="bold">
         <source>Bold</source>
-        <target state="needs-translation">Bold</target>
+        <target state="translated">Fett</target>
       </trans-unit>
       <trans-unit id="normal">
         <source>Normal</source>
@@ -383,15 +383,15 @@
       </trans-unit>
       <trans-unit id="fontcolor">
         <source>Font Color</source>
-        <target state="needs-translation">Font Color</target>
+        <target state="translated">Schriftfarbe</target>
       </trans-unit>
       <trans-unit id="buttonstyle">
         <source>Button Style:Select how buttons should be displayed in Feedback forms.</source>
-        <target state="needs-translation">Button Style:Select how buttons should be displayed in Feedback forms.</target>
+        <target state="translated">Schaltflächenstil: Auswählen, wie Schaltflächen in Feedback-Formularen angezeigt werden sollen.</target>
       </trans-unit>
       <trans-unit id="buttonstyle.rq">
         <source>Rectangle</source>
-        <target state="needs-translation">Rectangle</target>
+        <target state="translated">Rechteck</target>
       </trans-unit>
       <trans-unit id="buttonstyle.ov">
         <source>Oval</source>
@@ -399,103 +399,103 @@
       </trans-unit>
       <trans-unit id="buttonstyle.rrq">
         <source>Rounded-Rectangle</source>
-        <target state="needs-translation">Rounded-Rectangle</target>
+        <target state="translated">Abgerundetes Rechteck</target>
       </trans-unit>
       <trans-unit id="buttonbg">
         <source>Button Background Color</source>
-        <target state="needs-translation">Button Background Color</target>
+        <target state="translated">Schaltflächen-Hintergrundfarbe</target>
       </trans-unit>
       <trans-unit id="notifyadmin">
         <source>Notify to Admin:Send an E-mail to Administrator after visitor submits the feedback</source>
-        <target state="needs-translation">Notify to Admin:Send an E-mail to Administrator after visitor submits the feedback</target>
+        <target state="translated">Administrator benachrichtigen: E-Mail an Administrator senden, nachdem der Besucher das Feedback gesendet hat</target>
       </trans-unit>
       <trans-unit id="adminemail">
         <source>Admin E-mail</source>
-        <target state="needs-translation">Admin E-mail</target>
+        <target state="translated">Admin-E-Mail</target>
       </trans-unit>
       <trans-unit id="notifyuser">
         <source>Notify to visitor:Send an E-mail to visitor after visitor submits the feedback</source>
-        <target state="needs-translation">Notify to visitor:Send an E-mail to visitor after visitor submits the feedback</target>
+        <target state="translated">Besucher benachrichtigen: E-Mail an Besucher senden, nachdem der Besucher das Feedback gesendet hat</target>
       </trans-unit>
       <trans-unit id="adminemailsubject">
         <source>Admin E-mail Subject</source>
-        <target state="needs-translation">Admin E-mail Subject</target>
+        <target state="translated">Betreff der Admin-E-Mail</target>
       </trans-unit>
       <trans-unit id="adminname">
         <source>Admin Name</source>
-        <target state="needs-translation">Admin Name</target>
+        <target state="translated">Admin-Name</target>
       </trans-unit>
       <trans-unit id="useremailsubject">
         <source>Visitor E-mail Subject</source>
-        <target state="needs-translation">Visitor E-mail Subject</target>
+        <target state="translated">Besucher-E-Mail Betreff</target>
       </trans-unit>
       <trans-unit id="mailcontenttitle">
         <source>Visitor E-mail heading</source>
-        <target state="needs-translation">Visitor E-mail heading</target>
+        <target state="translated">Besucher-E-Mail-Überschrift</target>
       </trans-unit>
       <trans-unit id="mailcontent">
         <source>Visitor E-mail text</source>
-        <target state="needs-translation">Visitor E-mail text</target>
+        <target state="translated">Besucher-E-Mail-Text</target>
       </trans-unit>
       <trans-unit id="slide">
         <source>SlideUpDown</source>
-        <target state="needs-translation">SlideUpDown</target>
+        <target state="translated">Hoch-Runter schieben</target>
       </trans-unit>
       <trans-unit id="toggle">
         <source>Toggle</source>
-        <target state="needs-translation">Toggle</target>
+        <target state="translated">Umschalten</target>
       </trans-unit>
       <trans-unit id="fade">
         <source>FadeInOut</source>
-        <target state="needs-translation">FadeInOut</target>
+        <target state="translated">Ein- und Ausblenden</target>
       </trans-unit>
       <trans-unit id="quickboxappearance">
         <source>Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</source>
-        <target state="needs-translation">Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</target>
+        <target state="translated">Textbox-Anzeigestil: Wählen Sie aus, wie die Textbox erscheint, wenn der Besucher auf die Schaltfläche "Ja, aber" oder "Nein, aber" klickt</target>
       </trans-unit>
       <trans-unit id="placeholder">
         <source>Placeholder</source>
-        <target state="needs-translation">Placeholder</target>
+        <target state="translated">Platzhalter</target>
       </trans-unit>
       <trans-unit id="email_required">
         <source>Valid email is required!</source>
-        <target state="needs-translation">Valid email is required!</target>
+        <target state="translated">Eine gültige E-Mail-Adresse ist erforderlich!</target>
       </trans-unit>
       <trans-unit id="form.emailError">
         <source>Enter valid email address</source>
-        <target state="needs-translation">Enter valid email address</target>
+        <target state="translated">Geben Sie eine gültige E-Mail-Adresse ein</target>
       </trans-unit>
       <trans-unit id="btntextcolor">
         <source>Button Text Color</source>
-        <target state="needs-translation">Button Text Color</target>
+        <target state="translated">Schaltflächen-Textfarbe</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyourating">
         <source>Thank You For Your Ratings.</source>
-        <target state="needs-translation">Thank You For Your Ratings.</target>
+        <target state="translated">Vielen Dank für Ihre Bewertungen.</target>
       </trans-unit>
       <trans-unit id="avgrating">
         <source>Average of Ratings</source>
-        <target state="needs-translation">Average of Ratings</target>
+        <target state="translated">Durchschnitt der Bewertungen</target>
       </trans-unit>
       <trans-unit id="alreadyrating">
         <source>You've already rated this.</source>
-        <target state="needs-translation">You've already rated this.</target>
+        <target state="translated">Sie haben dies bereits bewertet.</target>
       </trans-unit>
       <trans-unit id="popuptitle">
         <source>Popup Title</source>
-        <target state="needs-translation">Popup Title</target>
+        <target state="translated">Popup-Titel</target>
       </trans-unit>
       <trans-unit id="titlebar">
         <source>Popup Titlebar Text</source>
-        <target state="needs-translation">Popup Titlebar Text</target>
+        <target state="translated">Titelleisten-Text für das Popup</target>
       </trans-unit>
       <trans-unit id="popup.thanks">
         <source>Thanks for your Feedback!</source>
-        <target state="needs-translation">Thanks for your Feedback!</target>
+        <target state="translated">Vielen Dank für Ihr Feedback!</target>
       </trans-unit>
       <trans-unit id="popup.ccmsg">
         <source>If you feedback requires a response, we'll be in touch shortly</source>
-        <target state="needs-translation">If you feedback requires a response, we'll be in touch shortly</target>
+        <target state="translated">Falls Ihr Feedback eine Antwort erfordert, werden wir uns bald bei Ihnen melden</target>
       </trans-unit>
       <trans-unit id="mail.salutation">
         <source>Hey</source>
@@ -503,71 +503,71 @@
       </trans-unit>
       <trans-unit id="admin.content1">
         <source>You have new Feedback for this Page</source>
-        <target state="needs-translation">You have new Feedback for this Page</target>
+        <target state="translated">Sie haben ein neues Feedback für diese Seite</target>
       </trans-unit>
       <trans-unit id="mail.quickfeedbackfor">
         <source>User feedback with</source>
-        <target state="needs-translation">User feedback with</target>
+        <target state="translated">Benutzerfeedback mit</target>
       </trans-unit>
       <trans-unit id="mail.usercomment">
         <source>User comment</source>
-        <target state="needs-translation">User comment</target>
+        <target state="translated">Benutzerkommentar</target>
       </trans-unit>
       <trans-unit id="mail.sent.footer">
         <source>This email was sent by</source>
-        <target state="needs-translation">This email was sent by</target>
+        <target state="translated">Diese E-Mail wurde gesendet von</target>
       </trans-unit>
       <trans-unit id="mail.fromurl">
         <source>from URL:</source>
-        <target state="needs-translation">from URL:</target>
+        <target state="translated">von der URL:</target>
       </trans-unit>
       <trans-unit id="mail.rating">
         <source>You have rating for this Page</source>
-        <target state="needs-translation">You have rating for this Page</target>
+        <target state="translated">Sie haben eine Bewertung für diese Seite</target>
       </trans-unit>
       <trans-unit id="mail.rate">
         <source>User rating</source>
-        <target state="needs-translation">User rating</target>
+        <target state="translated">Benutzerbewertung</target>
       </trans-unit>
       <trans-unit id="mail.feed">
         <source>User Feedback</source>
-        <target state="needs-translation">User Feedback</target>
+        <target state="translated">Benutzerfeedback</target>
       </trans-unit>
       <trans-unit id="userinfo">
         <source>User Information</source>
-        <target state="needs-translation">User Information</target>
+        <target state="translated">Benutzerinformationen</target>
       </trans-unit>
       <trans-unit id="username">
         <source>User's Name</source>
-        <target state="needs-translation">User's Name</target>
+        <target state="translated">Benutzername</target>
       </trans-unit>
       <trans-unit id="usermail">
         <source>User's Email</source>
-        <target state="needs-translation">User's Email</target>
+        <target state="translated">Benutzer-E-Mail</target>
       </trans-unit>
       <trans-unit id="rating_feedback">
         <source>Rating Feedbacks</source>
-        <target state="needs-translation">Rating Feedbacks</target>
+        <target state="translated">Bewertungsrückmeldungen</target>
       </trans-unit>
       <trans-unit id="quick_feedback">
         <source>Quick Feedbacks</source>
-        <target state="needs-translation">Quick Feedbacks</target>
+        <target state="translated">Schnelle Rückmeldungen</target>
       </trans-unit>
       <trans-unit id="full_feedback">
         <source>Full Feedbacks</source>
-        <target state="needs-translation">Full Feedbacks</target>
+        <target state="translated">Ausführliche Rückmeldungen</target>
       </trans-unit>
       <trans-unit id="popup_feedback">
         <source>Popup Blocks</source>
-        <target state="needs-translation">Popup Blocks</target>
+        <target state="translated">Popup-Blöcke</target>
       </trans-unit>
       <trans-unit id="type.news">
         <source>News</source>
-        <target state="needs-translation">News</target>
+        <target state="translated">Neuigkeiten</target>
       </trans-unit>
       <trans-unit id="type.page">
         <source>Page</source>
-        <target state="needs-translation">Page</target>
+        <target state="translated">Seite</target>
       </trans-unit>
       <trans-unit id="type.blog">
         <source>Blog</source>
@@ -575,163 +575,163 @@
       </trans-unit>
       <trans-unit id="ratingcount">
         <source>Rating Counts</source>
-        <target state="needs-translation">Rating Counts</target>
+        <target state="translated">Bewertungszähler</target>
       </trans-unit>
       <trans-unit id="ratingssummury">
         <source>Ratings Summary</source>
-        <target state="needs-translation">Ratings Summary</target>
+        <target state="translated">Bewertungszusammenfassung</target>
       </trans-unit>
       <trans-unit id="leftbottom">
         <source>Left Bottom</source>
-        <target state="needs-translation">Left Bottom</target>
+        <target state="translated">Links unten</target>
       </trans-unit>
       <trans-unit id="rightbottom">
         <source>Right Bottom</source>
-        <target state="needs-translation">Right Bottom</target>
+        <target state="translated">Rechts unten</target>
       </trans-unit>
       <trans-unit id="leftside">
         <source>Left Sidebar</source>
-        <target state="needs-translation">Left Sidebar</target>
+        <target state="translated">Linke Seitenleiste</target>
       </trans-unit>
       <trans-unit id="rightside">
         <source>Right Sidebar</source>
-        <target state="needs-translation">Right Sidebar</target>
+        <target state="translated">Rechte Seitenleiste</target>
       </trans-unit>
       <trans-unit id="popuplayout">
         <source>Popup Layout</source>
-        <target state="needs-translation">Popup Layout</target>
+        <target state="translated">Popup-Layout</target>
       </trans-unit>
       <trans-unit id="cat_thankyou">
         <source>Thank you Message Configuration</source>
-        <target state="needs-translation">Thank you Message Configuration</target>
+        <target state="translated">Konfiguration der Dankesnachricht</target>
       </trans-unit>
       <trans-unit id="thankyoutitle">
         <source>Heading</source>
-        <target state="needs-translation">Heading</target>
+        <target state="translated">Überschrift</target>
       </trans-unit>
       <trans-unit id="thankyoumsg">
         <source>Message</source>
-        <target state="needs-translation">Message</target>
+        <target state="translated">Nachricht</target>
       </trans-unit>
       <trans-unit id="userquickfeedback">
         <source>User's Quick Feedbacks</source>
-        <target state="needs-translation">User's Quick Feedbacks</target>
+        <target state="translated">Benutzer schnelle Rückmeldungen</target>
       </trans-unit>
       <trans-unit id="fstar">
         <source>5 Stars</source>
-        <target state="needs-translation">5 Stars</target>
+        <target state="translated">5 Sterne</target>
       </trans-unit>
       <trans-unit id="fostar">
         <source>4 Stars</source>
-        <target state="needs-translation">4 Stars</target>
+        <target state="translated">4 Sterne</target>
       </trans-unit>
       <trans-unit id="thstar">
         <source>3 Stars</source>
-        <target state="needs-translation">3 Stars</target>
+        <target state="translated">3 Sterne</target>
       </trans-unit>
       <trans-unit id="tstar">
         <source>2 Stars</source>
-        <target state="needs-translation">2 Stars</target>
+        <target state="translated">2 Sterne</target>
       </trans-unit>
       <trans-unit id="ostar">
         <source>1 Star</source>
-        <target state="needs-translation">1 Star</target>
+        <target state="translated">1 Stern</target>
       </trans-unit>
       <trans-unit id="userratings">
         <source>User Ratings</source>
-        <target state="needs-translation">User Ratings</target>
+        <target state="translated">Benutzerbewertungen</target>
       </trans-unit>
       <trans-unit id="nameinclude">
         <source>Name Field - Include?</source>
-        <target state="needs-translation">Name Field - Include?</target>
+        <target state="translated">Namensfeld - Einbeziehen?</target>
       </trans-unit>
       <trans-unit id="namelabel">
         <source>Name Field - Label</source>
-        <target state="needs-translation">Name Field - Label</target>
+        <target state="translated">Namensfeld - Beschriftung</target>
       </trans-unit>
       <trans-unit id="nameplaceholder">
         <source>Name Field - Placeholder</source>
-        <target state="needs-translation">Name Field - Placeholder</target>
+        <target state="translated">Namensfeld - Platzhalter</target>
       </trans-unit>
       <trans-unit id="namerequired">
         <source>Name Field - Required?</source>
-        <target state="needs-translation">Name Field - Required?</target>
+        <target state="translated">Namensfeld - Erforderlich?</target>
       </trans-unit>
       <trans-unit id="emailinclude">
         <source>Email Field - Include?</source>
-        <target state="needs-translation">Email Field - Include?</target>
+        <target state="translated">E-Mail-Feld - Einbeziehen?</target>
       </trans-unit>
       <trans-unit id="emaillabel">
         <source>Email Field - Label</source>
-        <target state="needs-translation">Email Field - Label</target>
+        <target state="translated">E-Mail-Feld - Beschriftung</target>
       </trans-unit>
       <trans-unit id="emailplaceholder">
         <source>Email Field - Placeholder</source>
-        <target state="needs-translation">Email Field - Placeholder</target>
+        <target state="translated">E-Mail-Feld - Platzhalter</target>
       </trans-unit>
       <trans-unit id="emailrequired">
         <source>Email Field - Required?</source>
-        <target state="needs-translation">Email Field - Required?</target>
+        <target state="translated">E-Mail-Feld - Erforderlich?</target>
       </trans-unit>
       <trans-unit id="textareainclude">
         <source>Feedback - Include?</source>
-        <target state="needs-translation">Feedback - Include?</target>
+        <target state="translated">Feedback - Einbeziehen?</target>
       </trans-unit>
       <trans-unit id="textarealabel">
         <source>Feedback - Label</source>
-        <target state="needs-translation">Feedback - Label</target>
+        <target state="translated">Feedback - Beschriftung</target>
       </trans-unit>
       <trans-unit id="textareaplaceholder">
         <source>Feedback - Placeholder</source>
-        <target state="needs-translation">Feedback - Placeholder</target>
+        <target state="translated">Feedback - Platzhalter</target>
       </trans-unit>
       <trans-unit id="textarearequired">
         <source>Feedback - Required?</source>
-        <target state="needs-translation">Feedback - Required?</target>
+        <target state="translated">Feedback - Erforderlich?</target>
       </trans-unit>
       <trans-unit id="ratinginclude">
         <source>Ratings - Include?</source>
-        <target state="needs-translation">Ratings - Include?</target>
+        <target state="translated">Bewertungen - Einbeziehen?</target>
       </trans-unit>
       <trans-unit id="ratinglabel">
         <source>Ratings - Label</source>
-        <target state="needs-translation">Ratings - Label</target>
+        <target state="translated">Bewertungen - Beschriftung</target>
       </trans-unit>
       <trans-unit id="submitlabel">
         <source>Submit Button - Label</source>
-        <target state="needs-translation">Submit Button - Label</target>
+        <target state="translated">Senden-Button - Beschriftung</target>
       </trans-unit>
       <trans-unit id="cat_popup">
         <source>Popup Configuration</source>
-        <target state="needs-translation">Popup Configuration</target>
+        <target state="translated">Pop-up-Konfiguration</target>
       </trans-unit>
       <trans-unit id="popupcolor">
         <source>Popup Color</source>
-        <target state="needs-translation">Popup Color</target>
+        <target state="translated">Pop-up-Farbe</target>
       </trans-unit>
       <trans-unit id="report.desc">
         <source>Reports tab displays all the Feedback reports of Feedback Forms added in currently selected page.</source>
-        <target state="needs-translation">Reports tab displays all the Feedback reports of Feedback Forms added in currently selected page.</target>
+        <target state="translated">Der Registerkarte "Berichte" werden alle Feedback-Berichte der Feedback-Formulare angezeigt, die auf der aktuell ausgewählten Seite hinzugefügt wurden.</target>
       </trans-unit>
       <trans-unit id="global.desc">
         <source>In this tab you can configure all the global settings for the Feedback Forms added in the site.</source>
-        <target state="needs-translation">In this tab you can configure all the global settings for the Feedback Forms added in the site.</target>
+        <target state="translated">Auf dieser Registerkarte können Sie alle globalen Einstellungen für die Feedback-Formulare auf der Website konfigurieren.</target>
       </trans-unit>
       <trans-unit id="feed.desc">
         <source>You can configure all available Feedback Forms from here.</source>
-        <target state="needs-translation">You can configure all available Feedback Forms from here.</target>
+        <target state="translated">Sie können alle verfügbaren Feedback-Formulare von hier aus konfigurieren.</target>
       </trans-unit>
       <trans-unit id="opps">
         <source>Oops!</source>
-        <target state="needs-translation">Oops!</target>
+        <target state="translated">Hoppla!</target>
       </trans-unit>
       <trans-unit id="info1">
         <source>Feedback is not available for this page.</source>
-        <target state="needs-translation">Feedback is not available for this page.</target>
+        <target state="translated">Feedback ist für diese Seite nicht verfügbar.</target>
       </trans-unit>
       <trans-unit id="info2">
         <source>Please select other page to view feedbacks.</source>
-        <target state="needs-translation">Please select other page to view feedbacks.</target>
+        <target state="translated">Bitte wählen Sie eine andere Seite, um Feedbacks anzuzeigen.</target>
       </trans-unit>
     </body>
   </file>
