@@ -3,9 +3,9 @@
   <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_csh_tx_nsfeedback_domain_model_feedbacks.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="de">
     <header/>
     <body>
-      <trans-unit id="comment.description">
+      <trans-unit id="comment.description" approved="yes">
         <source>comment</source>
-        <target state="translated">Kommentar</target>
+        <target state="final">Kommentar</target>
       </trans-unit>
       <trans-unit id="user_ip.description">
         <source>userIp</source>
