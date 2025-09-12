@@ -3,41 +3,41 @@
   <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="de">
     <header/>
     <body>
-      <trans-unit id="tx_nsfeedback_domain_model_report">
+      <trans-unit id="tx_nsfeedback_domain_model_report" approved="yes">
         <source>Report</source>
-        <target state="translated">Bericht</target>
+        <target state="final">Bericht</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_id" approved="yes">
         <source>Page Id</source>
-        <target state="translated">Seiten-ID</target>
+        <target state="final">Seiten-ID</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.record_id">
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_id" approved="yes">
         <source>Record Id</source>
-        <target state="translated">Datensatz-ID</target>
+        <target state="final">Datensatz-ID</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.page_type">
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_type" approved="yes">
         <source>Page Type</source>
-        <target state="translated">Seitentyp</target>
+        <target state="final">Seitentyp</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.page_title">
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_title" approved="yes">
         <source>Page Title</source>
-        <target state="translated">Seitentitel</target>
+        <target state="final">Seitentitel</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_count">
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_count" approved="yes">
         <source>Feedback Yes Count</source>
-        <target state="translated">Feedback Ja Zähler</target>
+        <target state="final">Feedback Ja Zähler</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_no_count">
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_no_count" approved="yes">
         <source>Feedback No Count</source>
-        <target state="translated">Feedback Nein Zähler</target>
+        <target state="final">Feedback Nein Zähler</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_but_count">
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_but_count" approved="yes">
         <source>Feedback Yes But Count</source>
-        <target state="translated">Feedback Ja Aber Zähler</target>
+        <target state="final">Feedback Ja Aber Zähler</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
+      <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id" approved="yes">
         <source>Sys Lang Id</source>
-        <target state="translated">Sys Lang ID</target>
+        <target state="final">Sys Lang ID</target>
       </trans-unit>
       <trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
         <source>Feedbacks</source>
@@ -47,33 +47,33 @@
         <source>Feedbacks</source>
         <target state="needs-translation">Feedbacks</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment" approved="yes">
         <source>Comment</source>
-        <target state="translated">Kommentar</target>
+        <target state="final">Kommentar</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip" approved="yes">
         <source>User Ip</source>
-        <target state="translated">Benutzer-IP</target>
+        <target state="final">Benutzer-IP</target>
       </trans-unit>
-      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type" approved="yes">
         <source>Feedback Type</source>
-        <target state="translated">Feedback-Typ</target>
+        <target state="final">Feedback-Typ</target>
       </trans-unit>
       <trans-unit id="tx_ns_feedback_feedback.name">
         <source>Feedback</source>
         <target state="needs-translation">Feedback</target>
       </trans-unit>
-      <trans-unit id="tx_ns_feedback_feedback.description">
+      <trans-unit id="tx_ns_feedback_feedback.description" approved="yes">
         <source>Put your feedback</source>
-        <target state="translated">Geben Sie Ihr Feedback ein</target>
+        <target state="final">Geben Sie Ihr Feedback ein</target>
       </trans-unit>
       <trans-unit id="tx_ns_feedback_feedback.nsfeedback">
         <source>Feedback</source>
         <target state="needs-translation">Feedback</target>
       </trans-unit>
-      <trans-unit id="globalSettings">
+      <trans-unit id="globalSettings" approved="yes">
         <source>Global Settings</source>
-        <target state="translated">Globale Einstellungen</target>
+        <target state="final">Globale Einstellungen</target>
       </trans-unit>
     </body>
   </file>
