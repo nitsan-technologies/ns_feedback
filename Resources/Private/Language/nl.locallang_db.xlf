@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="nl">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsfeedback_domain_model_report">
+        <source>Report</source>
+        <target state="needs-translation">Report</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+        <source>Page Id</source>
+        <target state="needs-translation">Page Id</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_id">
+        <source>Record Id</source>
+        <target state="needs-translation">Record Id</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_type">
+        <source>Page Type</source>
+        <target state="needs-translation">Page Type</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_title">
+        <source>Page Title</source>
+        <target state="needs-translation">Page Title</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_count">
+        <source>Feedback Yes Count</source>
+        <target state="needs-translation">Feedback Yes Count</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_no_count">
+        <source>Feedback No Count</source>
+        <target state="needs-translation">Feedback No Count</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_but_count">
+        <source>Feedback Yes But Count</source>
+        <target state="needs-translation">Feedback Yes But Count</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
+        <source>Sys Lang Id</source>
+        <target state="needs-translation">Sys Lang Id</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
+        <source>Feedbacks</source>
+        <target state="needs-translation">Feedbacks</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks">
+        <source>Feedbacks</source>
+        <target state="needs-translation">Feedbacks</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
+        <source>Comment</source>
+        <target state="needs-translation">Comment</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
+        <source>User Ip</source>
+        <target state="needs-translation">User Ip</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
+        <source>Feedback Type</source>
+        <target state="needs-translation">Feedback Type</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_feedback_feedback.name">
+        <source>Feedback</source>
+        <target state="needs-translation">Feedback</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_feedback_feedback.description">
+        <source>Put your feedback</source>
+        <target state="needs-translation">Put your feedback</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_feedback_feedback.nsfeedback">
+        <source>Feedback</source>
+        <target state="needs-translation">Feedback</target>
+      </trans-unit>
+      <trans-unit id="globalSettings">
+        <source>Global Settings</source>
+        <target state="needs-translation">Global Settings</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_feedback_configuration.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="es-ES">
+    <header/>
+    <body>
+      <trans-unit id="mlang_tabs_tab">
+        <source>Feedback Configuration</source>
+        <target state="needs-translation">Feedback Configuration</target>
+      </trans-unit>
+      <trans-unit id="mlang_labels_tabdescr">
+        <source/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

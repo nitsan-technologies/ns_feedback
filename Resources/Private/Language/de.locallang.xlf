@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsfeedback_domain_model_report" approved="yes">
+        <source>Report</source>
+        <target state="final">Bericht</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+        <source>ID</source>
+        <target state="needs-translation">ID</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_id" approved="yes">
+        <source>Record Id</source>
+        <target state="final">Datensatz-ID</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_type" approved="yes">
+        <source>Type</source>
+        <target state="final">Typ</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="feedback_yes_count" approved="yes">
+        <source>Feedback Yes Count</source>
+        <target state="final">Feedback Ja Anzahl</target>
+      </trans-unit>
+      <trans-unit id="feedback_no_count" approved="yes">
+        <source>Feedback No Count</source>
+        <target state="final">Feedback Nein Anzahl</target>
+      </trans-unit>
+      <trans-unit id="feedback_yes_but_count" approved="yes">
+        <source>Feedback Yes But Count</source>
+        <target state="final">Feedback Ja, aber Anzahl</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id" approved="yes">
+        <source>Sys Lang Id</source>
+        <target state="final">Sys Lang-ID</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
+        <source>Feedbacks</source>
+        <target state="needs-translation">Feedbacks</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks" approved="yes">
+        <source>Feedbacks</source>
+        <target state="final">Kommentar</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment" approved="yes">
+        <source>Comment</source>
+        <target state="final">Benutzer-IP</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip" approved="yes">
+        <source>User Ip</source>
+        <target state="final">Feedback-Typ</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type" approved="yes">
+        <source>Feedback Type</source>
+        <target state="final">Ja</target>
+      </trans-unit>
+      <trans-unit id="yes" approved="yes">
+        <source>Yes</source>
+        <target state="final">Nein</target>
+      </trans-unit>
+      <trans-unit id="no" approved="yes">
+        <source>No</source>
+        <target state="final">Ja, aber</target>
+      </trans-unit>
+      <trans-unit id="yesbut" approved="yes">
+        <source>Yes, But</source>
+        <target state="final">War dieser Beitrag hilfreich?</target>
+      </trans-unit>
+      <trans-unit id="defaulttitle.helpfull" approved="yes">
+        <source>Was this post helpful?</source>
+        <target state="final">Feedback senden</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.sendfeedback" approved="yes">
+        <source>Send Feedback</source>
+        <target state="final">Vielen Dank für Ihr Feedback.</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyou" approved="yes">
+        <source>Thank You For Your Feedback.</source>
+        <target state="final">Ihr Feedback wurde gesendet.</target>
+      </trans-unit>
+      <trans-unit id="alreadyfeedback" approved="yes">
+        <source>Your Feedback is sent.</source>
+        <target state="final">Feedback-Bericht</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackreport" approved="yes">
+        <source>Feedback Report</source>
+        <target state="final">VON</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.FROM" approved="yes">
+        <source>FROM</source>
+        <target state="final">BIS</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.to" approved="yes">
+        <source>TO</source>
+        <target state="final">Datum</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.Date" approved="yes">
+        <source>Date</source>
+        <target state="final">Gesamt-Feedbacks</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.total" approved="yes">
+        <source>Total Feedbacks</source>
+        <target state="final">Zurück zur Liste</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.backlist" approved="yes">
+        <source>Back to list</source>
+        <target state="final">Feedbacks von</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackof" approved="yes">
+        <source>Feedbacks of</source>
+        <target state="final">Max</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.max" approved="yes">
+        <source>Max</source>
+        <target state="final">Zeichen lang</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.charlong" approved="yes">
+        <source>Character Long</source>
+        <target state="final">Bitte zuerst einen Kommentar hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.addcomment" approved="yes">
+        <source>Please add comment first</source>
+        <target state="final">Feedbacks anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.viewcomment" approved="yes">
+        <source>View Feedbacks</source>
+        <target state="final">Aktionen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.action" approved="yes">
+        <source>Action</source>
+        <target state="final">Berichte</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.nsreport" approved="yes">
+        <source>Reports</source>
+        <target state="final">Feedback</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.nsfeedback" approved="yes">
+        <source>Feedback</source>
+        <target state="final">Dokumentation</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.documentaiton" approved="yes">
+        <source>Documentaiton</source>
+        <target state="final">Hilfe &amp; Support</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.helpsupport" approved="yes">
+        <source>Help &amp; Support</source>
+        <target state="final">Spenden</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.donate" approved="yes">
+        <source>Donate</source>
+        <target state="final">Etwas ist schiefgelaufen, bitte senden Sie Ihr Feedback erneut.</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.resubmit" approved="yes">
+        <source>Something wrong, please resubmit your feedback.</source>
+        <target state="final">Globale Einstellung</target>
+      </trans-unit>
+      <trans-unit id="globalsettings" approved="yes">
+        <source>Global Setting</source>
+        <target state="final">Übersicht</target>
+      </trans-unit>
+      <trans-unit id="Dashboard" approved="yes">
+        <source>Dashboard</source>
+        <target state="final">Premium-Erweiterung</target>
+      </trans-unit>
+      <trans-unit id="premiumExtension" approved="yes">
+        <source>Premium Extension</source>
+        <target state="final">Grundlegende Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="basicSettings" approved="yes">
+        <source>Basic Settings</source>
+        <target state="final">Entschuldigung, Konfiguration nicht verfügbar für dieses!</target>
+      </trans-unit>
+      <trans-unit id="noThemeConfiguration" approved="yes">
+        <source>Sorry, Configuration not available for this!</source>
+        <target state="final">Entschuldigung!</target>
+      </trans-unit>
+      <trans-unit id="sorry" approved="yes">
+        <source>Sorry!</source>
+        <target state="final">Keine Erweiterungsvorlage für diese Seite verfügbar.</target>
+      </trans-unit>
+      <trans-unit id="noconstantline1" approved="yes">
+        <source>No Extension Template available for this Page.</source>
+        <target state="final">Bitte gehen Sie zum Template-Modul und erstellen Sie eine neue Erweiterungsvorlage für diese Seite.</target>
+      </trans-unit>
+      <trans-unit id="noconstantline2" approved="yes">
+        <source>Please go the Template Module and create new extension Template for this page.</source>
+        <target state="final">Bitte hier klicken</target>
+      </trans-unit>
+      <trans-unit id="noconstantline3" approved="yes">
+        <source>Please click here</source>
+        <target state="final">Vorlage</target>
+      </trans-unit>
+      <trans-unit id="templatelinkText" approved="yes">
+        <source>Template</source>
+        <target state="final">Änderungen speichern</target>
+      </trans-unit>
+      <trans-unit id="save">
+        <source>Save Changes</source>
+        <target state="needs-translation">Save Changes</target>
+      </trans-unit>
+      <trans-unit id="widget_group.ns_feedbackwidgetgroup">
+        <source>Feedback Widgets</source>
+        <target state="needs-translation">Feedback Widgets</target>
+      </trans-unit>
+      <trans-unit id="dashboard.nsFeedbackPreset" approved="yes">
+        <source>Feedback Presets</source>
+        <target state="final">Feedback Voreinstellungen</target>
+      </trans-unit>
+      <trans-unit id="dashboard.nsFeedbackPreset.description" approved="yes">
+        <source>Feedback Presets Description</source>
+        <target state="final">Beschreibung der Feedback Voreinstellungen</target>
+      </trans-unit>
+      <trans-unit id="totalratings" approved="yes">
+        <source>Total Ratings</source>
+        <target state="final">Gesamtbewertungen</target>
+      </trans-unit>
+      <trans-unit id="totalratingscount" approved="yes">
+        <source>Total Ratings Count</source>
+        <target state="final">Anzahl der Gesamtbewertungen</target>
+      </trans-unit>
+      <trans-unit id="appearanceSettings" approved="yes">
+        <source>Feedback Forms Settings</source>
+        <target state="final">Feedbackformular Einstellungen</target>
+      </trans-unit>
+      <!--Constants Sub Category-->
+      <trans-unit id="cat_appearance" approved="yes">
+        <source>Appearance</source>
+        <target state="final">Erscheinungsbild</target>
+      </trans-unit>
+      <trans-unit id="cat_selection" approved="yes">
+        <source>Selection</source>
+        <target state="final">Auswahl</target>
+      </trans-unit>
+      <trans-unit id="cat_quickfeedback" approved="yes">
+        <source>Quick Feedback Form Configuration</source>
+        <target state="final">Schnelle Feedbackformularkonfiguration</target>
+      </trans-unit>
+      <trans-unit id="cat_ratings" approved="yes">
+        <source>Ratings</source>
+        <target state="final">Bewertungen</target>
+      </trans-unit>
+      <trans-unit id="cat_fullfeedback" approved="yes">
+        <source>Full Feedback Form Configuration</source>
+        <target state="final">Komplette Feedbackformularkonfiguration</target>
+      </trans-unit>
+      <trans-unit id="cat_name">
+        <source>Name</source>
+        <target state="needs-translation">Name</target>
+      </trans-unit>
+      <trans-unit id="cat_email" approved="yes">
+        <source>Email</source>
+        <target state="final">E-Mail</target>
+      </trans-unit>
+      <trans-unit id="cat_longtext" approved="yes">
+        <source>Long Text(Textarea)</source>
+        <target state="final">Langer Text(Textbereich)</target>
+      </trans-unit>
+      <trans-unit id="cat_submit" approved="yes">
+        <source>Submit Button</source>
+        <target state="final">Absendebutton</target>
+      </trans-unit>
+      <trans-unit id="cat_basic" approved="yes">
+        <source>Basic Configuration</source>
+        <target state="final">Grundkonfiguration</target>
+      </trans-unit>
+      <trans-unit id="cat_design" approved="yes">
+        <source>Form Stylings</source>
+        <target state="final">Formular-Stylings</target>
+      </trans-unit>
+      <trans-unit id="cat_emailconfig" approved="yes">
+        <source>Email Notification Settings</source>
+        <target state="final">E-Mail Benachrichtigungseinstellungen</target>
+      </trans-unit>
+      <!--Constant Labels-->
+      <trans-unit id="allPage" approved="yes">
+        <source>All Pages?:Enable this to display Feedback form on all pages of the site.</source>
+        <target state="final">Alle Seiten?: Aktivieren Sie dies, um das Feedback-Formular auf allen Seiten der Website anzuzeigen.</target>
+      </trans-unit>
+      <trans-unit id="newsBlog">
+        <source>News/Blog</source>
+        <target state="needs-translation">News/Blog</target>
+      </trans-unit>
+      <trans-unit id="popup">
+        <source>Popup Block</source>
+        <target state="needs-translation">Popup Block</target>
+      </trans-unit>
+      <trans-unit id="feedbackType" approved="yes">
+        <source>Feedback Type:Select feedback form to display in entire site.</source>
+        <target state="final">Feedback-Typ: Wählen Sie das Feedback-Formular aus, das auf der gesamten Website angezeigt werden soll.</target>
+      </trans-unit>
+      <trans-unit id="fullfeedback" approved="yes">
+        <source>Full Feedback Form</source>
+        <target state="final">Vollständiges Feedback-Formular</target>
+      </trans-unit>
+      <trans-unit id="quickfeedback" approved="yes">
+        <source>Quick Feedback Form</source>
+        <target state="final">Schnelles Feedback-Formular</target>
+      </trans-unit>
+      <trans-unit id="ratings" approved="yes">
+        <source>Ratings</source>
+        <target state="final">Bewertungen</target>
+      </trans-unit>
+      <trans-unit id="nobut" approved="yes">
+        <source>No, But</source>
+        <target state="final">Nein, aber</target>
+      </trans-unit>
+      <trans-unit id="quickbuttons" approved="yes">
+        <source>Select Buttons</source>
+        <target state="final">Schaltflächen auswählen</target>
+      </trans-unit>
+      <trans-unit id="star" approved="yes">
+        <source>Star</source>
+        <target state="final">Stern</target>
+      </trans-unit>
+      <trans-unit id="emoji">
+        <source>Emoji</source>
+        <target state="needs-translation">Emoji</target>
+      </trans-unit>
+      <trans-unit id="number" approved="yes">
+        <source>Numbers</source>
+        <target state="final">Zahlen</target>
+      </trans-unit>
+      <trans-unit id="ratingsType" approved="yes">
+        <source>Rating Style</source>
+        <target state="final">Bewertungsstil</target>
+      </trans-unit>
+      <trans-unit id="titleText" approved="yes">
+        <source>Heading Text</source>
+        <target state="final">Überschriftstext</target>
+      </trans-unit>
+      <trans-unit id="userChangedRating" approved="yes">
+        <source>Can user change their Ratings?</source>
+        <target state="final">Kann der Benutzer seine Bewertungen ändern?</target>
+      </trans-unit>
+      <trans-unit id="include" approved="yes">
+        <source>Include this Field?</source>
+        <target state="final">Dieses Feld einschließen?</target>
+      </trans-unit>
+      <trans-unit id="label" approved="yes">
+        <source>Field Label</source>
+        <target state="final">Feldbeschriftung</target>
+      </trans-unit>
+      <trans-unit id="required" approved="yes">
+        <source>Required?</source>
+        <target state="final">Erforderlich?</target>
+      </trans-unit>
+      <trans-unit id="popupSettings" approved="yes">
+        <source>Popup Settings</source>
+        <target state="final">Popup-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="commonSettings" approved="yes">
+        <source>Global Settings</source>
+        <target state="final">Globale Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="restrictMultipleFeedback" approved="yes">
+        <source>Restrict Multiple Feedback:Restrict visitor from submitting multiple Feedbacks</source>
+        <target state="final">Mehrfaches Feedback einschränken: Besucher davon abhalten, mehrere Feedbacks abzusenden</target>
+      </trans-unit>
+      <trans-unit id="enableFeedback" approved="yes">
+        <source>Display Feedback Results:Display Feedback results to visitors</source>
+        <target state="final">Feedback-Ergebnisse anzeigen: Feedback-Ergebnisse für Besucher anzeigen</target>
+      </trans-unit>
+      <trans-unit id="fontsize" approved="yes">
+        <source>Font Size:Select font size between 18 to 30</source>
+        <target state="final">Schriftgröße: Schriftgröße zwischen 18 und 30 auswählen</target>
+      </trans-unit>
+      <trans-unit id="fontstyle" approved="yes">
+        <source>Font Style</source>
+        <target state="final">Schriftstil</target>
+      </trans-unit>
+      <trans-unit id="bold" approved="yes">
+        <source>Bold</source>
+        <target state="final">Fett</target>
+      </trans-unit>
+      <trans-unit id="normal">
+        <source>Normal</source>
+        <target state="needs-translation">Normal</target>
+      </trans-unit>
+      <trans-unit id="fontcolor" approved="yes">
+        <source>Font Color</source>
+        <target state="final">Schriftfarbe</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle" approved="yes">
+        <source>Button Style:Select how buttons should be displayed in Feedback forms.</source>
+        <target state="final">Schaltflächenstil: Auswählen, wie Schaltflächen in Feedback-Formularen angezeigt werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle.rq" approved="yes">
+        <source>Rectangle</source>
+        <target state="final">Rechteck</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle.ov">
+        <source>Oval</source>
+        <target state="needs-translation">Oval</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle.rrq" approved="yes">
+        <source>Rounded-Rectangle</source>
+        <target state="final">Abgerundetes Rechteck</target>
+      </trans-unit>
+      <trans-unit id="buttonbg" approved="yes">
+        <source>Button Background Color</source>
+        <target state="final">Schaltflächen-Hintergrundfarbe</target>
+      </trans-unit>
+      <trans-unit id="notifyadmin" approved="yes">
+        <source>Notify to Admin:Send an E-mail to Administrator after visitor submits the feedback</source>
+        <target state="final">Administrator benachrichtigen: E-Mail an Administrator senden, nachdem der Besucher das Feedback gesendet hat</target>
+      </trans-unit>
+      <trans-unit id="adminemail" approved="yes">
+        <source>Admin E-mail</source>
+        <target state="final">Admin-E-Mail</target>
+      </trans-unit>
+      <trans-unit id="notifyuser" approved="yes">
+        <source>Notify to visitor:Send an E-mail to visitor after visitor submits the feedback</source>
+        <target state="final">Besucher benachrichtigen: E-Mail an Besucher senden, nachdem der Besucher das Feedback gesendet hat</target>
+      </trans-unit>
+      <trans-unit id="adminemailsubject" approved="yes">
+        <source>Admin E-mail Subject</source>
+        <target state="final">Betreff der Admin-E-Mail</target>
+      </trans-unit>
+      <trans-unit id="adminname" approved="yes">
+        <source>Admin Name</source>
+        <target state="final">Admin-Name</target>
+      </trans-unit>
+      <trans-unit id="useremailsubject" approved="yes">
+        <source>Visitor E-mail Subject</source>
+        <target state="final">Besucher-E-Mail Betreff</target>
+      </trans-unit>
+      <trans-unit id="mailcontenttitle" approved="yes">
+        <source>Visitor E-mail heading</source>
+        <target state="final">Besucher-E-Mail-Überschrift</target>
+      </trans-unit>
+      <trans-unit id="mailcontent" approved="yes">
+        <source>Visitor E-mail text</source>
+        <target state="final">Besucher-E-Mail-Text</target>
+      </trans-unit>
+      <trans-unit id="slide" approved="yes">
+        <source>SlideUpDown</source>
+        <target state="final">Hoch-Runter schieben</target>
+      </trans-unit>
+      <trans-unit id="toggle" approved="yes">
+        <source>Toggle</source>
+        <target state="final">Umschalten</target>
+      </trans-unit>
+      <trans-unit id="fade" approved="yes">
+        <source>FadeInOut</source>
+        <target state="final">Ein- und Ausblenden</target>
+      </trans-unit>
+      <trans-unit id="quickboxappearance" approved="yes">
+        <source>Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</source>
+        <target state="final">Textbox-Anzeigestil: Wählen Sie aus, wie die Textbox erscheint, wenn der Besucher auf die Schaltfläche "Ja, aber" oder "Nein, aber" klickt</target>
+      </trans-unit>
+      <trans-unit id="placeholder" approved="yes">
+        <source>Placeholder</source>
+        <target state="final">Platzhalter</target>
+      </trans-unit>
+      <trans-unit id="email_required" approved="yes">
+        <source>Valid email is required!</source>
+        <target state="final">Eine gültige E-Mail-Adresse ist erforderlich!</target>
+      </trans-unit>
+      <trans-unit id="form.emailError" approved="yes">
+        <source>Enter valid email address</source>
+        <target state="final">Geben Sie eine gültige E-Mail-Adresse ein</target>
+      </trans-unit>
+      <trans-unit id="btntextcolor" approved="yes">
+        <source>Button Text Color</source>
+        <target state="final">Schaltflächen-Textfarbe</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyourating" approved="yes">
+        <source>Thank You For Your Ratings.</source>
+        <target state="final">Vielen Dank für Ihre Bewertungen.</target>
+      </trans-unit>
+      <trans-unit id="avgrating" approved="yes">
+        <source>Average of Ratings</source>
+        <target state="final">Durchschnitt der Bewertungen</target>
+      </trans-unit>
+      <trans-unit id="alreadyrating" approved="yes">
+        <source>You've already rated this.</source>
+        <target state="final">Sie haben dies bereits bewertet.</target>
+      </trans-unit>
+      <trans-unit id="popuptitle" approved="yes">
+        <source>Popup Title</source>
+        <target state="final">Popup-Titel</target>
+      </trans-unit>
+      <trans-unit id="titlebar" approved="yes">
+        <source>Popup Titlebar Text</source>
+        <target state="final">Titelleisten-Text für das Popup</target>
+      </trans-unit>
+      <trans-unit id="popup.thanks" approved="yes">
+        <source>Thanks for your Feedback!</source>
+        <target state="final">Vielen Dank für Ihr Feedback!</target>
+      </trans-unit>
+      <trans-unit id="popup.ccmsg" approved="yes">
+        <source>If you feedback requires a response, we'll be in touch shortly</source>
+        <target state="final">Falls Ihr Feedback eine Antwort erfordert, werden wir uns bald bei Ihnen melden</target>
+      </trans-unit>
+      <trans-unit id="mail.salutation">
+        <source>Hey</source>
+        <target state="needs-translation">Hey</target>
+      </trans-unit>
+      <trans-unit id="admin.content1" approved="yes">
+        <source>You have new Feedback for this Page</source>
+        <target state="final">Sie haben ein neues Feedback für diese Seite</target>
+      </trans-unit>
+      <trans-unit id="mail.quickfeedbackfor" approved="yes">
+        <source>User feedback with</source>
+        <target state="final">Benutzerfeedback mit</target>
+      </trans-unit>
+      <trans-unit id="mail.usercomment" approved="yes">
+        <source>User comment</source>
+        <target state="final">Benutzerkommentar</target>
+      </trans-unit>
+      <trans-unit id="mail.sent.footer" approved="yes">
+        <source>This email was sent by</source>
+        <target state="final">Diese E-Mail wurde gesendet von</target>
+      </trans-unit>
+      <trans-unit id="mail.fromurl" approved="yes">
+        <source>from URL:</source>
+        <target state="final">von der URL:</target>
+      </trans-unit>
+      <trans-unit id="mail.rating" approved="yes">
+        <source>You have rating for this Page</source>
+        <target state="final">Sie haben eine Bewertung für diese Seite</target>
+      </trans-unit>
+      <trans-unit id="mail.rate" approved="yes">
+        <source>User rating</source>
+        <target state="final">Benutzerbewertung</target>
+      </trans-unit>
+      <trans-unit id="mail.feed" approved="yes">
+        <source>User Feedback</source>
+        <target state="final">Benutzerfeedback</target>
+      </trans-unit>
+      <trans-unit id="userinfo" approved="yes">
+        <source>User Information</source>
+        <target state="final">Benutzerinformationen</target>
+      </trans-unit>
+      <trans-unit id="username" approved="yes">
+        <source>User's Name</source>
+        <target state="final">Benutzername</target>
+      </trans-unit>
+      <trans-unit id="usermail" approved="yes">
+        <source>User's Email</source>
+        <target state="final">Benutzer-E-Mail</target>
+      </trans-unit>
+      <trans-unit id="rating_feedback" approved="yes">
+        <source>Rating Feedbacks</source>
+        <target state="final">Bewertungsrückmeldungen</target>
+      </trans-unit>
+      <trans-unit id="quick_feedback" approved="yes">
+        <source>Quick Feedbacks</source>
+        <target state="final">Schnelle Rückmeldungen</target>
+      </trans-unit>
+      <trans-unit id="full_feedback" approved="yes">
+        <source>Full Feedbacks</source>
+        <target state="final">Ausführliche Rückmeldungen</target>
+      </trans-unit>
+      <trans-unit id="popup_feedback" approved="yes">
+        <source>Popup Blocks</source>
+        <target state="final">Popup-Blöcke</target>
+      </trans-unit>
+      <trans-unit id="type.news" approved="yes">
+        <source>News</source>
+        <target state="final">Neuigkeiten</target>
+      </trans-unit>
+      <trans-unit id="type.page" approved="yes">
+        <source>Page</source>
+        <target state="final">Seite</target>
+      </trans-unit>
+      <trans-unit id="type.blog">
+        <source>Blog</source>
+        <target state="needs-translation">Blog</target>
+      </trans-unit>
+      <trans-unit id="ratingcount" approved="yes">
+        <source>Rating Counts</source>
+        <target state="final">Bewertungszähler</target>
+      </trans-unit>
+      <trans-unit id="ratingssummury" approved="yes">
+        <source>Ratings Summary</source>
+        <target state="final">Bewertungszusammenfassung</target>
+      </trans-unit>
+      <trans-unit id="leftbottom" approved="yes">
+        <source>Left Bottom</source>
+        <target state="final">Links unten</target>
+      </trans-unit>
+      <trans-unit id="rightbottom" approved="yes">
+        <source>Right Bottom</source>
+        <target state="final">Rechts unten</target>
+      </trans-unit>
+      <trans-unit id="leftside" approved="yes">
+        <source>Left Sidebar</source>
+        <target state="final">Linke Seitenleiste</target>
+      </trans-unit>
+      <trans-unit id="rightside" approved="yes">
+        <source>Right Sidebar</source>
+        <target state="final">Rechte Seitenleiste</target>
+      </trans-unit>
+      <trans-unit id="popuplayout" approved="yes">
+        <source>Popup Layout</source>
+        <target state="final">Popup-Layout</target>
+      </trans-unit>
+      <trans-unit id="cat_thankyou" approved="yes">
+        <source>Thank you Message Configuration</source>
+        <target state="final">Konfiguration der Dankesnachricht</target>
+      </trans-unit>
+      <trans-unit id="thankyoutitle" approved="yes">
+        <source>Heading</source>
+        <target state="final">Überschrift</target>
+      </trans-unit>
+      <trans-unit id="thankyoumsg" approved="yes">
+        <source>Message</source>
+        <target state="final">Nachricht</target>
+      </trans-unit>
+      <trans-unit id="userquickfeedback" approved="yes">
+        <source>User's Quick Feedbacks</source>
+        <target state="final">Benutzer schnelle Rückmeldungen</target>
+      </trans-unit>
+      <trans-unit id="fstar" approved="yes">
+        <source>5 Stars</source>
+        <target state="final">5 Sterne</target>
+      </trans-unit>
+      <trans-unit id="fostar" approved="yes">
+        <source>4 Stars</source>
+        <target state="final">4 Sterne</target>
+      </trans-unit>
+      <trans-unit id="thstar" approved="yes">
+        <source>3 Stars</source>
+        <target state="final">3 Sterne</target>
+      </trans-unit>
+      <trans-unit id="tstar" approved="yes">
+        <source>2 Stars</source>
+        <target state="final">2 Sterne</target>
+      </trans-unit>
+      <trans-unit id="ostar" approved="yes">
+        <source>1 Star</source>
+        <target state="final">1 Stern</target>
+      </trans-unit>
+      <trans-unit id="userratings" approved="yes">
+        <source>User Ratings</source>
+        <target state="final">Benutzerbewertungen</target>
+      </trans-unit>
+      <trans-unit id="nameinclude" approved="yes">
+        <source>Name Field - Include?</source>
+        <target state="final">Namensfeld - Einbeziehen?</target>
+      </trans-unit>
+      <trans-unit id="namelabel" approved="yes">
+        <source>Name Field - Label</source>
+        <target state="final">Namensfeld - Beschriftung</target>
+      </trans-unit>
+      <trans-unit id="nameplaceholder" approved="yes">
+        <source>Name Field - Placeholder</source>
+        <target state="final">Namensfeld - Platzhalter</target>
+      </trans-unit>
+      <trans-unit id="namerequired" approved="yes">
+        <source>Name Field - Required?</source>
+        <target state="final">Namensfeld - Erforderlich?</target>
+      </trans-unit>
+      <trans-unit id="emailinclude" approved="yes">
+        <source>Email Field - Include?</source>
+        <target state="final">E-Mail-Feld - Einbeziehen?</target>
+      </trans-unit>
+      <trans-unit id="emaillabel" approved="yes">
+        <source>Email Field - Label</source>
+        <target state="final">E-Mail-Feld - Beschriftung</target>
+      </trans-unit>
+      <trans-unit id="emailplaceholder" approved="yes">
+        <source>Email Field - Placeholder</source>
+        <target state="final">E-Mail-Feld - Platzhalter</target>
+      </trans-unit>
+      <trans-unit id="emailrequired" approved="yes">
+        <source>Email Field - Required?</source>
+        <target state="final">E-Mail-Feld - Erforderlich?</target>
+      </trans-unit>
+      <trans-unit id="textareainclude" approved="yes">
+        <source>Feedback - Include?</source>
+        <target state="final">Feedback - Einbeziehen?</target>
+      </trans-unit>
+      <trans-unit id="textarealabel" approved="yes">
+        <source>Feedback - Label</source>
+        <target state="final">Feedback - Beschriftung</target>
+      </trans-unit>
+      <trans-unit id="textareaplaceholder" approved="yes">
+        <source>Feedback - Placeholder</source>
+        <target state="final">Feedback - Platzhalter</target>
+      </trans-unit>
+      <trans-unit id="textarearequired" approved="yes">
+        <source>Feedback - Required?</source>
+        <target state="final">Feedback - Erforderlich?</target>
+      </trans-unit>
+      <trans-unit id="ratinginclude" approved="yes">
+        <source>Ratings - Include?</source>
+        <target state="final">Bewertungen - Einbeziehen?</target>
+      </trans-unit>
+      <trans-unit id="ratinglabel" approved="yes">
+        <source>Ratings - Label</source>
+        <target state="final">Bewertungen - Beschriftung</target>
+      </trans-unit>
+      <trans-unit id="submitlabel" approved="yes">
+        <source>Submit Button - Label</source>
+        <target state="final">Senden-Button - Beschriftung</target>
+      </trans-unit>
+      <trans-unit id="cat_popup" approved="yes">
+        <source>Popup Configuration</source>
+        <target state="final">Pop-up-Konfiguration</target>
+      </trans-unit>
+      <trans-unit id="popupcolor" approved="yes">
+        <source>Popup Color</source>
+        <target state="final">Pop-up-Farbe</target>
+      </trans-unit>
+      <trans-unit id="report.desc" approved="yes">
+        <source>Reports tab displays all the Feedback reports of Feedback Forms added in currently selected page.</source>
+        <target state="final">Der Registerkarte "Berichte" werden alle Feedback-Berichte der Feedback-Formulare angezeigt, die auf der aktuell ausgewählten Seite hinzugefügt wurden.</target>
+      </trans-unit>
+      <trans-unit id="global.desc" approved="yes">
+        <source>In this tab you can configure all the global settings for the Feedback Forms added in the site.</source>
+        <target state="final">Auf dieser Registerkarte können Sie alle globalen Einstellungen für die Feedback-Formulare auf der Website konfigurieren.</target>
+      </trans-unit>
+      <trans-unit id="feed.desc" approved="yes">
+        <source>You can configure all available Feedback Forms from here.</source>
+        <target state="final">Sie können alle verfügbaren Feedback-Formulare von hier aus konfigurieren.</target>
+      </trans-unit>
+      <trans-unit id="opps" approved="yes">
+        <source>Oops!</source>
+        <target state="final">Hoppla!</target>
+      </trans-unit>
+      <trans-unit id="info1" approved="yes">
+        <source>Feedback is not available for this page.</source>
+        <target state="final">Feedback ist für diese Seite nicht verfügbar.</target>
+      </trans-unit>
+      <trans-unit id="info2" approved="yes">
+        <source>Please select other page to view feedbacks.</source>
+        <target state="final">Bitte wählen Sie eine andere Seite, um Feedbacks anzuzeigen.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
