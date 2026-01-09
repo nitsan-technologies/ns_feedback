@@ -23,7 +23,7 @@ $EM_CONF['ns_feedback'] = [
   'author_company' => 'T3Planet',
   'constraints' => [
     'depends' => [
-      'typo3' => '12.0.0-13.9.99',
+      'typo3' => '12.0.0-14.0.9',
     ],
     'conflicts' => [],
     'suggests' => [],

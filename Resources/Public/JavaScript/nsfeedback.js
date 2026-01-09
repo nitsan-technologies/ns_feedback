@@ -118,7 +118,9 @@ $(document).ready(function () {
         $(this).parents('.form-group').find('.field-info-text').slideToggle();
     });
     
-    $('[data-toggle="tooltip"]').tooltip();
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+        new bootstrap.Tooltip(el);
+    });
 });
 
 function bgColor(per){

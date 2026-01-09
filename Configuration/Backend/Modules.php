@@ -19,7 +19,7 @@ return [
         'path' => '/module/nitsan/NsFeedbackConfiguration',
         'icon'   => 'EXT:ns_feedback/Resources/Public/Icons/plugin-feedback.svg',
         'labels' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_feedback_configuration.xlf',
-        'navigationComponent' => '@typo3/backend/page-tree/page-tree-element',
+        'navigationComponent' => '@typo3/backend/tree/page-tree-element',
         'extensionName' => 'NsFeedback',
         'routes' => [
             '_default' => [
@@ -38,7 +38,7 @@ return [
         'path' => '/module/nitsan/NsFeedbackReport',
         'icon'   => 'EXT:ns_feedback/Resources/Public/Icons/plugin-feedback.svg',
         'labels' => 'LLL:EXT:ns_feedback/Resources/Private/Language/locallang_feedback_report.xlf',
-        'navigationComponent' => '@typo3/backend/page-tree/page-tree-element',
+        'navigationComponent' => '@typo3/backend/tree/page-tree-element',
         'extensionName' => 'NsFeedback',
         'controllerActions' => [
             ReportController::class => [

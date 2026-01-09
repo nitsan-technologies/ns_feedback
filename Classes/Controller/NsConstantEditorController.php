@@ -23,6 +23,9 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Tstemplate\Controller\AbstractTemplateModuleController;
 use NITSAN\NsFeedback\Controller\ReportController;
+use TYPO3\CMS\Backend\Template\Components\ComponentFactory;
+use TYPO3\CMS\Core\Imaging\IconSize;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 class NsConstantEditorController extends AbstractTemplateModuleController
 {
@@ -44,6 +47,7 @@ class NsConstantEditorController extends AbstractTemplateModuleController
         $parsedBody = $request->getParsedBody();
 
         $pageUid = (int)($queryParams['id'] ?? 0);
+            
         if ($pageUid === 0) {
             // Redirect to template record overview if on page 0.
             return new RedirectResponse($this->uriBuilder->buildUriFromRoute('web_typoscript_recordsoverview'));
@@ -164,7 +168,13 @@ class NsConstantEditorController extends AbstractTemplateModuleController
 
         $view = $this->moduleTemplateFactory->create($request);
         $view->setTitle($languageService->sL($currentModule->getTitle()), $pageRecord['title']);
+
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '13') {
         $view->getDocHeaderComponent()->setMetaInformation($pageRecord);
+        } else {
+            $view->getDocHeaderComponent()->setPageBreadcrumb($pageRecord);
+        }
         $this->addShortcutButtonToDocHeader($view, $currentModuleIdentifier, $pageRecord, $pageUid);
         if (!empty($relevantCategories)) {
             $this->addSaveButtonToDocHeader($view);
@@ -254,7 +264,12 @@ class NsConstantEditorController extends AbstractTemplateModuleController
 
         $view = $this->moduleTemplateFactory->create($request);
         $view->setTitle($languageService->sL($currentModule->getTitle()), $pageRecord['title']);
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '13') {
         $view->getDocHeaderComponent()->setMetaInformation($pageRecord);
+        } else {
+            $view->getDocHeaderComponent()->setPageBreadcrumb($pageRecord);
+        }
         $view->makeDocHeaderModuleMenu(['id' => $pageUid]);
         $view->assignMultiple([
             'pageUid' => $pageUid,
@@ -436,31 +451,63 @@ class NsConstantEditorController extends AbstractTemplateModuleController
     private function addSaveButtonToDocHeader(ModuleTemplate $view): void
     {
         $languageService = $this->getLanguageService();
-        $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
-        $saveButton = $buttonBar->makeInputButton()
-            ->setName('_savedok')
-            ->setValue('1')
-            ->setForm('TypoScriptConstantEditorController')
-            ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:rm.saveDoc'))
-            ->setIcon($this->iconFactory->getIcon('actions-document-save','small'))
-            ->setShowLabelText(true);
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '13') {
+            $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
+            $saveButton = $buttonBar->makeInputButton()
+                ->setName('_savedok')
+                ->setValue('1')
+                ->setForm('TypoScriptConstantEditorController')
+                ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:rm.saveDoc'))
+                ->setIcon($this->iconFactory->getIcon('actions-document-save','small'))
+                ->setShowLabelText(true);
+        } else {
+            $componentFactory = GeneralUtility::makeInstance(ComponentFactory::class);
+            $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
+            $saveButton = $componentFactory->createInputButton()
+                ->setName('_savedok')
+                ->setValue('1')
+                ->setForm('TypoScriptConstantEditorController')
+                ->setTitle($languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:rm.saveDoc'))
+                ->setIcon($this->iconFactory->getIcon('actions-document-save',IconSize::SMALL))
+                ->setShowLabelText(true);
+
+        }
         $buttonBar->addButton($saveButton);
     }
 
-    private function addShortcutButtonToDocHeader(ModuleTemplate $view, string $moduleIdentifier, array $pageInfo, int $pageUid): void
+    protected function addShortcutButtonToDocHeader(ModuleTemplate $view, string $moduleIdentifier, array $pageInfo, int $pageUid, string $moduleTitle = ''): void
     {
         $languageService = $this->getLanguageService();
-        $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
-        $shortcutTitle = sprintf(
-            '%s: %s [%d]',
-            $languageService->sL('LLL:EXT:tstemplate/Resources/Private/Language/locallang_ceditor.xlf:submodule.title'),
-            BackendUtility::getRecordTitle('pages', $pageInfo),
-            $pageUid
-        );
-        $shortcutButton = $buttonBar->makeShortcutButton()
-            ->setRouteIdentifier($moduleIdentifier)
-            ->setDisplayName($shortcutTitle)
-            ->setArguments(['id' => $pageUid]);
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '13') {
+            $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
+            $shortcutTitle = sprintf(
+                '%s: %s [%d]',
+                $languageService->sL('LLL:EXT:tstemplate/Resources/Private/Language/locallang_ceditor.xlf:submodule.title'),
+                BackendUtility::getRecordTitle('pages', $pageInfo),
+                $pageUid
+            );
+            $shortcutButton = $buttonBar->makeShortcutButton()
+                ->setRouteIdentifier($moduleIdentifier)
+                ->setDisplayName($shortcutTitle)
+                ->setArguments(['id' => $pageUid]);
+            $buttonBar->addButton($shortcutButton);
+        } else {
+            $componentFactory = GeneralUtility::makeInstance(ComponentFactory::class);
+            $buttonBar = $view->getDocHeaderComponent()->getButtonBar();
+            $shortcutTitle = sprintf(
+                '%s: %s [%d]',
+                $languageService->sL('LLL:EXT:tstemplate/Resources/Private/Language/locallang_ceditor.xlf:submodule.title'),
+                BackendUtility::getRecordTitle('pages', $pageInfo),
+                $pageUid
+            );
+            $shortcutButton = $componentFactory->createShortcutButton()
+                ->setRouteIdentifier($moduleIdentifier)
+                ->setDisplayName($shortcutTitle)
+                ->setArguments(['id' => $pageUid]);
+        }
+        
         $buttonBar->addButton($shortcutButton);
     }
 
