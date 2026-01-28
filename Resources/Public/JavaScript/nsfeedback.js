@@ -81,7 +81,6 @@ $(document).ready(function () {
         var commentText = $('.'+boxid).val();
         newsId = $(this).attr('newsid');
         if ($('.'+boxid+":visible").length > 0) {
-            console.log($('.'+boxid).length);
             if (commentText == '') {
                 $(".validation").show();                               
                 return false;

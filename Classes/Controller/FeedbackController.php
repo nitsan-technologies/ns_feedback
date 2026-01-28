@@ -221,7 +221,6 @@ class FeedbackController extends ActionController
         if ($checkExistRecord[0]) {
             $report = $checkExistRecord[0];
             $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR']]);
-            //$checkExistFeedbackRecord = $this->feedbacksRepository->findByUserIpAdd($_SERVER['REMOTE_ADDR']);
 
             if (empty($checkExistFeedbackRecord[0])) {
                 $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
