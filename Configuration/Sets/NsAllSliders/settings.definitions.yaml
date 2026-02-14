@@ -1,0 +1,164 @@
+categories:
+  ns_feedback:
+    label: All Slider
+
+  ns_feedback.view:
+    label: View Settings
+    parent: ns_feedback
+
+  ns_feedback.configuration:
+    label: Configuration Settings
+    parent: ns_feedback
+
+  ns_feedback.configuration.common:
+    label: Common Settings
+    parent: ns_feedback.configuration
+
+  ns_feedback.configuration.appearance:
+    label: Appearance Settings
+    parent: ns_feedback.configuration
+
+  ns_feedback.configuration.design:
+    label: Designing Settings
+    parent: ns_feedback.configuration
+
+settings:
+
+  ##################################################
+  # View
+  ##################################################
+
+  ns_feedback.view.templateRootPath:
+    label: Template Root Path
+    category: ns_feedback.view
+    type: string
+    default: 'EXT:ns_feedback/Resources/Private/Templates/'
+
+  ns_feedback.view.partialRootPath:
+    label: Partial Root Path
+    category: ns_feedback.view
+    type: string
+    default: 'EXT:ns_feedback/Resources/Private/Partials/'
+
+  ns_feedback.view.layoutRootPath:
+    label: Layout Root Path
+    category: ns_feedback.view
+    type: string
+    default: 'EXT:ns_feedback/Resources/Private/Layouts/'
+
+  ##################################################
+  # Configuration
+  ##################################################
+
+  ns_feedback.configuration.common.jQuery:
+    label: Add jQuery
+    category: ns_feedback.configuration.common
+    type: bool
+    default: false
+
+  ns_feedback.configuration.common.allPage:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:allPage
+    category: ns_feedback.configuration.common
+    type: bool
+    default: false
+
+  ns_feedback.configuration.common.restrictMultipleFeedback:
+    label: restrictMultipleFeedback
+    category: ns_feedback.configuration.common
+    type: bool
+    default: true
+
+  ns_feedback.configuration.design.fontstyle:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontstyle
+    category: ns_feedback.configuration.design
+    type: string
+    default: normal
+    enum:
+      normal: Normal
+      bold: Bold
+
+  ns_feedback.configuration.design.fontcolor:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:fontcolor
+    category: ns_feedback.configuration.design
+    type: color
+    default: '#000000'
+
+  ns_feedback.configuration.design.buttonstyle:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonstyle
+    category: ns_feedback.configuration.design
+    type: string
+    default: rectangle
+    enum:
+      oval: Oval
+      rectangle: Rectangle
+      round-rect: Rounded-Rectangle
+
+  ns_feedback.configuration.design.buttonbg:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:buttonbg
+    category: ns_feedback.configuration.design
+    type: color
+    default: '#ee8433'
+
+  ns_feedback.configuration.design.btntextcolor:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:btntextcolor
+    category: ns_feedback.configuration.design
+    type: color
+    default: '#ffffff'
+
+  ns_feedback.configuration.appearance.thankyoutitle:
+    label: Thank You Title
+    category: ns_feedback.configuration.appearance
+    type: string
+    default: Thank you!
+
+  ns_feedback.configuration.appearance.thankyoumsg:
+    label: Thank You Message
+    category: ns_feedback.configuration.appearance
+    type: string
+    default: "If you feedback requires a response, we'll be in touch shortly"
+
+  ns_feedback.configuration.appearance.quickFeedbackTitle:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:titleText
+    category: ns_feedback.configuration.appearance
+    type: string
+    default: Was this post helpful?
+
+  ns_feedback.configuration.appearance.quickboxappearance:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:quickboxappearance
+    category: ns_feedback.configuration.appearance
+    type: string
+    default: slide
+    enum:
+      slide: SlideUpDown
+      toggle: Toggle
+      fade: FadeInOut
+
+  ns_feedback.configuration.appearance.quickbuttonsYes:
+    label: Yes Button
+    category: ns_feedback.configuration.appearance
+    type: bool
+    default: true
+
+  ns_feedback.configuration.appearance.quickbuttonsNo:
+    label: No Button
+    category: ns_feedback.configuration.appearance
+    type: bool
+    default: true
+
+  ns_feedback.configuration.appearance.quickbuttonsYesBut:
+    label: Yes But Button
+    category: ns_feedback.configuration.appearance
+    type: bool
+    default: true
+
+  ns_feedback.configuration.appearance.quickbuttonsNoBut:
+    label: No But Button
+    category: ns_feedback.configuration.appearance
+    type: bool
+    default: false
+
+  ns_feedback.configuration.appearance.enableFeedback:
+    label: LLL:EXT:ns_feedback/Resources/Private/Language/locallang.xlf:enableFeedback
+    category: ns_feedback.configuration.appearance
+    type: bool
+    default: false

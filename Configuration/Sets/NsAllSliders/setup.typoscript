@@ -1,0 +1,89 @@
+@import 'EXT:ns_feedback/Configuration/TypoScript/setup.typoscript'
+
+plugin.tx_nsfeedback_feedback {
+    view {
+        templateRootPaths {
+            0 = EXT:ns_feedback/Resources/Private/Templates/
+            1 = {$ns_feedback.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:ns_feedback/Resources/Private/Partials/
+            1 = {$ns_feedback.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:ns_feedback/Resources/Private/Layouts/
+            1 = {$ns_feedback.view.layoutRootPath}
+        }
+    }
+    mvc {
+        callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings {
+        allPage = {$ns_feedback.configuration.common.allPage}
+        quickFeedbackTitle = {$ns_feedback.configuration.appearance.quickFeedbackTitle}
+        quickboxappearance = {$ns_feedback.configuration.appearance.quickboxappearance}
+        quickbuttonsYes = {$ns_feedback.configuration.appearance.quickbuttonsYes}
+        quickbuttonsNo = {$ns_feedback.configuration.appearance.quickbuttonsNo}
+        quickbuttonsYesBut = {$ns_feedback.configuration.appearance.quickbuttonsYesBut}
+        quickbuttonsNoBut = {$ns_feedback.configuration.appearance.quickbuttonsNoBut}
+        quickenable = {$ns_feedback.configuration.appearance.enableFeedback}
+        restrictMultipleFeedback = {$ns_feedback.configuration.common.restrictMultipleFeedback}
+        fontstyle = {$ns_feedback.configuration.design.fontstyle}
+        fontcolor = {$ns_feedback.configuration.design.fontcolor}
+        buttonstyle = {$ns_feedback.configuration.design.buttonstyle}
+        buttonbg = {$ns_feedback.configuration.design.buttonbg}
+        buttoncolor = {$ns_feedback.configuration.design.btntextcolor}
+        thankyoutitle = {$ns_feedback.configuration.appearance.thankyoutitle}
+        thankyoumsg = {$ns_feedback.configuration.appearance.thankyoumsg}
+    }
+}
+
+page.includeJSLibs {
+        nsfjquery = EXT:ns_feedback/Resources/Public/JavaScript/jquery.js
+        nsfjquery.if.isTrue = {$ns_feedback.configuration.common.jQuery}
+        forceOnTop = 1
+    }
+
+lib.newact = USER_INT
+lib.newact {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = NsFeedback
+    pluginName = Feedback
+    vendorName = NITSAN
+    controller = Feedback
+    switchableControllerActions {
+        Feedback {
+            0 = new
+        }
+    }
+    settings < plugin.tx_nsfeedback_feedback.settings
+}
+
+[{$ns_feedback.configuration.common.allPage} == 1]
+page.785456789985 < lib.newact
+[global]
+
+quickFeedbackAction = PAGE
+quickFeedbackAction {
+    typeNum = 741852
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type:application/json
+        xhtml_cleaning = 0
+        admPanel = 0
+    }
+
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = NsFeedback
+        pluginName = Feedback
+        vendorName = NITSAN
+        controller = Feedback
+        switchableControllerActions {
+            Feedback {
+                1 = quickFeedback
+            }
+        }
+    }
+}

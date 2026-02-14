@@ -12,14 +12,3 @@ plugin.tx_nsfeedback_feedback {
         layoutRootPath = EXT:ns_feedback/Resources/Private/Layouts/
     }
 }
-
-module.tx_nsfeedback {
-    view {
-        # cat=module.tx_nsfeedback/file; type=string; label=Path to template root (BE)
-        templateRootPath = EXT:ns_feedback/Resources/Private/Backend/Templates/
-        # cat=module.tx_nsfeedback/file; type=string; label=Path to template partials (BE)
-        partialRootPath = EXT:ns_feedback/Resources/Private/Backend/Partials/
-        # cat=module.tx_nsfeedback  /file; type=string; label=Path to template layouts (BE)
-        layoutRootPath = EXT:ns_feedback/Resources/Private/Backend/Layouts/
-    }
-}
