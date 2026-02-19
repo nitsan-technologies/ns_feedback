@@ -104,3 +104,12 @@ quickFeedbackAction {
         }
     }
 }
+
+# Module configuration
+module.tx_nsfeedback {
+    view {
+        templateRootPaths.1 = {$module.tx_nsfeedback.view.templateRootPath}
+        partialRootPaths.1 = {$module.tx_nsfeedback.view.partialRootPath}
+        layoutRootPaths.1 = {$module.tx_nsfeedback.view.layoutRootPath}
+    }
+}

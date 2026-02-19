@@ -48,7 +48,7 @@ class ReportRepository extends Repository
      * @param array|null $filterData
      * @return QueryResultInterface
      */
-    public function checkExistRecord(array $filterData = null): QueryResultInterface
+    public function checkExistRecord(?array $filterData = null): QueryResultInterface
     {
         $query = $this->createQuery();
 
