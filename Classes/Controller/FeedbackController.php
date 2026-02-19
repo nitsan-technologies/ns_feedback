@@ -56,7 +56,6 @@ class FeedbackController extends ActionController
      */
     public function newAction()
     {
-
         // Request Data
         $getData = $this->request->getQueryParams();
         $postData = $this->request->getParsedBody();
@@ -133,7 +132,6 @@ class FeedbackController extends ActionController
     */
     public function defaultAction()
     {
-
         // Request Data
         $getData = $this->request->getQueryParams();
         $postData = $this->request->getParsedBody();
