@@ -63,31 +63,6 @@ lib.newact {
 page.785456789985 < lib.newact
 [global]
 
-quickFeedbackAction = PAGE
-quickFeedbackAction {
-    typeNum = 741852
-    config {
-        disableAllHeaderCode = 1
-        additionalHeaders = Content-type:application/json
-        xhtml_cleaning = 0
-        admPanel = 0
-    }
-
-    10 = USER
-    10 {
-        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-        extensionName = NsFeedback
-        pluginName = Feedback
-        vendorName = NITSAN
-        controller = Feedback
-        switchableControllerActions {
-            Feedback {
-                1 = quickFeedback
-            }
-        }
-    }
-}
-
 # Module configuration
 module.tx_nsfeedback {
     view {
