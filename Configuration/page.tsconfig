@@ -5,12 +5,10 @@ mod.wizards.newContentElement.wizardItems.plugins {
 	        title = LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_ns_feedback_feedback.name
 	        description = LLL:EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf:tx_ns_feedback_feedback.description
 	        tt_content_defValues {
-	            CType = list
-	            list_type = nsfeedback_feedback
+	            CType = nsfeedback_feedback
 	        }
 	    }
 	}
-	show = *w
 }
 
 options.dashboard.dashboardPresetsForNewUsers = default, dashboardPreset-nsFeedbackPreset

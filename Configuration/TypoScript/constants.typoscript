@@ -1,3 +1,6 @@
+# Features constant Includes:
+@import 'EXT:ns_feedback/Configuration/TypoScript/FeaturesConstants/appearanceSettings_constants.typoscript'
+@import 'EXT:ns_feedback/Configuration/TypoScript/FeaturesConstants/commonSettings_constants.typoscript'
 
 plugin.tx_nsfeedback_feedback {
     view {
@@ -20,7 +23,3 @@ module.tx_nsfeedback {
         layoutRootPath = EXT:ns_feedback/Resources/Private/Backend/Layouts/
     }
 }
-
-//Features constant Includes:
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ns_feedback/Configuration/TypoScript/FeaturesConstants/appearanceSettings_constants.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ns_feedback/Configuration/TypoScript/FeaturesConstants/commonSettings_constants.typoscript">

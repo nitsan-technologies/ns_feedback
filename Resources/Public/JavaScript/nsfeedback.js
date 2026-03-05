@@ -81,7 +81,6 @@ $(document).ready(function () {
         var commentText = $('.'+boxid).val();
         newsId = $(this).attr('newsid');
         if ($('.'+boxid+":visible").length > 0) {
-            console.log($('.'+boxid).length);
             if (commentText == '') {
                 $(".validation").show();                               
                 return false;
@@ -118,7 +117,9 @@ $(document).ready(function () {
         $(this).parents('.form-group').find('.field-info-text').slideToggle();
     });
     
-    $('[data-toggle="tooltip"]').tooltip();
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+        new bootstrap.Tooltip(el);
+    });
 });
 
 function bgColor(per){

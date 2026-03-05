@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use NITSAN\NsFeedback\Domain\Repository\ReportRepository;
 use NITSAN\NsFeedback\Domain\Repository\FeedbacksRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 class FeedbackController extends ActionController
 {
@@ -55,7 +56,6 @@ class FeedbackController extends ActionController
      */
     public function newAction()
     {
-
         // Request Data
         $getData = $this->request->getQueryParams();
         $postData = $this->request->getParsedBody();
@@ -64,7 +64,12 @@ class FeedbackController extends ActionController
         $this->reportRepository->getFromAll();
 
         $assign = [];
-        $data = $GLOBALS['TSFE']->page;
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '12') {
+            $data = $GLOBALS['TSFE']->page;
+        } else {
+            $data = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.page.information')->getPageRecord();
+        }
 
         //Fetch Content data
         $contentData = $this->request->getAttribute('currentContentObject');
@@ -127,7 +132,6 @@ class FeedbackController extends ActionController
     */
     public function defaultAction()
     {
-
         // Request Data
         $getData = $this->request->getQueryParams();
         $postData = $this->request->getParsedBody();
@@ -136,7 +140,12 @@ class FeedbackController extends ActionController
         $this->reportRepository->getFromAll();
 
         $assign = [];
-        $data = $GLOBALS['TSFE']->page;
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '12') {
+            $data = $GLOBALS['TSFE']->page;
+        } else {
+            $data = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.page.information')->getPageRecord();
+        }
 
         //Fetch Content data
         $contentData = $this->request->getAttribute('currentContentObject');
@@ -185,26 +194,31 @@ class FeedbackController extends ActionController
      *
      * @param array $result
      */
-    public function quickFeedbackAction($result = null)
+    public function quickFeedbackAction(array $result = [])
     {
         $languageid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
-
         $this->reportRepository->getFromAll();
         $report = new Report();
         $feedbacks = new \NITSAN\NsFeedback\Domain\Model\Feedbacks();
-        $data = $GLOBALS['TSFE']->page;
-        if ($result['newsId'] > 0) {
+        $versionNumber =  VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+        if ($versionNumber['version_main'] <= '12') {
+            $data = $GLOBALS['TSFE']->page;
+        } else {
+            $data = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.page.information')->getPageRecord();
+        }
+
+        $newsId = (int)($newsId ?? 0);
+        if ($newsId > 0) {
             $checkExistRecord = $this->reportRepository->findBy(['record_id' => $data['uid']]);
-            $checkExistRecord = $this->reportRepository->findByRecordId($result['newsId']);
+            $checkExistRecord = $this->reportRepository->findByProperties($newsId, 'RecordId');
         } else {
             $checkExistRecord = $this->reportRepository->findBy(['pid' => $data['uid']]);
-            $checkExistRecord = $this->reportRepository->findByPageId($data['uid']);
+            $checkExistRecord = $this->reportRepository->findByProperties($data['uid'], 'PageId');
         }
 
         if ($checkExistRecord[0]) {
             $report = $checkExistRecord[0];
             $checkExistFeedbackRecord = $this->feedbacksRepository->findBy(['user_ip' => $_SERVER['REMOTE_ADDR']]);
-            $checkExistFeedbackRecord = $this->feedbacksRepository->findByUserIp($_SERVER['REMOTE_ADDR']);
 
             if (empty($checkExistFeedbackRecord[0])) {
                 $feedbacks->setUserIp($_SERVER['REMOTE_ADDR']);
@@ -219,8 +233,8 @@ class FeedbackController extends ActionController
                 $feedbacks->setPId($data['uid']);
                 $feedbacks->setCId($result['cid']);
                 $report->addFeedback($feedbacks);
-                if ($result['newsId'] > 0) {
-                    $report->setRecordId($result['newsId']);
+                if ($newsId > 0) {
+                    $report->setRecordId($newsId);
                 }
 
                 switch ($result['buttonfor']) {
@@ -287,8 +301,8 @@ class FeedbackController extends ActionController
                     break;
             }
 
-            if ($result['newsId'] > 0) {
-                $report->setRecordId($result['newsId']);
+            if ($newsId > 0) {
+                $report->setRecordId($newsId);
                 $report->setPageType($data['doktype']);
             } else {
                 $report->setPageType($data['doktype']);

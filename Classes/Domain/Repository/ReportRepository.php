@@ -48,7 +48,7 @@ class ReportRepository extends Repository
      * @param array|null $filterData
      * @return QueryResultInterface
      */
-    public function checkExistRecord(array $filterData = null): QueryResultInterface
+    public function checkExistRecord(?array $filterData = null): QueryResultInterface
     {
         $query = $this->createQuery();
 
@@ -80,6 +80,31 @@ class ReportRepository extends Repository
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectSysLanguage(false);
         return $query->execute();
+    }
+
+    public function findByProperties($value, $type){
+        if ($type == 'PageId') {
+            $query = $this->createQuery();
+            return $query->matching($query->equals('pageId', $value))->execute();
+        }
+        if ($type == 'RecordId') {
+            $query = $this->createQuery();
+            return $query->matching($query->equals('recordId', $value))->execute();
+        }
+        if ($type == 'UserIp') {
+            $query = $this->createQuery();
+            return $query->matching($query->equals('userIp', $value))->execute();
+        }
+    }
+
+    public function findByUserIpAdd(string $userIp)
+    {
+        $query = $this->createQuery();
+        return $query
+            ->matching(
+                $query->equals('userIp', $userIp)
+            )
+            ->execute();
     }
 
 }

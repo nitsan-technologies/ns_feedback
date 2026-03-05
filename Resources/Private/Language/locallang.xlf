@@ -356,7 +356,7 @@
                 <source>Enter valid email address</source>
             </trans-unit>
             <trans-unit id="btntextcolor">
-                <source>Button Text Color</source>
+                <source>Button Text and Border Color</source>
             </trans-unit>
             <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyourating">
                 <source>Thank You For Your Ratings.</source>

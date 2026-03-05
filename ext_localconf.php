@@ -1,12 +1,9 @@
 <?php
 
-use NITSAN\NsFeedback\Controller\FeedbackController;
-use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
-use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-
 defined('TYPO3') || die('Access denied.');
+
+use NITSAN\NsFeedback\Controller\FeedbackController;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 ExtensionUtility::configurePlugin(
     'NsFeedback',
@@ -17,15 +14,8 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [
         FeedbackController::class => 'new, quickFeedback, default',
-    ]
-);
-
-$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-
-$iconRegistry->registerIcon(
-    'ns_feedback-plugin-feedback',
-    SvgIconProvider::class,
-    ['source' => 'EXT:ns_feedback/Resources/Public/Icons/plugin-feedback.svg']
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['Feedback'] = [

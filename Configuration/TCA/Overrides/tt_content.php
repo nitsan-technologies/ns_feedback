@@ -13,9 +13,6 @@ ExtensionUtility::registerPlugin(
     'NsFeedback',
     'Feedback',
     'feedback',
-    '',
+    'ns_feedback-plugin-feedback',
     'plugins'
 );
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['nsfeedback_feedback'] = 'recursive,select_key,pages';
-$GLOBALS['TCA']['tx_nsfeedback_domain_model_feedbacks']['ctrl']['hideTable'] = 1;
-$GLOBALS['TCA']['tx_nsfeedback_domain_model_report']['ctrl']['hideTable'] = 1;
