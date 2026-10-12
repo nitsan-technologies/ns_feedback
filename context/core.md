@@ -30,7 +30,8 @@
 |---|---|---|
 | `typo3/cms-core` | `^12 \|\| ^13 \|\| ^14` | core |
 | `nitsan/ns-license` / `ns_license` | `^14.5.4` / `14.5.4-14.9.99` | TYPO3 Shop module + free-trial deep link (see `features/premium-cta.md`) |
-| `georgringer/news` | not declared | only used when a report has a `record_id` (news detail feedback); see known issues |
+| `georgringer/news` | not declared | backend list loads news titles for reports with `record_id`; the free version never sets it |
+| jQuery | not declared | `nsfeedback.js` needs it; bundled copy loaded only with the `jQuery` setting (default off) |
 
 ## Tooling
 
@@ -49,21 +50,41 @@
 
 ## Known issues (existing, not fixed)
 
+Behaviour details: `features/quick-feedback.md`, `features/backend-module.md`.
+
+Frontend, verified live on v14.3:
+
+- The server-side "one vote per IP" check in `quickFeedbackAction()` never matches (the
+  `FeedbacksRepository` query respects an unset storage page). The same IP can vote again by direct POST,
+  or through a second box on the page. Only the template (`restrictMultipleFeedback`) hides the buttons.
+- `nsfeedback.js` alerts "jQuery is not included…" on every page and does nothing when the page has no jQuery.
+  The `jQuery` setting defaults to off.
+- Static template default `allPage = 1` puts the box on every page. The site set default is `false`, and the
+  set's `constants.typoscript` imports `Constants.typoscript` (capital C, file is `constants.typoscript`),
+  so with the set the static `plugin.tx_nsfeedback_feedback.*` constants are undefined.
+- Content elements always use the `Global` layout (the `Default` switch checks `list_type`), and JS moves
+  them above `<footer>`, ignoring the editor's placement.
+- Frontend assets (JS + 2 CSS) load on every page, even pages without a box.
+- JS error branch targets non-existent `#resubmit` / `#feedback-btns`. Selectors are global, so two boxes
+  on a page interfere.
+
+Code-read:
+
+- `quickFeedbackAction()` never reads `newsId` from `$result` (`$newsId` is always 0), so news detail pages
+  are stored as page feedback and the News branch in the backend list is dormant.
+- `lib.newact` and page type `741852` use `switchableControllerActions` (ignored since v12; works because
+  `new` is the default action and the AJAX URL names `quickFeedback`).
+- `Templates/Feedback/Default.html` uses missing labels `error.header` / `error.security`.
+  `FeedbackViewHelper` uses missing `tx_nsfeedback_domain_model_feedbacks.alreadyfeedback`.
 - `Configuration/Backend/Modules.php` lists a `premiumExtension` action that `ReportController` doesn't have.
-- `ReportController::listAction()` uses `GeorgRinger\News\...\NewsRepository` when a report has `record_id`,
-  but EXT:news is not a declared dependency.
-- `FeedbackController::quickFeedbackAction()` never reads `newsId` from `$result` (`$newsId` is always 0),
-  so quick feedback on news detail pages is stored against the page only.
-- `Resources/Public/JavaScript/Main.js` (DataTables init) is not loaded by any backend view, so the
-  `.ns-ext-datatable` tables in List/Show render as plain tables.
+- `ReportController::listAction()` uses `GeorgRinger\News\...\NewsRepository` (EXT:news not declared).
+- `Resources/Public/JavaScript/Main.js` (DataTables init) is not loaded, so the List/Show tables are plain.
 - `Classes/ViewHelpers/FeedbackViewHelper.php` is unused and broken (uses `ViewFactoryData` without import,
-  `execute()->fetchAll()`); it reads a `pages.tx_nsfeedback_enable` field that `ext_tables.sql` doesn't create.
+  `execute()->fetchAll()`). It reads a `pages.tx_nsfeedback_enable` field that `ext_tables.sql` doesn't create.
 - `FeedbacksRepository::insertNewData()/curlInitCall()/deleteOldApiData()` are unused and target a non-existent
   table `tx_nsfeedback_domain_model_apidata`.
-- `Resources/Private/Templates/Default/ConstantEditor*.html` and `Partials/ConstantEditor*.html` are leftovers
-  (no controller action renders them).
-- `Configuration/Sets/NsFeedback/constants.typoscript` imports `Constants.typoscript` (capital C) but the file
-  is `constants.typoscript`, which fails on case-sensitive file systems.
+- Unrendered leftovers: `Templates/Default/ConstantEditor*.html`, `Partials/ConstantEditor*.html`,
+  `Partials/NoRecordFound.html`, `Partials/Report/Ratings.html`, `ThemeContainsViewHelper`.
 - `ReportController` assigns `sidebarData` / `dashboardSupportData`, which are never set (render empty).
 - `Configuration/page.tsconfig` sets `dashboardPreset-nsFeedbackPreset`, but no dashboard preset is defined.
 - TCA `iconfile` points to `.gif` icons that don't exist in `Resources/Public/Icons/`.

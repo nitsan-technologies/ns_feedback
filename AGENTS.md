@@ -34,8 +34,8 @@ Agent router for the All in One Feedback free extension. Load only what your tas
 
 | Feature | Status | Agent entry |
 |---|---|---|
-| Quick feedback plugin (Yes / No / Yes-but / No-but, optional comment) | Done | `context/features/quick-feedback.md` |
-| Backend module: Dashboard totals, report list, report detail | Done | `context/features/backend-module.md` |
+| Quick feedback box (Yes / No / Yes-but / No-but with comment), as content element or on every page | Done | `context/features/quick-feedback.md` |
+| Backend module: per-page Dashboard totals, report list, vote detail | Done | `context/features/backend-module.md` |
 | Premium strip + ns_license free-trial deep link | Done (needs ns_license 14.5.4 release) | `context/features/premium-cta.md` |
 
 ---

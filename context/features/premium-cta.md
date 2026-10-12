@@ -23,11 +23,15 @@ questions, email notifications. The free version only has the quick Yes/No/Yes-b
   link (same tab).
 - Labels in `locallang.xlf`:
   - `premium.strip.headline`: "All in One Feedback Premium"
-  - `premium.strip.description`: "Add star, emoji and number ratings, popup and full feedback forms, and email notifications."
+  - `premium.strip.description`: "Get more out of your feedback with the premium version. Try it free."
   - `premium.strip.trial`: "Start Free Trial"
-- Styling: Bootstrap utilities + `.ns-feedback-premium-strip` in `Resources/Public/Css/main.css` — light-blue
-  highlight with a stronger left border, `light-dark()` colours for both backend colour schemes. No gray
-  background, no inline styles.
+  Wording and look follow the ns_backup strip (branch `feature/ns-license-premium-strip`) at the developer's request.
+- Styling: Bootstrap utilities + `.ns-feedback-premium-strip` in `Resources/Public/Css/main.css` — gray bar
+  identical to `.ns-backup-premium-strip`, `light-dark()` colours for both backend colour schemes, no inline styles.
+  The strip sets Verdana 12px, and `.ns-feedback-premium-strip .btn` sets 14px, `6px 12px` padding, `6px` radius
+  and `#007bff` (hover `#0062cc`), because this module's `global.css` uses Roboto 14px and the frontend
+  `nsfeedback.css` (also loaded by the backend layout) pads every `.btn` with `8px 25px`. Computed result matches
+  the ns_backup strip and button exactly (checked side by side in a browser).
 
 ## Trial link
 

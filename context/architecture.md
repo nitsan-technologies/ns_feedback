@@ -15,8 +15,14 @@
 ## Frontend plugin (`ext_localconf.php`, `Configuration/TCA/Overrides/tt_content.php`)
 
 `NsFeedback` / `Feedback` content element (`CType nsfeedback_feedback`), all actions non-cacheable:
-`FeedbackController` → `new`, `quickFeedback`, `default`. Wizard entry in `Configuration/page.tsconfig`.
+`FeedbackController` → `new` (default), `quickFeedback`, `default`. Wizard entry in `Configuration/page.tsconfig`.
 Fluid namespace `Feedback` → `NITSAN\NsFeedback\ViewHelpers`.
+
+TypoScript objects (`Configuration/TypoScript/setup.typoscript`): `lib.newact` (`USER_INT`, all-page box →
+`page.785456789985` when `allPage` = 1), page type `741852` `quickFeedbackAction` (JSON vote endpoint),
+`page.includeJSFooter/includeCSS` (FE assets on every page). Static template registered in
+`Configuration/TCA/Overrides/sys_template.php`; site set in `Configuration/Sets/NsFeedback/`. Behaviour:
+`features/quick-feedback.md`.
 
 ## Classes
 
@@ -24,9 +30,9 @@ Fluid namespace `Feedback` → `NITSAN\NsFeedback\ViewHelpers`.
 |---|---|
 | `Controller/FeedbackController` | Frontend: renders the quick feedback box (`new`, `default`), stores a vote (`quickFeedback`, JSON) |
 | `Controller/ReportController` | Backend: dashboard totals, report list, report detail; builds ns_license trial URL |
-| `Domain/Model/Report` | Per page (or news record) aggregate: four vote counters, page info, `feedbacks` relation |
-| `Domain/Model/Feedbacks` | Single vote: IP, type, quick-feedback button, comment, content uid, language |
-| `Domain/Repository/ReportRepository` | `checkExistRecord()`, `findAllByLanguage()`, `findByProperties()` |
+| `Domain/Model/Report` | Per page aggregate (news `record_id` never set in free): four vote counters, page info, `feedbacks` relation |
+| `Domain/Model/Feedbacks` | Single vote: IP, type, quick-feedback button, comment, `cid` (content or page uid), language |
+| `Domain/Repository/ReportRepository` | `getFromAll()` (ignore storage page), `checkExistRecord()` (already voted?), `findAllByLanguage()`, `findByProperties()` |
 | `Domain/Repository/FeedbacksRepository` | `countAllByLanguage()` (+ unused API helpers, see `core.md`) |
 | `ViewHelpers/LoadAssetsViewHelper` | Adds inline CSS for button/message styling from settings |
 | `ViewHelpers/ThemeContainsViewHelper`, `FeedbackViewHelper` | Not used by current templates |
@@ -37,18 +43,25 @@ DI: `Configuration/Services.yaml` autowires `NITSAN\NsFeedback\` (models exclude
 
 | Table | Content |
 |---|---|
-| `tx_nsfeedback_domain_model_report` | `page_id`, `record_id` (news uid), `page_type`, `page_title`, `feedback_yes_count`, `feedback_no_count`, `feedback_yes_but_count`, `feedback_no_but_count`, `sys_lang_id`, `feedbacks` (1:n) |
-| `tx_nsfeedback_domain_model_feedbacks` | `report`, `comment`, `user_ip`, `feedback_type` (3 = quick), `quickfeedbacktype` (yes/no/yesbut/nobut), `cid` |
+| `tx_nsfeedback_domain_model_report` | `page_id`, `record_id` (news uid), `page_type`, `page_title`, `feedback_yes_count`, `feedback_no_count`, `feedback_yes_but_count`, `feedback_no_but_count`, `sys_lang_id`, `feedbacks` (inline 1:n, cascade remove) |
+| `tx_nsfeedback_domain_model_feedbacks` | `report`, `comment`, `user_ip`, `feedback_type`, `quickfeedbacktype` (yes/no/yesbut/nobut), `cid` |
+
+- Both records are written on the voted page (`pid` = page uid). The TCA allows them on any page type.
+- TCA `feedback_type` items: 1 Full feedback, 2 Ratings, 3 Quick feedback, 4 Popup (read-only). The free
+  version only writes 3; 1, 2 and 4 are premium types.
 
 ## Views
 
 | File | Used by |
 |---|---|
-| `Layouts/Report.html` | Backend: CSS includes, navbar (Dashboard, Feedback Report), `content` section |
-| `Templates/Report/Dashboard.html` | Dashboard: premium strip, total / Yes-No / Yes-but-No-but cards or "no feedback" info |
-| `Templates/Report/List.html`, `Show.html` | Report list (per page/news) and votes of one report |
-| `Layouts/Default.html`, `Layouts/Global.html` | Frontend wrappers (both call `<Feedback:loadAssets />`) |
-| `Templates/Feedback/New.html`, `Default.html` | Frontend: thank-you box, `Partials/Feedback/QuickFeedback.html`, optional `Partials/Report/YesNo.html` |
+| `Layouts/Report.html` | Backend: CSS includes, navbar (brand "Feedback", Dashboard, Reports), `content` section |
+| `Templates/Report/Dashboard.html` | Dashboard: premium strip, total / Yes-No / Yes-but-No-but cards or "Oops!" info |
+| `Templates/Report/List.html`, `Show.html` | Reports of the selected page, and the quick-feedback votes of one report |
+| `Layouts/Global.html` | Frontend wrapper `.global-ns-feedback` (always used for CType records; JS moves it above `<footer>`) |
+| `Layouts/Default.html` | Frontend wrapper `.tx-ns-feedback`, only for legacy `list_type` records |
+| `Templates/Feedback/New.html` | Frontend: thank-you overlay, `Partials/Feedback/QuickFeedback.html`, optional `Partials/Report/YesNo.html` |
+| `Templates/Feedback/Default.html` | `defaultAction` (only via `action=default`), same box plus an error header with missing labels |
+| `Partials/Report/Ratings.html`, `Partials/NoRecordFound.html`, `*/ConstantEditor*.html` | Not rendered (premium / old leftovers) |
 
 ## Assets
 

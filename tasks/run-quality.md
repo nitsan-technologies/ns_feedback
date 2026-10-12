@@ -15,8 +15,21 @@ for f in Resources/Private/Language/*.xlf; do xmllint --noout "$f"; done
 
 ## Manual test (per TYPO3 major 12 / 13 / 14)
 
-1. T3Planet → Feedback Report → Dashboard (select a page): premium strip shows directly below the navbar;
-   "Start Free Trial" opens the ns_license module and its trial modal for `ns_feedback` (system maintainer).
-2. Feedback Report list and detail views show no strip.
-3. Frontend: add the Feedback content element, vote Yes and "Yes, but" (with comment), check the counters on the Dashboard.
-4. Check light and dark backend themes.
+Setup: include the static template "Feedback" or add the site set `nitsan/ns-Feedback` to the site. If the
+theme has no jQuery, enable the `jQuery` setting (otherwise the frontend alerts and nothing works).
+
+1. Frontend: add the "feedback" content element to a page. The box renders above `<footer>`, with Yes / No /
+   "Yes, But" (No-but is off by default).
+2. "Yes, But" with an empty comment → "Please add comment first". With a comment → thank-you overlay, buttons
+   gone. Reload: buttons stay hidden for this IP (`restrictMultipleFeedback`).
+3. Database: one `tx_nsfeedback_domain_model_report` row and one `…_feedbacks` row on that page (pid = page
+   uid), `feedback_type` 3, comment stored.
+4. Toggle `allPage` and check a page without the element: box present / absent. Toggle `enableFeedback`:
+   scoreboard with page counters.
+5. Backend: T3Planet → Feedback Report, select the voted page. Dashboard counters match. Reports → View Feedbacks
+   lists the vote. Other pages show "Oops!".
+6. Dashboard premium strip directly below the navbar. "Start Free Trial" opens the ns_license module and its
+   trial modal for `ns_feedback` (system maintainer). List/Show views have no strip.
+7. Check light and dark backend themes.
+
+Remove test content and the two tables' test rows afterwards.
