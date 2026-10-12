@@ -561,6 +561,15 @@
             <trans-unit id="info2">
                 <source>Please select other page to view feedbacks.</source>
             </trans-unit>
+            <trans-unit id="premium.strip.headline">
+                <source>All in One Feedback Premium</source>
+            </trans-unit>
+            <trans-unit id="premium.strip.description">
+                <source>Add star, emoji and number ratings, popup and full feedback forms, and email notifications.</source>
+            </trans-unit>
+            <trans-unit id="premium.strip.trial">
+                <source>Start Free Trial</source>
+            </trans-unit>
         </body>
 	</file>
 </xliff>

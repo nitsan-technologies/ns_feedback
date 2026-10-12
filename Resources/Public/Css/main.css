@@ -159,3 +159,12 @@ hr {
         padding: 13px 20px;
     }
 }
+
+.ns-feedback-premium-strip {
+    margin-bottom: 1rem;
+    padding: 10px 16px;
+    border: 1px solid light-dark(#8eb6e8, #3d6ea5);
+    border-left: 4px solid light-dark(#2b6cb0, #7eb6ea);
+    background-color: light-dark(#e7f2fc, #16324a);
+    color: light-dark(#0d2c4a, #e7f1fb);
+}

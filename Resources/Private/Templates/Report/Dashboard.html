@@ -1,7 +1,16 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Report" />
 
 <f:section name="content">
+
+	<div class="ns-feedback-premium-strip d-flex flex-wrap align-items-center justify-content-between gap-2">
+		<div class="d-flex flex-wrap align-items-center gap-2">
+			<core:icon identifier="actions-star" size="small" />
+			<strong><f:translate key="premium.strip.headline" /></strong>
+			<span><f:translate key="premium.strip.description" /></span>
+		</div>
+		<a href="{trialUrl}" class="btn btn-primary"><f:translate key="premium.strip.trial" /></a>
+	</div>
 
 	<div class="ns-ext-dashboard-wrap">
 		<div class="row">
