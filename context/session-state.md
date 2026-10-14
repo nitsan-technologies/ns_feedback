@@ -19,3 +19,7 @@
 - Findings recorded in `features/quick-feedback.md` and `core.md` known issues: duplicate votes per IP
   possible, jQuery alert, Global layout moved above the footer, page uid as `cid` for the page-wide box,
   set constants import case bug.
+
+## 2026-10-14
+
+- Premium strip colours changed from grey to light blue (same palette as ns_revolution_slider). Icon changed from star to rocket (`actions-rocket`). Design aligned with the ns_backup `feature/ns-license-premium-strip-highlight` strip (4px left accent, 10px padding). Headline now "You are using the free version" with an "Upgrade to Premium for ..." description.

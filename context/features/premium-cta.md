@@ -19,15 +19,15 @@ questions, email notifications. The free version only has the quick Yes/No/Yes-b
 - Rendered at the top of the `content` section of `Templates/Report/Dashboard.html`, directly below the navbar
   (the `Report` layout has no flash messages or warnings, so no layout section is needed). List and Show
   views don't render it.
-- Content: `actions-star` core icon, headline + one-line description, one `btn btn-primary` "Start Free Trial"
+- Content: `actions-rocket` core icon, headline + one-line description, one `btn btn-primary` "Start Free Trial"
   link (same tab).
 - Labels in `locallang.xlf`:
-  - `premium.strip.headline`: "All in One Feedback Premium"
-  - `premium.strip.description`: "Get more out of your feedback with the premium version. Try it free."
+  - `premium.strip.headline`: "You are using the free version"
+  - `premium.strip.description`: "Upgrade to Premium for rating forms, popup feedback forms and email notifications."
   - `premium.strip.trial`: "Start Free Trial"
   Wording and look follow the ns_backup strip (branch `feature/ns-license-premium-strip`) at the developer's request.
-- Styling: Bootstrap utilities + `.ns-feedback-premium-strip` in `Resources/Public/Css/main.css` — gray bar
-  identical to `.ns-backup-premium-strip`, `light-dark()` colours for both backend colour schemes, no inline styles.
+- Styling: Bootstrap utilities + `.ns-feedback-premium-strip` in `Resources/Public/Css/main.css` — light-blue bar
+  (`#e7f2fc` / border `#8eb6e8` with a 4px `#2b6cb0` left accent / text `#0d2c4a`) identical to `.ns-backup-premium-strip`, `light-dark()` colours for both backend colour schemes, no inline styles.
   The strip sets Verdana 12px, and `.ns-feedback-premium-strip .btn` sets 14px, `6px 12px` padding, `6px` radius
   and `#007bff` (hover `#0062cc`), because this module's `global.css` uses Roboto 14px and the frontend
   `nsfeedback.css` (also loaded by the backend layout) pads every `.btn` with `8px 25px`. Computed result matches

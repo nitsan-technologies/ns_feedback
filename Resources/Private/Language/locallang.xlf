@@ -562,10 +562,10 @@
                 <source>Please select other page to view feedbacks.</source>
             </trans-unit>
             <trans-unit id="premium.strip.headline">
-                <source>All in One Feedback Premium</source>
+                <source>You are using the free version</source>
             </trans-unit>
             <trans-unit id="premium.strip.description">
-                <source>Get more out of your feedback with the premium version. Try it free.</source>
+                <source>Upgrade to Premium for rating forms, popup feedback forms and email notifications.</source>
             </trans-unit>
             <trans-unit id="premium.strip.trial">
                 <source>Start Free Trial</source>
