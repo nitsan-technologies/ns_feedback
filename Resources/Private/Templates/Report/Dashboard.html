@@ -3,13 +3,15 @@
 
 <f:section name="content">
 
-	<div class="ns-feedback-premium-strip d-flex flex-wrap align-items-center justify-content-between gap-2">
-		<div class="d-flex flex-wrap align-items-center gap-2">
-			<core:icon identifier="actions-rocket" size="small" />
-			<strong><f:translate key="premium.strip.headline" /></strong>
-			<span><f:translate key="premium.strip.description" /></span>
+	<div class="ns-feedback-premium-strip d-flex flex-wrap align-items-center justify-content-between gap-3">
+		<div class="d-flex align-items-center gap-3">
+			<span class="ns-feedback-premium-strip-icon"><core:icon identifier="actions-rocket" size="small" /></span>
+			<div>
+				<div class="ns-feedback-premium-strip-headline"><f:translate key="premium.strip.headline" /></div>
+				<div class="ns-feedback-premium-strip-description"><f:translate key="premium.strip.description" /></div>
+			</div>
 		</div>
-		<a href="{trialUrl}" class="btn btn-primary"><f:translate key="premium.strip.trial" /></a>
+		<a href="{trialUrl}" class="btn btn-primary"><f:translate key="premium.strip.trial" /> <span aria-hidden="true">&rarr;</span></a>
 	</div>
 
 	<div class="ns-ext-dashboard-wrap">

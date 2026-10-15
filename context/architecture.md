@@ -16,7 +16,8 @@
 
 `NsFeedback` / `Feedback` content element (`CType nsfeedback_feedback`), all actions non-cacheable:
 `FeedbackController` → `new` (default), `quickFeedback`, `default`. Wizard entry in `Configuration/page.tsconfig`.
-Fluid namespace `Feedback` → `NITSAN\NsFeedback\ViewHelpers`.
+Fluid namespace `Feedback` → `NITSAN\NsFeedback\ViewHelpers`. No FlexForm and no own Page module preview (core
+standard preview). No `Routes.php` / `AjaxRoutes.php`: the vote endpoint is the frontend page type below.
 
 TypoScript objects (`Configuration/TypoScript/setup.typoscript`): `lib.newact` (`USER_INT`, all-page box →
 `page.785456789985` when `allPage` = 1), page type `741852` `quickFeedbackAction` (JSON vote endpoint),

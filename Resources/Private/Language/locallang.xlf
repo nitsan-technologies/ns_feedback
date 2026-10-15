@@ -562,10 +562,10 @@
                 <source>Please select other page to view feedbacks.</source>
             </trans-unit>
             <trans-unit id="premium.strip.headline">
-                <source>You are using the free version</source>
+                <source>You're using the free version of NS Feedback</source>
             </trans-unit>
             <trans-unit id="premium.strip.description">
-                <source>Upgrade to Premium for rating forms, popup feedback forms and email notifications.</source>
+                <source>Unlock premium features and get more out of NS Feedback.</source>
             </trans-unit>
             <trans-unit id="premium.strip.trial">
                 <source>Start Free Trial</source>

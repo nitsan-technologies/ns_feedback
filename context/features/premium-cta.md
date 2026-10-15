@@ -19,19 +19,21 @@ questions, email notifications. The free version only has the quick Yes/No/Yes-b
 - Rendered at the top of the `content` section of `Templates/Report/Dashboard.html`, directly below the navbar
   (the `Report` layout has no flash messages or warnings, so no layout section is needed). List and Show
   views don't render it.
-- Content: `actions-rocket` core icon, headline + one-line description, one `btn btn-primary` "Start Free Trial"
-  link (same tab).
+- Content: `actions-rocket` core icon, headline and description on two lines, one `btn btn-primary`
+  "Start Free Trial →" link (the arrow is `aria-hidden` markup, not part of the label; same tab).
+- Wording and design are the team-wide standard from the 2026-10-14 review, identical in every NITSAN strip
+  except for the extension name.
 - Labels in `locallang.xlf`:
-  - `premium.strip.headline`: "You are using the free version"
-  - `premium.strip.description`: "Upgrade to Premium for rating forms, popup feedback forms and email notifications."
+  - `premium.strip.headline`: "You're using the free version of NS Feedback"
+  - `premium.strip.description`: "Unlock premium features and get more out of NS Feedback."
   - `premium.strip.trial`: "Start Free Trial"
-  Wording and look follow the ns_backup strip (branch `feature/ns-license-premium-strip`) at the developer's request.
-- Styling: Bootstrap utilities + `.ns-feedback-premium-strip` in `Resources/Public/Css/main.css` — light-blue bar
-  (`#e7f2fc` / border `#8eb6e8` with a 4px `#2b6cb0` left accent / text `#0d2c4a`) identical to `.ns-backup-premium-strip`, `light-dark()` colours for both backend colour schemes, no inline styles.
-  The strip sets Verdana 12px, and `.ns-feedback-premium-strip .btn` sets 14px, `6px 12px` padding, `6px` radius
-  and `#007bff` (hover `#0062cc`), because this module's `global.css` uses Roboto 14px and the frontend
-  `nsfeedback.css` (also loaded by the backend layout) pads every `.btn` with `8px 25px`. Computed result matches
-  the ns_backup strip and button exactly (checked side by side in a browser).
+- Styling: `.ns-feedback-premium-strip` (+ `-icon`, `-headline`, `-description`) in
+  `Resources/Public/Css/main.css` — light-blue card (`#e7f2fc`, border `#8eb6e8`, 4px `#2b6cb0` left accent, 6px
+  radius, padding 14px 18px, text `#0d2c4a`), semibold 1.1em headline, `light-dark()` for dark mode, button
+  `#007bff` (hover `#0062cc`, `6px 14px` padding, no wrap). Font family and size are pinned to
+  `--typo3-font-family` / `--typo3-font-size`, because this module's `global.css` uses Roboto 14px and the
+  frontend `nsfeedback.css` (also loaded by the backend layout) pads every `.btn` with `8px 25px`; computed sizes
+  match the Page module strips. `main.css` uses CRLF line endings.
 
 ## Trial link
 

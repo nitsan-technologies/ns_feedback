@@ -8,7 +8,7 @@
 | Composer name | `nitsan/ns-feedback` |
 | Title (ext_emconf) / product name | TYPO3 Feedback Extension / All in One Feedback |
 | Namespace | `NITSAN\NsFeedback\` → `Classes/` |
-| Version (ext_emconf) | 14.0.0 |
+| Version (ext_emconf) | 14.1.0 (latest tag 14.0.0) |
 | Repository | https://github.com/nitsan-technologies/ns_feedback |
 | Licensing status (NITSAN Free/Freemium sheet) | **Freemium** — this repo is the free version |
 | Premium version (sheet) | https://t3planet.de/typo3-rueckmeldung-erweiterung (price "unknown" in the sheet; T3Planet catalog: €199) |
@@ -86,7 +86,9 @@ Code-read:
 - Unrendered leftovers: `Templates/Default/ConstantEditor*.html`, `Partials/ConstantEditor*.html`,
   `Partials/NoRecordFound.html`, `Partials/Report/Ratings.html`, `ThemeContainsViewHelper`.
 - `ReportController` assigns `sidebarData` / `dashboardSupportData`, which are never set (render empty).
-- `Configuration/page.tsconfig` sets `dashboardPreset-nsFeedbackPreset`, but no dashboard preset is defined.
+- `Configuration/page.tsconfig` sets `options.dashboard.dashboardPresetsForNewUsers` with
+  `dashboardPreset-nsFeedbackPreset`, but no dashboard preset is defined, and `options.*` is user TSconfig, so it
+  has no effect in page TSconfig anyway.
 - TCA `iconfile` points to `.gif` icons that don't exist in `Resources/Public/Icons/`.
 - Module TypoScript (`module.tx_nsfeedback.view.*`) points to non-existent `Resources/Private/Backend/*` paths;
   templates resolve via Extbase defaults.

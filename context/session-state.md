@@ -22,4 +22,16 @@
 
 ## 2026-10-14
 
-- Premium strip colours changed from grey to light blue (same palette as ns_revolution_slider). Icon changed from star to rocket (`actions-rocket`). Design aligned with the ns_backup `feature/ns-license-premium-strip-highlight` strip (4px left accent, 10px padding). Headline now "You are using the free version" with an "Upgrade to Premium for ..." description.
+- Premium strip colours changed from grey to light blue (same palette as ns_revolution_slider). Icon changed from star to rocket (`actions-rocket`). Design aligned with the ns_backup `feature/ns-license-premium-strip-highlight` strip (4px left accent, 10px padding). Headline now "You are using the free version" with an "Upgrade to Premium for ..." description. Not committed yet.
+- Later the same day: switched to the team-wide standard from the review, same in every NITSAN strip except the
+  name — "You're using the free version of NS Feedback" / "Unlock premium features and get more out of NS
+  Feedback.", two lines, "Start Free Trial →", 14px 18px padding, 6px radius (see `features/premium-cta.md`).
+  Dropped the strip's own Verdana 12px / button 14px overrides. `main.css` had been converted to LF in the working
+  copy; restored CRLF so the diff only shows the strip. Version 14.0.0 → 14.1.0. Verified live on 14.3.7
+  (temporary admin removed, `settings.php` restored). Uncommitted.
+
+## 2026-10-15 — Context audit
+
+- Code-read audit: `defaultAction()` renders no buttons, vote type/button/`cid` are stored as posted, the jQuery
+  `forceOnTop` key is ignored (`features/quick-feedback.md`); dashboard preset is user TSconfig (`core.md`);
+  no FlexForm / preview / backend routes noted (`architecture.md`).

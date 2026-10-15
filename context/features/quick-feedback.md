@@ -43,7 +43,8 @@ Votes are aggregated per page. Ratings, full/popup forms and email notifications
    `quickenable` is on (default off). JS sets bar widths in % of the total and colours them
    (≤20 % red, ≤40 orange, ≤60 cyan, ≤80 blue, else green). It only updates on reload.
 
-`defaultAction()` / `Templates/Feedback/Default.html` render the same box with an `.ns-alert-hp` error header.
+`defaultAction()` / `Templates/Feedback/Default.html` render the box with an `.ns-alert-hp` error header but
+without buttons: the action reads them from `settings.quickbuttons`, which no TypoScript sets (code-read).
 They are reachable only with `action=default` in the URL, and their labels `error.header` / `error.security`
 don't exist.
 
@@ -61,8 +62,9 @@ Page type `741852` (`quickFeedbackAction` PAGE, JSON header) runs `FeedbackContr
    again** (direct POST, or through the second box when the element and `allPage` both render). Only the
    template check above stops repeat votes, by hiding the buttons.
 4. Both records go to **pid = the voted page** (`pid` / `page_id`, `page_type` = doktype, `page_title`,
-   `sys_lang_id`). The comment is stored only for buttons 3/4. `feedback_type` = 3, `quickfeedbacktype` =
-   yes/no/yesbut/nobut.
+   `sys_lang_id`). The comment is stored only for buttons 3/4. `feedback_type`, `quickfeedbacktype` and `cid`
+   are stored as posted (`feedbackType` = 3 from the hidden field, `qkbutton` = yes/no/yesbut/nobut;
+   code-read).
 5. Response `{"Status":"Success"}`. JS empties `#ns-c{cid} .qckform` and shows the overlay. Its close
    icon reloads the page. Any other response would run an error branch that targets the non-existent
    `#resubmit` / `#feedback-btns`.
@@ -91,7 +93,9 @@ Two entry points with **different defaults**:
   `nsfeedback.css`, `font-awesome.css`.
 - `nsfeedback.js` is jQuery code but jQuery is off by default (`jQuery` = 0 / false). Without jQuery on the
   page it shows a browser `alert('jQuery is not included, Please include first!')` on every page load and
-  nothing works. Enable the `jQuery` setting (bundled `jquery.js`, `forceOnTop`) or let the theme provide it.
-  The Camino theme has no jQuery.
+  nothing works. Enable the `jQuery` setting (bundled `jquery.js` in `page.includeJSLibs.nsfjquery`) or let
+  the theme provide it. The Camino theme has no jQuery.
+- `forceOnTop = 1` sits next to `nsfjquery` instead of `nsfjquery.forceOnTop`, so core treats it as a resource
+  named `1` and skips it; jQuery is not forced on top (code-read).
 - Selectors are global (`.commenttxt`, `.ns-alert-wrap`, `.bar-yes`, …), so with two boxes on a page they act on
   both, and the scoreboard bars use the first box's counts.
