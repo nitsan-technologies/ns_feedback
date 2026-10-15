@@ -4,6 +4,7 @@ namespace NITSAN\NsFeedback\Controller;
 
 use GeorgRinger\News\Domain\Repository\NewsRepository;
 use NITSAN\NsFeedback\Domain\Model\Report;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,6 +30,9 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  */
 class ReportController extends ActionController
 {
+    protected const NS_LICENSE_MODULE = 'nitsan_nslicensemodule';
+    protected const NS_LICENSE_FREE_SECTION_ANCHOR = '#free-section';
+
     /**
      * reportRepository
      *
@@ -138,6 +142,10 @@ class ReportController extends ActionController
         $totalratings = '';
         $report = '';
 
+        $trialUrl = (string)GeneralUtility::makeInstance(UriBuilder::class)
+            ->buildUriFromRoute(self::NS_LICENSE_MODULE, ['trial' => 'ns_feedback'])
+            . self::NS_LICENSE_FREE_SECTION_ANCHOR;
+
         $assign = [
             'action' => 'dashboard',
             'pid' => $this->pid,
@@ -149,7 +157,8 @@ class ReportController extends ActionController
             'totalnobutcount' => $nobutCount,
             'total' => $total,
             'totalrating' => $totalratings,
-            'report' => $report
+            'report' => $report,
+            'trialUrl' => $trialUrl,
         ];
         $view->assignMultiple($assign);
 

@@ -15,7 +15,7 @@ $EM_CONF['ns_feedback'] = [
   'description' => 'A powerful TYPO3 extension to collect user feedback through customizable forms. Easily embed feedback forms in various styles to gather insights and improve your website’s performance. Fully compatible with TYPO3 v12 and v13.',
 
   'category' => 'plugin',
-  'version' => '14.0.0',
+  'version' => '14.0.1',
   'state' => 'stable',
   'uploadfolder' => false,
   'author' => 'Team T3Planet',
@@ -24,6 +24,7 @@ $EM_CONF['ns_feedback'] = [
   'constraints' => [
     'depends' => [
       'typo3' => '12.0.0-14.9.99',
+      'ns_license' => '14.5.4-14.9.99',
     ],
     'conflicts' => [],
     'suggests' => [],
