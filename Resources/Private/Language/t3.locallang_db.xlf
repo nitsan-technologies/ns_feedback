@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang_db.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsfeedback_domain_model_report">
+        <source>Report</source>
+        <target>crwdns375504:0crwdne375504:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+        <source>Page Id</source>
+        <target>crwdns375506:0crwdne375506:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_id">
+        <source>Record Id</source>
+        <target>crwdns375508:0crwdne375508:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_type">
+        <source>Page Type</source>
+        <target>crwdns375510:0crwdne375510:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_title">
+        <source>Page Title</source>
+        <target>crwdns375512:0crwdne375512:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_count">
+        <source>Feedback Yes Count</source>
+        <target>crwdns375514:0crwdne375514:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_no_count">
+        <source>Feedback No Count</source>
+        <target>crwdns375516:0crwdne375516:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedback_yes_but_count">
+        <source>Feedback Yes But Count</source>
+        <target>crwdns375518:0crwdne375518:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
+        <source>Sys Lang Id</source>
+        <target>crwdns375520:0crwdne375520:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
+        <source>Feedbacks</source>
+        <target>crwdns375522:0crwdne375522:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks">
+        <source>Feedbacks</source>
+        <target>crwdns375524:0crwdne375524:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
+        <source>Comment</source>
+        <target>crwdns375526:0crwdne375526:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
+        <source>User Ip</source>
+        <target>crwdns375528:0crwdne375528:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
+        <source>Feedback Type</source>
+        <target>crwdns375530:0crwdne375530:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_feedback_feedback.name">
+        <source>Feedback</source>
+        <target>crwdns375532:0crwdne375532:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_feedback_feedback.description">
+        <source>Put your feedback</source>
+        <target>crwdns375534:0crwdne375534:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_feedback_feedback.nsfeedback">
+        <source>Feedback</source>
+        <target>crwdns375536:0crwdne375536:0</target>
+      </trans-unit>
+      <trans-unit id="globalSettings">
+        <source>Global Settings</source>
+        <target>crwdns375538:0crwdne375538:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_feedback/Resources/Private/Language/locallang.xlf" date="2019-12-19T07:42:39Z" product-name="ns_feedback" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsfeedback_domain_model_report">
+        <source>Report</source>
+        <target>crwdns375116:0crwdne375116:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_id">
+        <source>ID</source>
+        <target>crwdns375118:0crwdne375118:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_id">
+        <source>Record Id</source>
+        <target>crwdns375120:0crwdne375120:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.record_type">
+        <source>Type</source>
+        <target>crwdns375122:0crwdne375122:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.page_title">
+        <source>Title</source>
+        <target>crwdns375124:0crwdne375124:0</target>
+      </trans-unit>
+      <trans-unit id="feedback_yes_count">
+        <source>Feedback Yes Count</source>
+        <target>crwdns375126:0crwdne375126:0</target>
+      </trans-unit>
+      <trans-unit id="feedback_no_count">
+        <source>Feedback No Count</source>
+        <target>crwdns375128:0crwdne375128:0</target>
+      </trans-unit>
+      <trans-unit id="feedback_yes_but_count">
+        <source>Feedback Yes But Count</source>
+        <target>crwdns375130:0crwdne375130:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.sys_lang_id">
+        <source>Sys Lang Id</source>
+        <target>crwdns375132:0crwdne375132:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.feedbacks">
+        <source>Feedbacks</source>
+        <target>crwdns375134:0crwdne375134:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks">
+        <source>Feedbacks</source>
+        <target>crwdns375136:0crwdne375136:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.comment">
+        <source>Comment</source>
+        <target>crwdns375138:0crwdne375138:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.user_ip">
+        <source>User Ip</source>
+        <target>crwdns375140:0crwdne375140:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedback_type">
+        <source>Feedback Type</source>
+        <target>crwdns375142:0crwdne375142:0</target>
+      </trans-unit>
+      <trans-unit id="yes">
+        <source>Yes</source>
+        <target>crwdns375144:0crwdne375144:0</target>
+      </trans-unit>
+      <trans-unit id="no">
+        <source>No</source>
+        <target>crwdns375146:0crwdne375146:0</target>
+      </trans-unit>
+      <trans-unit id="yesbut">
+        <source>Yes, But</source>
+        <target>crwdns375148:0crwdne375148:0</target>
+      </trans-unit>
+      <trans-unit id="defaulttitle.helpfull">
+        <source>Was this post helpful?</source>
+        <target>crwdns375150:0crwdne375150:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.sendfeedback">
+        <source>Send Feedback</source>
+        <target>crwdns375152:0crwdne375152:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyou">
+        <source>Thank You For Your Feedback.</source>
+        <target>crwdns375154:0crwdne375154:0</target>
+      </trans-unit>
+      <trans-unit id="alreadyfeedback">
+        <source>Your Feedback is sent.</source>
+        <target>crwdns375156:0crwdne375156:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackreport">
+        <source>Feedback Report</source>
+        <target>crwdns375158:0crwdne375158:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.FROM">
+        <source>FROM</source>
+        <target>crwdns375160:0crwdne375160:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.to">
+        <source>TO</source>
+        <target>crwdns375162:0crwdne375162:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.Date">
+        <source>Date</source>
+        <target>crwdns375164:0crwdne375164:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.total">
+        <source>Total Feedbacks</source>
+        <target>crwdns375166:0crwdne375166:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.backlist">
+        <source>Back to list</source>
+        <target>crwdns375168:0crwdne375168:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.feedbackof">
+        <source>Feedbacks of</source>
+        <target>crwdns375170:0crwdne375170:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.max">
+        <source>Max</source>
+        <target>crwdns375172:0crwdne375172:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.charlong">
+        <source>Character Long</source>
+        <target>crwdns375174:0crwdne375174:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.addcomment">
+        <source>Please add comment first</source>
+        <target>crwdns375176:0crwdne375176:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.viewcomment">
+        <source>View Feedbacks</source>
+        <target>crwdns375178:0crwdne375178:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.action">
+        <source>Action</source>
+        <target>crwdns375180:0crwdne375180:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.nsreport">
+        <source>Reports</source>
+        <target>crwdns375182:0crwdne375182:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.nsfeedback">
+        <source>Feedback</source>
+        <target>crwdns375184:0crwdne375184:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.documentaiton">
+        <source>Documentaiton</source>
+        <target>crwdns375186:0crwdne375186:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.helpsupport">
+        <source>Help &amp; Support</source>
+        <target>crwdns375188:0crwdne375188:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_report.donate">
+        <source>Donate</source>
+        <target>crwdns375190:0crwdne375190:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.resubmit">
+        <source>Something wrong, please resubmit your feedback.</source>
+        <target>crwdns375192:0crwdne375192:0</target>
+      </trans-unit>
+      <trans-unit id="globalsettings">
+        <source>Global Setting</source>
+        <target>crwdns375194:0crwdne375194:0</target>
+      </trans-unit>
+      <trans-unit id="Dashboard">
+        <source>Dashboard</source>
+        <target>crwdns375196:0crwdne375196:0</target>
+      </trans-unit>
+      <trans-unit id="premiumExtension">
+        <source>Premium Extension</source>
+        <target>crwdns375198:0crwdne375198:0</target>
+      </trans-unit>
+      <trans-unit id="basicSettings">
+        <source>Basic Settings</source>
+        <target>crwdns375200:0crwdne375200:0</target>
+      </trans-unit>
+      <trans-unit id="noThemeConfiguration">
+        <source>Sorry, Configuration not available for this!</source>
+        <target>crwdns375202:0crwdne375202:0</target>
+      </trans-unit>
+      <trans-unit id="sorry">
+        <source>Sorry!</source>
+        <target>crwdns375204:0crwdne375204:0</target>
+      </trans-unit>
+      <trans-unit id="noconstantline1">
+        <source>No Extension Template available for this Page.</source>
+        <target>crwdns375206:0crwdne375206:0</target>
+      </trans-unit>
+      <trans-unit id="noconstantline2">
+        <source>Please go the Template Module and create new extension Template for this page.</source>
+        <target>crwdns375208:0crwdne375208:0</target>
+      </trans-unit>
+      <trans-unit id="noconstantline3">
+        <source>Please click here</source>
+        <target>crwdns375210:0crwdne375210:0</target>
+      </trans-unit>
+      <trans-unit id="templatelinkText">
+        <source>Template</source>
+        <target>crwdns375212:0crwdne375212:0</target>
+      </trans-unit>
+      <trans-unit id="save">
+        <source>Save Changes</source>
+        <target>crwdns375214:0crwdne375214:0</target>
+      </trans-unit>
+      <trans-unit id="widget_group.ns_feedbackwidgetgroup">
+        <source>Feedback Widgets</source>
+        <target>crwdns375216:0crwdne375216:0</target>
+      </trans-unit>
+      <trans-unit id="dashboard.nsFeedbackPreset">
+        <source>Feedback Presets</source>
+        <target>crwdns375218:0crwdne375218:0</target>
+      </trans-unit>
+      <trans-unit id="dashboard.nsFeedbackPreset.description">
+        <source>Feedback Presets Description</source>
+        <target>crwdns375220:0crwdne375220:0</target>
+      </trans-unit>
+      <trans-unit id="totalratings">
+        <source>Total Ratings</source>
+        <target>crwdns375222:0crwdne375222:0</target>
+      </trans-unit>
+      <trans-unit id="totalratingscount">
+        <source>Total Ratings Count</source>
+        <target>crwdns375224:0crwdne375224:0</target>
+      </trans-unit>
+      <trans-unit id="appearanceSettings">
+        <source>Feedback Forms Settings</source>
+        <target>crwdns375226:0crwdne375226:0</target>
+      </trans-unit>
+      <!--Constants Sub Category-->
+      <trans-unit id="cat_appearance">
+        <source>Appearance</source>
+        <target>crwdns375228:0crwdne375228:0</target>
+      </trans-unit>
+      <trans-unit id="cat_selection">
+        <source>Selection</source>
+        <target>crwdns375230:0crwdne375230:0</target>
+      </trans-unit>
+      <trans-unit id="cat_quickfeedback">
+        <source>Quick Feedback Form Configuration</source>
+        <target>crwdns375232:0crwdne375232:0</target>
+      </trans-unit>
+      <trans-unit id="cat_ratings">
+        <source>Ratings</source>
+        <target>crwdns375234:0crwdne375234:0</target>
+      </trans-unit>
+      <trans-unit id="cat_fullfeedback">
+        <source>Full Feedback Form Configuration</source>
+        <target>crwdns375236:0crwdne375236:0</target>
+      </trans-unit>
+      <trans-unit id="cat_name">
+        <source>Name</source>
+        <target>crwdns375238:0crwdne375238:0</target>
+      </trans-unit>
+      <trans-unit id="cat_email">
+        <source>Email</source>
+        <target>crwdns375240:0crwdne375240:0</target>
+      </trans-unit>
+      <trans-unit id="cat_longtext">
+        <source>Long Text(Textarea)</source>
+        <target>crwdns375242:0crwdne375242:0</target>
+      </trans-unit>
+      <trans-unit id="cat_submit">
+        <source>Submit Button</source>
+        <target>crwdns375244:0crwdne375244:0</target>
+      </trans-unit>
+      <trans-unit id="cat_basic">
+        <source>Basic Configuration</source>
+        <target>crwdns375246:0crwdne375246:0</target>
+      </trans-unit>
+      <trans-unit id="cat_design">
+        <source>Form Stylings</source>
+        <target>crwdns375248:0crwdne375248:0</target>
+      </trans-unit>
+      <trans-unit id="cat_emailconfig">
+        <source>Email Notification Settings</source>
+        <target>crwdns375250:0crwdne375250:0</target>
+      </trans-unit>
+      <!--Constant Labels-->
+      <trans-unit id="allPage">
+        <source>All Pages?:Enable this to display Feedback form on all pages of the site.</source>
+        <target>crwdns375252:0crwdne375252:0</target>
+      </trans-unit>
+      <trans-unit id="newsBlog">
+        <source>News/Blog</source>
+        <target>crwdns375254:0crwdne375254:0</target>
+      </trans-unit>
+      <trans-unit id="popup">
+        <source>Popup Block</source>
+        <target>crwdns375256:0crwdne375256:0</target>
+      </trans-unit>
+      <trans-unit id="feedbackType">
+        <source>Feedback Type:Select feedback form to display in entire site.</source>
+        <target>crwdns375258:0crwdne375258:0</target>
+      </trans-unit>
+      <trans-unit id="fullfeedback">
+        <source>Full Feedback Form</source>
+        <target>crwdns375260:0crwdne375260:0</target>
+      </trans-unit>
+      <trans-unit id="quickfeedback">
+        <source>Quick Feedback Form</source>
+        <target>crwdns375262:0crwdne375262:0</target>
+      </trans-unit>
+      <trans-unit id="ratings">
+        <source>Ratings</source>
+        <target>crwdns375264:0crwdne375264:0</target>
+      </trans-unit>
+      <trans-unit id="nobut">
+        <source>No, But</source>
+        <target>crwdns375266:0crwdne375266:0</target>
+      </trans-unit>
+      <trans-unit id="quickbuttons">
+        <source>Select Buttons</source>
+        <target>crwdns375268:0crwdne375268:0</target>
+      </trans-unit>
+      <trans-unit id="star">
+        <source>Star</source>
+        <target>crwdns375270:0crwdne375270:0</target>
+      </trans-unit>
+      <trans-unit id="emoji">
+        <source>Emoji</source>
+        <target>crwdns375272:0crwdne375272:0</target>
+      </trans-unit>
+      <trans-unit id="number">
+        <source>Numbers</source>
+        <target>crwdns375274:0crwdne375274:0</target>
+      </trans-unit>
+      <trans-unit id="ratingsType">
+        <source>Rating Style</source>
+        <target>crwdns375276:0crwdne375276:0</target>
+      </trans-unit>
+      <trans-unit id="titleText">
+        <source>Heading Text</source>
+        <target>crwdns375278:0crwdne375278:0</target>
+      </trans-unit>
+      <trans-unit id="userChangedRating">
+        <source>Can user change their Ratings?</source>
+        <target>crwdns375280:0crwdne375280:0</target>
+      </trans-unit>
+      <trans-unit id="include">
+        <source>Include this Field?</source>
+        <target>crwdns375282:0crwdne375282:0</target>
+      </trans-unit>
+      <trans-unit id="label">
+        <source>Field Label</source>
+        <target>crwdns375284:0crwdne375284:0</target>
+      </trans-unit>
+      <trans-unit id="required">
+        <source>Required?</source>
+        <target>crwdns375286:0crwdne375286:0</target>
+      </trans-unit>
+      <trans-unit id="popupSettings">
+        <source>Popup Settings</source>
+        <target>crwdns375288:0crwdne375288:0</target>
+      </trans-unit>
+      <trans-unit id="commonSettings">
+        <source>Global Settings</source>
+        <target>crwdns375290:0crwdne375290:0</target>
+      </trans-unit>
+      <trans-unit id="restrictMultipleFeedback">
+        <source>Restrict Multiple Feedback:Restrict visitor from submitting multiple Feedbacks</source>
+        <target>crwdns375292:0crwdne375292:0</target>
+      </trans-unit>
+      <trans-unit id="enableFeedback">
+        <source>Display Feedback Results:Display Feedback results to visitors</source>
+        <target>crwdns375294:0crwdne375294:0</target>
+      </trans-unit>
+      <trans-unit id="fontsize">
+        <source>Font Size:Select font size between 18 to 30</source>
+        <target>crwdns375296:0crwdne375296:0</target>
+      </trans-unit>
+      <trans-unit id="fontstyle">
+        <source>Font Style</source>
+        <target>crwdns375298:0crwdne375298:0</target>
+      </trans-unit>
+      <trans-unit id="bold">
+        <source>Bold</source>
+        <target>crwdns375300:0crwdne375300:0</target>
+      </trans-unit>
+      <trans-unit id="normal">
+        <source>Normal</source>
+        <target>crwdns375302:0crwdne375302:0</target>
+      </trans-unit>
+      <trans-unit id="fontcolor">
+        <source>Font Color</source>
+        <target>crwdns375304:0crwdne375304:0</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle">
+        <source>Button Style:Select how buttons should be displayed in Feedback forms.</source>
+        <target>crwdns375306:0crwdne375306:0</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle.rq">
+        <source>Rectangle</source>
+        <target>crwdns375308:0crwdne375308:0</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle.ov">
+        <source>Oval</source>
+        <target>crwdns375310:0crwdne375310:0</target>
+      </trans-unit>
+      <trans-unit id="buttonstyle.rrq">
+        <source>Rounded-Rectangle</source>
+        <target>crwdns375312:0crwdne375312:0</target>
+      </trans-unit>
+      <trans-unit id="buttonbg">
+        <source>Button Background Color</source>
+        <target>crwdns375314:0crwdne375314:0</target>
+      </trans-unit>
+      <trans-unit id="notifyadmin">
+        <source>Notify to Admin:Send an E-mail to Administrator after visitor submits the feedback</source>
+        <target>crwdns375316:0crwdne375316:0</target>
+      </trans-unit>
+      <trans-unit id="adminemail">
+        <source>Admin E-mail</source>
+        <target>crwdns375318:0crwdne375318:0</target>
+      </trans-unit>
+      <trans-unit id="notifyuser">
+        <source>Notify to visitor:Send an E-mail to visitor after visitor submits the feedback</source>
+        <target>crwdns375320:0crwdne375320:0</target>
+      </trans-unit>
+      <trans-unit id="adminemailsubject">
+        <source>Admin E-mail Subject</source>
+        <target>crwdns375322:0crwdne375322:0</target>
+      </trans-unit>
+      <trans-unit id="adminname">
+        <source>Admin Name</source>
+        <target>crwdns375324:0crwdne375324:0</target>
+      </trans-unit>
+      <trans-unit id="useremailsubject">
+        <source>Visitor E-mail Subject</source>
+        <target>crwdns375326:0crwdne375326:0</target>
+      </trans-unit>
+      <trans-unit id="mailcontenttitle">
+        <source>Visitor E-mail heading</source>
+        <target>crwdns375328:0crwdne375328:0</target>
+      </trans-unit>
+      <trans-unit id="mailcontent">
+        <source>Visitor E-mail text</source>
+        <target>crwdns375330:0crwdne375330:0</target>
+      </trans-unit>
+      <trans-unit id="slide">
+        <source>SlideUpDown</source>
+        <target>crwdns375332:0crwdne375332:0</target>
+      </trans-unit>
+      <trans-unit id="toggle">
+        <source>Toggle</source>
+        <target>crwdns375334:0crwdne375334:0</target>
+      </trans-unit>
+      <trans-unit id="fade">
+        <source>FadeInOut</source>
+        <target>crwdns375336:0crwdne375336:0</target>
+      </trans-unit>
+      <trans-unit id="quickboxappearance">
+        <source>Textbox Display Style:Select how textbox will appear when visitor click on "Yes,But" or "No,But" button</source>
+        <target>crwdns375338:0crwdne375338:0</target>
+      </trans-unit>
+      <trans-unit id="placeholder">
+        <source>Placeholder</source>
+        <target>crwdns375340:0crwdne375340:0</target>
+      </trans-unit>
+      <trans-unit id="email_required">
+        <source>Valid email is required!</source>
+        <target>crwdns375342:0crwdne375342:0</target>
+      </trans-unit>
+      <trans-unit id="form.emailError">
+        <source>Enter valid email address</source>
+        <target>crwdns375344:0crwdne375344:0</target>
+      </trans-unit>
+      <trans-unit id="btntextcolor">
+        <source>Button Text and Border Color</source>
+        <target>crwdns393526:0crwdne393526:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsfeedback_domain_model_feedbacks.thankyourating">
+        <source>Thank You For Your Ratings.</source>
+        <target>crwdns375348:0crwdne375348:0</target>
+      </trans-unit>
+      <trans-unit id="avgrating">
+        <source>Average of Ratings</source>
+        <target>crwdns375350:0crwdne375350:0</target>
+      </trans-unit>
+      <trans-unit id="alreadyrating">
+        <source>You've already rated this.</source>
+        <target>crwdns375352:0crwdne375352:0</target>
+      </trans-unit>
+      <trans-unit id="popuptitle">
+        <source>Popup Title</source>
+        <target>crwdns375354:0crwdne375354:0</target>
+      </trans-unit>
+      <trans-unit id="titlebar">
+        <source>Popup Titlebar Text</source>
+        <target>crwdns375356:0crwdne375356:0</target>
+      </trans-unit>
+      <trans-unit id="popup.thanks">
+        <source>Thanks for your Feedback!</source>
+        <target>crwdns375358:0crwdne375358:0</target>
+      </trans-unit>
+      <trans-unit id="popup.ccmsg">
+        <source>If you feedback requires a response, we'll be in touch shortly</source>
+        <target>crwdns375360:0crwdne375360:0</target>
+      </trans-unit>
+      <trans-unit id="mail.salutation">
+        <source>Hey</source>
+        <target>crwdns375362:0crwdne375362:0</target>
+      </trans-unit>
+      <trans-unit id="admin.content1">
+        <source>You have new Feedback for this Page</source>
+        <target>crwdns375364:0crwdne375364:0</target>
+      </trans-unit>
+      <trans-unit id="mail.quickfeedbackfor">
+        <source>User feedback with</source>
+        <target>crwdns375366:0crwdne375366:0</target>
+      </trans-unit>
+      <trans-unit id="mail.usercomment">
+        <source>User comment</source>
+        <target>crwdns375368:0crwdne375368:0</target>
+      </trans-unit>
+      <trans-unit id="mail.sent.footer">
+        <source>This email was sent by</source>
+        <target>crwdns375370:0crwdne375370:0</target>
+      </trans-unit>
+      <trans-unit id="mail.fromurl">
+        <source>from URL:</source>
+        <target>crwdns375372:0crwdne375372:0</target>
+      </trans-unit>
+      <trans-unit id="mail.rating">
+        <source>You have rating for this Page</source>
+        <target>crwdns375374:0crwdne375374:0</target>
+      </trans-unit>
+      <trans-unit id="mail.rate">
+        <source>User rating</source>
+        <target>crwdns375376:0crwdne375376:0</target>
+      </trans-unit>
+      <trans-unit id="mail.feed">
+        <source>User Feedback</source>
+        <target>crwdns375378:0crwdne375378:0</target>
+      </trans-unit>
+      <trans-unit id="userinfo">
+        <source>User Information</source>
+        <target>crwdns375380:0crwdne375380:0</target>
+      </trans-unit>
+      <trans-unit id="username">
+        <source>User's Name</source>
+        <target>crwdns375382:0crwdne375382:0</target>
+      </trans-unit>
+      <trans-unit id="usermail">
+        <source>User's Email</source>
+        <target>crwdns375384:0crwdne375384:0</target>
+      </trans-unit>
+      <trans-unit id="rating_feedback">
+        <source>Rating Feedbacks</source>
+        <target>crwdns375386:0crwdne375386:0</target>
+      </trans-unit>
+      <trans-unit id="quick_feedback">
+        <source>Quick Feedbacks</source>
+        <target>crwdns375388:0crwdne375388:0</target>
+      </trans-unit>
+      <trans-unit id="full_feedback">
+        <source>Full Feedbacks</source>
+        <target>crwdns375390:0crwdne375390:0</target>
+      </trans-unit>
+      <trans-unit id="popup_feedback">
+        <source>Popup Blocks</source>
+        <target>crwdns375392:0crwdne375392:0</target>
+      </trans-unit>
+      <trans-unit id="type.news">
+        <source>News</source>
+        <target>crwdns375394:0crwdne375394:0</target>
+      </trans-unit>
+      <trans-unit id="type.page">
+        <source>Page</source>
+        <target>crwdns375396:0crwdne375396:0</target>
+      </trans-unit>
+      <trans-unit id="type.blog">
+        <source>Blog</source>
+        <target>crwdns375398:0crwdne375398:0</target>
+      </trans-unit>
+      <trans-unit id="ratingcount">
+        <source>Rating Counts</source>
+        <target>crwdns375400:0crwdne375400:0</target>
+      </trans-unit>
+      <trans-unit id="ratingssummury">
+        <source>Ratings Summary</source>
+        <target>crwdns375402:0crwdne375402:0</target>
+      </trans-unit>
+      <trans-unit id="leftbottom">
+        <source>Left Bottom</source>
+        <target>crwdns375404:0crwdne375404:0</target>
+      </trans-unit>
+      <trans-unit id="rightbottom">
+        <source>Right Bottom</source>
+        <target>crwdns375406:0crwdne375406:0</target>
+      </trans-unit>
+      <trans-unit id="leftside">
+        <source>Left Sidebar</source>
+        <target>crwdns375408:0crwdne375408:0</target>
+      </trans-unit>
+      <trans-unit id="rightside">
+        <source>Right Sidebar</source>
+        <target>crwdns375410:0crwdne375410:0</target>
+      </trans-unit>
+      <trans-unit id="popuplayout">
+        <source>Popup Layout</source>
+        <target>crwdns375412:0crwdne375412:0</target>
+      </trans-unit>
+      <trans-unit id="cat_thankyou">
+        <source>Thank you Message Configuration</source>
+        <target>crwdns375414:0crwdne375414:0</target>
+      </trans-unit>
+      <trans-unit id="thankyoutitle">
+        <source>Heading</source>
+        <target>crwdns375416:0crwdne375416:0</target>
+      </trans-unit>
+      <trans-unit id="thankyoumsg">
+        <source>Message</source>
+        <target>crwdns375418:0crwdne375418:0</target>
+      </trans-unit>
+      <trans-unit id="userquickfeedback">
+        <source>User's Quick Feedbacks</source>
+        <target>crwdns375420:0crwdne375420:0</target>
+      </trans-unit>
+      <trans-unit id="fstar">
+        <source>5 Stars</source>
+        <target>crwdns375422:0crwdne375422:0</target>
+      </trans-unit>
+      <trans-unit id="fostar">
+        <source>4 Stars</source>
+        <target>crwdns375424:0crwdne375424:0</target>
+      </trans-unit>
+      <trans-unit id="thstar">
+        <source>3 Stars</source>
+        <target>crwdns375426:0crwdne375426:0</target>
+      </trans-unit>
+      <trans-unit id="tstar">
+        <source>2 Stars</source>
+        <target>crwdns375428:0crwdne375428:0</target>
+      </trans-unit>
+      <trans-unit id="ostar">
+        <source>1 Star</source>
+        <target>crwdns375430:0crwdne375430:0</target>
+      </trans-unit>
+      <trans-unit id="userratings">
+        <source>User Ratings</source>
+        <target>crwdns375432:0crwdne375432:0</target>
+      </trans-unit>
+      <trans-unit id="nameinclude">
+        <source>Name Field - Include?</source>
+        <target>crwdns375434:0crwdne375434:0</target>
+      </trans-unit>
+      <trans-unit id="namelabel">
+        <source>Name Field - Label</source>
+        <target>crwdns375436:0crwdne375436:0</target>
+      </trans-unit>
+      <trans-unit id="nameplaceholder">
+        <source>Name Field - Placeholder</source>
+        <target>crwdns375438:0crwdne375438:0</target>
+      </trans-unit>
+      <trans-unit id="namerequired">
+        <source>Name Field - Required?</source>
+        <target>crwdns375440:0crwdne375440:0</target>
+      </trans-unit>
+      <trans-unit id="emailinclude">
+        <source>Email Field - Include?</source>
+        <target>crwdns375442:0crwdne375442:0</target>
+      </trans-unit>
+      <trans-unit id="emaillabel">
+        <source>Email Field - Label</source>
+        <target>crwdns375444:0crwdne375444:0</target>
+      </trans-unit>
+      <trans-unit id="emailplaceholder">
+        <source>Email Field - Placeholder</source>
+        <target>crwdns375446:0crwdne375446:0</target>
+      </trans-unit>
+      <trans-unit id="emailrequired">
+        <source>Email Field - Required?</source>
+        <target>crwdns375448:0crwdne375448:0</target>
+      </trans-unit>
+      <trans-unit id="textareainclude">
+        <source>Feedback - Include?</source>
+        <target>crwdns375450:0crwdne375450:0</target>
+      </trans-unit>
+      <trans-unit id="textarealabel">
+        <source>Feedback - Label</source>
+        <target>crwdns375452:0crwdne375452:0</target>
+      </trans-unit>
+      <trans-unit id="textareaplaceholder">
+        <source>Feedback - Placeholder</source>
+        <target>crwdns375454:0crwdne375454:0</target>
+      </trans-unit>
+      <trans-unit id="textarearequired">
+        <source>Feedback - Required?</source>
+        <target>crwdns375456:0crwdne375456:0</target>
+      </trans-unit>
+      <trans-unit id="ratinginclude">
+        <source>Ratings - Include?</source>
+        <target>crwdns375458:0crwdne375458:0</target>
+      </trans-unit>
+      <trans-unit id="ratinglabel">
+        <source>Ratings - Label</source>
+        <target>crwdns375460:0crwdne375460:0</target>
+      </trans-unit>
+      <trans-unit id="submitlabel">
+        <source>Submit Button - Label</source>
+        <target>crwdns375462:0crwdne375462:0</target>
+      </trans-unit>
+      <trans-unit id="cat_popup">
+        <source>Popup Configuration</source>
+        <target>crwdns375464:0crwdne375464:0</target>
+      </trans-unit>
+      <trans-unit id="popupcolor">
+        <source>Popup Color</source>
+        <target>crwdns375466:0crwdne375466:0</target>
+      </trans-unit>
+      <trans-unit id="report.desc">
+        <source>Reports tab displays all the Feedback reports of Feedback Forms added in currently selected page.</source>
+        <target>crwdns375468:0crwdne375468:0</target>
+      </trans-unit>
+      <trans-unit id="global.desc">
+        <source>In this tab you can configure all the global settings for the Feedback Forms added in the site.</source>
+        <target>crwdns375470:0crwdne375470:0</target>
+      </trans-unit>
+      <trans-unit id="feed.desc">
+        <source>You can configure all available Feedback Forms from here.</source>
+        <target>crwdns375472:0crwdne375472:0</target>
+      </trans-unit>
+      <trans-unit id="opps">
+        <source>Oops!</source>
+        <target>crwdns375474:0crwdne375474:0</target>
+      </trans-unit>
+      <trans-unit id="info1">
+        <source>Feedback is not available for this page.</source>
+        <target>crwdns375476:0crwdne375476:0</target>
+      </trans-unit>
+      <trans-unit id="info2">
+        <source>Please select other page to view feedbacks.</source>
+        <target>crwdns375478:0crwdne375478:0</target>
+      </trans-unit>
+      <trans-unit id="premium.strip.headline">
+        <source>You're using the free version of NS Feedback</source>
+        <target>crwdns415233:0crwdne415233:0</target>
+      </trans-unit>
+      <trans-unit id="premium.strip.description">
+        <source>Unlock premium features and get more out of NS Feedback.</source>
+        <target>crwdns415235:0crwdne415235:0</target>
+      </trans-unit>
+      <trans-unit id="premium.strip.trial">
+        <source>Start Free Trial</source>
+        <target>crwdns415237:0crwdne415237:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
