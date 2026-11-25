@@ -84,7 +84,7 @@ class FeedbackController extends ActionController
 
         $filterData['pId'] = $data['uid'];
         $filterData['cid'] = $cdata['uid'];
-        $filterData['userIp'] = GeneralUtility::getIndpEnv('REMOTE_ADDR');
+        $filterData['userIp'] = $this->getRemoteAddress();
         $filterData['feedbackType'] = 3;
 
         if (isset($requestData['tx_news_pi1'])) {
@@ -159,7 +159,7 @@ class FeedbackController extends ActionController
 
         $filterData['pId'] = $data['uid'];
         $filterData['cid'] = $cdata['uid'];
-        $filterData['userIp'] = GeneralUtility::getIndpEnv('REMOTE_ADDR');
+        $filterData['userIp'] = $this->getRemoteAddress();
         $filterData['feedbackType'] = 3;
         $newsParams = $requestData['tx_news_pi1'] ?? [];
 
@@ -219,7 +219,7 @@ class FeedbackController extends ActionController
         $formToken = (string)($result['formToken'] ?? '');
         $feedbackType = (string)((int)($result['feedbackType'] ?? 3));
         $commentText = mb_substr((string)($result['commentText'] ?? ''), 0, 5000);
-        $userIp = (string)GeneralUtility::getIndpEnv('REMOTE_ADDR');
+        $userIp = $this->getRemoteAddress();
 
         if (!$this->isValidQuickFeedbackRequest($pageId, $cid, $buttonfor, $qkbutton, $formToken)) {
             return $this->jsonResponse(json_encode(['Status' => 'Error']));
@@ -355,6 +355,19 @@ class FeedbackController extends ActionController
         }
 
         return $this->validateHmac($pageId . '|' . $contentId, $formToken);
+    }
+
+    /**
+     * Client IP from PSR-7 NormalizedParams (TYPO3 v14.3+ replacement for getIndpEnv).
+     */
+    protected function getRemoteAddress(): string
+    {
+        $normalizedParams = $this->request->getAttribute('normalizedParams');
+        if ($normalizedParams !== null) {
+            return (string)$normalizedParams->getRemoteAddress();
+        }
+
+        return (string)($_SERVER['REMOTE_ADDR'] ?? '');
     }
 
     /**

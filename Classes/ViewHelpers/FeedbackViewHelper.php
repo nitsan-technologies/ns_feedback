@@ -20,7 +20,10 @@ class FeedbackViewHelper extends AbstractViewHelper
         $pageRecord = $pageInformation->getPageRecord();
         $pageUid = (int)($pageRecord['uid'] ?? 0);
         $pagePid = (int)($pageRecord['pid'] ?? 0);
-        $userIp = (string)GeneralUtility::getIndpEnv('REMOTE_ADDR');
+        $normalizedParams = $request->getAttribute('normalizedParams');
+        $userIp = $normalizedParams !== null
+            ? (string)$normalizedParams->getRemoteAddress()
+            : (string)($_SERVER['REMOTE_ADDR'] ?? '');
         $newsParams = $request->getQueryParams()['tx_news_pi1'] ?? [];
         $newsId = (int)($newsParams['news'] ?? 0);
 
