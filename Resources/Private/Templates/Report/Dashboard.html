@@ -76,9 +76,9 @@
 						</div>
 					</f:else>
 				</f:if>
-				<f:format.raw>{dashboardSupport}</f:format.raw>
+				<f:if condition="{dashboardSupport}"><f:sanitize.html>{dashboardSupport}</f:sanitize.html></f:if>
 			</div>
-			<f:format.raw>{rightSide}</f:format.raw>
+			<f:if condition="{rightSide}"><f:sanitize.html>{rightSide}</f:sanitize.html></f:if>
 		</div>
 	</div>
 </f:section>

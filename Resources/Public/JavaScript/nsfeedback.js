@@ -87,6 +87,9 @@ $(document).ready(function () {
             }
         }
         var href = $(this).attr('href');
+        var formToken = $(this).closest('.qckform').find('.ns-feedback-form-token').val()
+            || $(this).closest('.qckform').data('form-token')
+            || '';
         $.ajax({
             type: "POST",
             url: href,
@@ -97,6 +100,7 @@ $(document).ready(function () {
                 "tx_nsfeedback_feedback[result][cid]": cid,
                 "tx_nsfeedback_feedback[result][commentText]": commentText,
                 "tx_nsfeedback_feedback[result][newsId]": newsId,
+                "tx_nsfeedback_feedback[result][formToken]": formToken,
             },
             success: function (data) {
                 console.log(data)

@@ -96,7 +96,7 @@ class ReportController extends ActionController
         $requestData = array_merge((array)$getData, (array)$postData);
 
         //GET and SET pid for the
-        $this->pid = isset($requestData['id']) ? $requestData['id'] : '0' ;
+        $this->pid = (int)($requestData['id'] ?? 0);
         $querySettings = $this->reportRepository->createQuery()->getQuerySettings();
         $querySettings->setStoragePageIds([$this->pid]);
         $this->reportRepository->setDefaultQuerySettings($querySettings);
@@ -122,7 +122,7 @@ class ReportController extends ActionController
         //set default query builder for mm table
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $querySettings->setRespectStoragePage(true);
-        $pagid = isset($requestData['id']) ? $requestData['id'] : '0' ;
+        $pagid = (int)($requestData['id'] ?? 0);
         $querySettings->setStoragePageIds([$pagid]);
         $this->feedbacksRepository->setDefaultQuerySettings($querySettings);
         $total = $this->feedbacksRepository->countAllByLanguage();
@@ -172,10 +172,35 @@ class ReportController extends ActionController
      */
     public function showAction(Report $report)
     {
+        if (!$this->backendUserCanAccessReport($report)) {
+            return $this->redirect('list');
+        }
+
         $view = $this->initializeModuleTemplate($this->request);
         $view->assign('report', $report);
 
         return $view->renderResponse("Report/Show");
+    }
+
+    /**
+     * Ensure the backend user may access the page the report belongs to.
+     */
+    protected function backendUserCanAccessReport(Report $report): bool
+    {
+        $backendUser = $GLOBALS['BE_USER'] ?? null;
+        if ($backendUser === null) {
+            return false;
+        }
+        if (!empty($backendUser->user['admin'])) {
+            return true;
+        }
+
+        $pageId = (int)($report->getPageId() ?: $report->getPid());
+        if ($pageId <= 0) {
+            return false;
+        }
+
+        return $backendUser->isInWebMount($pageId) !== null;
     }
 
     /**
