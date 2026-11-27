@@ -2,100 +2,124 @@
 
 namespace NITSAN\NsFeedback\ViewHelpers;
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Core\View\ViewFactoryData;
 use TYPO3\CMS\Core\View\ViewFactoryInterface;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class FeedbackViewHelper extends AbstractViewHelper
 {
-    public function render() {
+    public function render()
+    {
+        $request = $GLOBALS['TYPO3_REQUEST'];
+        $pageInformation = $request->getAttribute('frontend.page.information');
+        $pageRecord = $pageInformation->getPageRecord();
+        $pageUid = (int)($pageRecord['uid'] ?? 0);
+        $pagePid = (int)($pageRecord['pid'] ?? 0);
+        $normalizedParams = $request->getAttribute('normalizedParams');
+        $userIp = $normalizedParams !== null
+            ? (string)$normalizedParams->getRemoteAddress()
+            : (string)($_SERVER['REMOTE_ADDR'] ?? '');
+        $newsParams = $request->getQueryParams()['tx_news_pi1'] ?? [];
+        $newsId = (int)($newsParams['news'] ?? 0);
+
+        $parentPageRecord = BackendUtility::getRecord('pages', $pagePid) ?? [];
         $connection = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable('tx_nsfeedback_domain_model_report');
-        $queryBuilder = $connection->createQueryBuilder();
-        $queryBuilder2 = $connection->createQueryBuilder();
+            ->getConnectionForTable('tx_nsfeedback_domain_model_feedbacks');
 
-        // $startingPoint = $GLOBALS['TSFE']->page['pid'];
-        // $currentPoint = $GLOBALS['TSFE']->page['tx_nsfeedback_enable'];
-        $startingPoint = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.page.information')->getPageRecord('pid');
-        $currentPoint = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.page.information')->getPageRecord('tx_nsfeedback_enable');
-
-        $pageRecord = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
-            'pages',
-            $startingPoint
-        );
         $rows = null;
-        if ($_GET['tx_news_pi1']['news'] > 0) {
-            $newsId = $_GET['tx_news_pi1']['news'];
-            $rows2 = $queryBuilder
-                ->select('*')
+        if ($newsId > 0) {
+            $reportQueryBuilder = $connection->createQueryBuilder();
+            $reportRows = $reportQueryBuilder
+                ->select('uid')
                 ->from('tx_nsfeedback_domain_model_report')
-                ->where($queryBuilder->expr()->eq('pid', $GLOBALS['TYPO3_REQUEST']
-                    ->getAttribute('frontend.page.information')
-                    ->getPageRecord('uid')))
-                ->andWhere(
-                    $queryBuilder->expr()->eq('record_id', $newsId)
+                ->where(
+                    $reportQueryBuilder->expr()->eq(
+                        'pid',
+                        $reportQueryBuilder->createNamedParameter($pageUid, Connection::PARAM_INT)
+                    )
                 )
-                ->execute()
-                ->fetchAll();
+                ->andWhere(
+                    $reportQueryBuilder->expr()->eq(
+                        'record_id',
+                        $reportQueryBuilder->createNamedParameter($newsId, Connection::PARAM_INT)
+                    )
+                )
+                ->executeQuery()
+                ->fetchAllAssociative();
 
-            if ($rows2) {
-                $rows = $queryBuilder2
+            if ($reportRows) {
+                $feedbackQueryBuilder = $connection->createQueryBuilder();
+                $rows = $feedbackQueryBuilder
                     ->select('*')
                     ->from('tx_nsfeedback_domain_model_feedbacks')
-                    ->where($queryBuilder->expr()->eq('pid', $GLOBALS['TYPO3_REQUEST']
-                        ->getAttribute('frontend.page.information')
-                        ->getPageRecord('uid')))
-                    ->andWhere(
-                        $queryBuilder->expr()->eq('user_ip', "'" . $_SERVER['REMOTE_ADDR'] . "'")
+                    ->where(
+                        $feedbackQueryBuilder->expr()->eq(
+                            'pid',
+                            $feedbackQueryBuilder->createNamedParameter($pageUid, Connection::PARAM_INT)
+                        )
                     )
-                    ->execute()
-                    ->fetchAll();
+                    ->andWhere(
+                        $feedbackQueryBuilder->expr()->eq(
+                            'user_ip',
+                            $feedbackQueryBuilder->createNamedParameter($userIp, Connection::PARAM_STR)
+                        )
+                    )
+                    ->executeQuery()
+                    ->fetchAllAssociative();
             }
         } else {
-            $rows = $queryBuilder
+            $feedbackQueryBuilder = $connection->createQueryBuilder();
+            $rows = $feedbackQueryBuilder
                 ->select('*')
                 ->from('tx_nsfeedback_domain_model_feedbacks')
-                ->where($queryBuilder->expr()->eq('pid', $GLOBALS['TYPO3_REQUEST']
-                    ->getAttribute('frontend.page.information')
-                    ->getPageRecord('uid')))
-                ->andWhere(
-                    $queryBuilder->expr()->eq('user_ip', "'" . $_SERVER['REMOTE_ADDR'] . "'")
+                ->where(
+                    $feedbackQueryBuilder->expr()->eq(
+                        'pid',
+                        $feedbackQueryBuilder->createNamedParameter($pageUid, Connection::PARAM_INT)
+                    )
                 )
-                ->execute()
-                ->fetchAll();
+                ->andWhere(
+                    $feedbackQueryBuilder->expr()->eq(
+                        'user_ip',
+                        $feedbackQueryBuilder->createNamedParameter($userIp, Connection::PARAM_STR)
+                    )
+                )
+                ->executeQuery()
+                ->fetchAllAssociative();
         }
 
         if (!$rows) {
-            if ($GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.page.information')->getPageRecord('tx_nsfeedback_enable') > 0 || $pageRecord['tx_nsfeedback_enable'] > 0) {
-
-                // Create repository instance
-                $querySettings = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
-
-                // $view = GeneralUtility::makeInstance(StandaloneView::class);
-                // $view->setLayoutRootPaths([GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Layouts/')]);
-                // $view->setPartialRootPaths([GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Partials/')]);
-                // $view->setTemplateRootPaths([GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Templates/')]);
-                // $view->setTemplate('Report/New');
-
+            $enabledOnPage = (int)($pageRecord['tx_nsfeedback_enable'] ?? 0) > 0
+                || (int)($parentPageRecord['tx_nsfeedback_enable'] ?? 0) > 0;
+            if ($enabledOnPage) {
                 $viewFactory = GeneralUtility::makeInstance(ViewFactoryInterface::class);
                 $viewFactoryData = new ViewFactoryData(
-                    layoutRootPaths: ['ns_feedback/Resources/Private/Layouts/'],
-                    partialRootPaths: ['ns_feedback/Resources/Private/Partials/'],
-                    templateRootPaths: ['EXT:ns_feedback/Resources/Private/Templates/'],
+                    layoutRootPaths: [GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Layouts/')],
+                    partialRootPaths: [GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Partials/')],
+                    templateRootPaths: [GeneralUtility::getFileAbsFileName('EXT:ns_feedback/Resources/Private/Templates/')],
                 );
                 $view = $viewFactory->create($viewFactoryData);
 
-                if ($_GET['tx_news_pi1']['news'] > 0) {
-                    $view->assign('newsId', $_GET['tx_news_pi1']['news']);
+                if ($newsId > 0) {
+                    $view->assign('newsId', $newsId);
                 }
-                // $view->getRequest()->setControllerExtensionName('ns_feedback');
                 return $view->render();
             }
         } else {
-            $alreadyfeedback = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_nsfeedback_domain_model_feedbacks.alreadyfeedback', 'ns_feedback');
-            return ' <div class="form-wrapper" id="ns-feedback-form"><div class="container"><div class="send-msg">' . $alreadyfeedback . '</div></div></div>';
+            $alreadyfeedback = LocalizationUtility::translate(
+                'tx_nsfeedback_domain_model_feedbacks.alreadyfeedback',
+                'ns_feedback'
+            );
+            return ' <div class="form-wrapper" id="ns-feedback-form"><div class="container"><div class="send-msg">'
+                . htmlspecialchars((string)$alreadyfeedback, ENT_QUOTES | ENT_HTML5)
+                . '</div></div></div>';
         }
+
+        return '';
     }
 }

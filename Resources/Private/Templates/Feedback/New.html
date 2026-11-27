@@ -13,7 +13,7 @@
 					</f:if>
 					<f:if condition="{settings.thankyoumsg}">
 						<div class="ns-alert-content">
-							<p>{settings.thankyoumsg -> f:format.raw()}</p>
+							<p><f:sanitize.html>{settings.thankyoumsg}</f:sanitize.html></p>
 						</div>
 					</f:if>
 				</div>
